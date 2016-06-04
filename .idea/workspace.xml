@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35415db1-1ac5-4217-90a4-a2cbb2a18f6b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/interfaces/Drawable.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/interfaces/Updatable.java" />
-    </list>
+    <list default="true" id="35415db1-1ac5-4217-90a4-a2cbb2a18f6b" name="Default" comment="" />
     <ignored path="GameOfCodes.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
