@@ -1,4 +1,4 @@
-package base;
+package models;
 
 import interfaces.Drawable;
 import interfaces.Updatable;
