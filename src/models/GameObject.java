@@ -1,4 +1,4 @@
-package base;
+package models;
 
 import interfaces.Drawable;
 import interfaces.Updatable;
@@ -39,7 +39,7 @@ public abstract class GameObject implements Drawable, Updatable{
     }
 
     //methods
-    public abstract void display (Graphics graphics);
+    public abstract void draw(Graphics graphics);
 
     public abstract void update();
 
