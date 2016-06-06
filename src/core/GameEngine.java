@@ -2,8 +2,12 @@ package core;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
+import enums.ImageAlbum;
+import graphics.Assets;
 import graphics.Display;
+import graphics.ImageLoader;
 import utils.Constants;
 
 public class GameEngine implements Runnable {
@@ -87,6 +91,7 @@ public class GameEngine implements Runnable {
 
 		// -> START DRAWING
 		this.graphics.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+		this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.Background.getPath()),0,0,Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT,null);
 
 		// -> END DRAWING
 
@@ -95,7 +100,7 @@ public class GameEngine implements Runnable {
 	}
 
 	private void init() {
-		// Assets.init();
+		Assets.init();
 		this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);
 
 	}
