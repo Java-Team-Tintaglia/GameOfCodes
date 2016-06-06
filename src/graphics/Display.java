@@ -11,7 +11,7 @@ public class Display {
     private JFrame frame;
     private Canvas canvas;
 
-    public Display(int width, int height, String title){
+    public Display(int width, int height, String title) {
         this.width = width;
         this.height = height;
         this.title = title;
@@ -19,11 +19,11 @@ public class Display {
         initializeDisplay();
     }
 
-    public Canvas getCanvas(){
+    public Canvas getCanvas() {
         return this.canvas;
     }
 
-    private void initializeDisplay(){
+    private void initializeDisplay() {
         this.frame = new JFrame(this.title);
         this.frame.setSize(width, height);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
