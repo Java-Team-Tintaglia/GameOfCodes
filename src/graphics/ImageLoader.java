@@ -5,20 +5,14 @@ import java.io.IOException;
 
 public class ImageLoader {
 
+    public static BufferedImage loadingImage(String path) {
+        try {
+            return ImageIO.read(ImageLoader.class.getResource(path));
 
-
-
-
-    public class ImageLoader {
-
-        public static BufferedImage loadingImage(String path) {
-            try {
-                return ImageIO.read(ImageLoader.class.getResource(path));
-
-            } catch (IOException e) {
-                System.exit(1);
-            }
-            return null;
+        } catch (IOException e) {
+            System.exit(1);
         }
+        return null;
     }
 }
+
