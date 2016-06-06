@@ -2,11 +2,7 @@ package utils;
 
 import java.util.Random;
 
-/**
- * Created by yankov on 6.6.2016 г..
- */
 public class RandomGenerator {
-
 
     private static Random random;
 
