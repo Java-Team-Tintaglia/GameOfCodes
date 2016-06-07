@@ -2,7 +2,8 @@ package enums;
 
 public enum  ImageAlbum {
 
-    Background("/background.jpg");
+    Wall("/wall.png"),
+    FLoor("/floor.png");
 
     private String path;
 
