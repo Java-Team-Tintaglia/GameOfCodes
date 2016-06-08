@@ -5,9 +5,5 @@ public enum  ProgrammingLanguageType {
     C_SHARP,
     PHP,
     JAVA_SCRIPT,
-    PYTHON,
-    HTML,
     C_PLUS_PLUS,
-    PERL,
-    RUBY
 }

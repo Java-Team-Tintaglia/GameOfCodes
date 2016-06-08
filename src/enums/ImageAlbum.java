@@ -3,7 +3,8 @@ package enums;
 public enum  ImageAlbum {
 
     Wall("/wall.png"),
-    FLoor("/floor.png");
+    FLoor("/floor.png"),
+	NerdLady("/nerd_lady.png");
 
     private String path;
 
