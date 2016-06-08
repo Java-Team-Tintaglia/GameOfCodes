@@ -2,5 +2,5 @@ package interfaces;
 
 public interface Wizard {
 
-    void boost();
+    void boost(Student student);
 }
