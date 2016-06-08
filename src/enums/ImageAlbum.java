@@ -4,7 +4,11 @@ public enum  ImageAlbum {
 
     Wall("/wall.png"),
     FLoor("/floor.png"),
-	NerdLady("/nerd_lady.png");
+	NerdLady("/nerd_lady.png"),
+    Button_Play("buttonPlay.png"),
+    Button_Score("buttonScore.png"),
+    Button_Exit("buttonExit.png"),
+    First_Page("frontPage.png");
 
     private String path;
 
