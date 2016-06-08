@@ -15,9 +15,6 @@ public abstract class GameObject implements Drawable, Updatable{
         this.y = y;
     }
 
-    protected GameObject() {
-    }
-
     public int getX(){
         return x;
     }
