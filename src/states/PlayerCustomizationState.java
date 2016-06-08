@@ -19,7 +19,7 @@ public class PlayerCustomizationState extends State {
 
         Font buttonsFont = new Font("Comic Sans MS", Font.BOLD, 20);
         graphics.setFont(buttonsFont);
-        graphics.drawString(stringBuilger.toString(), 100, 100);
+        graphics.drawString(stringBuilger.toString(), 500, 500);
 
 
     }

@@ -97,7 +97,7 @@ public class GameEngine implements Runnable {
         // -> START DRAWING
         this.graphics.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
         this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.Wall.getPath()), 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        //this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.FLoor.getPath()), 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.FLoor.getPath()), 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
 
         playerCustomizationState.draw(graphics);
