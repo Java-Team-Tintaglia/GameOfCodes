@@ -1,108 +1,121 @@
 package core;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 
 import enums.ImageAlbum;
+import eventhandler.KeyInput;
 import graphics.Assets;
 import graphics.Display;
 import graphics.ImageLoader;
+import states.PlayerCustomizationState;
+import states.State;
 import utils.Constants;
 
 public class GameEngine implements Runnable {
-	private final String title;
-	private boolean isRunning;
-	private Display display;
-	private Thread thread;
-	private BufferStrategy bufferStrategy;
-	private Graphics graphics;
+    private final String title;
+    private boolean isRunning;
+    private Display display;
+    private Thread thread;
+    private BufferStrategy bufferStrategy;
+    private Graphics graphics;
+    private KeyInput keyinput;
 
-	public GameEngine(String title) {
-		this.title = title;
-	}
+    State playerCustomizationState;
 
-	public synchronized void start() {
-		if (!this.isRunning) {
-			this.isRunning = true;
-			this.thread = new Thread(this);
-			this.thread.start();
-		}
-	}
+    public GameEngine(String title) {
+        this.title = title;
+    }
 
-	public synchronized void stop() {
-		if (this.isRunning) {
-			try {
-				this.isRunning = false;
-				this.thread.join();
-			} catch (final InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-	}
+    public synchronized void start() {
+        if (!this.isRunning) {
+            this.isRunning = true;
+            this.thread = new Thread(this);
+            this.thread.start();
+        }
+    }
 
-	@Override
-	public void run() {
-		this.init();
+    public synchronized void stop() {
+        if (this.isRunning) {
+            try {
+                this.isRunning = false;
+                this.thread.join();
+            } catch (final InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-		final int fps = 30;
-		final double timePerTick = 1_000_000_000.0 / fps;
-		double delta = 0;
-		long now;
-		long lastTime = System.nanoTime();
-		long timer = 0;
-		int ticks = 0;
+    @Override
+    public void run() {
+        this.init();
 
-		while (this.isRunning) {
-			now = System.nanoTime();
-			delta += (now - lastTime) / timePerTick;
-			timer += now - lastTime;
-			lastTime = now;
+        final int fps = 30;
+        final double timePerTick = 1_000_000_000.0 / fps;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        long timer = 0;
+        int ticks = 0;
 
-			if (delta >= 1) {
-				this.update();
-				this.draw();
-				ticks++;
-				delta--;
-			}
+        while (this.isRunning) {
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerTick;
+            timer += now - lastTime;
+            lastTime = now;
 
-			if (timer >= 1_000_000_000) {
-				ticks = 0;
-				timer = 0;
-			}
-		}
+            if (delta >= 1) {
+                this.update();
+                this.draw();
+                ticks++;
+                delta--;
+            }
 
-		this.stop();
-	}
+            if (timer >= 1_000_000_000) {
+                ticks = 0;
+                timer = 0;
+            }
+        }
 
-	private void update() {
+        this.stop();
+    }
 
-	}
+    private void update() {
 
-	private void draw() {
-		this.bufferStrategy = this.display.getCanvas().getBufferStrategy();
+    }
 
-		if (this.bufferStrategy == null) {
-			this.display.getCanvas().createBufferStrategy(2);
-			return;
-		}
+    private void draw() {
+        this.bufferStrategy = this.display.getCanvas().getBufferStrategy();
 
-		this.graphics = this.bufferStrategy.getDrawGraphics();
+        if (this.bufferStrategy == null) {
+            this.display.getCanvas().createBufferStrategy(2);
+            return;
+        }
 
-		// -> START DRAWING
-		this.graphics.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-		this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.Wall.getPath()),0,0,Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT,null);
-		this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.FLoor.getPath()),0,0,Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT,null);
+        this.graphics = this.bufferStrategy.getDrawGraphics();
 
-		// -> END DRAWING
+        // -> START DRAWING
+        this.graphics.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+        this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.Wall.getPath()), 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        //this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.FLoor.getPath()), 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-		this.graphics.dispose();
-		this.bufferStrategy.show();
-	}
 
-	private void init() {
-		Assets.init();
-		this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);
+        playerCustomizationState.draw(graphics);
 
-	}
+
+
+        // -> END DRAWING
+
+        this.graphics.dispose();
+        this.bufferStrategy.show();
+    }
+
+    private void init() {
+        Assets.init();
+        this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);
+        this.keyinput = new KeyInput(this, this.display);
+        playerCustomizationState = new PlayerCustomizationState();
+
+
+    }
 }
