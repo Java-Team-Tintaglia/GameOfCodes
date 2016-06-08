@@ -1,10 +1,11 @@
 package base;
 
+import core.GameEngine;
+
 public class Launcher {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		GameEngine game = new GameEngine("Game of Codes");
+        game.start();
 	}
-
 }
