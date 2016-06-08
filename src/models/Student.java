@@ -6,8 +6,6 @@ import java.awt.*;
 
 public abstract class Student extends GameObject{
 
-    private int x;
-    private int y;
     private String name;
     private SpriteSheet spriteSheet;
     private int width;
@@ -20,8 +18,7 @@ public abstract class Student extends GameObject{
 
     public Student(int x , int y, SpriteSheet spriteSheet, int width,
                    int height,String name, int intelligence, int knowledge, int vitality) {
-        this.x = x;
-        this.y = y;
+        super(x,y);
         this.spriteSheet = spriteSheet;
         this.width = width;
         this.height = height;
@@ -30,23 +27,6 @@ public abstract class Student extends GameObject{
         this.knowledge = knowledge;
         this.vitality = vitality;
         this.colliderBox = new Rectangle(this.getX(), this.getY(),this.width,this.height);
-    }
-
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public int getWidth() {
