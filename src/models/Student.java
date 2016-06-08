@@ -8,17 +8,18 @@ public abstract class Student extends GameObject{
 
     private int x;
     private int y;
-    SpriteSheet spriteSheet;
+    private String name;
+    private SpriteSheet spriteSheet;
     private int width;
     private int height;
-    private String name;
     private int intelligence;
     private int knowledge;
     private int vitality;
     private Rectangle colliderBox;
 
 
-    public Student(int x , int y,SpriteSheet spriteSheet,int width, int height,String name, int intelligence, int knowledge, int vitality) {
+    public Student(int x , int y, SpriteSheet spriteSheet, int width,
+                   int height,String name, int intelligence, int knowledge, int vitality) {
         this.x = x;
         this.y = y;
         this.spriteSheet = spriteSheet;
@@ -95,5 +96,6 @@ public abstract class Student extends GameObject{
     public void setIntelligence(int intelligence) {
         this.intelligence = intelligence;
     }
+
 
 }
