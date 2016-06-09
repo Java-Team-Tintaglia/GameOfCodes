@@ -11,9 +11,7 @@ public enum  ImageAlbum {
     Button_Play("/buttonPlay.png"),
     Button_Score("/buttonScore.png"),
     Button_Exit("/buttonExit.png"),
-    First_Page("frontPage.png");
-
-
+    MainMenu("/frontPage.png");
 
     private String path;
 

@@ -3,14 +3,13 @@ package core;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-import enums.ImageAlbum;
 import eventhandler.KeyInput;
+import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
-import graphics.ImageLoader;
 import states.MainMenuState;
-import states.PlayerCustomizationState;
 import states.State;
+import states.StateManager;
 import utils.Constants;
 
 public class GameEngine implements Runnable {
@@ -21,8 +20,9 @@ public class GameEngine implements Runnable {
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
     private KeyInput keyinput;
-    private MainMenuState menu;
-
+    private State mainMenuState;
+    private MouseInput mouseInput;
+ 
     State playerCustomizationState;
 
     public GameEngine(String title) {
@@ -98,13 +98,13 @@ public class GameEngine implements Runnable {
 
         // -> START DRAWING
         this.graphics.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
-        this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.Wall.getPath()), 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        this.graphics.drawImage(ImageLoader.loadingImage(ImageAlbum.FLoor.getPath()), 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-
-
-        playerCustomizationState.draw(graphics);
-
-
+        
+        if (StateManager.getCurrentState() != null) {
+            StateManager.getCurrentState().draw(graphics);
+        }
+        
+        
+        
 
         // -> END DRAWING
 
@@ -116,8 +116,9 @@ public class GameEngine implements Runnable {
         Assets.init();
         this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);
         this.keyinput = new KeyInput(this, this.display);
-        playerCustomizationState = new PlayerCustomizationState();
-
-
+        this.mouseInput = new MouseInput(this.display);
+        
+        mainMenuState = new MainMenuState();
+        StateManager.setCurrentState(mainMenuState);
     }
 }

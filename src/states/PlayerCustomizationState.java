@@ -1,14 +1,15 @@
 package states;
 
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
-import graphics.Assets;
-import utils.Constants;
-
 import java.awt.*;
+
+import graphics.Assets;
+import models.Button;
+import utils.Constants;
 
 public class PlayerCustomizationState extends State {
 
     public static StringBuilder stringBuilger = new StringBuilder();
+    public static Button playButton = new Button(800, 520, Assets.buttonPlay);
 
     @Override
     public void draw(Graphics graphics) {
@@ -21,11 +22,10 @@ public class PlayerCustomizationState extends State {
         graphics.setFont(buttonsFont);
         graphics.drawString(stringBuilger.toString(), 500, 500);
 
-
+        playButton.draw(graphics);
     }
 
     @Override
     public void update() {
-
     }
 }
