@@ -8,9 +8,9 @@ public enum  ImageAlbum {
 	NerdLady("/nerd_lady.png"),
     HotChick("/StudentModels/hotgirl4.jpg"),
     NerdBoy("/StudentModels/nerdBoy2.jpg"),
-    Button_Play("buttonPlay.png"),
-    Button_Score("buttonScore.png"),
-    Button_Exit("buttonExit.png"),
+    Button_Play("/buttonPlay.png"),
+    Button_Score("/buttonScore.png"),
+    Button_Exit("/buttonExit.png"),
     First_Page("frontPage.png");
 
 

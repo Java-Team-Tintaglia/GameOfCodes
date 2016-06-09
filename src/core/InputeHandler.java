@@ -21,12 +21,16 @@ public class InputeHandler  implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_UP) {
+
         }
         if (keyCode == KeyEvent.VK_DOWN) {
+
         }
         if (keyCode == KeyEvent.VK_LEFT) {
+
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
+
         }
 
     }
@@ -35,12 +39,16 @@ public class InputeHandler  implements KeyListener{
     public void keyReleased(KeyEvent e) {
         int keyCode = e.getKeyCode();
         if (keyCode == KeyEvent.VK_UP) {
+
         }
         if (keyCode == KeyEvent.VK_DOWN) {
+
         }
         if (keyCode == KeyEvent.VK_LEFT) {
+
         }
         if (keyCode == KeyEvent.VK_RIGHT) {
+
         }
     }
 }
