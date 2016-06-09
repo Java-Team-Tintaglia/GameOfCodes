@@ -15,6 +15,6 @@ public class Assets {
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
         floor = ImageLoader.loadingImage(ImageAlbum.FLoor.getPath());
         
-        nerdLady = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdLady.getPath()));
+  nerdLady = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdLady.getPath()));
     }
 }
