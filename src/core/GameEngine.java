@@ -8,6 +8,7 @@ import eventhandler.KeyInput;
 import graphics.Assets;
 import graphics.Display;
 import graphics.ImageLoader;
+import states.MainMenuState;
 import states.PlayerCustomizationState;
 import states.State;
 import utils.Constants;
@@ -20,6 +21,7 @@ public class GameEngine implements Runnable {
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
     private KeyInput keyinput;
+    private MainMenuState menu;
 
     State playerCustomizationState;
 
