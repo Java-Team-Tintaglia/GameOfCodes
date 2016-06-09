@@ -2,6 +2,7 @@ package graphics;
 
 import enums.ImageAlbum;
 
+
 import java.awt.image.BufferedImage;
 
 public class Assets {
@@ -15,6 +16,9 @@ public class Assets {
     public static BufferedImage buttonExit;
     
     public static SpriteSheet nerdLady;
+    public static SpriteSheet nerdBoy;
+    public static SpriteSheet badBoy;
+    public static SpriteSheet hotChick;
 
     public static void init() {
         frontPage = ImageLoader.loadingImage(ImageAlbum.First_Page.getPath());
@@ -26,5 +30,8 @@ public class Assets {
         buttonExit = ImageLoader.loadingImage(ImageAlbum.Button_Exit.getPath());
         
         nerdLady = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdLady.getPath()));
+        badBoy = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.BadBoy.getPath()));
+        nerdBoy = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdBoy.getPath()));
+        hotChick = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.HotChick.getPath()));
     }
 }
