@@ -1,6 +1,13 @@
 package interfaces;
 
-public interface Wizard {
+import models.students.Student;
 
-    void boost();
+public interface Wizard {
+    WizardType wizardType = null;
+    public enum WizardType {
+        VITALITY, KNOWLEDGE, INTELLIGENCE
+    }
+
+    void boost(Student student);
+    WizardType getType();
 }
