@@ -123,7 +123,7 @@ public abstract class Student extends GameObject {
     }
 
     public int calculateGrade(ProgrammingLanguage language) {
-        int grade;
+        int grade = Constants.FAILURE;
         int ratio = (this.getKnowledge() * this.getVitality()) / this.getIntelligence();
 
         if (ratio <= 30) {
@@ -140,8 +140,24 @@ public abstract class Student extends GameObject {
 
         int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
         this.setVitality(vitality);
-        if (grade != Constants.FAILURE) {
-            this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
+
+        switch (grade) {
+            case 2:
+                break;
+            case 3:
+                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.3));
+                break;
+            case 4:
+                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.6));
+                break;
+            case 5:
+                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.8));
+                break;
+            case 6:
+                this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
+                break;
+            default:
+                break;
         }
 
         return grade;
