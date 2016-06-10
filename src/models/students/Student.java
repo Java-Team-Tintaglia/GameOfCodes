@@ -1,5 +1,6 @@
 package models.students;
 
+import com.sun.tools.internal.jxc.ap.Const;
 import graphics.SpriteSheet;
 import models.GameObject;
 import models.programmingLanguages.ProgrammingLanguage;
@@ -122,27 +123,27 @@ public abstract class Student extends GameObject {
     }
 
     public int calculateGrade(ProgrammingLanguage language) {
-        int vitality = this.getVitality() - language.getVitalityDamagePoints();
-        if (vitality <= 0) {
-            vitality = 0;
-        }
-        int knowledge = this.getKnowledge() + language.getKnowledgePoints();
-        int intelligence = this.getIntelligence();
+        int grade;
+        int ratio = (this.getKnowledge() * this.getVitality()) / this.getIntelligence();
 
-        this.setVitality(vitality);
-        this.setKnowledge(knowledge);
-
-        int ratio = (vitality * knowledge) / intelligence;
         if (ratio <= 30) {
-            return Constants.FAILURE;
+            grade = Constants.FAILURE;
         } else if (ratio > 30 && ratio <= 60) {
-            return Constants.PASSABLE;
+            grade = Constants.PASSABLE;
         } else if (ratio > 60 && ratio <= 80) {
-            return Constants.GOOD;
+            grade = Constants.GOOD;
         } else if (ratio > 80 && ratio <= 100) {
-            return Constants.VERY_GOOD;
+            grade = Constants.VERY_GOOD;
         } else {
-            return Constants.EXCELLENT;
+            grade = Constants.EXCELLENT;
         }
+
+        int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
+        this.setVitality(vitality);
+        if (grade != Constants.FAILURE) {
+            this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
+        }
+
+        return grade;
     }
 }
