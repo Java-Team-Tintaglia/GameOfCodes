@@ -44,10 +44,13 @@ public class MouseInput implements MouseListener {
             }
             
         } else if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
+        	//if (PlayerCustomizationState.nerdLadyCharacter.getColliderBox().contains(mouseX, mouseY)) {
+        		//PlayerCustomizationState.studentType = StudentType.nerdLady;
+        	//}
         	
         	// Select player and enter a name 
         	if(PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new GameState()); // TODO: Add Player in constructur
+                StateManager.setCurrentState(new GameState()); // TODO: change GameState(StudentType studentType, String name)
                 
                 PlayerCustomizationState.stringBuilger.setLength(0);
                 

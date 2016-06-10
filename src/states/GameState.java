@@ -4,12 +4,22 @@ import java.awt.Graphics;
 
 import core.GameEngine;
 import eventhandler.MouseInput;
+import factories.StudentFactory;
 import graphics.Assets;
 import graphics.Display;
+import models.students.Student;
 import utils.Constants;
 
 public class GameState extends State {
 
+	Student student;
+	StudentFactory studentFactory = new StudentFactory();
+	
+	// TODO:
+//	public GameState(StudentType studentType, String name) {
+//		
+//		student = studentFactory.create(studentType, x, y, name);
+//	}
 
     @Override
     public void draw(Graphics graphics) {

@@ -9,6 +9,7 @@ import utils.Constants;
 public class PlayerCustomizationState extends State {
 
     public static StringBuilder stringBuilger = new StringBuilder();
+    //public static StudentType studentType;
     public static Button playButton = new Button(800, 520, Assets.buttonPlay);
 
     @Override

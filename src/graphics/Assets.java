@@ -12,7 +12,7 @@ public class Assets {
 
     public static SpriteSheet nerdLady;
     public static SpriteSheet badBoy;
-    public static SpriteSheet hotChik;
+    public static SpriteSheet hotChick;
     public static SpriteSheet nerdBoy;
     
     public static BufferedImage buttonPlay;
@@ -28,7 +28,7 @@ public class Assets {
 
         nerdLady = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdLady.getPath()));
         badBoy = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.BadBoy.getPath()));
-        hotChik = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.HotChick.getPath()));
+        hotChick = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.HotChick.getPath()));
         nerdBoy = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdBoy.getPath()));
         
         buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
