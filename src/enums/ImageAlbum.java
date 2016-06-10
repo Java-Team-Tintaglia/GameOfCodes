@@ -11,7 +11,8 @@ public enum  ImageAlbum {
     Button_Play("/buttonPlay.png"),
     Button_Score("/buttonScore.png"),
     Button_Exit("/buttonExit.png"),
-    MainMenu("/frontPage.png");
+    MainMenu("/frontPage.png"),
+    JavaCharacter("");
 
     private String path;
 

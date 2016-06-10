@@ -1,6 +1,5 @@
 package models.students;
 
-import com.sun.tools.internal.jxc.ap.Const;
 import graphics.SpriteSheet;
 import models.GameObject;
 import models.programmingLanguages.ProgrammingLanguage;

@@ -1,6 +1,7 @@
 package models.programmingLanguages;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import enums.ProgrammingLanguageType;
 import models.GameObject;
@@ -12,15 +13,19 @@ public abstract class ProgrammingLanguage extends GameObject {
 	private int vitalityDamagePoints;
 	
 	private int knowledgePoints;
+	
+	private BufferedImage image;
 
 	public ProgrammingLanguage(int x, int y, 
 			ProgrammingLanguageType programmingLanguageType, 
 			int vitalityDamagePoints,
-			int knowledgePoints) {
+			int knowledgePoints,
+			BufferedImage image) {
 		super(x, y);
 		this.programmingLanguageType = programmingLanguageType;
 		this.vitalityDamagePoints = vitalityDamagePoints;
 		this.knowledgePoints = knowledgePoints;
+		this.image = image;
 	}
 
 	public ProgrammingLanguageType getProgrammingLanguageType() {
@@ -41,14 +46,12 @@ public abstract class ProgrammingLanguage extends GameObject {
 	
 	@Override
 	public void draw(Graphics graphics) {
-		// TODO Auto-generated method stub
+		 graphics.drawImage(this.image, this.getX(), this.getY(), null);
 		
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
