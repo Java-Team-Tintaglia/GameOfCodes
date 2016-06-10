@@ -2,6 +2,8 @@ package models.students;
 
 import graphics.SpriteSheet;
 import models.GameObject;
+import models.programmingLanguages.ProgrammingLanguage;
+import utils.Constants;
 
 import java.awt.*;
 
@@ -116,6 +118,31 @@ public abstract class Student extends GameObject {
         }
         if (isMovingUp && this.getY() - DEFAULT_SPEED >= 0) {
             this.setY(this.getY() - DEFAULT_SPEED);
+        }
+    }
+
+    public int calculateGrade(ProgrammingLanguage language) {
+        int vitality = this.getVitality() - language.getVitalityDamagePoints();
+        if (vitality <= 0) {
+            vitality = 0;
+        }
+        int knowledge = this.getKnowledge() + language.getKnowledgePoints();
+        int intelligence = this.getIntelligence();
+
+        this.setVitality(vitality);
+        this.setKnowledge(knowledge);
+
+        int ratio = (vitality * knowledge) / intelligence;
+        if (ratio <= 30) {
+            return Constants.FAILURE;
+        } else if (ratio > 30 && ratio <= 60) {
+            return Constants.PASSABLE;
+        } else if (ratio > 60 && ratio <= 80) {
+            return Constants.GOOD;
+        } else if (ratio > 80 && ratio <= 100) {
+            return Constants.VERY_GOOD;
+        } else {
+            return Constants.EXCELLENT;
         }
     }
 }
