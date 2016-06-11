@@ -109,11 +109,12 @@ public abstract class Student extends GameObject {
     @Override
     public void update() {
         System.out.println(col);
-        col++;
-        col = (col + 1) % 3;
+
         boolean ismoVing = isMovingDown || isMovingRight ||
                 isMovingUp || isMovingLeft;
         if (ismoVing) {
+            col++;
+            col = (col + 1) % 3;
 
             if (isMovingLeft) {
                 row = 1;
@@ -135,6 +136,9 @@ public abstract class Student extends GameObject {
             }
 
 
+        }else {
+            row=0;
+            col=1;
         }
         this.getColliderBox().setBounds(this.getX(), this.getY(),
                 this.width, this.height);
