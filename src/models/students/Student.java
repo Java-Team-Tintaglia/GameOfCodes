@@ -1,8 +1,11 @@
 package models.students;
 
+import factories.StudentFactory;
+import graphics.Assets;
 import graphics.SpriteSheet;
 import models.GameObject;
 import models.programmingLanguages.ProgrammingLanguage;
+import states.GameState;
 import utils.Constants;
 
 import java.awt.*;
@@ -10,7 +13,8 @@ import java.awt.*;
 public abstract class Student extends GameObject {
 
     private static final int DEFAULT_SPEED = 3;
-
+    private int row;
+    private int col;
     private int x;
     private int y;
     private String name;
@@ -22,10 +26,10 @@ public abstract class Student extends GameObject {
     private int vitality;
     private Rectangle colliderBox;
 
-    public static boolean isMovingLeft = false;
-    public static boolean isMovingRight = false;
-    public static boolean isMovingUp = false;
-    public static boolean isMovingDown = false;
+    public static boolean isMovingLeft;
+    public static boolean isMovingRight = true;
+    public static boolean isMovingUp;
+    public static boolean isMovingDown;
 
     public Student(int x, int y, SpriteSheet spriteSheet,
                    int width, int height, String name,
@@ -96,12 +100,46 @@ public abstract class Student extends GameObject {
     @Override
     public void draw(Graphics graphics) {
         // TODO Auto-generated method stub
+        //defing type with enum
+        GameState.student.isMovingRight = true;
+        boolean ismoVing = GameState.student.isMovingDown || GameState.student.isMovingRight ||
+                GameState.student.isMovingUp || GameState.student.isMovingLeft;
+        if (ismoVing) {
+            if (GameState.student.isMovingLeft) {
+                row = 1;
+                col = 0;
+            } else if (GameState.student.isMovingRight) {
+                row = 2;
+                col = 0;
+            } else if (GameState.student.isMovingUp) {
 
+            } else {
+                //ismoveingdown
+                row = 0;
+                col = 1;
+            }
+
+            graphics.drawImage(Assets.nerds.crop(col * 32, row * 32, Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
+            col++;
+            col = (col + 1) % 3;
+
+
+        } else {
+            //slagam slu4aina kartina za da vidq raboti li dvijenieto
+            row = 5;
+            col = 0;
+            graphics.drawImage(Assets.nerds.crop(col * 32, row * 32, Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
+
+
+        }
+
+        
     }
 
 
     @Override
     public void update() {
+        x++;
         move();
 
     }

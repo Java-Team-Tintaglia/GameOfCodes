@@ -7,12 +7,13 @@ import eventhandler.MouseInput;
 import factories.StudentFactory;
 import graphics.Assets;
 import graphics.Display;
+import models.students.NerdBoy;
 import models.students.Student;
 import utils.Constants;
 
 public class GameState extends State {
 
-	Student student;
+	public static Student student=new NerdBoy(100,100,"Misho");
 	StudentFactory studentFactory = new StudentFactory();
 	
 	// TODO:
@@ -25,18 +26,18 @@ public class GameState extends State {
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.floor, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        renderPlayer(graphics);
+        student.draw(graphics);
 
 
     }
 
     @Override
     public void update() {
+
+
+        student.update();
     }
 
-    public void renderPlayer(Graphics graphics) {
-        
 
-    }
 
 }
