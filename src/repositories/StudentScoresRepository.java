@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import static utils.Constants.SAVE_FILE_PATH;
 
 public class StudentScoresRepository {
-    private static TreeMap<String, LinkedHashMap<String, List<Integer>>> students
+    public static TreeMap<String, LinkedHashMap<String, List<Integer>>> students
             = new TreeMap<String, LinkedHashMap<String, List<Integer>>>();
 
     public static void saveToFile(String name, String subject, List<Integer> grades){
