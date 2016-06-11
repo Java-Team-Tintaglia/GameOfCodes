@@ -7,9 +7,8 @@ import models.students.NerdLady;
 import models.students.Student;
 
 public class StudentFactory {
-	public static Student student;
 	public Student create(String type, int x ,int y, String name) {
-		 student = null;
+		Student student = null;
 		
 		switch (type) {
 		case "nerdLady":

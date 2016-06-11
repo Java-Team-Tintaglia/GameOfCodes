@@ -1,11 +1,9 @@
 package models.students;
 
-import factories.StudentFactory;
 import graphics.Assets;
 import graphics.SpriteSheet;
 import models.GameObject;
 import models.programmingLanguages.ProgrammingLanguage;
-import states.GameState;
 import utils.Constants;
 
 import java.awt.*;
@@ -15,8 +13,6 @@ public abstract class Student extends GameObject {
     private static final int DEFAULT_SPEED = 3;
     private int row;
     private int col;
-    private int x;
-    private int y;
     private String name;
     private SpriteSheet spriteSheet;
     private int width;
@@ -42,6 +38,8 @@ public abstract class Student extends GameObject {
         this.intelligence = intelligence;
         this.knowledge = knowledge;
         this.vitality = vitality;
+        this.colliderBox = new Rectangle(this.getX(), this.getY(),
+                this.width, this.height);
     }
 
     public int getWidth() {
@@ -99,19 +97,19 @@ public abstract class Student extends GameObject {
 
     @Override
     public void draw(Graphics graphics) {
-        // TODO Auto-generated method stub
+
         //defing type with enum
-        GameState.student.isMovingRight = true;
-        boolean ismoVing = GameState.student.isMovingDown || GameState.student.isMovingRight ||
-                GameState.student.isMovingUp || GameState.student.isMovingLeft;
+        isMovingRight = true;
+        boolean ismoVing = isMovingDown || isMovingRight ||
+                isMovingUp || isMovingLeft;
         if (ismoVing) {
-            if (GameState.student.isMovingLeft) {
+            if (isMovingLeft) {
                 row = 1;
                 col = 0;
-            } else if (GameState.student.isMovingRight) {
+            } else if (isMovingRight) {
                 row = 2;
                 col = 0;
-            } else if (GameState.student.isMovingUp) {
+            } else if (isMovingUp) {
 
             } else {
                 //ismoveingdown
@@ -139,7 +137,8 @@ public abstract class Student extends GameObject {
 
     @Override
     public void update() {
-        x++;
+    	this.getColliderBox().setBounds(this.getX(), this.getY(),
+                this.width, this.height);
         move();
 
     }

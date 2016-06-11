@@ -103,9 +103,6 @@ public class GameEngine implements Runnable {
             StateManager.getCurrentState().draw(graphics);
         }
         
-        
-        
-
         // -> END DRAWING
 
         this.graphics.dispose();
