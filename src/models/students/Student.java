@@ -100,7 +100,7 @@ public abstract class Student extends GameObject {
 
         graphics.drawImage(Assets.nerds.crop(col * 32, row * 32,
                 Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
-        update();
+
 
 
     }
@@ -108,7 +108,7 @@ public abstract class Student extends GameObject {
 
     @Override
     public void update() {
-        System.out.println(col);
+       
 
         boolean ismoVing = isMovingDown || isMovingRight ||
                 isMovingUp || isMovingLeft;

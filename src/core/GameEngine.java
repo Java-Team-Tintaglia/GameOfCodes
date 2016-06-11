@@ -83,6 +83,9 @@ public class GameEngine implements Runnable {
     }
 
     private void update() {
+        if(StateManager.getCurrentState()!= null) {
+            StateManager.getCurrentState().update();
+        }
 
     }
 
