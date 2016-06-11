@@ -15,6 +15,7 @@ public class Assets {
     public static SpriteSheet hotChick;
     public static SpriteSheet nerdBoy;
     public static SpriteSheet nerds;
+    public static BufferedImage computerCharacter;
 
     public static BufferedImage buttonPlay;
     public static BufferedImage buttonScore;
@@ -36,7 +37,7 @@ public class Assets {
         buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
         buttonScore = ImageLoader.loadingImage(ImageAlbum.Button_Score.getPath());
         buttonExit = ImageLoader.loadingImage(ImageAlbum.Button_Exit.getPath());
-        
+
         javaCharacter = ImageLoader.loadingImage(ImageAlbum.JavaCharacter.getPath());
 
     }

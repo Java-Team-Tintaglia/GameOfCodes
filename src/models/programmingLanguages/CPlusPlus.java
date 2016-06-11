@@ -3,6 +3,8 @@ package models.programmingLanguages;
 import enums.ProgrammingLanguageType;
 import graphics.Assets;
 
+import java.awt.image.BufferedImage;
+
 public class CPlusPlus extends ProgrammingLanguage {
 
     public CPlusPlus(int x, int y) {

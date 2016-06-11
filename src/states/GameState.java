@@ -4,6 +4,8 @@ import java.awt.Graphics;
 
 import factories.StudentFactory;
 import graphics.Assets;
+import models.programmingLanguages.Java;
+import models.programmingLanguages.ProgrammingLanguage;
 import models.students.NerdBoy;
 import models.students.Student;
 import utils.Constants;
@@ -11,7 +13,9 @@ import utils.Constants;
 public class GameState extends State {
 
 	public static Student student = new NerdBoy(100,100,"Misho");
-	
+
+    public static ProgrammingLanguage p = new Java(200, 100);
+
 	StudentFactory studentFactory = new StudentFactory();
 	
 	// TODO:
@@ -26,7 +30,7 @@ public class GameState extends State {
         graphics.drawImage(Assets.floor, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         
         student.draw(graphics);
-
+        p.draw(graphics);
 
     }
 
@@ -35,6 +39,7 @@ public class GameState extends State {
 
 
         student.update();
+        p.update();
     }
 
 

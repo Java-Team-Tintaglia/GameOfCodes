@@ -13,7 +13,7 @@ public enum  ImageAlbum {
     Button_Exit("/buttonExit.png"),
     MainMenu("/frontPage.png"),
     NERDS("/nerds.png"),
-    JavaCharacter("");
+    JavaCharacter("/computer.png");
 
     private String path;
 
