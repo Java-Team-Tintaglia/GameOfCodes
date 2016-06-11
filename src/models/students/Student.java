@@ -11,8 +11,8 @@ import java.awt.*;
 public abstract class Student extends GameObject {
 
     private static final int DEFAULT_SPEED = 3;
-    private int row;
-    private int col;
+    private int row ;
+    private int col =0;
     private String name;
     private SpriteSheet spriteSheet;
     private int width;
@@ -23,7 +23,7 @@ public abstract class Student extends GameObject {
     private Rectangle colliderBox;
 
     public static boolean isMovingLeft;
-    public static boolean isMovingRight = true;
+    public static boolean isMovingRight;
     public static boolean isMovingUp;
     public static boolean isMovingDown;
 
@@ -98,49 +98,47 @@ public abstract class Student extends GameObject {
     @Override
     public void draw(Graphics graphics) {
 
-        //defing type with enum
-        isMovingRight = true;
-        boolean ismoVing = isMovingDown || isMovingRight ||
-                isMovingUp || isMovingLeft;
-        if (ismoVing) {
-            if (isMovingLeft) {
-                row = 1;
-                col = 0;
-            } else if (isMovingRight) {
-                row = 2;
-                col = 0;
-            } else if (isMovingUp) {
-
-            } else {
-                //ismoveingdown
-                row = 0;
-                col = 1;
-            }
-
-            graphics.drawImage(Assets.nerds.crop(col * 32, row * 32, Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
-            col++;
-            col = (col + 1) % 3;
+        graphics.drawImage(Assets.nerds.crop(col * 32, row * 32,
+                Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
+        update();
 
 
-        } else {
-            //slagam slu4aina kartina za da vidq raboti li dvijenieto
-            row = 5;
-            col = 0;
-            graphics.drawImage(Assets.nerds.crop(col * 32, row * 32, Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
-
-
-        }
-
-        
     }
 
 
     @Override
     public void update() {
-    	this.getColliderBox().setBounds(this.getX(), this.getY(),
+        System.out.println(col);
+        col++;
+        col = (col + 1) % 3;
+        boolean ismoVing = isMovingDown || isMovingRight ||
+                isMovingUp || isMovingLeft;
+        if (ismoVing) {
+
+            if (isMovingLeft) {
+                row = 1;
+
+//
+            } else if (isMovingRight) {
+                row = 2;
+
+
+//
+            } else if (isMovingUp) {
+                row = 3;
+
+
+            } else if (isMovingDown) {
+
+                row = 0;
+
+            }
+
+
+        }
+        this.getColliderBox().setBounds(this.getX(), this.getY(),
                 this.width, this.height);
         move();
-
     }
 
     private void move() {
