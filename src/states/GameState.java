@@ -8,6 +8,8 @@ import models.programmingLanguages.Java;
 import models.programmingLanguages.ProgrammingLanguage;
 import models.students.NerdBoy;
 import models.students.Student;
+import models.wizards.KnowledgeWizard;
+import models.wizards.Wizard;
 import utils.Constants;
 
 public class GameState extends State {
@@ -15,6 +17,8 @@ public class GameState extends State {
 	public static Student student = new NerdBoy(100,100,"Misho");
 
     public static ProgrammingLanguage p = new Java(200, 100);
+    
+    public static Wizard wizard = new KnowledgeWizard(300, 300);
 
 	StudentFactory studentFactory = new StudentFactory();
 	
@@ -32,7 +36,7 @@ public class GameState extends State {
         
         student.draw(graphics);
         p.draw(graphics);
-
+        wizard.draw(graphics);
 
 
        

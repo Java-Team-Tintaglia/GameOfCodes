@@ -24,6 +24,7 @@ public class Assets {
     public static BufferedImage buttonPlay;
     
     public static BufferedImage javaCharacter;
+    public static BufferedImage wizard;
 
     public static void init() {
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
@@ -43,6 +44,7 @@ public class Assets {
         buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
 
         javaCharacter = ImageLoader.loadingImage(ImageAlbum.JavaCharacter.getPath());
+        wizard = ImageLoader.loadingImage(ImageAlbum.Wizard.getPath());
 
     }
 }

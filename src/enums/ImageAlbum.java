@@ -14,7 +14,8 @@ public enum  ImageAlbum {
     Button_Exit("/buttonExit.png"),
     MainMenu("/frontPage.png"),
     NERDS("/nerds.png"),
-    JavaCharacter("/computer.png");
+    JavaCharacter("/computer.png"),
+    Wizard("/wizard.png");
 
     private String path;
 
