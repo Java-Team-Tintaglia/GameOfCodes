@@ -1,6 +1,7 @@
 package models.programmingLanguages;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import enums.ProgrammingLanguageType;
@@ -15,6 +16,8 @@ public abstract class ProgrammingLanguage extends GameObject {
 	private int knowledgePoints;
 	
 	private BufferedImage image;
+	
+	private Rectangle colliderBox;
 
 	public ProgrammingLanguage(int x, int y, 
 			ProgrammingLanguageType programmingLanguageType, 
@@ -26,6 +29,8 @@ public abstract class ProgrammingLanguage extends GameObject {
 		this.vitalityDamagePoints = vitalityDamagePoints;
 		this.knowledgePoints = knowledgePoints;
 		this.image = image;
+		this.colliderBox = new Rectangle(this.getX(), this.getY(),
+                this.image.getWidth(), this.image.getHeight());
 	}
 
 	public ProgrammingLanguageType getProgrammingLanguageType() {
@@ -43,6 +48,11 @@ public abstract class ProgrammingLanguage extends GameObject {
 	public void setKnowledgePoints(int knowledgePoints) {
 		this.knowledgePoints = knowledgePoints;
 	}
+	
+	 public Rectangle getColliderBox() {
+	        return colliderBox;
+	    }
+
 	
 	@Override
 	public void draw(Graphics graphics) {
