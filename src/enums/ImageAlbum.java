@@ -2,7 +2,7 @@ package enums;
 
 public enum  ImageAlbum {
 
-    Wall("/binaryWall.png"),
+    Wall("/wall.png"),
     FLoor("/floor.png"),
     BadBoy("/StudentModels/badboy4.jpg"),
 	NerdLady("/nerd_lady.png"),
