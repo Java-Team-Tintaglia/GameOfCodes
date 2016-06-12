@@ -15,6 +15,9 @@ import models.wizards.KnowledgeWizard;
 import models.wizards.Wizard;
 import utils.Constants;
 
+import static core.MapInitializor.generateProgrammingLanguage;
+import static core.MapInitializor.generateWizard;
+
 public class GameState extends State {
     public static List<GameObject> entities = new ArrayList<>();
 
@@ -41,6 +44,10 @@ public class GameState extends State {
         student.draw(graphics);
         p.draw(graphics);
         wizard.draw(graphics);
+
+        //uncoment for test
+        //generateWizard().draw(graphics);
+        //generateProgrammingLanguage().draw(graphics);
 
 
     }
