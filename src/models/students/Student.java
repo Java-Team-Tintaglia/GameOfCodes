@@ -10,6 +10,7 @@ import java.awt.*;
 
 public abstract class Student extends GameObject {
 
+    private static final int DEFAULT_SPEED = 10;
     private int row;
     private int col;
     private String name;
