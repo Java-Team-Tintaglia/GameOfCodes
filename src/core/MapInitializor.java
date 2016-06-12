@@ -24,9 +24,9 @@ public class MapInitializor {
         int randomIndex = RandomGenerator.getNextRandom(programmingLanguages.length);
         
         ProgrammingLanguageType randomLanguage = programmingLanguages[randomIndex];
-        
-        int randomX = RandomGenerator.getNextRandom(800);
-        int randomY = RandomGenerator.getNextRandom(300);
+
+        int randomX = RandomGenerator.genNextRandomMinMax(0, 950);
+        int randomY = RandomGenerator.genNextRandomMinMax(0, 520);
 
         ProgrammingLanguage langToBeCreated = null;
 
@@ -56,14 +56,14 @@ public class MapInitializor {
         int randomIndex = RandomGenerator.getNextRandom(wizard.length);
         WizardType randomWizard = wizard[randomIndex];
 
-        int randomX = RandomGenerator.getNextRandom(800);
-        int randomY = RandomGenerator.getNextRandom(300);
+        int randomX = RandomGenerator.genNextRandomMinMax(0, 950);
+        int randomY = RandomGenerator.genNextRandomMinMax(235, 520);
 
         Wizard wizardToBeCreated = null;
 
         switch (randomWizard){
             case INTELLIGENCE_WIZARD:
-                wizardToBeCreated = new IntelligenceWizard(randomX,randomX);
+                wizardToBeCreated = new IntelligenceWizard(randomX,randomY);
                 break;
             case KNOWLEDGE_WIZARD:
                 wizardToBeCreated = new KnowledgeWizard(randomX, randomY);

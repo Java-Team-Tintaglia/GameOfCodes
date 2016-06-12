@@ -2,6 +2,7 @@ package states;
 
 import java.awt.Graphics;
 
+import core.MapInitializor;
 import factories.StudentFactory;
 import graphics.Assets;
 import models.programmingLanguages.Java;
@@ -12,13 +13,16 @@ import models.wizards.KnowledgeWizard;
 import models.wizards.Wizard;
 import utils.Constants;
 
+import static core.MapInitializor.generateProgrammingLanguage;
+import static core.MapInitializor.generateWizard;
+
 public class GameState extends State {
 
 	public static Student student = new NerdBoy(100,100,"Misho");
 
     public static ProgrammingLanguage p = new Java(200, 100);
-    
-    public static Wizard wizard = new KnowledgeWizard(300, 300);
+
+    public static Wizard wizard = new KnowledgeWizard(0, 235);
 
 	StudentFactory studentFactory = new StudentFactory();
 	
@@ -37,6 +41,10 @@ public class GameState extends State {
         student.draw(graphics);
         p.draw(graphics);
         wizard.draw(graphics);
+
+        //Uncomment for test
+        //generateWizard().draw(graphics);
+        //generateProgrammingLanguage().draw(graphics);
 
 
        
