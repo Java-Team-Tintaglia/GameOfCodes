@@ -1,8 +1,15 @@
 package core;
 
 import enums.ProgrammingLanguageType;
+import enums.WizardType;
 import models.programmingLanguages.*;
+import models.wizards.IntelligenceWizard;
+import models.wizards.KnowledgeWizard;
+import models.wizards.VitalityWizard;
+import models.wizards.Wizard;
 import utils.RandomGenerator;
+
+import static enums.WizardType.*;
 
 public class MapInitializor {
 
@@ -39,8 +46,35 @@ public class MapInitializor {
             case PHP:
                 langToBeCreated = new Php(randomX, randomY);
                 break;
+
         }
         return langToBeCreated;
+    }
+
+    public static Wizard generateWizard(){
+        WizardType[] wizard = {INTELLIGENCE_WIZARD, WizardType.KNOWLEDGE_WIZARD, WizardType.VITALITY_WIZARD};
+        int randomIndex = RandomGenerator.getNextRandom(wizard.length);
+        WizardType randomWizard = wizard[randomIndex];
+
+        int randomX = RandomGenerator.getNextRandom(800);
+        int randomY = RandomGenerator.getNextRandom(300);
+
+        Wizard wizardToBeCreated = null;
+
+        switch (randomWizard){
+            case INTELLIGENCE_WIZARD:
+                wizardToBeCreated = new IntelligenceWizard(randomX,randomX);
+                break;
+            case KNOWLEDGE_WIZARD:
+                wizardToBeCreated = new KnowledgeWizard(randomX, randomY);
+                break;
+            case VITALITY_WIZARD:
+                wizardToBeCreated = new VitalityWizard(randomX, randomY);
+                break;
+
+        }
+
+        return wizardToBeCreated;
     }
 
 
