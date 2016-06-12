@@ -10,9 +10,8 @@ import java.awt.*;
 
 public abstract class Student extends GameObject {
 
-    private static final int DEFAULT_SPEED = 3;
-    private int row ;
-    private int col =0;
+    private int row;
+    private int col;
     private String name;
     private SpriteSheet spriteSheet;
     private int width;
@@ -119,12 +118,9 @@ public abstract class Student extends GameObject {
             if (isMovingLeft) {
                 row = 1;
 
-//
             } else if (isMovingRight) {
                 row = 2;
 
-
-//
             } else if (isMovingUp) {
                 row = 3;
 
