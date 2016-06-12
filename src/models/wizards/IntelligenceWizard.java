@@ -4,8 +4,11 @@ import enums.WizardType;
 import models.students.Student;
 
 public class IntelligenceWizard extends Wizard{
+    private boolean exist;
+
     public IntelligenceWizard(int x , int y) {
         super(x, y, WizardType.INTELLIGENCE_WIZARD);
+        this.exist=true;
     }
     
     @Override
@@ -14,4 +17,13 @@ public class IntelligenceWizard extends Wizard{
         student.setVitality(intelligence);
     }
 
+    @Override
+    public boolean isExist() {
+        return exist;
+    }
+
+    @Override
+    public void setExist(boolean exist) {
+        this.exist = exist;
+    }
 }

@@ -22,10 +22,12 @@ public abstract class Student extends GameObject {
     private int vitality;
     private Rectangle colliderBox;
 
+
     public static boolean isMovingLeft;
     public static boolean isMovingRight;
     public static boolean isMovingUp;
     public static boolean isMovingDown;
+
 
     public Student(int x, int y, SpriteSheet spriteSheet,
                    int width, int height, String name,
@@ -94,6 +96,14 @@ public abstract class Student extends GameObject {
         return colliderBox;
     }
 
+    public boolean intersects(Rectangle boundingbox) {
+        if (this.colliderBox.intersects(boundingbox) || boundingbox.intersects(this.colliderBox)) {
+            return true;
+        }
+        return false;
+
+    }
+
 
     @Override
     public void draw(Graphics graphics) {
@@ -102,13 +112,12 @@ public abstract class Student extends GameObject {
                 Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
 
 
-
     }
 
 
     @Override
     public void update() {
-       
+
 
         boolean ismoVing = isMovingDown || isMovingRight ||
                 isMovingUp || isMovingLeft;
@@ -133,9 +142,9 @@ public abstract class Student extends GameObject {
             }
 
 
-        }else {
-            row=0;
-            col=1;
+        } else {
+            row = 0;
+            col = 1;
         }
         this.getColliderBox().setBounds(this.getX(), this.getY(),
                 this.width, this.height);
