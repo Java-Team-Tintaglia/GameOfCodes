@@ -29,7 +29,7 @@ public class MouseInput implements MouseListener {
 
         if(StateManager.getCurrentState() instanceof MainMenuState) {
             // Play Button
-        	if(MainMenuState.buttonPlay.getColliderBox().contains(mouseX, mouseY)) {
+        	if(MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new PlayerCustomizationState());
             }
 

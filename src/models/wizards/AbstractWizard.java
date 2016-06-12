@@ -1,8 +1,10 @@
 package models.wizards;
 
-        import interfaces.Wizard;
+import enums.WizardType;
+import interfaces.Wizard;
 
 public abstract class AbstractWizard implements Wizard {
+	
     private WizardType wizardType;
 
     public AbstractWizard(WizardType wizardType) {
