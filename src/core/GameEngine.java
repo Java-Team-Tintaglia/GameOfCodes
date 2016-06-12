@@ -52,7 +52,7 @@ public class GameEngine implements Runnable {
     public void run() {
         this.init();
 
-        final int fps = 30;
+        final int fps = 18;
         final double timePerTick = 1_000_000_000.0 / fps;
         double delta = 0;
         long now;

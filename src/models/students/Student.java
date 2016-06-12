@@ -98,7 +98,7 @@ public abstract class Student extends GameObject {
     @Override
     public void draw(Graphics graphics) {
 
-        graphics.drawImage(Assets.nerds.crop(col * 32, row * 32,
+        graphics.drawImage(Assets.nerds.crop(col * 50, row * 50,
                 Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
 
 
