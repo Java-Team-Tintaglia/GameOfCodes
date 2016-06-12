@@ -1,6 +1,6 @@
 package models.wizards;
 
-import interfaces.Wizard;
+        import interfaces.Wizard;
 
 public abstract class AbstractWizard implements Wizard {
     private WizardType wizardType;

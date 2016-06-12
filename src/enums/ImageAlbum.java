@@ -2,14 +2,15 @@ package enums;
 
 public enum  ImageAlbum {
 
-    Wall("/wall.png"),
+    Wall("/binaryWall.png"),
     FLoor("/floor.png"),
     BadBoy("/StudentModels/badboy4.jpg"),
 	NerdLady("/nerd_lady.png"),
     HotChick("/StudentModels/hotgirl4.jpg"),
     NerdBoy("/StudentModels/nerdBoy2.jpg"),
-    Button_Play("/buttonPlay.png"),
+    Button_Start("/buttonStart.png"),
     Button_Score("/buttonScore.png"),
+    Button_Play("/buttonPlay.png"),
     Button_Exit("/buttonExit.png"),
     MainMenu("/frontPage.png"),
     NERDS("/nerds.png"),

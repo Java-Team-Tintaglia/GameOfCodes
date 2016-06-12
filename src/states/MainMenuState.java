@@ -8,7 +8,7 @@ import utils.Constants;
 
 public class MainMenuState extends State {
 
-    public static Button buttonPlay =new Button(800,380, Assets.buttonPlay);
+    public static Button buttonStart =new Button(800,380, Assets.buttonStart);
     public static Button buttonScore = new Button(800,450,Assets.buttonScore);
     public static Button buttonExit = new Button(800,520,Assets.buttonExit);
 
@@ -16,7 +16,7 @@ public class MainMenuState extends State {
     public void draw(Graphics graphics) {
     	graphics.drawImage(Assets.mainMenu, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-        buttonPlay.draw(graphics);
+        buttonStart.draw(graphics);
         buttonScore.draw(graphics);
         buttonExit.draw(graphics);
     }
