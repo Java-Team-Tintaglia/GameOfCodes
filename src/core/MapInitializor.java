@@ -9,8 +9,6 @@ import models.wizards.VitalityWizard;
 import models.wizards.Wizard;
 import utils.RandomGenerator;
 
-import static enums.WizardType.*;
-
 public class MapInitializor {
 
     public static ProgrammingLanguage generateProgrammingLanguage(){
@@ -52,7 +50,7 @@ public class MapInitializor {
     }
 
     public static Wizard generateWizard(){
-        WizardType[] wizard = {INTELLIGENCE_WIZARD, WizardType.KNOWLEDGE_WIZARD, WizardType.VITALITY_WIZARD};
+        WizardType[] wizard = {WizardType.INTELLIGENCE_WIZARD, WizardType.KNOWLEDGE_WIZARD, WizardType.VITALITY_WIZARD};
         int randomIndex = RandomGenerator.getNextRandom(wizard.length);
         WizardType randomWizard = wizard[randomIndex];
 

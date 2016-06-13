@@ -60,19 +60,18 @@ public class GameState extends State {
 
     @Override
     public void update() {
-
-    	// timers not working, investigate why
-    	long elapsedNewWizard = (System.nanoTime() - this.timeDelayNewWizard) / 1000000;
-		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timeDelayNewProgrammingLanguage) / 1000000;
+		
+    	long elapsedNewWizard = (System.nanoTime() - this.timerNewWizard) / 1000000;
+		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timerNewProgrammingLanguage) / 1000000;
     	
     	CollisionHandler.collisionHandler(student, wizard, programmingLanguages);
     	
-        if (elapsedNewWizard > this.timerNewWizard) {
+        if (elapsedNewWizard > this.timeDelayNewWizard) {
 			wizard = MapInitializor.generateWizard();
 			timerNewWizard = System.nanoTime();
 		}
     	
-        if (elapsedNewProgrammingLanguage > this.timerNewProgrammingLanguage) {
+        if (elapsedNewProgrammingLanguage > this.timeDelayNewProgrammingLanguage) {
 			programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 			timerNewProgrammingLanguage = System.nanoTime();
 		}
