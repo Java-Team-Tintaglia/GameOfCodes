@@ -2,6 +2,7 @@ package states;
 
 import java.awt.Graphics;
 
+import enums.StudentType;
 import factories.StudentFactory;
 import graphics.Assets;
 import models.programmingLanguages.Java;
@@ -14,17 +15,20 @@ public class GameState extends State {
     private int y = 0;
     private int y2 = -600;
 
-	public static Student student = new NerdBoy(100,100,"Misho");
+	//public static Student student = new NerdBoy(100,100,"Misho");
 
     public static ProgrammingLanguage p = new Java(200, 100);
 
-	StudentFactory studentFactory = new StudentFactory();
-	
-	// TODO:
-//	public GameState(StudentType studentType, String name) {
-//		
-//		student = studentFactory.create(studentType, x, y, name);
-//	}
+	public static StudentFactory StudentFactory = new StudentFactory();
+
+    public Student student;
+    public StudentFactory studentFactory = new StudentFactory();
+    public StudentType studentType;
+
+    public GameState(StudentType studentType, String name, int x, int y) {
+        student = studentFactory.create(studentType, x, y, name);
+        this.studentType = studentType;
+    }
 
     @Override
     public void draw(Graphics graphics) {

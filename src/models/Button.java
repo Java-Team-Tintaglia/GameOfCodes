@@ -1,5 +1,7 @@
 package models;
 
+import graphics.SpriteSheet;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -12,6 +14,9 @@ public class Button extends GameObject{
         this.gameObjectIcon = gameObjectIcon;
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.gameObjectIcon.getWidth(), this.gameObjectIcon.getHeight());
+    }
+
+    public Button(int x, int y, SpriteSheet badBoy) {
     }
 
     public Rectangle getColliderBox() {

@@ -1,5 +1,6 @@
 package factories;
 
+import enums.StudentType;
 import models.students.BadBoy;
 import models.students.HotChick;
 import models.students.NerdBoy;
@@ -7,7 +8,7 @@ import models.students.NerdLady;
 import models.students.Student;
 
 public class StudentFactory {
-	public Student create(String type, int x ,int y, String name) {
+	public Student create(StudentType type, int x , int y, String name) {
 		Student student = null;
 		
 		switch (type) {

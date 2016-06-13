@@ -24,6 +24,7 @@ public class Assets {
     public static BufferedImage buttonPlay;
     
     public static BufferedImage javaCharacter;
+    public static BufferedImage playerSelectText;
 
     public static void init() {
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
