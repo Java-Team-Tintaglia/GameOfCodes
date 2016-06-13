@@ -1,5 +1,6 @@
 package models.students;
 
+import enums.ProgrammingLanguageType;
 import graphics.Assets;
 import graphics.SpriteSheet;
 import models.GameObject;
@@ -7,6 +8,8 @@ import models.programmingLanguages.ProgrammingLanguage;
 import utils.Constants;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public abstract class Student extends GameObject {
 
@@ -21,13 +24,12 @@ public abstract class Student extends GameObject {
     private int knowledge;
     private int vitality;
     private Rectangle colliderBox;
-
+    private Map<ProgrammingLanguageType, List<Integer>> studentGrades;
 
     public static boolean isMovingLeft;
     public static boolean isMovingRight;
     public static boolean isMovingUp;
     public static boolean isMovingDown;
-
 
     public Student(int x, int y, SpriteSheet spriteSheet,
                    int width, int height, String name,
@@ -42,6 +44,7 @@ public abstract class Student extends GameObject {
         this.vitality = vitality;
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.width, this.height);
+        this.studentGrades = new HashMap<>();
     }
 
     public int getWidth() {
@@ -62,6 +65,14 @@ public abstract class Student extends GameObject {
 
     public String getName() {
         return name;
+    }
+
+    public Map<ProgrammingLanguageType, List<Integer>> getStudentGrades() {
+        return studentGrades;
+    }
+
+    public void setStudentGrades(Map<ProgrammingLanguageType, List<Integer>> studentGrades) {
+        this.studentGrades = studentGrades;
     }
 
     public void setName(String name) {
@@ -205,5 +216,17 @@ public abstract class Student extends GameObject {
         }
 
         return grade;
+    }
+
+    public void addScore(int grade, ProgrammingLanguage language) {
+        Map<ProgrammingLanguageType, List<Integer>> grades = this.getStudentGrades();
+
+        if (!grades.containsKey(language.getProgrammingLanguageType())) {
+            grades.put(language.getProgrammingLanguageType(), new ArrayList<>());
+        }
+
+        grades.get(language.getProgrammingLanguageType()).add(grade);
+
+        this.setStudentGrades(grades);
     }
 }
