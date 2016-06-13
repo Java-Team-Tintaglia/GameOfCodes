@@ -71,6 +71,10 @@ public abstract class Student extends GameObject {
         return studentGrades;
     }
 
+    public void setStudentGrades(Map<ProgrammingLanguageType, List<Integer>> studentGrades) {
+        this.studentGrades = studentGrades;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -215,11 +219,14 @@ public abstract class Student extends GameObject {
     }
 
     public void addScore(int grade, ProgrammingLanguage language) {
+        Map<ProgrammingLanguageType, List<Integer>> grades = this.getStudentGrades();
 
-        if (!this.studentGrades.containsKey(language.getProgrammingLanguageType())) {
-            this.studentGrades.put(language.getProgrammingLanguageType(), new ArrayList<>());
+        if (!grades.containsKey(language.getProgrammingLanguageType())) {
+            grades.put(language.getProgrammingLanguageType(), new ArrayList<>());
         }
 
-        this.studentGrades.get(language.getProgrammingLanguageType()).add(grade);
+        grades.get(language.getProgrammingLanguageType()).add(grade);
+
+        this.setStudentGrades(grades);
     }
 }
