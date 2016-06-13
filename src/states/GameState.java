@@ -1,61 +1,83 @@
 package states;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 
-import enums.StudentType;
 import factories.StudentFactory;
 import graphics.Assets;
-import models.programmingLanguages.Java;
-import models.programmingLanguages.ProgrammingLanguage;
+import models.programmingLanguages.*;
 import models.students.NerdBoy;
 import models.students.Student;
+import models.wizards.Wizard;
 import utils.Constants;
+import core.CollisionHandler;
+import core.MapInitializor;
 
 public class GameState extends State {
-    private int y = 0;
-    private int y2 = -600;
+    private List<ProgrammingLanguage> programmingLanguages = new ArrayList<>();
+    private Wizard wizard;
+    private long timerNewWizard = System.nanoTime();
+	private long timerNewProgrammingLanguage = System.nanoTime();
+	private long timeDelayNewWizard = 1000;
+	private long timeDelayNewProgrammingLanguage = 500;
+    
+    public static Student student = new NerdBoy(100, 100, "Misho");
 
-	//public static Student student = new NerdBoy(100,100,"Misho");
+    StudentFactory studentFactory = new StudentFactory();
 
-    public static ProgrammingLanguage p = new Java(200, 100);
-
-	public static StudentFactory StudentFactory = new StudentFactory();
-
-    public Student student;
-    public StudentFactory studentFactory = new StudentFactory();
-    public StudentType studentType;
-
-    public GameState(StudentType studentType, String name, int x, int y) {
-        student = studentFactory.create(studentType, x, y, name);
-        this.studentType = studentType;
-    }
+    // TODO:
+//	public GameState(StudentType studentType, String name) {
+//		
+//		student = studentFactory.create(studentType, x, y, name);
+//	}
+    
+    public GameState() {
+    	programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
+    	wizard = MapInitializor.generateWizard();
+	}
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall, 0, y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        graphics.drawImage(Assets.wall, 0, y2, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.floor, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        
+
         student.draw(graphics);
-        p.draw(graphics);
+        
+        if (!programmingLanguages.isEmpty()) {
+        	 for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
+             	programmingLanguage.draw(graphics);
+     		}
+		}
+       
+       
+        if (wizard != null) {
+        	wizard.draw(graphics);
+		}
+        
 
-        y++;
-        y2++;
-
-        if (y>=600){
-            update();
-        }
     }
 
     @Override
     public void update() {
-        y = -600;
-        y2 = 0;
 
+    	// timers not working, investigate why
+    	long elapsedNewWizard = (System.nanoTime() - this.timeDelayNewWizard) / 1000000;
+		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timeDelayNewProgrammingLanguage) / 1000000;
+    	
+    	CollisionHandler.collisionHandler(student, wizard, programmingLanguages);
+    	
+        if (elapsedNewWizard > this.timerNewWizard) {
+			wizard = MapInitializor.generateWizard();
+			timerNewWizard = System.nanoTime();
+		}
+    	
+        if (elapsedNewProgrammingLanguage > this.timerNewProgrammingLanguage) {
+			programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
+			timerNewProgrammingLanguage = System.nanoTime();
+		}
+    	
         student.update();
-        p.update();
+
     }
-
-
-
 }
