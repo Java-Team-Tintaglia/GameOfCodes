@@ -159,13 +159,13 @@ public abstract class Student extends GameObject {
     }
 
     private void move() {
-        if (isMovingRight && this.getX() + DEFAULT_SPEED <= 730) {
+        if (isMovingRight && this.getX() + DEFAULT_SPEED <= 1000) {
             this.setX(this.getX() + DEFAULT_SPEED);
         }
         if (isMovingLeft && this.getX() + DEFAULT_SPEED >= 0) {
             this.setX(this.getX() - DEFAULT_SPEED);
         }
-        if (isMovingDown && this.getY() + DEFAULT_SPEED < 520) {
+        if (isMovingDown && this.getY() + DEFAULT_SPEED < 560) {
             this.setY(this.getY() + DEFAULT_SPEED);
         }
         if (isMovingUp && this.getY() - DEFAULT_SPEED >= 0) {
