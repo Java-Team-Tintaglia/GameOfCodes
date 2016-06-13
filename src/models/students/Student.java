@@ -1,5 +1,6 @@
 package models.students;
 
+import enums.ProgrammingLanguageType;
 import graphics.Assets;
 import graphics.SpriteSheet;
 import models.GameObject;
@@ -7,12 +8,14 @@ import models.programmingLanguages.ProgrammingLanguage;
 import utils.Constants;
 
 import java.awt.*;
+import java.util.*;
+import java.util.List;
 
 public abstract class Student extends GameObject {
 
-    private static final int DEFAULT_SPEED = 3;
-    private int row ;
-    private int col =0;
+    private static final int DEFAULT_SPEED = 10;
+    private int row;
+    private int col;
     private String name;
     private SpriteSheet spriteSheet;
     private int width;
@@ -21,6 +24,7 @@ public abstract class Student extends GameObject {
     private int knowledge;
     private int vitality;
     private Rectangle colliderBox;
+    private Map<ProgrammingLanguageType, List<Integer>> studentGrades;
 
     public static boolean isMovingLeft;
     public static boolean isMovingRight;
@@ -40,6 +44,7 @@ public abstract class Student extends GameObject {
         this.vitality = vitality;
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.width, this.height);
+        this.studentGrades = new HashMap<>();
     }
 
     public int getWidth() {
@@ -60,6 +65,14 @@ public abstract class Student extends GameObject {
 
     public String getName() {
         return name;
+    }
+
+    public Map<ProgrammingLanguageType, List<Integer>> getStudentGrades() {
+        return studentGrades;
+    }
+
+    public void setStudentGrades(Map<ProgrammingLanguageType, List<Integer>> studentGrades) {
+        this.studentGrades = studentGrades;
     }
 
     public void setName(String name) {
@@ -94,13 +107,20 @@ public abstract class Student extends GameObject {
         return colliderBox;
     }
 
+    public boolean intersects(Rectangle boundingbox) {
+        if (this.colliderBox.intersects(boundingbox) || boundingbox.intersects(this.colliderBox)) {
+            return true;
+        }
+        return false;
+
+    }
+
 
     @Override
     public void draw(Graphics graphics) {
 
-        graphics.drawImage(Assets.nerds.crop(col * 32, row * 32,
+        graphics.drawImage(Assets.nerds.crop(col * 50, row * 50,
                 Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
-
 
 
     }
@@ -108,7 +128,7 @@ public abstract class Student extends GameObject {
 
     @Override
     public void update() {
-       
+
 
         boolean ismoVing = isMovingDown || isMovingRight ||
                 isMovingUp || isMovingLeft;
@@ -119,12 +139,9 @@ public abstract class Student extends GameObject {
             if (isMovingLeft) {
                 row = 1;
 
-//
             } else if (isMovingRight) {
                 row = 2;
 
-
-//
             } else if (isMovingUp) {
                 row = 3;
 
@@ -136,9 +153,9 @@ public abstract class Student extends GameObject {
             }
 
 
-        }else {
-            row=0;
-            col=1;
+        } else {
+            row = 0;
+            col = 1;
         }
         this.getColliderBox().setBounds(this.getX(), this.getY(),
                 this.width, this.height);
@@ -199,5 +216,17 @@ public abstract class Student extends GameObject {
         }
 
         return grade;
+    }
+
+    public void addScore(int grade, ProgrammingLanguage language) {
+        Map<ProgrammingLanguageType, List<Integer>> grades = this.getStudentGrades();
+
+        if (!grades.containsKey(language.getProgrammingLanguageType())) {
+            grades.put(language.getProgrammingLanguageType(), new ArrayList<>());
+        }
+
+        grades.get(language.getProgrammingLanguageType()).add(grade);
+
+        this.setStudentGrades(grades);
     }
 }
