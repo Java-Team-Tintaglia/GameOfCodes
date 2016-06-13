@@ -9,7 +9,7 @@ public class JavaScript extends ProgrammingLanguage {
 
 
     public JavaScript(int x, int y) {
-        super(x, y, ProgrammingLanguageType.JAVA_SCRIPT, 6, 6, Assets.javaCharacter);
+        super(x, y, ProgrammingLanguageType.JAVA_SCRIPT, 6, 6, Assets.javascriptCharacter);
         this.exist=true;
     }
 

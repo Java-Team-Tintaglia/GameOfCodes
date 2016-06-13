@@ -15,7 +15,11 @@ public class Assets {
     public static SpriteSheet hotChick;
     public static SpriteSheet nerdBoy;
     public static SpriteSheet nerds;
-    public static BufferedImage computerCharacter;
+    public static BufferedImage javaCharacter;
+    public static BufferedImage phpCharacter;
+    public static BufferedImage csharpCharacter;
+    public static BufferedImage javascriptCharacter;
+    public static BufferedImage cplusplusCharacter;
 
     public static BufferedImage buttonStart;
     public static BufferedImage buttonScore;
@@ -23,7 +27,6 @@ public class Assets {
 
     public static BufferedImage buttonPlay;
     
-    public static BufferedImage javaCharacter;
     public static BufferedImage wizard;
 
     public static void init() {
@@ -44,6 +47,10 @@ public class Assets {
         buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
 
         javaCharacter = ImageLoader.loadingImage(ImageAlbum.JavaCharacter.getPath());
+        csharpCharacter = ImageLoader.loadingImage(ImageAlbum.CsharpCharacter.getPath());
+        cplusplusCharacter = ImageLoader.loadingImage(ImageAlbum.CplusplusCharacter.getPath());
+        javascriptCharacter = ImageLoader.loadingImage(ImageAlbum.JavascriptCharacter.getPath());
+        phpCharacter = ImageLoader.loadingImage(ImageAlbum.PHPCharacter.getPath());
         wizard = ImageLoader.loadingImage(ImageAlbum.Wizard.getPath());
 
     }

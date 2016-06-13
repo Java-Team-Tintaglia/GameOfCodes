@@ -7,7 +7,7 @@ public class CSharp extends ProgrammingLanguage{
 	private static boolean exist;
 
 	public CSharp(int x, int y) {
-		super(x, y, ProgrammingLanguageType.C_SHARP, 5, 5, Assets.javaCharacter);
+		super(x, y, ProgrammingLanguageType.C_SHARP, 5, 5, Assets.csharpCharacter);
 		this.exist=true;
 	}
 
