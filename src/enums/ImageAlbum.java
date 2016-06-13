@@ -19,7 +19,8 @@ public enum  ImageAlbum {
     CplusplusCharacter("/Languages/cplusplus.png"),
     PHPCharacter("/Languages/php.png"),
     JavascriptCharacter("/Languages/javascript.png"),
-    Wizard("/wizard.png");
+    Wizard("/wizard.png"),
+    Diploma("/diploma.png");
 
     private String path;
 

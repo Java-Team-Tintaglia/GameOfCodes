@@ -20,6 +20,7 @@ public class Assets {
     public static BufferedImage csharpCharacter;
     public static BufferedImage javascriptCharacter;
     public static BufferedImage cplusplusCharacter;
+    public static BufferedImage diploma;
 
     public static BufferedImage buttonStart;
     public static BufferedImage buttonScore;
@@ -52,6 +53,7 @@ public class Assets {
         javascriptCharacter = ImageLoader.loadingImage(ImageAlbum.JavascriptCharacter.getPath());
         phpCharacter = ImageLoader.loadingImage(ImageAlbum.PHPCharacter.getPath());
         wizard = ImageLoader.loadingImage(ImageAlbum.Wizard.getPath());
+        diploma = ImageLoader.loadingImage(ImageAlbum.Diploma.getPath());
 
     }
 }
