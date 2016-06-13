@@ -24,7 +24,7 @@ public class MapInitializor {
         ProgrammingLanguageType randomLanguage = programmingLanguages[randomIndex];
 
         int randomX = RandomGenerator.genNextRandomMinMax(0, 950);
-        int randomY = RandomGenerator.genNextRandomMinMax(0, 520);
+        int randomY = RandomGenerator.genNextRandomMinMax(220, 515);
 
         ProgrammingLanguage langToBeCreated = null;
 

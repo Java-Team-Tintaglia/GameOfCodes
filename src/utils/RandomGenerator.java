@@ -17,10 +17,10 @@ public class RandomGenerator {
         }
         return random.nextInt(e);
     }
-    public static int genNextRandomMinMax(int a, int e){
+    public static int genNextRandomMinMax(int minValue, int maxValue){
         if (random == null){
             init();
         }
-        return random.nextInt(e-a) + a;
+        return random.nextInt(maxValue-minValue) + minValue;
     }
 }

@@ -22,7 +22,7 @@ public class GameState extends State {
 	private long timeDelayNewWizard = 1000;
 	private long timeDelayNewProgrammingLanguage = 500;
     
-    public static Student student = new NerdBoy(100, 100, "Misho");
+    public static Student student = new NerdBoy(100, 400, "Misho");
 
     StudentFactory studentFactory = new StudentFactory();
 

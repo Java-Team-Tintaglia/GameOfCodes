@@ -168,7 +168,7 @@ public abstract class Student extends GameObject {
         if (isMovingDown && this.getY() + DEFAULT_SPEED < 560) {
             this.setY(this.getY() + DEFAULT_SPEED);
         }
-        if (isMovingUp && this.getY() - DEFAULT_SPEED >= 0) {
+        if (isMovingUp && this.getY() - DEFAULT_SPEED >= 255) {
             this.setY(this.getY() - DEFAULT_SPEED);
         }
     }
