@@ -1,6 +1,6 @@
 package states;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +21,10 @@ public class GameState extends State {
 	private long timerNewProgrammingLanguage = System.nanoTime();
 	private long timeDelayNewWizard = 1000;
 	private long timeDelayNewProgrammingLanguage = 500;
-    
+	private long timerSeconds = System.nanoTime();
+	private long timeDelay = 1000;
+	int seconds = 30;
+
     public static Student student = new NerdBoy(100, 400, "Misho");
 
     StudentFactory studentFactory = new StudentFactory();
@@ -47,8 +50,6 @@ public class GameState extends State {
         if (!programmingLanguages.isEmpty()) {
         	 for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
              	programmingLanguage.draw(graphics);
-
-
      		}
 		}
        
@@ -56,8 +57,18 @@ public class GameState extends State {
         if (wizard != null) {
         	wizard.draw(graphics);
 		}
-        
 
+		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 20);
+		graphics.setFont(secondsFont);
+		graphics.setColor(Color.yellow);
+
+		long elapsedSeconds = (System.nanoTime() - this.timerSeconds) / 1000000;
+
+		if(elapsedSeconds > this.timeDelay) {
+			seconds--;
+			timerSeconds = System.nanoTime();
+		}
+		graphics.drawString(Integer.toString(seconds), 960, 30);
     }
 
     @Override
