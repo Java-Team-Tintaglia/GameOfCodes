@@ -1,6 +1,6 @@
 package states;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +22,9 @@ public class GameState extends State {
 	private long timerNewProgrammingLanguage = System.nanoTime();
 	private long timeDelayNewWizard = 1000;
 	private long timeDelayNewProgrammingLanguage = 500;
+	private long timerSeconds = System.nanoTime();
+	private long timeDelay = 1000;
+	private int seconds = 30;
 
     StudentFactory studentFactory = new StudentFactory();
 
@@ -48,8 +51,13 @@ public class GameState extends State {
         if (wizard != null) {
         	wizard.draw(graphics);
 		}
-        
 
+		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 20);
+		graphics.setFont(secondsFont);
+		graphics.setColor(Color.yellow);
+
+		
+		graphics.drawString(Integer.toString(seconds), 960, 30);
     }
 
     @Override
@@ -57,8 +65,16 @@ public class GameState extends State {
 		
     	long elapsedNewWizard = (System.nanoTime() - this.timerNewWizard) / 1000000;
 		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timerNewProgrammingLanguage) / 1000000;
-    	
+		long elapsedSeconds = (System.nanoTime() - this.timerSeconds) / 1000000;
+		
     	CollisionHandler.collisionHandler(student, wizard, programmingLanguages);
+    	
+    	
+
+		if(elapsedSeconds > this.timeDelay) {
+			seconds--;
+			timerSeconds = System.nanoTime();
+		}
     	
         if (elapsedNewWizard > this.timeDelayNewWizard) {
 			wizard = MapInitializor.generateWizard();
@@ -72,5 +88,8 @@ public class GameState extends State {
     	
         student.update();
 
+        if (seconds <= 0) {
+			StateManager.setCurrentState(new ScoresState());
+		}
     }
 }
