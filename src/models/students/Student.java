@@ -35,7 +35,7 @@ public abstract class Student extends GameObject {
                    int width, int height, String name,
                    int intelligence, int knowledge, int vitality) {
         super(x, y);
-        this.spriteSheet = spriteSheet;
+        this.spriteSheet = spriteSheet;//ok
         this.width = width;
         this.height = height;
         this.name = name;

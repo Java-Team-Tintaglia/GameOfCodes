@@ -27,6 +27,8 @@ public enum  ImageAlbum {
     PHPCharacter("/Languages/php.png"),
     JavascriptCharacter("/Languages/javascript.png"),
     Wizard("/wizard.png"),
+    WizardBeer("/wizard_beer.png"),
+    WizardCoffee("/wizard_coffee.png"),
     Diploma("/diploma.png");
 
     private String path;
