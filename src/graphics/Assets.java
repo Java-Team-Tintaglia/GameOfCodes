@@ -12,6 +12,11 @@ public class Assets {
     public static BufferedImage playerCustomization;
     public static BufferedImage selectPlayer;
 
+    public static BufferedImage badBoyButton;
+    public static BufferedImage hotChickButton;
+    public static BufferedImage nerdBoyButton;
+    public static BufferedImage nerdLadyButton;
+
     public static SpriteSheet nerdLady;
     public static SpriteSheet badBoy;
     public static SpriteSheet hotChick;
@@ -48,6 +53,11 @@ public class Assets {
         buttonStart = ImageLoader.loadingImage(ImageAlbum.Button_Start.getPath());
         buttonScore = ImageLoader.loadingImage(ImageAlbum.Button_Score.getPath());
         buttonExit = ImageLoader.loadingImage(ImageAlbum.Button_Exit.getPath());
+
+        badBoyButton = ImageLoader.loadingImage(ImageAlbum.BadBoyButton.getPath());
+        hotChickButton = ImageLoader.loadingImage(ImageAlbum.HotChickButton.getPath());
+        nerdBoyButton = ImageLoader.loadingImage(ImageAlbum.NerdBoyButton.getPath());
+        nerdLadyButton = ImageLoader.loadingImage(ImageAlbum.NerdLadyButton.getPath());
 
         buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
 
