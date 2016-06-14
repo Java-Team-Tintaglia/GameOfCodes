@@ -12,10 +12,10 @@ public class Assets {
     public static BufferedImage playerCustomization;
     public static BufferedImage selectPlayer;
 
-    public static BufferedImage badBoyButton;
-    public static BufferedImage hotChickButton;
-    public static BufferedImage nerdBoyButton;
-    public static BufferedImage nerdLadyButton;
+    public static BufferedImage buttonBadBoy;
+    public static BufferedImage buttonHotChick;
+    public static BufferedImage buttonNerdBoy;
+    public static BufferedImage buttonNerdLady;
 
     public static SpriteSheet nerdLady;
     public static SpriteSheet badBoy;
@@ -54,10 +54,10 @@ public class Assets {
         buttonScore = ImageLoader.loadingImage(ImageAlbum.Button_Score.getPath());
         buttonExit = ImageLoader.loadingImage(ImageAlbum.Button_Exit.getPath());
 
-        badBoyButton = ImageLoader.loadingImage(ImageAlbum.BadBoyButton.getPath());
-        hotChickButton = ImageLoader.loadingImage(ImageAlbum.HotChickButton.getPath());
-        nerdBoyButton = ImageLoader.loadingImage(ImageAlbum.NerdBoyButton.getPath());
-        nerdLadyButton = ImageLoader.loadingImage(ImageAlbum.NerdLadyButton.getPath());
+        buttonBadBoy = ImageLoader.loadingImage(ImageAlbum.BadBoyButton.getPath());
+        buttonHotChick = ImageLoader.loadingImage(ImageAlbum.HotChickButton.getPath());
+        buttonNerdBoy = ImageLoader.loadingImage(ImageAlbum.NerdBoyButton.getPath());
+        buttonNerdLady = ImageLoader.loadingImage(ImageAlbum.NerdLadyButton.getPath());
 
         buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
 

@@ -11,6 +11,10 @@ public class PlayerCustomizationState extends State {
     public static StringBuilder stringBuilger = new StringBuilder();
     //public static StudentType studentType;
     public static Button playButton = new Button(800, 520, Assets.buttonPlay);
+    public static Button badBoyButton = new Button(74, 400, Assets.buttonBadBoy);
+    public static Button hotChickButton = new Button(316, 400, Assets.buttonHotChick);
+    public static Button nerdBoyButton = new Button(558, 400, Assets.buttonNerdBoy);
+    public static Button nerdLadyButton = new Button(800, 400, Assets.buttonNerdLady);
 
     public static String name = "Enter Name:";
 
@@ -18,10 +22,6 @@ public class PlayerCustomizationState extends State {
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.playerCustomization, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.selectPlayer, 362, 30, 300, 70, null);
-        graphics.drawImage(Assets.badBoyButton, 74, 400, null);
-        graphics.drawImage(Assets.hotChickButton, 316, 400, null);
-        graphics.drawImage(Assets.nerdBoyButton, 558, 400, null);
-        graphics.drawImage(Assets.nerdLadyButton, 800, 400, null);
 
         Font textFont = new Font("Comic Sans MS", Font.BOLD, 20);
         graphics.setFont(textFont);
@@ -37,6 +37,10 @@ public class PlayerCustomizationState extends State {
         graphics.drawString(stringBuilger.toString(), 84, 545);
 
         playButton.draw(graphics);
+        badBoyButton.draw(graphics);
+        hotChickButton.draw(graphics);
+        nerdBoyButton.draw(graphics);
+        nerdLadyButton.draw(graphics);
     }
 
     @Override
