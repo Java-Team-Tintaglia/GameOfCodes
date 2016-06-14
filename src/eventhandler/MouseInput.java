@@ -3,6 +3,7 @@ package eventhandler;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import enums.StudentType;
 import graphics.Display;
 import states.GameState;
 import states.MainMenuState;
@@ -45,9 +46,20 @@ public class MouseInput implements MouseListener {
             }
             
         } else if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
-        	//if (PlayerCustomizationState.nerdLadyCharacter.getColliderBox().contains(mouseX, mouseY)) {
-        		//PlayerCustomizationState.studentType = StudentType.nerdLady;
-        	//}
+            
+            if (PlayerCustomizationState.badBoyButton.getColliderBox().contains(mouseX, mouseY)) {
+                PlayerCustomizationState.studentType = StudentType.BAD_BOY;
+                PlayerCustomizationState.isSelect = true;
+            } else if (PlayerCustomizationState.hotChickButton.getColliderBox().contains(mouseX, mouseY)) {
+                PlayerCustomizationState.studentType = StudentType.HOT_CHICK;
+                PlayerCustomizationState.isSelect = true;
+            } else if (PlayerCustomizationState.nerdBoyButton.getColliderBox().contains(mouseX, mouseY)) {
+                PlayerCustomizationState.studentType = StudentType.NERD_BOY;
+                PlayerCustomizationState.isSelect = true;
+            } else if (PlayerCustomizationState.nerdLadyButton.getColliderBox().contains(mouseX, mouseY)) {
+                PlayerCustomizationState.studentType = StudentType.NERD_LADY;
+                PlayerCustomizationState.isSelect = true;
+            }
         	
         	// Select player and enter a name 
         	if(PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {

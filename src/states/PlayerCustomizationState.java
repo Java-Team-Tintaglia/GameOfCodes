@@ -2,6 +2,7 @@ package states;
 
 import java.awt.*;
 
+import enums.StudentType;
 import graphics.Assets;
 import models.Button;
 import utils.Constants;
@@ -9,7 +10,8 @@ import utils.Constants;
 public class PlayerCustomizationState extends State {
 
     public static StringBuilder stringBuilger = new StringBuilder();
-    //public static StudentType studentType;
+    public static StudentType studentType;
+    public static boolean isSelect = false;
     public static Button playButton = new Button(800, 520, Assets.buttonPlay);
     public static Button badBoyButton = new Button(74, 400, Assets.buttonBadBoy);
     public static Button hotChickButton = new Button(316, 400, Assets.buttonHotChick);
@@ -29,11 +31,25 @@ public class PlayerCustomizationState extends State {
 
         graphics.drawString(name, 74, 500);
         graphics.fillRect(74, 520, 205, 40);
-        graphics.drawRect(306, 390, 166, 60);
+
+        if (isSelect) {
+            switch (studentType) {
+                case BAD_BOY:
+                    graphics.drawRect(64, 390, 170, 60);
+                    break;
+                case HOT_CHICK:
+                    graphics.drawRect(306, 390, 170, 60);
+                    break;
+                case NERD_BOY:
+                    graphics.drawRect(548, 390, 170, 60);
+                    break;
+                case NERD_LADY:
+                    graphics.drawRect(790, 390, 170, 60);
+                    break;
+            }
+        }
 
         graphics.setColor(Color.black);
-//        Font buttonsFont = new Font("Comic Sans MS", Font.BOLD, 20);
-//        graphics.setFont(buttonsFont);
         graphics.drawString(stringBuilger.toString(), 84, 545);
 
         playButton.draw(graphics);
