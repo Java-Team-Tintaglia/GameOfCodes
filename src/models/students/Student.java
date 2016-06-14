@@ -24,7 +24,7 @@ public abstract class Student extends GameObject {
     private int knowledge;
     private int vitality;
     private Rectangle colliderBox;
-    private Map<ProgrammingLanguageType, List<Integer>> studentGrades;
+    private Map<String, List<Integer>> studentGrades;
 
     public static boolean isMovingLeft;
     public static boolean isMovingRight;
@@ -67,7 +67,7 @@ public abstract class Student extends GameObject {
         return name;
     }
 
-    public Map<ProgrammingLanguageType, List<Integer>> getStudentGrades() {
+    public Map<String, List<Integer>> getStudentGrades() {
         return studentGrades;
     }
 
@@ -216,10 +216,10 @@ public abstract class Student extends GameObject {
 
     public void addScore(int grade, ProgrammingLanguage language) {
         
-        if (!this.studentGrades.containsKey(language.getProgrammingLanguageType())) {
-            this.studentGrades.put(language.getProgrammingLanguageType(), new ArrayList<>());
+        if (!this.studentGrades.containsKey(language.getProgrammingLanguageType().getName())) {
+            this.studentGrades.put(language.getProgrammingLanguageType().getName(), new ArrayList<>());
         }
 
-        this.studentGrades.get(language.getProgrammingLanguageType()).add(grade);
+        this.studentGrades.get(language.getProgrammingLanguageType().getName()).add(grade);
     }
 }

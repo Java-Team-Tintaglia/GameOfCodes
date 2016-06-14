@@ -1,11 +1,21 @@
 package enums;
 
 public enum  ProgrammingLanguageType {
-    JAVA,
-    C_SHARP,
-    PHP,
-    JAVA_SCRIPT,
-    C_PLUS_PLUS,
+    JAVA("Java"),
+    C_SHARP("C#"),
+    PHP("PHP"),
+    JAVA_SCRIPT("JavaScript"),
+    C_PLUS_PLUS("C++");
+
+    private String name;
+
+    ProgrammingLanguageType(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
 
 
