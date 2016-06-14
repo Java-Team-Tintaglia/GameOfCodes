@@ -36,8 +36,11 @@ public class Assets {
     public static BufferedImage buttonExit;
     public static BufferedImage buttonPlay;
     public static BufferedImage buttonBackToMenu;
-    
+
     public static BufferedImage wizard;
+    public static BufferedImage wizardBeer;
+    public static BufferedImage wizardCoffee;
+
 
     public static void init() {
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
@@ -69,9 +72,11 @@ public class Assets {
         cplusplusCharacter = ImageLoader.loadingImage(ImageAlbum.CplusplusCharacter.getPath());
         javascriptCharacter = ImageLoader.loadingImage(ImageAlbum.JavascriptCharacter.getPath());
         phpCharacter = ImageLoader.loadingImage(ImageAlbum.PHPCharacter.getPath());
-        
+
         wizard = ImageLoader.loadingImage(ImageAlbum.Wizard.getPath());
-        
+        wizardBeer = ImageLoader.loadingImage(ImageAlbum.WizardBeer.getPath());
+        wizardCoffee = ImageLoader.loadingImage(ImageAlbum.WizardCoffee.getPath());
+
         diploma = ImageLoader.loadingImage(ImageAlbum.Diploma.getPath());
 
     }
