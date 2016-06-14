@@ -7,36 +7,30 @@ import java.util.List;
 import factories.StudentFactory;
 import graphics.Assets;
 import models.programmingLanguages.*;
-import models.students.NerdBoy;
 import models.students.Student;
 import models.wizards.Wizard;
 import utils.Constants;
 import core.CollisionHandler;
 import core.MapInitializor;
+import enums.StudentType;
 
 public class GameState extends State {
+	public static Student student;
     private List<ProgrammingLanguage> programmingLanguages = new ArrayList<>();
     private Wizard wizard;
     private long timerNewWizard = System.nanoTime();
 	private long timerNewProgrammingLanguage = System.nanoTime();
 	private long timeDelayNewWizard = 1000;
 	private long timeDelayNewProgrammingLanguage = 500;
-    
-    public static Student student = new NerdBoy(100, 400, "Misho");
 
     StudentFactory studentFactory = new StudentFactory();
 
-    // TODO:
-//	public GameState(StudentType studentType, String name) {
-//		
-//		student = studentFactory.create(studentType, x, y, name);
-//	}
-    
-    public GameState() {
-    	programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
+    public GameState(StudentType studentType, String name) {
+		student = studentFactory.create(studentType, 500, 500, name);
+		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
     	wizard = MapInitializor.generateWizard();
 	}
-
+    
     @Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
@@ -47,8 +41,6 @@ public class GameState extends State {
         if (!programmingLanguages.isEmpty()) {
         	 for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
              	programmingLanguage.draw(graphics);
-
-
      		}
 		}
        

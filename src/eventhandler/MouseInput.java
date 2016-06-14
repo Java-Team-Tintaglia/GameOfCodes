@@ -47,6 +47,7 @@ public class MouseInput implements MouseListener {
             
         } else if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
             
+        	// Select player
             if (PlayerCustomizationState.badBoyButton.getColliderBox().contains(mouseX, mouseY)) {
                 PlayerCustomizationState.studentType = StudentType.BAD_BOY;
                 PlayerCustomizationState.isSelect = true;
@@ -61,9 +62,11 @@ public class MouseInput implements MouseListener {
                 PlayerCustomizationState.isSelect = true;
             }
         	
-        	// Select player and enter a name 
-        	if(PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new GameState()); // TODO: change GameState(StudentType studentType, String name)
+        	// Eenter a name 
+        	if (PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
+        		String name = PlayerCustomizationState.stringBuilger.toString();
+        		StudentType type = PlayerCustomizationState.studentType;
+                StateManager.setCurrentState(new GameState(type, name));
                 
                 PlayerCustomizationState.stringBuilger.setLength(0);
                 

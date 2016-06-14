@@ -4,11 +4,9 @@ import enums.WizardType;
 import models.students.Student;
 
 public class VitalityWizard extends Wizard {
-    private  boolean exist;
-    
+
 	public VitalityWizard(int x , int y) {
         super(x, y, WizardType.VITALITY_WIZARD);
-
     }
 	
     @Override
@@ -16,6 +14,4 @@ public class VitalityWizard extends Wizard {
         int vitality = student.getVitality() + 10;
         student.setVitality(vitality);
     }
-
-
 }

@@ -10,15 +10,15 @@ import utils.Constants;
 public class PlayerCustomizationState extends State {
 
     public static StringBuilder stringBuilger = new StringBuilder();
+    
     public static StudentType studentType;
     public static boolean isSelect = false;
+    
     public static Button playButton = new Button(800, 520, Assets.buttonPlay);
     public static Button badBoyButton = new Button(74, 400, Assets.buttonBadBoy);
     public static Button hotChickButton = new Button(316, 400, Assets.buttonHotChick);
     public static Button nerdBoyButton = new Button(558, 400, Assets.buttonNerdBoy);
     public static Button nerdLadyButton = new Button(800, 400, Assets.buttonNerdLady);
-
-    public static String name = "Enter Name:";
 
     @Override
     public void draw(Graphics graphics) {
@@ -29,7 +29,8 @@ public class PlayerCustomizationState extends State {
         graphics.setFont(textFont);
         graphics.setColor(Color.green);
 
-        graphics.drawString(name, 74, 500);
+        String name = "Enter Name:";
+        graphics.drawString(name, 80, 500);
         graphics.fillRect(74, 520, 205, 40);
 
         if (isSelect) {
@@ -50,7 +51,7 @@ public class PlayerCustomizationState extends State {
         }
 
         graphics.setColor(Color.black);
-        graphics.drawString(stringBuilger.toString(), 84, 545);
+        graphics.drawString(stringBuilger.toString(), 80, 545);
 
         playButton.draw(graphics);
         badBoyButton.draw(graphics);
