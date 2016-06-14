@@ -1,10 +1,10 @@
 package enums;
 
 public enum  ImageAlbum {
-
     Wall("/wall.png"),
     FLoor("/floor.png"),
     PlayerCustomization("/playerCustomization.png"),
+    HighScoresBackground("/highScoresImage.png"),
     SelectPlayer("/selectPlayer.png"),
     BadBoy("/StudentModels/badboy4.jpg"),
 	NerdLady("/nerd_lady.png"),
@@ -18,6 +18,7 @@ public enum  ImageAlbum {
     Button_Score("/buttonScore.png"),
     Button_Play("/buttonPlay.png"),
     Button_Exit("/buttonExit.png"),
+    Button_BackToMenu("/backToMenu.png"),
     MainMenu("/frontPage.png"),
     NERDS("/nerds.png"),
     JavaCharacter("/Languages/java.png"),
@@ -34,7 +35,7 @@ public enum  ImageAlbum {
         this.path = path;
     }
 
-    public String getPath(){
+    public String getPath() {
         return this.path;
     }
 }

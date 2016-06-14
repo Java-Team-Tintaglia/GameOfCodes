@@ -7,6 +7,7 @@ import graphics.Display;
 import states.GameState;
 import states.MainMenuState;
 import states.PlayerCustomizationState;
+import states.ScoresState;
 import states.StateManager;
 
 
@@ -34,9 +35,9 @@ public class MouseInput implements MouseListener {
             }
 
             // High Scores Button
-//            if (MainMenuState.scoresButton.getColliderBox().contains(mouseX, mouseY)) {
-//                StateManager.setCurrentState(new HighScoresState());
-//            }
+            if (MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
+                StateManager.setCurrentState(new ScoresState());
+            }
             
             // Exit Button
             if (MainMenuState.buttonExit.getColliderBox().contains(mouseX, mouseY)) {
@@ -55,10 +56,11 @@ public class MouseInput implements MouseListener {
                 PlayerCustomizationState.stringBuilger.setLength(0);
                 
             }
+        } else if (StateManager.getCurrentState() instanceof ScoresState) {
+        	if (ScoresState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+                StateManager.setCurrentState(new MainMenuState());
+            }
         }
-//        } else if (StateManager.getCurrentState() instanceof HighScoresState) {
-//        	// Main menu button 
-//        }
     }
 
     @Override

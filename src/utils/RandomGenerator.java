@@ -6,21 +6,24 @@ public class RandomGenerator {
 
     private static Random random;
 
-    private static void init(){
-        random = new Random();
-    }
-
-    public static int getNextRandom(int e)
+    public static int getNextRandom(int maxValue)
     {
-        if (random == null){
+        if (random == null) {
             init();
         }
-        return random.nextInt(e);
+        
+        return random.nextInt(maxValue);
     }
-    public static int genNextRandomMinMax(int minValue, int maxValue){
+    
+    public static int genNextRandomMinMax(int minValue, int maxValue) {
         if (random == null){
             init();
         }
-        return random.nextInt(maxValue-minValue) + minValue;
+        
+        return random.nextInt(maxValue - minValue) + minValue;
+    }
+    
+    private static void init() {
+        random = new Random();
     }
 }

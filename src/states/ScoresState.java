@@ -1,6 +1,7 @@
 package states;
 
 import graphics.Assets;
+import models.Button;
 import repositories.StudentScoresRepository;
 import utils.Constants;
 
@@ -11,15 +12,16 @@ import java.util.Map;
 
 import static repositories.StudentScoresRepository.students;
 
-public class ScoresStates extends State {
+public class ScoresState extends State {
 
+	public static Button backToMenuButton = new Button(730, 500, Assets.buttonBackToMenu);
+	
     @Override
     public void draw(Graphics graphics) {
         int yCoord = 125;
         StudentScoresRepository.readFromFile();
 
-        //TODO: Replace Assets.wall with Assets.highScoreImage
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.highScoresBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
         Font font = new Font("Arial", Font.ITALIC, 25);
         graphics.setFont(font);
@@ -39,8 +41,9 @@ public class ScoresStates extends State {
             graphics.drawString(name, 120, yCoord);
             graphics.drawString(String.format("%.2f", averageScore), 540, yCoord);
             yCoord += 40;
-
         }
+        
+        backToMenuButton.draw(graphics);
     }
 
     @Override

@@ -11,7 +11,7 @@ import utils.RandomGenerator;
 
 public class MapInitializor {
 
-    public static ProgrammingLanguage generateProgrammingLanguage(){
+    public static ProgrammingLanguage generateProgrammingLanguage() {
         ProgrammingLanguageType[] programmingLanguages = {
         		ProgrammingLanguageType.JAVA,
         		ProgrammingLanguageType.C_PLUS_PLUS, 
@@ -26,31 +26,36 @@ public class MapInitializor {
         int randomX = RandomGenerator.genNextRandomMinMax(0, 950);
         int randomY = RandomGenerator.genNextRandomMinMax(220, 515);
 
-        ProgrammingLanguage langToBeCreated = null;
+        ProgrammingLanguage languageToBeCreated = null;
 
-        switch (randomLanguage){
+        switch (randomLanguage) {
             case C_PLUS_PLUS:
-                langToBeCreated = new CPlusPlus(randomX, randomY);
+                languageToBeCreated = new CPlusPlus(randomX, randomY);
                 break;
             case C_SHARP:
-                langToBeCreated = new CSharp(randomX, randomY);
+                languageToBeCreated = new CSharp(randomX, randomY);
                 break;
             case JAVA:
-                langToBeCreated = new Java(randomX, randomY);
+                languageToBeCreated = new Java(randomX, randomY);
                 break;
             case JAVA_SCRIPT:
-                langToBeCreated = new JavaScript(randomX, randomY);
+                languageToBeCreated = new JavaScript(randomX, randomY);
                 break;
             case PHP:
-                langToBeCreated = new Php(randomX, randomY);
+                languageToBeCreated = new Php(randomX, randomY);
                 break;
 
         }
-        return langToBeCreated;
+        
+        return languageToBeCreated;
     }
 
-    public static Wizard generateWizard(){
-        WizardType[] wizard = {WizardType.INTELLIGENCE_WIZARD, WizardType.KNOWLEDGE_WIZARD, WizardType.VITALITY_WIZARD};
+    public static Wizard generateWizard() {
+        WizardType[] wizard = {
+        		WizardType.INTELLIGENCE_WIZARD, 
+        		WizardType.KNOWLEDGE_WIZARD, 
+        		WizardType.VITALITY_WIZARD};
+        
         int randomIndex = RandomGenerator.getNextRandom(wizard.length);
         WizardType randomWizard = wizard[randomIndex];
 
@@ -59,7 +64,7 @@ public class MapInitializor {
 
         Wizard wizardToBeCreated = null;
 
-        switch (randomWizard){
+        switch (randomWizard) {
             case INTELLIGENCE_WIZARD:
                 wizardToBeCreated = new IntelligenceWizard(randomX,randomY);
                 break;
@@ -74,7 +79,4 @@ public class MapInitializor {
 
         return wizardToBeCreated;
     }
-
-
-
 }
