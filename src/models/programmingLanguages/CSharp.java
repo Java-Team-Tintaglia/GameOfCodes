@@ -8,7 +8,7 @@ public class CSharp extends ProgrammingLanguage{
 
 	public CSharp(int x, int y) {
 		super(x, y, ProgrammingLanguageType.C_SHARP, 5, 5, Assets.csharpCharacter);
-		this.exist=true;
+
 	}
 
 	public  boolean isExist() {

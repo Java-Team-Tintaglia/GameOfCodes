@@ -36,8 +36,8 @@ public abstract class Student extends GameObject {
                    int intelligence, int knowledge, int vitality) {
         super(x, y);
         this.spriteSheet = spriteSheet;
-        this.width = width;
-        this.height = height;
+        this.width = Constants.NERDBOY_WIDTH;
+        this.height = Constants.NERDBOY_HEIGHT;
         this.name = name;
         this.intelligence = intelligence;
         this.knowledge = knowledge;

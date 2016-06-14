@@ -8,7 +8,7 @@ public class VitalityWizard extends Wizard {
     
 	public VitalityWizard(int x , int y) {
         super(x, y, WizardType.VITALITY_WIZARD);
-        this.exist=true;
+
     }
 	
     @Override

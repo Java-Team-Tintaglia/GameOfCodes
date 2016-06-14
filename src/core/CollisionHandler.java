@@ -8,11 +8,24 @@ import models.wizards.Wizard;
 
 public class CollisionHandler {
 
-    public static void collisionHandler(Student student, 
-    		Wizard wizard,
-    		List<ProgrammingLanguage> programmingLanguages) {
+    public static void collisionHandler(Student student,
+                                        Wizard wizard,
+                                        List<ProgrammingLanguage> programmingLanguages) {
+        if (student.getColliderBox().intersects(wizard.getColliderBox()) ||
+                wizard.getColliderBox().intersects(student.getColliderBox())) {
+            wizard.setExist(false);
 
-    	
+        }
+        for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
+            if (student.getColliderBox().intersects(programmingLanguage.getColliderBox())) {
+                programmingLanguage.setExist(false);
+                student.calculateGrade(programmingLanguage);
+                student.setIntelligence(programmingLanguage.getKnowledgePoints());
+
+            }
+        }
+
+
     }
 
 

@@ -26,7 +26,7 @@ public abstract class ProgrammingLanguage extends GameObject {
 			int knowledgePoints,
 			BufferedImage image) {
 		super(x, y);
-		this.exist=true;
+	//	this.exist=true;
 		this.programmingLanguageType = programmingLanguageType;
 		this.vitalityDamagePoints = vitalityDamagePoints;
 		this.knowledgePoints = knowledgePoints;

@@ -8,7 +8,7 @@ public class KnowledgeWizard extends Wizard {
 	
     public KnowledgeWizard(int x, int y) {
         super(x, y, WizardType.KNOWLEDGE_WIZARD);
-        this.exist=true;
+
     }
     
     @Override
