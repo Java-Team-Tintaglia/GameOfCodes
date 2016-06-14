@@ -23,7 +23,7 @@ public class KeyInput implements KeyListener {
         int key = e.getKeyCode();
         // User input
        if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
-            if (key>='A' && key<='Z' ) {
+            if (key>='A' && key<='Z' && PlayerCustomizationState.stringBuilger.length() < 10) {
                 PlayerCustomizationState.stringBuilger.append((char) key);
             }
             else if (key == KeyEvent.VK_BACK_SPACE && PlayerCustomizationState.stringBuilger.length() > 0) {

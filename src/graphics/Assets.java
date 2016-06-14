@@ -9,6 +9,8 @@ public class Assets {
     public static BufferedImage wall;
     public static BufferedImage floor;
     public static BufferedImage mainMenu;
+    public static BufferedImage playerCustomization;
+    public static BufferedImage selectPlayer;
 
     public static SpriteSheet nerdLady;
     public static SpriteSheet badBoy;
@@ -34,6 +36,8 @@ public class Assets {
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
         floor = ImageLoader.loadingImage(ImageAlbum.FLoor.getPath());
         mainMenu = ImageLoader.loadingImage(ImageAlbum.MainMenu.getPath());
+        playerCustomization = ImageLoader.loadingImage(ImageAlbum.PlayerCustomization.getPath());
+        selectPlayer = ImageLoader.loadingImage(ImageAlbum.SelectPlayer.getPath());
 
         nerdLady = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdLady.getPath()));
         badBoy = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.BadBoy.getPath()));

@@ -4,6 +4,8 @@ public enum  ImageAlbum {
 
     Wall("/wall.png"),
     FLoor("/floor.png"),
+    PlayerCustomization("/playerCustomization.png"),
+    SelectPlayer("/selectPlayer.png"),
     BadBoy("/StudentModels/badboy4.jpg"),
 	NerdLady("/nerd_lady.png"),
     HotChick("/StudentModels/hotgirl4.jpg"),
