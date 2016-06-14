@@ -10,12 +10,4 @@ public class Java extends ProgrammingLanguage {
         super(x, y, ProgrammingLanguageType.JAVA, 7, 7, Assets.javaCharacter);
 
     }
-
-    public  boolean isExist() {
-        return exist;
-    }
-
-    public  void setExist(boolean exist) {
-        Java.exist = exist;
-    }
 }

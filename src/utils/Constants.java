@@ -5,8 +5,8 @@ public class Constants {
 	public static final int SCREEN_HEIGHT = 600;
 	public static final String SAVE_FILE_PATH = "resources/HighScores.txt";
 
-	public static final int NERDBOY_WIDTH = 45;
-	public static final int NERDBOY_HEIGHT = 45;
+	public static final int NERDBOY_WIDTH = 50;
+	public static final int NERDBOY_HEIGHT = 50;
 
 	public static final int EXCELLENT = 6;
 	public static final int VERY_GOOD = 5;

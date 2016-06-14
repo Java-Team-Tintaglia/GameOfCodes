@@ -10,12 +10,4 @@ public class CSharp extends ProgrammingLanguage{
 		super(x, y, ProgrammingLanguageType.C_SHARP, 5, 5, Assets.csharpCharacter);
 
 	}
-
-	public  boolean isExist() {
-		return exist;
-	}
-
-	public  void setExist(boolean exist) {
-		CSharp.exist = exist;
-	}
 }

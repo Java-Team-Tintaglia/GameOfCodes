@@ -16,11 +16,15 @@ public class CollisionHandler {
             wizard.setExist(false);
 
         }
+        //gledash setvam tuka eto
         for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
             if (student.getColliderBox().intersects(programmingLanguage.getColliderBox())) {
                 programmingLanguage.setExist(false);
+                programmingLanguage.setKnowledgePoints(programmingLanguage.getKnowledgePoints());
                 student.calculateGrade(programmingLanguage);
-                student.setIntelligence(programmingLanguage.getKnowledgePoints());
+
+                student.setVitality(programmingLanguage.getVitalityDamagePoints());
+                //student.setIntelligence(programmingLanguage.in());
 
             }
         }

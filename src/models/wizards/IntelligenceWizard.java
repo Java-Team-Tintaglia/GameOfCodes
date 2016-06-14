@@ -17,13 +17,5 @@ public class IntelligenceWizard extends Wizard{
         student.setVitality(intelligence);
     }
 
-    @Override
-    public boolean isExist() {
-        return exist;
-    }
 
-    @Override
-    public void setExist(boolean exist) {
-        this.exist = exist;
-    }
 }

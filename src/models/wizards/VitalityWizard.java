@@ -17,11 +17,5 @@ public class VitalityWizard extends Wizard {
         student.setVitality(vitality);
     }
 
-    public  boolean isExist() {
-        return exist;
-    }
 
-    public  void setExist(boolean exist) {
-        this.exist = exist;
-    }
 }

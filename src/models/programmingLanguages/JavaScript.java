@@ -12,12 +12,4 @@ public class JavaScript extends ProgrammingLanguage {
         super(x, y, ProgrammingLanguageType.JAVA_SCRIPT, 6, 6, Assets.javascriptCharacter);
 
     }
-
-    public  boolean isExist() {
-        return exist;
-    }
-
-    public  void setExist(boolean exist) {
-        JavaScript.exist = exist;
-    }
 }

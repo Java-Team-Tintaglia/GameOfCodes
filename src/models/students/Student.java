@@ -36,8 +36,8 @@ public abstract class Student extends GameObject {
                    int intelligence, int knowledge, int vitality) {
         super(x, y);
         this.spriteSheet = spriteSheet;
-        this.width = Constants.NERDBOY_WIDTH;
-        this.height = Constants.NERDBOY_HEIGHT;
+        this.width = width;
+        this.height = height;
         this.name = name;
         this.intelligence = intelligence;
         this.knowledge = knowledge;
@@ -115,8 +115,8 @@ public abstract class Student extends GameObject {
     @Override
     public void draw(Graphics graphics) {
 
-        graphics.drawImage(Assets.nerds.crop(col * 50, row * 50,
-                Constants.NERDBOY_WIDTH, Constants.NERDBOY_HEIGHT), this.getX(), this.getY(), null);
+        graphics.drawImage(this.spriteSheet.crop(col * width, row * height,
+               this.width, this.height), this.getX(), this.getY(), null);
 
 
     }

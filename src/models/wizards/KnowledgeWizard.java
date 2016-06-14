@@ -17,13 +17,5 @@ public class KnowledgeWizard extends Wizard {
         student.setVitality(knowledge);
     }
 
-    @Override
-    public boolean isExist() {
-        return exist;
-    }
 
-    @Override
-    public void setExist(boolean exist) {
-        this.exist = exist;
-    }
 }

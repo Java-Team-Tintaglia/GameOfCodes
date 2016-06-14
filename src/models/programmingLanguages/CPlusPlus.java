@@ -12,12 +12,4 @@ public class CPlusPlus extends ProgrammingLanguage {
         super(x, y, ProgrammingLanguageType.C_PLUS_PLUS, 10, 10, Assets.cplusplusCharacter);
 
     }
-
-    public  boolean isExist() {
-        return exist;
-    }
-
-    public  void setExist(boolean exist) {
-        CPlusPlus.exist = exist;
-    }
 }

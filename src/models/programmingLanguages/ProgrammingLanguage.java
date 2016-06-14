@@ -20,16 +20,21 @@ public abstract class ProgrammingLanguage extends GameObject {
 	private Rectangle colliderBox;
 	private  boolean exist;
 
+
 	public ProgrammingLanguage(int x, int y, 
 			ProgrammingLanguageType programmingLanguageType, 
 			int vitalityDamagePoints,
 			int knowledgePoints,
 			BufferedImage image) {
 		super(x, y);
-	//	this.exist=true;
+
+			this.exist=true;
+
+
 		this.programmingLanguageType = programmingLanguageType;
 		this.vitalityDamagePoints = vitalityDamagePoints;
-		this.knowledgePoints = knowledgePoints;
+		//this.knowledgePoints = knowledgePoints;
+		this.knowledgePoints = 999;
 		this.image = image;
 		this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.image.getWidth(), this.image.getHeight());
@@ -41,6 +46,7 @@ public abstract class ProgrammingLanguage extends GameObject {
 	}
 
 	public void setExist(boolean exist) {
+
 		this.exist = exist;
 	}
 
@@ -67,9 +73,13 @@ public abstract class ProgrammingLanguage extends GameObject {
 	
 	@Override
 	public void draw(Graphics graphics) {
+
+
+
 		if(exist) {
 			graphics.drawImage(this.image, this.getX(), this.getY(), null);
 		}
+
 		
 	}
 
