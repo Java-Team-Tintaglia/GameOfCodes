@@ -3,8 +3,10 @@ package models.students;
 import graphics.Assets;
 
 public class NerdLady extends Student {
+	private static int imageWidth=41;
+	private static int imageHeight=44;
 
 	public NerdLady(int x, int y, String name) {
-		super(x, y, Assets.nerdLady, 0, 0, name, 80, 70, 100);
+		super(x, y, Assets.nerdladyplayer, imageWidth, imageHeight, name, 80, 70, 100);
 	}
 }

@@ -130,7 +130,7 @@ public abstract class Student extends GameObject {
                 isMovingUp || isMovingLeft;
         if (ismoVing) {
             col++;
-            col = (col + 1) % 3;
+            col = (col ) % 3;
 
             if (isMovingLeft) {
                 row = 1;

@@ -29,6 +29,7 @@ public enum  ImageAlbum {
     Wizard("/wizard.png"),
     WizardBeer("/wizard_beer.png"),
     WizardCoffee("/wizard_coffee.png"),
+    NerdLadyPlayer("/nerdgplayer.png"),
     Diploma("/diploma.png");
 
     private String path;

@@ -19,6 +19,7 @@ public class Assets {
     public static BufferedImage buttonNerdLady;
 
     public static SpriteSheet nerdLady;
+    public static SpriteSheet nerdladyplayer;
     public static SpriteSheet badBoy;
     public static SpriteSheet hotChick;
     public static SpriteSheet nerdBoy;
@@ -51,6 +52,7 @@ public class Assets {
         highScoresBackground = ImageLoader.loadingImage(ImageAlbum.HighScoresBackground.getPath());
 
         nerdLady = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdLady.getPath()));
+        nerdladyplayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdLadyPlayer.getPath()));
         badBoy = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.BadBoy.getPath()));
         hotChick = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.HotChick.getPath()));
         nerdBoy = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdBoy.getPath()));
