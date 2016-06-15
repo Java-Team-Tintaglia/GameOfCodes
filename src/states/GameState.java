@@ -20,8 +20,8 @@ public class GameState extends State {
     private Wizard wizard;
     private long timerNewWizard = System.nanoTime();
 	private long timerNewProgrammingLanguage = System.nanoTime();
-	private long timeDelayNewWizard = 2500;
-	private long timeDelayNewProgrammingLanguage = 1500;
+	private long timeDelayNewWizard = 2000;
+	private long timeDelayNewProgrammingLanguage = 1000;
 	private long timerSeconds = System.nanoTime();
 	private long timeDelay = 1000;
 	private int seconds = 30;
