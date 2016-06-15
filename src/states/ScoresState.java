@@ -26,11 +26,12 @@ public class ScoresState extends State {
 
         graphics.drawString("Player name", 160, yCoord);
         graphics.drawString("Average grade", 540, yCoord);
+
         TreeMap<Float, String> topScores = new TreeMap<>(Collections.reverseOrder());
         for(Map.Entry<String, LinkedHashMap<String, List<Integer>>> student : StudentScoresRepository.studentsScore.entrySet()){
             String name = student.getKey();
             LinkedHashMap<String, List<Integer>> scores = student.getValue();
-            float averageScore = 0;
+            float averageScore = 0f;
             for(Map.Entry<String, List<Integer>> score : scores.entrySet()){
                 for(int sc : score.getValue()){
                     averageScore += sc;
@@ -39,20 +40,19 @@ public class ScoresState extends State {
             }
 
             topScores.put(averageScore, name);
+        }
 
-            //TODO: Fix the ordering of the scores
-            int counter = 1;
-            for(Map.Entry<Float, String> score : topScores.entrySet()){
-                yCoord += 40;
-                graphics.drawString(String.format("%d", counter), 120, yCoord);
-                graphics.drawString(name, 160, yCoord);
-                graphics.drawString(String.format("%.2f", averageScore), 560, yCoord);
-                counter++;
-                if(counter == 10){
-                    break;
-                }
+        //TODO: Fix the ordering of the scores
+        int counter = 1;
+        for(Map.Entry<Float, String> score : topScores.entrySet()){
+            yCoord += 40;
+            graphics.drawString(String.format("%d", counter), 120, yCoord);
+            graphics.drawString(score.getValue(), 160, yCoord);
+            graphics.drawString(String.format("%.2f", score.getKey()), 560, yCoord);
+            counter++;
+            if(counter == 10){
+                break;
             }
-
         }
         
         backToMenuButton.draw(graphics);

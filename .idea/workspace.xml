@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="35415db1-1ac5-4217-90a4-a2cbb2a18f6b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/HighScores.txt" afterPath="$PROJECT_DIR$/resources/HighScores.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/eventhandler/MouseInput.java" afterPath="$PROJECT_DIR$/src/eventhandler/MouseInput.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/repositories/StudentScoresRepository.java" afterPath="$PROJECT_DIR$/src/repositories/StudentScoresRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/states/ScoresState.java" afterPath="$PROJECT_DIR$/src/states/ScoresState.java" />
     </list>
     <ignored path="GameOfCodes.iws" />
@@ -51,8 +48,8 @@
       <file leaf-file-name="ScoresState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/states/ScoresState.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+            <state relative-caret-position="310">
+              <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -71,8 +68,8 @@
       <file leaf-file-name="StudentScoresRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/repositories/StudentScoresRepository.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1320">
-              <caret line="43" column="92" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
+            <state relative-caret-position="113">
+              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -537,7 +534,7 @@
     <option name="totallyTimeSpent" value="12931000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -668,8 +665,14 @@
           <properties />
           <option name="timeStamp" value="14" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/states/ScoresState.java</url>
+          <line>17</line>
+          <properties />
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="18" />
+      <option name="time" value="19" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -977,16 +980,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/repositories/StudentScoresRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="43" column="92" selection-start-line="43" selection-start-column="92" selection-end-line="43" selection-end-column="92" />
+        <state relative-caret-position="113">
+          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/states/ScoresState.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+        <state relative-caret-position="310">
+          <caret line="35" column="47" selection-start-line="35" selection-start-column="47" selection-end-line="35" selection-end-column="47" />
           <folding />
         </state>
       </provider>
