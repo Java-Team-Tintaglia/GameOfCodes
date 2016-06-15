@@ -21,12 +21,7 @@ public class Assets {
     public static SpriteSheet nerdladyplayer;
     public static SpriteSheet hotchikplayer;
     public static SpriteSheet badboyplayer;
-    //public static SpriteSheet nerdBoyplayer;
-    
-    public static SpriteSheet badBoy;
-    public static SpriteSheet hotChick;
     public static SpriteSheet nerdBoyPlayer;
-    public static SpriteSheet nerds;
     
     public static BufferedImage javaCharacter;
     public static BufferedImage phpCharacter;
@@ -58,7 +53,6 @@ public class Assets {
         badboyplayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.BadBoyPlayer.getPath()));
         hotchikplayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.HotChickPlayer.getPath()));
         nerdBoyPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NerdBoyPlayer.getPath()));
-        
         
         buttonStart = ImageLoader.loadingImage(ImageAlbum.Button_Start.getPath());
         buttonScore = ImageLoader.loadingImage(ImageAlbum.Button_Score.getPath());
