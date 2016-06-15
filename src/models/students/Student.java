@@ -160,8 +160,6 @@ public abstract class Student extends GameObject {
 
         switch (grade) {
             case Constants.FAILURE:
-                int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
-                this.setVitality(vitality);
                 break;
             case Constants.PASSABLE:
                 this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.3));
@@ -176,6 +174,9 @@ public abstract class Student extends GameObject {
                 this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
                 break;
         }
+
+        int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
+        this.setVitality(vitality);
 
         return grade;
     }

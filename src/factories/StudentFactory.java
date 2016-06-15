@@ -13,6 +13,10 @@ public class StudentFactory {
 	public Student create(StudentType type, int x ,int y, String name) {
 		Student student = null;
 
+		if (name == null || name.equals("")) {
+			name = DEFAULT_PLAYER_NAME;
+		}
+
 		if (type == null) {
 			student = new BadBoy(x, y, DEFAULT_PLAYER_NAME);
 			return student;
