@@ -18,7 +18,7 @@ public class StudentFactory {
 		}
 
 		if (type == null) {
-			student = new BadBoy(x, y, DEFAULT_PLAYER_NAME);
+			student = new BadBoy(x, y, name);
 			return student;
 		}
 		
