@@ -8,8 +8,15 @@ import models.students.NerdLady;
 import models.students.Student;
 
 public class StudentFactory {
+	private static final String DEFAULT_PLAYER_NAME = "player";
+
 	public Student create(StudentType type, int x ,int y, String name) {
 		Student student = null;
+
+		if (type == null) {
+			student = new BadBoy(x, y, DEFAULT_PLAYER_NAME);
+			return student;
+		}
 		
 		switch (type) {
 		case NERD_LADY:
