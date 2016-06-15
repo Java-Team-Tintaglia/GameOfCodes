@@ -7,7 +7,7 @@ import models.students.Student;
 public class IntelligenceWizard extends Wizard{
 
     public IntelligenceWizard(int x , int y) {
-        super(x, y, WizardType.INTELLIGENCE_WIZARD , Assets.wizard);
+        super(x, y, WizardType.INTELLIGENCE_WIZARD , Assets.wizardCoffee);
     }
 
     @Override
