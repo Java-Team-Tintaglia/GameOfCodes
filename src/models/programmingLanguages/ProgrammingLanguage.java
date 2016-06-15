@@ -19,16 +19,27 @@ public abstract class ProgrammingLanguage extends GameObject {
 	
 	private Rectangle colliderBox;
 	private  boolean exist;
+	private  boolean isMark;
 
 
-	public ProgrammingLanguage(int x, int y, 
-			ProgrammingLanguageType programmingLanguageType, 
-			int vitalityDamagePoints,
-			int knowledgePoints,
-			BufferedImage image) {
+	public boolean isMark() {
+		return isMark;
+	}
+
+	public void setMark(boolean mark) {
+		isMark = mark;
+	}
+
+	public ProgrammingLanguage(int x, int y,
+							   ProgrammingLanguageType programmingLanguageType,
+							   int vitalityDamagePoints,
+							   int knowledgePoints,
+							   BufferedImage image) {
 		super(x, y);
 
 			this.exist=true;
+			this.isMark = false;
+
 
 
 		this.programmingLanguageType = programmingLanguageType;

@@ -19,10 +19,13 @@ public class CollisionHandler {
 
         for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
             if (student.getColliderBox().intersects(programmingLanguage.getColliderBox())) {
-                programmingLanguage.setExist(false);
-                int score = student.calculateGrade(programmingLanguage);
-                System.out.println(score);
-                student.addScore(score, programmingLanguage);
+                if (!programmingLanguage.isMark()) {
+                    programmingLanguage.setExist(false);
+                    programmingLanguage.setMark(true);
+                    int score = student.calculateGrade(programmingLanguage);
+                    System.out.println(score);
+                    student.addScore(score, programmingLanguage);
+                }
             }
         }
     }
