@@ -10,25 +10,11 @@ import models.GameObject;
 public abstract class ProgrammingLanguage extends GameObject {
 	
 	private ProgrammingLanguageType programmingLanguageType;
-	
 	private int vitalityDamagePoints;
-	
 	private int knowledgePoints;
-	
 	private BufferedImage image;
-	
 	private Rectangle colliderBox;
 	private  boolean exist;
-	private  boolean isMark;
-
-
-	public boolean isMark() {
-		return isMark;
-	}
-
-	public void setMark(boolean mark) {
-		isMark = mark;
-	}
 
 	public ProgrammingLanguage(int x, int y,
 							   ProgrammingLanguageType programmingLanguageType,
@@ -36,12 +22,7 @@ public abstract class ProgrammingLanguage extends GameObject {
 							   int knowledgePoints,
 							   BufferedImage image) {
 		super(x, y);
-
-			this.exist=true;
-			this.isMark = false;
-
-
-
+		this.exist = true;
 		this.programmingLanguageType = programmingLanguageType;
 		this.vitalityDamagePoints = vitalityDamagePoints;
 		this.knowledgePoints = knowledgePoints;
@@ -49,7 +30,6 @@ public abstract class ProgrammingLanguage extends GameObject {
 		this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.image.getWidth(), this.image.getHeight());
 	}
-
 
 	public boolean isExist() {
 		return exist;
@@ -76,25 +56,18 @@ public abstract class ProgrammingLanguage extends GameObject {
 		this.knowledgePoints = knowledgePoints;
 	}
 	
-	 public Rectangle getColliderBox() {
+ 	public Rectangle getColliderBox() {
 	        return colliderBox;
 	    }
-
 	
 	@Override
 	public void draw(Graphics graphics) {
-
-
-
 		if(exist) {
 			graphics.drawImage(this.image, this.getX(), this.getY(), null);
 		}
-
-		
 	}
 
 	@Override
 	public void update() {
 	}
-
 }
