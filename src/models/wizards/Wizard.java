@@ -5,7 +5,6 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import enums.WizardType;
-import graphics.Assets;
 import models.GameObject;
 import models.students.Student;
 
@@ -39,8 +38,12 @@ public abstract class Wizard extends GameObject {
     public Rectangle getColliderBox() {
         return colliderBox;
     }
+    
+    public WizardType getWizardType() {
+		return wizardType;
+	}
 
-    public abstract void boost(Student student);
+	public abstract void boost(Student student);
 
     @Override
     public void draw(Graphics graphics) {

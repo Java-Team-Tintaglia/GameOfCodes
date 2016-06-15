@@ -24,10 +24,10 @@ public abstract class Student extends GameObject {
     private Rectangle colliderBox;
     private Map<String, List<Integer>> studentGrades;
 
-    public static boolean isMovingLeft;
-    public static boolean isMovingRight;
-    public static boolean isMovingUp;
-    public static boolean isMovingDown;
+    private boolean isMovingLeft;
+    private boolean isMovingRight;
+    private boolean isMovingUp;
+    private boolean isMovingDown;
 
     public Student(int x, int y, SpriteSheet spriteSheet,
                    int width, int height, String name,
@@ -101,8 +101,39 @@ public abstract class Student extends GameObject {
         return colliderBox;
     }
 
+    public boolean isMovingLeft() {
+		return isMovingLeft;
+	}
 
-    @Override
+	public void setMovingLeft(boolean isMovingLeft) {
+		this.isMovingLeft = isMovingLeft;
+	}
+
+	public boolean isMovingRight() {
+		return isMovingRight;
+	}
+
+	public void setMovingRight(boolean isMovingRight) {
+		this.isMovingRight = isMovingRight;
+	}
+
+	public boolean isMovingUp() {
+		return isMovingUp;
+	}
+
+	public void setMovingUp(boolean isMovingUp) {
+		this.isMovingUp = isMovingUp;
+	}
+
+	public boolean isMovingDown() {
+		return isMovingDown;
+	}
+
+	public void setMovingDown(boolean isMovingDown) {
+		this.isMovingDown = isMovingDown;
+	}
+
+	@Override
     public void draw(Graphics graphics) {
 
         graphics.drawImage(this.spriteSheet.crop(col * width, row * height,
@@ -113,10 +144,8 @@ public abstract class Student extends GameObject {
     @Override
     public void update() {
 
-        boolean isMoving= isMovingDown || 
-        		isMovingRight ||
-                isMovingUp || 
-                isMovingLeft;
+        boolean isMoving= isMovingDown || isMovingUp || 
+        					isMovingRight || isMovingLeft;
         
         if (isMoving) {
             col++;

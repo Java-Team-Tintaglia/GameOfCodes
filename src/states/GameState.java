@@ -15,9 +15,10 @@ import core.MapInitializor;
 import enums.StudentType;
 
 public class GameState extends State {
-	public static Student student;
+	
     private List<ProgrammingLanguage> programmingLanguages = new ArrayList<>();
     private Wizard wizard;
+    
     private long timerNewWizard = System.nanoTime();
 	private long timerNewProgrammingLanguage = System.nanoTime();
 	private long timeDelayNewWizard = 2000;
@@ -26,9 +27,11 @@ public class GameState extends State {
 	private long timeDelay = 1000;
 	private int seconds = 30;
 
-    StudentFactory studentFactory = new StudentFactory();
+	public static Student student;
+    private StudentFactory studentFactory;
 
     public GameState(StudentType studentType, String name) {
+    	studentFactory = new StudentFactory();
 		student = studentFactory.create(studentType, 500, 500, name);
 		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
     	wizard = MapInitializor.generateWizard();
@@ -69,8 +72,6 @@ public class GameState extends State {
 		
     	CollisionHandler.handleCollisions(student, wizard, programmingLanguages);
     	
-    	
-
 		if(elapsedSeconds > this.timeDelay) {
 			seconds--;
 			timerSeconds = System.nanoTime();
@@ -87,10 +88,10 @@ public class GameState extends State {
 			timerNewProgrammingLanguage = System.nanoTime();
 		}
     	
-        student.update();
-
         if (seconds <= 0) {
 			StateManager.setCurrentState(new StudentScoreState(student));
 		}
+        
+        student.update();
     }
 }

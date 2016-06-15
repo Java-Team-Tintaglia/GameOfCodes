@@ -8,6 +8,6 @@ public class HotChick extends Student{
 
     public HotChick(int x, int y, String name)
     {
-        super(x, y, Assets.hotchikplayer, imageWidth, imageHeidth, name, 70, 60, 120);
+        super(x, y, Assets.hotChickPlayer, imageWidth, imageHeidth, name, 70, 60, 120);
     }
 }

@@ -12,7 +12,7 @@ public class PlayerCustomizationState extends State {
     public static StringBuilder stringBuilger = new StringBuilder();
     
     public static StudentType studentType;
-    public static boolean isSelect = false;
+    public static boolean isSelected = false;
     
     public static Button playButton = new Button(800, 520, Assets.buttonPlay);
     public static Button badBoyButton = new Button(74, 400, Assets.buttonBadBoy);
@@ -33,7 +33,7 @@ public class PlayerCustomizationState extends State {
         graphics.drawString(name, 80, 500);
         graphics.fillRect(74, 520, 205, 40);
 
-        if (isSelect) {
+        if (isSelected) {
             switch (studentType) {
                 case BAD_BOY:
                     graphics.drawRect(64, 390, 170, 60);

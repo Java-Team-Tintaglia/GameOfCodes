@@ -22,8 +22,6 @@ public class GameEngine implements Runnable {
     private KeyInput keyinput;
     private State mainMenuState;
     private MouseInput mouseInput;
- 
-    State playerCustomizationState;
 
     public GameEngine(String title) {
         this.title = title;

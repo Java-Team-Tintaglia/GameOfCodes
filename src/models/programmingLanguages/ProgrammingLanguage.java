@@ -14,7 +14,7 @@ public abstract class ProgrammingLanguage extends GameObject {
 	private int knowledgePoints;
 	private BufferedImage image;
 	private Rectangle colliderBox;
-	private  boolean exist;
+	private boolean exist;
 
 	public ProgrammingLanguage(int x, int y,
 							   ProgrammingLanguageType programmingLanguageType,

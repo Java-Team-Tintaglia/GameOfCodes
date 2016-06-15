@@ -28,6 +28,7 @@ public class MouseInput implements MouseListener {
     public void mouseClicked(MouseEvent e) {
     }
 
+    @Override
     public void mousePressed(MouseEvent e) {
 
         int mouseX = e.getX();
@@ -39,7 +40,7 @@ public class MouseInput implements MouseListener {
                 StateManager.setCurrentState(new PlayerCustomizationState());
             }
 
-            // High Scores Button
+            // Scores Button
             if (MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new ScoresState());
             }
@@ -54,16 +55,16 @@ public class MouseInput implements MouseListener {
         	// Select player
             if (PlayerCustomizationState.badBoyButton.getColliderBox().contains(mouseX, mouseY)) {
                 PlayerCustomizationState.studentType = StudentType.BAD_BOY;
-                PlayerCustomizationState.isSelect = true;
+                PlayerCustomizationState.isSelected = true;
             } else if (PlayerCustomizationState.hotChickButton.getColliderBox().contains(mouseX, mouseY)) {
                 PlayerCustomizationState.studentType = StudentType.HOT_CHICK;
-                PlayerCustomizationState.isSelect = true;
+                PlayerCustomizationState.isSelected = true;
             } else if (PlayerCustomizationState.nerdBoyButton.getColliderBox().contains(mouseX, mouseY)) {
                 PlayerCustomizationState.studentType = StudentType.NERD_BOY;
-                PlayerCustomizationState.isSelect = true;
+                PlayerCustomizationState.isSelected = true;
             } else if (PlayerCustomizationState.nerdLadyButton.getColliderBox().contains(mouseX, mouseY)) {
                 PlayerCustomizationState.studentType = StudentType.NERD_LADY;
-                PlayerCustomizationState.isSelect = true;
+                PlayerCustomizationState.isSelected = true;
             }
         	
         	// Eenter a name 
@@ -73,6 +74,7 @@ public class MouseInput implements MouseListener {
                 StateManager.setCurrentState(new GameState(type, name));
                 
                 PlayerCustomizationState.stringBuilger.setLength(0);
+                PlayerCustomizationState.isSelected = false;
                 
             }
         } else if (StateManager.getCurrentState() instanceof ScoresState) {

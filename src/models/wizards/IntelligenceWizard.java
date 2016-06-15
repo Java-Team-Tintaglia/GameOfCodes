@@ -15,6 +15,4 @@ public class IntelligenceWizard extends Wizard{
         int intelligence = student.getIntelligence() + 5;
         student.setVitality(intelligence);
     }
-
-
 }

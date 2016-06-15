@@ -33,19 +33,19 @@ public class KeyInput implements KeyListener {
         	 int keyCode = e.getKeyCode();
         	 
              if (keyCode == KeyEvent.VK_UP) {
-                 GameState.student.isMovingUp = true;
+                 GameState.student.setMovingUp(true);
              }
              
              if (keyCode == KeyEvent.VK_DOWN) {
-                 GameState.student.isMovingDown = true;
+                 GameState.student.setMovingDown(true);
              }
              
              if (keyCode == KeyEvent.VK_LEFT) {
-                 GameState.student.isMovingLeft = true;
+                 GameState.student.setMovingLeft(true);
              }
              
              if (keyCode == KeyEvent.VK_RIGHT) {
-                 GameState.student.isMovingRight = true;
+                 GameState.student.setMovingRight(true);
              }
         }
     }
@@ -56,19 +56,19 @@ public class KeyInput implements KeyListener {
 	    	 int keyCode = e.getKeyCode();
 	    	 
 	         if (keyCode == KeyEvent.VK_UP) {
-	             GameState.student.isMovingUp = false;
+	             GameState.student.setMovingUp(false);
 	         }
 	         
 	         if (keyCode == KeyEvent.VK_DOWN) {
-	             GameState.student.isMovingDown = false;
+	             GameState.student.setMovingDown(false);
 	         }
 	         
 	         if (keyCode == KeyEvent.VK_LEFT) {
-	             GameState.student.isMovingLeft = false;
+	             GameState.student.setMovingLeft(false);
 	         }
 	         
 	         if (keyCode == KeyEvent.VK_RIGHT) {
-	             GameState.student.isMovingRight = false;
+	             GameState.student.setMovingRight(false);
 	         }
     	}
     }
