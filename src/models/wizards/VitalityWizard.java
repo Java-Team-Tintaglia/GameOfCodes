@@ -7,7 +7,7 @@ import models.students.Student;
 public class VitalityWizard extends Wizard {
 
 	public VitalityWizard(int x , int y) {
-        super(x, y, WizardType.VITALITY_WIZARD, Assets.wizard);
+        super(x, y, WizardType.VITALITY_WIZARD, Assets.wizardBeer);
     }
 	
     @Override
