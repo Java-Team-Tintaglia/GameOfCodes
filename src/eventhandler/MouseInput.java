@@ -15,6 +15,7 @@ import states.ScoresState;
 import states.StateManager;
 import states.StudentScoreState;
 
+import static repositories.StudentScoresRepository.studentsScore;
 
 public class MouseInput implements MouseListener {
 	private Display display;
@@ -87,7 +88,7 @@ public class MouseInput implements MouseListener {
         		String studentName = studentScoreState.getStudent().getName();
         		
         		for (Entry<String, List<Integer>> score : studentScoreState.getStudent().getStudentGrades().entrySet()) {
-        			StudentScoresRepository.saveToFile(studentName, score.getKey(), score.getValue());
+        			StudentScoresRepository.saveToFile(studentsScore);
 				}
         		
                 StateManager.setCurrentState(new MainMenuState());

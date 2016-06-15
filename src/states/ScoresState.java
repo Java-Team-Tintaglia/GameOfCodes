@@ -6,9 +6,8 @@ import repositories.StudentScoresRepository;
 import utils.Constants;
 
 import java.awt.*;
-import java.util.LinkedHashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class ScoresState extends State {
 
@@ -21,11 +20,13 @@ public class ScoresState extends State {
 
         graphics.drawImage(Assets.highScoresBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-        Font font = new Font("Arial", Font.ITALIC, 25);
+        Font font = new Font("Consolas", Font.PLAIN, 25);
         graphics.setFont(font);
         graphics.setColor(Color.white);
 
-        
+        graphics.drawString("Player name", 160, yCoord);
+        graphics.drawString("Average grade", 540, yCoord);
+        TreeMap<Float, String> topScores = new TreeMap<>(Collections.reverseOrder());
         for(Map.Entry<String, LinkedHashMap<String, List<Integer>>> student : StudentScoresRepository.studentsScore.entrySet()){
             String name = student.getKey();
             LinkedHashMap<String, List<Integer>> scores = student.getValue();
@@ -37,9 +38,21 @@ public class ScoresState extends State {
                 averageScore /= score.getValue().size();
             }
 
-            graphics.drawString(name, 120, yCoord);
-            graphics.drawString(String.format("%.2f", averageScore), 540, yCoord);
-            yCoord += 40;
+            topScores.put(averageScore, name);
+
+            //TODO: Fix the ordering of the scores
+            int counter = 1;
+            for(Map.Entry<Float, String> score : topScores.entrySet()){
+                yCoord += 40;
+                graphics.drawString(String.format("%d", counter), 120, yCoord);
+                graphics.drawString(name, 160, yCoord);
+                graphics.drawString(String.format("%.2f", averageScore), 560, yCoord);
+                counter++;
+                if(counter == 10){
+                    break;
+                }
+            }
+
         }
         
         backToMenuButton.draw(graphics);
