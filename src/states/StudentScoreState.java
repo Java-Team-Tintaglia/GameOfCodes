@@ -25,7 +25,7 @@ public class StudentScoreState extends State {
         
     	graphics.drawString(this.student.getName(),500,204);
 
-        int currentY = 300;
+        int currentY = 280;
         for (Map.Entry<String,List<Integer>> entry : this.student.getStudentGrades().entrySet()) {
             Double grade = 0d;
             int count = 0;
@@ -35,8 +35,8 @@ public class StudentScoreState extends State {
             }
             grade/= count;
             graphics.drawString(entry.getKey(), 420, currentY);
-            graphics.drawString(grade.toString(), 550, currentY);
-            currentY+=50;
+            graphics.drawString(grade.toString(), 570, currentY);
+            currentY+=40;
         }
         
         backToMenuButton.draw(graphics);
