@@ -7,10 +7,7 @@ import utils.Constants;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Student extends GameObject {
 
@@ -146,23 +143,25 @@ public abstract class Student extends GameObject {
 
     public int calculateGrade(ProgrammingLanguage language) {
         int grade = Constants.FAILURE;
-        int ratio = (this.getKnowledge() * this.getVitality()) / this.getIntelligence();
+        int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / 3;
+        int random = new Random().nextInt(ratio);
 
-        if (this.vitality <= 0 || ratio <= 30) {
+        if (this.vitality <= 0 || random <= (0.2 * ratio)) {
             grade = Constants.FAILURE;
-        } else if (ratio > 30 && ratio <= 60) {
+        } else if (random > (0.2 * ratio) && random <= (0.4 * ratio)) {
             grade = Constants.PASSABLE;
-        } else if (ratio > 60 && ratio <= 80) {
+        } else if (random > (0.4 * ratio) && random <= (0.6 * ratio)) {
             grade = Constants.GOOD;
-        } else if (ratio > 80 && ratio <= 100) {
+        } else if (random > (0.6 * ratio) && random <= (0.8 * ratio)) {
             grade = Constants.VERY_GOOD;
         } else {
             grade = Constants.EXCELLENT;
         }
 
-
         switch (grade) {
             case Constants.FAILURE:
+                int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
+                this.setVitality(vitality);
                 break;
             case Constants.PASSABLE:
                 this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.3));
@@ -178,9 +177,6 @@ public abstract class Student extends GameObject {
                 break;
         }
 
-        int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
-        this.setVitality(vitality);
-        
         return grade;
     }
 

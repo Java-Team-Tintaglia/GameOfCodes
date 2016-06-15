@@ -33,8 +33,7 @@ public abstract class ProgrammingLanguage extends GameObject {
 
 		this.programmingLanguageType = programmingLanguageType;
 		this.vitalityDamagePoints = vitalityDamagePoints;
-		//this.knowledgePoints = knowledgePoints;
-		this.knowledgePoints = 999;
+		this.knowledgePoints = knowledgePoints;
 		this.image = image;
 		this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.image.getWidth(), this.image.getHeight());
