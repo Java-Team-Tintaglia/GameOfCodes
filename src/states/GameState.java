@@ -20,8 +20,8 @@ public class GameState extends State {
     private Wizard wizard;
     private long timerNewWizard = System.nanoTime();
 	private long timerNewProgrammingLanguage = System.nanoTime();
-	private long timeDelayNewWizard = 1000;
-	private long timeDelayNewProgrammingLanguage = 500;
+	private long timeDelayNewWizard = 2500;
+	private long timeDelayNewProgrammingLanguage = 1500;
 	private long timerSeconds = System.nanoTime();
 	private long timeDelay = 1000;
 	private int seconds = 30;
@@ -67,7 +67,7 @@ public class GameState extends State {
 		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timerNewProgrammingLanguage) / 1000000;
 		long elapsedSeconds = (System.nanoTime() - this.timerSeconds) / 1000000;
 		
-    	CollisionHandler.collisionHandler(student, wizard, programmingLanguages);
+    	CollisionHandler.handleCollisions(student, wizard, programmingLanguages);
     	
     	
 
@@ -77,6 +77,7 @@ public class GameState extends State {
 		}
     	
         if (elapsedNewWizard > this.timeDelayNewWizard) {
+        	wizard.setExist(false);
 			wizard = MapInitializor.generateWizard();
 			timerNewWizard = System.nanoTime();
 		}
@@ -89,7 +90,7 @@ public class GameState extends State {
         student.update();
 
         if (seconds <= 0) {
-			StateManager.setCurrentState(new ScoresState());
+			StateManager.setCurrentState(new StudentScoreState(student));
 		}
     }
 }

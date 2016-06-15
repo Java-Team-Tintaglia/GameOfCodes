@@ -2,14 +2,18 @@ package eventhandler;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
+import java.util.Map.Entry;
 
 import enums.StudentType;
 import graphics.Display;
+import repositories.StudentScoresRepository;
 import states.GameState;
 import states.MainMenuState;
 import states.PlayerCustomizationState;
 import states.ScoresState;
 import states.StateManager;
+import states.StudentScoreState;
 
 
 public class MouseInput implements MouseListener {
@@ -73,6 +77,17 @@ public class MouseInput implements MouseListener {
             }
         } else if (StateManager.getCurrentState() instanceof ScoresState) {
         	if (ScoresState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+                StateManager.setCurrentState(new MainMenuState());
+            }
+        } else if (StateManager.getCurrentState() instanceof StudentScoreState) {
+        	if (StudentScoreState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+        		StudentScoreState studentScoreState = (StudentScoreState)StateManager.getCurrentState();
+        		String studentName = studentScoreState.getStudent().getName();
+        		
+        		for (Entry<String, List<Integer>> score : studentScoreState.getStudent().getStudentGrades().entrySet()) {
+        			StudentScoresRepository.saveToFile(studentName, score.getKey(), score.getValue());
+				}
+        		
                 StateManager.setCurrentState(new MainMenuState());
             }
         }

@@ -1,19 +1,20 @@
 package models.students;
 
-import enums.ProgrammingLanguageType;
-import graphics.Assets;
 import graphics.SpriteSheet;
 import models.GameObject;
 import models.programmingLanguages.ProgrammingLanguage;
 import utils.Constants;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public abstract class Student extends GameObject {
 
-    private static final int DEFAULT_SPEED = 10;
+    private static final int DEFAULT_SPEED = 8;
     private int row;
     private int col;
     private String name;
@@ -35,7 +36,7 @@ public abstract class Student extends GameObject {
                    int width, int height, String name,
                    int intelligence, int knowledge, int vitality) {
         super(x, y);
-        this.spriteSheet = spriteSheet;//ok
+        this.spriteSheet = spriteSheet;
         this.width = width;
         this.height = height;
         this.name = name;
@@ -103,61 +104,95 @@ public abstract class Student extends GameObject {
         return colliderBox;
     }
 
-    public boolean intersects(Rectangle boundingbox) {
-        if (this.colliderBox.intersects(boundingbox) || boundingbox.intersects(this.colliderBox)) {
-            return true;
-        }
-        return false;
-
-    }
-
 
     @Override
     public void draw(Graphics graphics) {
 
         graphics.drawImage(this.spriteSheet.crop(col * width, row * height,
                this.width, this.height), this.getX(), this.getY(), null);
-
-
     }
 
 
     @Override
     public void update() {
 
-
-        boolean ismoVing = isMovingDown || isMovingRight ||
-                isMovingUp || isMovingLeft;
-        if (ismoVing) {
+        boolean isMoving= isMovingDown || 
+        		isMovingRight ||
+                isMovingUp || 
+                isMovingLeft;
+        
+        if (isMoving) {
             col++;
             col = (col ) % 3;
 
             if (isMovingLeft) {
                 row = 1;
-
             } else if (isMovingRight) {
                 row = 2;
-
             } else if (isMovingUp) {
                 row = 3;
-
-
             } else if (isMovingDown) {
-
                 row = 0;
-
             }
-
-
         } else {
             row = 0;
             col = 1;
         }
+        
         this.getColliderBox().setBounds(this.getX(), this.getY(),
                 this.width, this.height);
         move();
     }
 
+    public int calculateGrade(ProgrammingLanguage language) {
+        int grade = Constants.FAILURE;
+        int ratio = (this.getKnowledge() * this.getVitality()) / this.getIntelligence();
+
+        if (this.vitality <= 0 || ratio <= 30) {
+            grade = Constants.FAILURE;
+        } else if (ratio > 30 && ratio <= 60) {
+            grade = Constants.PASSABLE;
+        } else if (ratio > 60 && ratio <= 80) {
+            grade = Constants.GOOD;
+        } else if (ratio > 80 && ratio <= 100) {
+            grade = Constants.VERY_GOOD;
+        } else {
+            grade = Constants.EXCELLENT;
+        }
+
+
+        switch (grade) {
+            case Constants.FAILURE:
+                break;
+            case Constants.PASSABLE:
+                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.3));
+                break;
+            case Constants.GOOD:
+                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.6));
+                break;
+            case Constants.VERY_GOOD:
+                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.8));
+                break;
+            case Constants.EXCELLENT:
+                this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
+                break;
+        }
+
+        int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
+        this.setVitality(vitality);
+        
+        return grade;
+    }
+
+    public void addScore(int grade, ProgrammingLanguage language) {
+        
+        if (!this.studentGrades.containsKey(language.getProgrammingLanguageType().getName())) {
+            this.studentGrades.put(language.getProgrammingLanguageType().getName(), new ArrayList<>());
+        }
+
+        this.studentGrades.get(language.getProgrammingLanguageType().getName()).add(grade);
+    }
+    
     private void move() {
         if (isMovingRight && this.getX() + DEFAULT_SPEED <= 988) {
             this.setX(this.getX() + DEFAULT_SPEED);
@@ -171,55 +206,5 @@ public abstract class Student extends GameObject {
         if (isMovingUp && this.getY() - DEFAULT_SPEED >= 255) {
             this.setY(this.getY() - DEFAULT_SPEED);
         }
-    }
-
-    public int calculateGrade(ProgrammingLanguage language) {
-        int grade = Constants.FAILURE;
-        int ratio = (this.getKnowledge() * this.getVitality()) / this.getIntelligence();
-
-        if (ratio <= 30) {
-            grade = Constants.FAILURE;
-        } else if (ratio > 30 && ratio <= 60) {
-            grade = Constants.PASSABLE;
-        } else if (ratio > 60 && ratio <= 80) {
-            grade = Constants.GOOD;
-        } else if (ratio > 80 && ratio <= 100) {
-            grade = Constants.VERY_GOOD;
-        } else {
-            grade = Constants.EXCELLENT;
-        }
-
-        int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
-        this.setVitality(vitality);
-
-        switch (grade) {
-            case 2:
-                break;
-            case 3:
-                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.3));
-                break;
-            case 4:
-                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.6));
-                break;
-            case 5:
-                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.8));
-                break;
-            case 6:
-                this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
-                break;
-            default:
-                break;
-        }
-
-        return grade;
-    }
-
-    public void addScore(int grade, ProgrammingLanguage language) {
-        
-        if (!this.studentGrades.containsKey(language.getProgrammingLanguageType().getName())) {
-            this.studentGrades.put(language.getProgrammingLanguageType().getName(), new ArrayList<>());
-        }
-
-        this.studentGrades.get(language.getProgrammingLanguageType().getName()).add(grade);
     }
 }

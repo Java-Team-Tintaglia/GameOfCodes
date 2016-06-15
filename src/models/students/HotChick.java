@@ -3,8 +3,8 @@ package models.students;
 import graphics.Assets;
 
 public class HotChick extends Student{
-    private static int imageWidth=40;
-    private static int imageHeidth=40;
+    private static final int imageWidth = 40;
+    private static final int imageHeidth = 40;
 
     public HotChick(int x, int y, String name)
     {

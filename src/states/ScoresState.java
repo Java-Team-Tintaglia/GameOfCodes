@@ -10,8 +10,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static repositories.StudentScoresRepository.students;
-
 public class ScoresState extends State {
 
 	public static Button backToMenuButton = new Button(730, 500, Assets.buttonBackToMenu);
@@ -27,7 +25,8 @@ public class ScoresState extends State {
         graphics.setFont(font);
         graphics.setColor(Color.white);
 
-        for(Map.Entry<String, LinkedHashMap<String, List<Integer>>> student : students.entrySet()){
+        
+        for(Map.Entry<String, LinkedHashMap<String, List<Integer>>> student : StudentScoresRepository.studentsScore.entrySet()){
             String name = student.getKey();
             LinkedHashMap<String, List<Integer>> scores = student.getValue();
             float averageScore = 0;

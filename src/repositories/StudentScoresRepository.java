@@ -9,9 +9,10 @@ import java.util.TreeMap;
 import static utils.Constants.SAVE_FILE_PATH;
 
 public class StudentScoresRepository {
-    public static TreeMap<String, LinkedHashMap<String, List<Integer>>> students
-            = new TreeMap<String, LinkedHashMap<String, List<Integer>>>();
+    public static TreeMap<String, LinkedHashMap<String, List<Integer>>> studentsScore
+            = new TreeMap<>();
 
+    // da priema MAP i da se foreachva i zapisva
     public static void saveToFile(String name, String subject, List<Integer> grades){
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(SAVE_FILE_PATH))){
             StringBuilder save = new StringBuilder();
@@ -40,16 +41,16 @@ public class StudentScoresRepository {
                     grades.add(Integer.parseInt(data[i]));
                 }
 
-                if(!students.containsKey(studentName)){
-                    students.put(studentName, new LinkedHashMap<String, List<Integer>>());
+                if(!studentsScore.containsKey(studentName)){
+                	studentsScore.put(studentName, new LinkedHashMap<String, List<Integer>>());
                 }
 
-                if(!(students.get(studentName).containsKey(subject))){
-                    students.get(studentName).put(subject, new ArrayList<>());
+                if(!(studentsScore.get(studentName).containsKey(subject))){
+                	studentsScore.get(studentName).put(subject, new ArrayList<>());
                 }
 
                 for(Integer grade : grades){
-                    students.get(studentName).get(subject).add(grade);
+                	studentsScore.get(studentName).get(subject).add(grade);
                 }
 
                 line = bufferedReader.readLine();
