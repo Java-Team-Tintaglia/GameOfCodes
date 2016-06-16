@@ -3,7 +3,7 @@ package eventhandler;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
-import java.util.Map.Entry;
+import java.util.Map;
 
 import enums.StudentType;
 import graphics.Display;
@@ -14,8 +14,6 @@ import states.PlayerCustomizationState;
 import states.ScoresState;
 import states.StateManager;
 import states.StudentScoreState;
-
-import static repositories.StudentScoresRepository.studentsScore;
 
 public class MouseInput implements MouseListener {
 	private Display display;
@@ -86,10 +84,9 @@ public class MouseInput implements MouseListener {
         	if (StudentScoreState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
         		StudentScoreState studentScoreState = (StudentScoreState)StateManager.getCurrentState();
         		String studentName = studentScoreState.getStudent().getName();
+        		Map<String, List<Integer>> studentGrades = studentScoreState.getStudent().getStudentGrades();
         		
-        		for (Entry<String, List<Integer>> score : studentScoreState.getStudent().getStudentGrades().entrySet()) {
-        			StudentScoresRepository.saveToFile(studentsScore);
-				}
+        		StudentScoresRepository.saveToFile(studentName, studentGrades);
         		
                 StateManager.setCurrentState(new MainMenuState());
             }

@@ -21,8 +21,8 @@ public class GameState extends State {
     
     private long timerNewWizard = System.nanoTime();
 	private long timerNewProgrammingLanguage = System.nanoTime();
-	private long timeDelayNewWizard = 2000;
-	private long timeDelayNewProgrammingLanguage = 1000;
+	private long timeDelayNewWizard = 3000;
+	private long timeDelayNewProgrammingLanguage = 2000;
 	private long timerSeconds = System.nanoTime();
 	private long timeDelay = 1000;
 	private int seconds = 30;
@@ -34,7 +34,7 @@ public class GameState extends State {
     	studentFactory = new StudentFactory();
 		student = studentFactory.create(studentType, 500, 500, name);
 		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
-    	wizard = MapInitializor.generateWizard();
+		wizard = MapInitializor.generateWizard();
 	}
     
     @Override

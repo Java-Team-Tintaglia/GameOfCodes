@@ -15,10 +15,11 @@ public class PlayerCustomizationState extends State {
     public static boolean isSelected = false;
     
     public static Button playButton = new Button(800, 520, Assets.buttonPlay);
-    public static Button badBoyButton = new Button(74, 400, Assets.buttonBadBoy);
-    public static Button hotChickButton = new Button(316, 400, Assets.buttonHotChick);
-    public static Button nerdBoyButton = new Button(558, 400, Assets.buttonNerdBoy);
-    public static Button nerdLadyButton = new Button(800, 400, Assets.buttonNerdLady);
+    
+    public static Button badBoyButton = new Button(74, 300, Assets.buttonBadBoy);
+    public static Button hotChickButton = new Button(316, 300, Assets.buttonHotChick);
+    public static Button nerdBoyButton = new Button(558, 300, Assets.buttonNerdBoy);
+    public static Button nerdLadyButton = new Button(800, 300, Assets.buttonNerdLady);
 
     @Override
     public void draw(Graphics graphics) {
@@ -30,28 +31,28 @@ public class PlayerCustomizationState extends State {
         graphics.setColor(Color.green);
 
         String name = "Enter Name:";
-        graphics.drawString(name, 80, 500);
-        graphics.fillRect(74, 520, 205, 40);
+        graphics.drawString(name, 400, 410);
+        graphics.fillRect(400, 420, 205, 40);
 
         if (isSelected) {
             switch (studentType) {
                 case BAD_BOY:
-                    graphics.drawRect(64, 390, 170, 60);
+                    graphics.drawRect(64, 290, 170, 60);
                     break;
                 case HOT_CHICK:
-                    graphics.drawRect(306, 390, 170, 60);
+                    graphics.drawRect(306, 290, 170, 60);
                     break;
                 case NERD_BOY:
-                    graphics.drawRect(548, 390, 170, 60);
+                    graphics.drawRect(548, 290, 170, 60);
                     break;
                 case NERD_LADY:
-                    graphics.drawRect(790, 390, 170, 60);
+                    graphics.drawRect(790, 290, 170, 60);
                     break;
             }
         }
 
         graphics.setColor(Color.black);
-        graphics.drawString(stringBuilger.toString(), 80, 545);
+        graphics.drawString(stringBuilger.toString(), 410, 450);
 
         playButton.draw(graphics);
         badBoyButton.draw(graphics);

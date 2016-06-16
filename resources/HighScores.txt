@@ -1,2 +1,2 @@
-MARIA PHP,3,2,3,5,3,5,6;
-TSVETELIN JAVA,3,3,3,3;PHP,3,4,3,4,2,2;
+MARIA C#:6,5,5,;Java:5,6,;C++:5,6,;JavaScript:3,4,5,4,5,6,5,;PHP:5,6,;
+MARI C#:6,;Java:3,4,5,2,5,;C++:6,4,4,2,6,;JavaScript:4,5,;PHP:5,4,;
