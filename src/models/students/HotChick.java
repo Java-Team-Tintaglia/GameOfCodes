@@ -6,8 +6,7 @@ public class HotChick extends Student{
     private static final int imageWidth = 40;
     private static final int imageHeidth = 40;
 
-    public HotChick(int x, int y, String name)
-    {
-        super(x, y, Assets.hotChickPlayer, imageWidth, imageHeidth, name, 70, 60, 120);
+    public HotChick(String firstName, String surname, String username, String password) {
+        super(Assets.hotChickPlayer, imageWidth, imageHeidth, 70, 60, 120, firstName, surname, username, password);
     }
 }

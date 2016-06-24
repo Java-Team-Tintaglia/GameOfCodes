@@ -7,6 +7,7 @@ import java.util.List;
 import factories.StudentFactory;
 import graphics.Assets;
 import models.programmingLanguages.*;
+import models.students.NerdBoy;
 import models.students.Student;
 import models.wizards.Wizard;
 import utils.Constants;
@@ -31,8 +32,9 @@ public class GameState extends State {
     private StudentFactory studentFactory;
 
     public GameState(StudentType studentType, String name) {
-    	studentFactory = new StudentFactory();
-		student = studentFactory.create(studentType, 500, 500, name);
+    	//studentFactory = new StudentFactory();
+		//student = studentFactory.create(studentType, 500, 500, name);
+    	student = new NerdBoy("nerd", "boy", "nerd_boy", "1234");
 		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 		wizard = MapInitializor.generateWizard();
 	}

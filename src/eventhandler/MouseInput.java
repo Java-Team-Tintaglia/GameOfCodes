@@ -83,7 +83,7 @@ public class MouseInput implements MouseListener {
         } else if (StateManager.getCurrentState() instanceof StudentScoreState) {
         	if (StudentScoreState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
         		StudentScoreState studentScoreState = (StudentScoreState)StateManager.getCurrentState();
-        		String studentName = studentScoreState.getStudent().getName();
+        		String studentName = studentScoreState.getStudent().getFirstName();
         		Map<String, List<Integer>> studentGrades = studentScoreState.getStudent().getStudentGrades();
         		
         		StudentScoresRepository.saveToFile(studentName, studentGrades);

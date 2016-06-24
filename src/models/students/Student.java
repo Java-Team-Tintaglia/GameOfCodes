@@ -15,7 +15,7 @@ public abstract class Student extends GameObject implements User {
     private static final int DEFAULT_SPEED = 8;
     private int row;
     private int col;
-    private String name;
+
     private SpriteSheet spriteSheet;
     private int width;
     private int height;
@@ -23,30 +23,75 @@ public abstract class Student extends GameObject implements User {
     private int knowledge;
     private int vitality;
     private Rectangle colliderBox;
+    
     private Map<String, List<Integer>> studentGrades;
+    
+    private String username;
+    private String password;
+    private String firstName;
+    private String surname;
 
     private boolean isMovingLeft;
     private boolean isMovingRight;
     private boolean isMovingUp;
     private boolean isMovingDown;
 
-    public Student(int x, int y, SpriteSheet spriteSheet,
-                   int width, int height, String name,
-                   int intelligence, int knowledge, int vitality) {
-        super(x, y);
+    public Student(SpriteSheet spriteSheet,
+                   int width, int height,
+                   int intelligence, int knowledge, int vitality, 
+                   String firstName, String surname,
+                   String username, String password) {
+        super(Constants.DEFAUL_PLAYER_X_COORD, Constants.DEFAUL_PLAYER_Y_COORD);
+        
         this.spriteSheet = spriteSheet;
         this.width = width;
         this.height = height;
-        this.name = name;
+        
+        this.firstName = firstName;
+        this.surname = surname;
+        this.username = username;
+        this.password = password;
+        
         this.intelligence = intelligence;
         this.knowledge = knowledge;
         this.vitality = vitality;
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.width, this.height);
+        
         this.studentGrades = new HashMap<>();
     }
 
-    public int getWidth() {
+	@Override
+	public String getUsername() {
+		return this.username;
+	}
+
+	@Override
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public int getWidth() {
         return width;
     }
 
@@ -62,16 +107,8 @@ public abstract class Student extends GameObject implements User {
         this.height = height;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public Map<String, List<Integer>> getStudentGrades() {
         return studentGrades;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getIntelligence() {

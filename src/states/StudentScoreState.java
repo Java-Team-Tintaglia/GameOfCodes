@@ -25,7 +25,7 @@ public class StudentScoreState extends State {
     	graphics.setFont(new Font("Arial", Font.BOLD, 20));
         graphics.setColor(Color.green);
         
-    	graphics.drawString(this.student.getName(),510,205);
+    	graphics.drawString(this.student.getUsername(),510,205);
         
     	int currentY = 280;
         for (Map.Entry<String, List<Integer>> entry : this.student.getStudentGrades().entrySet()) {

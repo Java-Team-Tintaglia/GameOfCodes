@@ -18,22 +18,22 @@ public class StudentFactory {
 		}
 
 		if (type == null) {
-			student = new BadBoy(x, y, name);
+			//student = new BadBoy(x, y, name);
 			return student;
 		}
 		
 		switch (type) {
 		case NERD_LADY:
-			student = new NerdLady(x, y, name);
+			//student = new NerdLady(x, y, name);
 			break;
 		case NERD_BOY:
-			student = new NerdBoy(x, y, name);
+			//student = new NerdBoy(x, y, name);
 			break;
 		case BAD_BOY:
-			student = new BadBoy(x, y, name);
+			//student = new BadBoy(x, y, name);
 			break;
 		case HOT_CHICK:
-			student = new HotChick(x, y, name);
+			//student = new HotChick(x, y, name);
 			break;
 
 		}

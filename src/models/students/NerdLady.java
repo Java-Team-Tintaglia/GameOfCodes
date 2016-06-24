@@ -7,7 +7,7 @@ public class NerdLady extends Student {
 	private static final int imageWidth = 41;
 	private static final int imageHeight = 44;
 
-	public NerdLady(int x, int y, String name) {
-		super(x, y, Assets.nerdLadyPlayer, imageWidth, imageHeight, name, 80, 70, 100);
+	public NerdLady(String firstName, String surname, String username, String password) {
+		super(Assets.nerdLadyPlayer, imageWidth, imageHeight, 80, 70, 100, firstName, surname, username, password);
 	}
 }
