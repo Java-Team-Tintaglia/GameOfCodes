@@ -5,6 +5,7 @@ import java.awt.*;
 import enums.StudentType;
 import graphics.Assets;
 import models.Button;
+import repositories.UserRepository;
 import utils.Constants;
 
 public class PlayerCustomizationState extends State {
@@ -21,7 +22,12 @@ public class PlayerCustomizationState extends State {
     public static Button nerdBoyButton = new Button(558, 300, Assets.buttonNerdBoy);
     public static Button nerdLadyButton = new Button(800, 300, Assets.buttonNerdLady);
 
-    @Override
+   
+    public PlayerCustomizationState(UserRepository userRepository) {
+		super(userRepository);
+	}
+
+	@Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.playerCustomization, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.selectPlayer, 362, 30, 300, 70, null);

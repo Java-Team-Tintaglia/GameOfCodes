@@ -3,6 +3,7 @@ package states;
 import graphics.Assets;
 import models.Button;
 import repositories.StudentScoresRepository;
+import repositories.UserRepository;
 import utils.Constants;
 
 import java.awt.*;
@@ -15,7 +16,11 @@ public class ScoresState extends State {
 
 	public static Button backToMenuButton = new Button(730, 500, Assets.buttonBackToMenu);
 	
-    @Override
+    public ScoresState(UserRepository userRepository) {
+		super(userRepository);
+	}
+
+	@Override
     public void draw(Graphics graphics) {
         int yCoord = 125;
         StudentScoresRepository.readFromFile();

@@ -7,6 +7,8 @@ import eventhandler.KeyInput;
 import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
+import models.User;
+import repositories.UserRepository;
 import states.MainMenuState;
 import states.State;
 import states.StateManager;
@@ -22,6 +24,7 @@ public class GameEngine implements Runnable {
     private KeyInput keyinput;
     private State mainMenuState;
     private MouseInput mouseInput;
+    private UserRepository userRepository;
 
     public GameEngine(String title) {
         this.title = title;
@@ -112,11 +115,13 @@ public class GameEngine implements Runnable {
 
     private void init() {
         Assets.init();
-        this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);
-        this.keyinput = new KeyInput(this, this.display);
-        this.mouseInput = new MouseInput(this.display);
+        this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);      
+        userRepository = new UserRepository();
+        userRepository.load();
         
-        mainMenuState = new MainMenuState();
+        this.keyinput = new KeyInput(this, this.display);
+        this.mouseInput = new MouseInput(this.display, userRepository);
+        mainMenuState = new MainMenuState(userRepository);
         StateManager.setCurrentState(mainMenuState);
     }
 }

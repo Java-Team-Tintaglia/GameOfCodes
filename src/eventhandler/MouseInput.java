@@ -8,6 +8,7 @@ import java.util.Map;
 import enums.StudentType;
 import graphics.Display;
 import repositories.StudentScoresRepository;
+import repositories.UserRepository;
 import states.GameState;
 import states.MainMenuState;
 import states.PlayerCustomizationState;
@@ -17,10 +18,12 @@ import states.StudentScoreState;
 
 public class MouseInput implements MouseListener {
 	private Display display;
+	private UserRepository userRepository;
 
-    public MouseInput(Display display) {
+    public MouseInput(Display display, UserRepository userRepository) {
         display.getCanvas().addMouseListener(this);
         this.display = display;    
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -36,12 +39,12 @@ public class MouseInput implements MouseListener {
         if(StateManager.getCurrentState() instanceof MainMenuState) {
             // Play Button
         	if(MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new PlayerCustomizationState());
+                StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
             }
 
             // Scores Button
             if (MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new ScoresState());
+                StateManager.setCurrentState(new ScoresState(userRepository));
             }
             
             // Exit Button
@@ -70,7 +73,8 @@ public class MouseInput implements MouseListener {
         	if (PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
         		String name = PlayerCustomizationState.stringBuilger.toString();
         		StudentType type = PlayerCustomizationState.studentType;
-                StateManager.setCurrentState(new GameState(type, name));
+        		
+                StateManager.setCurrentState(new GameState(userRepository, type, name));
                 
                 PlayerCustomizationState.stringBuilger.setLength(0);
                 PlayerCustomizationState.isSelected = false;
@@ -78,17 +82,17 @@ public class MouseInput implements MouseListener {
             }
         } else if (StateManager.getCurrentState() instanceof ScoresState) {
         	if (ScoresState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new MainMenuState());
+                StateManager.setCurrentState(new MainMenuState(userRepository));
             }
         } else if (StateManager.getCurrentState() instanceof StudentScoreState) {
         	if (StudentScoreState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
         		StudentScoreState studentScoreState = (StudentScoreState)StateManager.getCurrentState();
-        		String studentName = studentScoreState.getStudent().getFirstName();
+        		String studentName = studentScoreState.getStudent().getUsername();
         		Map<String, List<Integer>> studentGrades = studentScoreState.getStudent().getStudentGrades();
         		
         		StudentScoresRepository.saveToFile(studentName, studentGrades);
         		
-                StateManager.setCurrentState(new MainMenuState());
+                StateManager.setCurrentState(new MainMenuState(userRepository));
             }
         }
     }

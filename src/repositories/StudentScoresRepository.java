@@ -6,14 +6,12 @@ import java.util.Map.Entry;
 
 import utils.Constants;
 
-import static utils.Constants.SAVE_FILE_PATH;
-
 public class StudentScoresRepository {
     public static TreeMap<String, List<Integer>> studentsScore
             = new TreeMap<>();
 
     public static void saveToFile(String studentName, Map<String, List<Integer>> studentsGrades){
-    	 try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.SAVE_FILE_PATH, true), true)) { 	
+    	 try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.SCORES_FILE_PATH, true), true)) { 	
         	StringBuilder save = new StringBuilder();
         	save.append(studentName + " ");
         	for(Entry<String, List<Integer>> studentGrades : studentsGrades.entrySet()){
@@ -38,7 +36,7 @@ public class StudentScoresRepository {
     }
 
     public static void readFromFile() {
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(SAVE_FILE_PATH))){
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.SCORES_FILE_PATH))){
             String line = bufferedReader.readLine();
             
             while (line != null) {

@@ -10,6 +10,7 @@ import models.programmingLanguages.*;
 import models.students.NerdBoy;
 import models.students.Student;
 import models.wizards.Wizard;
+import repositories.UserRepository;
 import utils.Constants;
 import core.CollisionHandler;
 import core.MapInitializor;
@@ -30,16 +31,17 @@ public class GameState extends State {
 
 	public static Student student;
     private StudentFactory studentFactory;
-
-    public GameState(StudentType studentType, String name) {
-    	//studentFactory = new StudentFactory();
-		//student = studentFactory.create(studentType, 500, 500, name);
-    	student = new NerdBoy("nerd", "boy", "nerd_boy", "1234");
+ 
+    public GameState(UserRepository userRepository,StudentType studentType, String name) {
+		super(userRepository);
+		studentFactory = new StudentFactory();
+		student = studentFactory.create(studentType, Constants.DEFAUL_PLAYER_X_COORD, Constants.DEFAUL_PLAYER_Y_COORD, name);
 		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 		wizard = MapInitializor.generateWizard();
 	}
-    
-    @Override
+
+
+	@Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.floor, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
@@ -91,7 +93,7 @@ public class GameState extends State {
 		}
     	
         if (seconds <= 0) {
-			StateManager.setCurrentState(new StudentScoreState(student));
+			StateManager.setCurrentState(new StudentScoreState(getUserRepository(), student));
 		}
         
         student.update();

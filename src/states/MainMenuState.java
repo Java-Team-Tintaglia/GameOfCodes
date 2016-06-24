@@ -4,6 +4,7 @@ import  java.awt.Graphics;
 
 import graphics.Assets;
 import models.Button;
+import repositories.UserRepository;
 import utils.Constants;
 
 public class MainMenuState extends State {
@@ -12,7 +13,11 @@ public class MainMenuState extends State {
     public static Button buttonScore = new Button(800,450,Assets.buttonScore);
     public static Button buttonExit = new Button(800,520,Assets.buttonExit);
 
-    @Override
+	public MainMenuState(UserRepository userRepository) {
+		super(userRepository);
+	}
+
+	@Override
     public void draw(Graphics graphics) {
     	graphics.drawImage(Assets.mainMenu, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
@@ -24,4 +29,5 @@ public class MainMenuState extends State {
     @Override
     public void update() {
     }
+
 }

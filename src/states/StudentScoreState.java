@@ -7,6 +7,7 @@ import java.util.Map;
 import graphics.Assets;
 import models.Button;
 import models.students.Student;
+import repositories.UserRepository;
 import utils.Constants;
 
 public class StudentScoreState extends State {
@@ -14,12 +15,15 @@ public class StudentScoreState extends State {
     private Student student;
 
     public static Button backToMenuButton = new Button(730, 520, Assets.buttonBackToMenu);
-    
-    public StudentScoreState(Student student) {
-        this.student = student;
-    }
 
-    @Override
+    public StudentScoreState(UserRepository userRepository, Student student) {
+		super(userRepository);
+		this.student = student;
+	}
+
+
+
+	@Override
     public void draw(Graphics graphics) {
     	graphics.drawImage(Assets.diploma, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
     	graphics.setFont(new Font("Arial", Font.BOLD, 20));

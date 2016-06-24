@@ -1,7 +1,6 @@
 package models.students;
 
 import graphics.SpriteSheet;
-import interfaces.User;
 import models.GameObject;
 import models.programmingLanguages.ProgrammingLanguage;
 import utils.Constants;
@@ -10,7 +9,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.*;
 
-public abstract class Student extends GameObject implements User {
+public abstract class Student extends GameObject {
 
     private static final int DEFAULT_SPEED = 8;
     private int row;
@@ -27,31 +26,22 @@ public abstract class Student extends GameObject implements User {
     private Map<String, List<Integer>> studentGrades;
     
     private String username;
-    private String password;
-    private String firstName;
-    private String surname;
 
     private boolean isMovingLeft;
     private boolean isMovingRight;
     private boolean isMovingUp;
     private boolean isMovingDown;
 
-    public Student(SpriteSheet spriteSheet,
+    public Student(int x, int y, SpriteSheet spriteSheet,
                    int width, int height,
                    int intelligence, int knowledge, int vitality, 
-                   String firstName, String surname,
-                   String username, String password) {
-        super(Constants.DEFAUL_PLAYER_X_COORD, Constants.DEFAUL_PLAYER_Y_COORD);
+                   String username) {
+        super(x, y);
         
         this.spriteSheet = spriteSheet;
         this.width = width;
-        this.height = height;
-        
-        this.firstName = firstName;
-        this.surname = surname;
+        this.height = height;  
         this.username = username;
-        this.password = password;
-        
         this.intelligence = intelligence;
         this.knowledge = knowledge;
         this.vitality = vitality;
@@ -59,36 +49,10 @@ public abstract class Student extends GameObject implements User {
                 this.width, this.height);
         
         this.studentGrades = new HashMap<>();
-    }
+    }	
 
-	@Override
 	public String getUsername() {
-		return this.username;
-	}
-
-	@Override
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
+		return username;
 	}
 
 	public int getWidth() {
