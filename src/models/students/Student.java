@@ -1,6 +1,7 @@
 package models.students;
 
 import graphics.SpriteSheet;
+import interfaces.User;
 import models.GameObject;
 import models.programmingLanguages.ProgrammingLanguage;
 import utils.Constants;
@@ -9,7 +10,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.*;
 
-public abstract class Student extends GameObject {
+public abstract class Student extends GameObject implements User {
 
     private static final int DEFAULT_SPEED = 8;
     private int row;
