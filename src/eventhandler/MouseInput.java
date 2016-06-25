@@ -35,7 +35,7 @@ public class MouseInput implements MouseListener {
             // Play Button
         	if(MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
                 //set to RegistrationState for testing
-               // StateManager.setCurrentState(new RegistrationFormState(userRepository));
+                //StateManager.setCurrentState(new RegistrationFormState(userRepository));
                 StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
             }
 
@@ -104,6 +104,16 @@ public class MouseInput implements MouseListener {
             } else if (RegistrationFormState.passRect.contains(mouseX, mouseY)) {
                 RegistrationFormState.isFieldSelected = true;
                 RegistrationFormState.fieldType = "pass";
+            } else if (RegistrationFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+                RegistrationFormState.isFieldSelected = false;
+                RegistrationFormState.fieldType = null;
+                RegistrationFormState.userString.setLength(0);
+                RegistrationFormState.firstString.setLength(0);
+                RegistrationFormState.lastString.setLength(0);
+                RegistrationFormState.passString.setLength(0);
+                StateManager.setCurrentState(new MainMenuState(userRepository));
+            } else if (RegistrationFormState.registerButton.getColliderBox().contains(mouseX, mouseY)) {
+
             }
         }
     }

@@ -14,6 +14,11 @@ public class RegistrationFormState extends State {
     public static String lastName = "Last Name:";
     public static String password = "Password:";
 
+    public static StringBuilder userString = new StringBuilder();
+    public static StringBuilder firstString = new StringBuilder();
+    public static StringBuilder lastString = new StringBuilder();
+    public static StringBuilder passString = new StringBuilder();
+
     public static Button backToMenuButton = new Button(712, 510, Assets.buttonBackToMenu);
     public static Button registerButton = new Button(496, 510, Assets.buttonPlay);
 
@@ -78,6 +83,14 @@ public class RegistrationFormState extends State {
                     break;
             }
         }
+
+        Font inputText = new Font("Arial", Font.BOLD, 20);
+        graphics.setFont(inputText);
+        graphics.setColor(Color.black);
+        graphics.drawString(userString.toString(), rectBoxX + 30, rectBoxY + 25);
+        graphics.drawString(firstString.toString(), rectBoxX + 30, rectBoxY + 85);
+        graphics.drawString(lastString.toString(), rectBoxX + 30, rectBoxY + 145);
+        graphics.drawString(passString.toString(), rectBoxX + 30, rectBoxY + 205);
 
         backToMenuButton.draw(graphics);
         registerButton.draw(graphics);
