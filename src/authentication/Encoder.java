@@ -11,7 +11,7 @@ import java.io.UnsupportedEncodingException;
  */
 public class Encoder {
     public static final String DEFAULT_ENCODING = "UTF-8";
-    private static String encoded;
+    private static String cryptedPassword;
     private static String decoded;
     static BASE64Encoder enc = new BASE64Encoder();
     static BASE64Decoder dec = new BASE64Decoder();
@@ -38,8 +38,8 @@ public class Encoder {
         String key = "key phrase used for XOR-ing";
         password = xorMessage(password, key);
 
-        encoded = base64encode(password);
-        return encoded;
+        cryptedPassword = base64encode(password);
+        return cryptedPassword;
 
     }
 
@@ -82,5 +82,7 @@ public class Encoder {
         }
     }//xorMess
 
-
+    public static String getCryptedPassword() {
+        return cryptedPassword;
+    }
 }
