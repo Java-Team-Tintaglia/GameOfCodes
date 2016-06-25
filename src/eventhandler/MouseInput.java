@@ -1,20 +1,15 @@
 package eventhandler;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.util.List;
-import java.util.Map;
-
 import enums.StudentType;
 import graphics.Display;
 import repositories.StudentScoresRepository;
 import repositories.UserRepository;
-import states.GameState;
-import states.MainMenuState;
-import states.PlayerCustomizationState;
-import states.ScoresState;
-import states.StateManager;
-import states.StudentScoreState;
+import states.*;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.List;
+import java.util.Map;
 
 public class MouseInput implements MouseListener {
 	private Display display;
@@ -39,6 +34,8 @@ public class MouseInput implements MouseListener {
         if(StateManager.getCurrentState() instanceof MainMenuState) {
             // Play Button
         	if(MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
+                //set to RegistrationState for testing
+               // StateManager.setCurrentState(new RegistrationFormState(userRepository));
                 StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
             }
 
@@ -93,6 +90,20 @@ public class MouseInput implements MouseListener {
         		StudentScoresRepository.saveToFile(studentName, studentGrades);
         		
                 StateManager.setCurrentState(new MainMenuState(userRepository));
+            }
+        } else if (StateManager.getCurrentState() instanceof RegistrationFormState) {
+            if (RegistrationFormState.userRect.contains(mouseX, mouseY)) {
+                RegistrationFormState.isFieldSelected = true;
+                RegistrationFormState.fieldType = "user";
+            } else if (RegistrationFormState.firstRect.contains(mouseX, mouseY)) {
+                RegistrationFormState.isFieldSelected = true;
+                RegistrationFormState.fieldType = "first";
+            } else if (RegistrationFormState.lastRect.contains(mouseX, mouseY)) {
+                RegistrationFormState.isFieldSelected = true;
+                RegistrationFormState.fieldType = "last";
+            } else if (RegistrationFormState.passRect.contains(mouseX, mouseY)) {
+                RegistrationFormState.isFieldSelected = true;
+                RegistrationFormState.fieldType = "pass";
             }
         }
     }
