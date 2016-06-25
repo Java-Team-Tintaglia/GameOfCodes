@@ -1,36 +1,42 @@
 package authentication;
 
 import models.User;
+import repositories.UserRepository;
 
-/**
- * Created by PetyoPetrov on 25.06.2016 г..
- */
 public class AuthenticationProvider {
 
-    static User loggedUser;
+    public static User currentUser;
+    private UserRepository userRepository;
 
-    public User authenticate(User user){
-        loggedUser=new User(
-                user.getUsername(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getPassword()
-                );
-        //metod koito proverqva v bazata danni za takuv user at all
-//        boolean isExisting;
-//        if(isExisting){
-//
-//        }else {
-//
-//        }
-//        if(loggedUser.getPassword().equals(Encoder.getCryptedPassword())){
-//
-//        }else {
-//
-//        }
-        //aako do tuk ne hvurli Exception vru6tame koito lognatiq user
+    public AuthenticationProvider(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+    
+    public void authenticate(String username, String password) {
+    	User user = userRepository.findUserByUsername(username);
 
-        return loggedUser;
+    	if (user == null) {
+			// TODO new ErrorState
+    		return;
+		} 
+    	
+    	String decodedPass = Encoder.decryptPassword(user.getPassword());
+    	System.out.println(decodedPass);
+    	if (!password.equals(decodedPass)) {
+    		// TODO new ErrorState
+    		return;
+		} 
+       
+    	currentUser = user;
 
+    }
+    
+    public void logout() {
+    	if (currentUser != null) {
+			currentUser = null;
+			// new SuccessState
+		} else {
+			// new ErrorState
+		}
     }
 }

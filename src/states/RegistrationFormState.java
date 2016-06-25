@@ -8,16 +8,10 @@ import utils.Constants;
 import java.awt.*;
 
 public class RegistrationFormState extends State {
-    public static String registrationForm = "Registration Form";
-    public static String userName = "Username:";
-    public static String firstName = "First Name:";
-    public static String lastName = "Last Name:";
-    public static String password = "Password:";
-
-    public static StringBuilder userString = new StringBuilder();
-    public static StringBuilder firstString = new StringBuilder();
-    public static StringBuilder lastString = new StringBuilder();
-    public static StringBuilder passString = new StringBuilder();
+    public static StringBuilder username = new StringBuilder();
+    public static StringBuilder firstName = new StringBuilder();
+    public static StringBuilder lastName = new StringBuilder();
+    public static StringBuilder password = new StringBuilder();
 
     public static Button backToMenuButton = new Button(712, 510, Assets.buttonBackToMenu);
     public static Button registerButton = new Button(496, 510, Assets.buttonPlay);
@@ -48,14 +42,14 @@ public class RegistrationFormState extends State {
         Font title = new Font("Arial", Font.PLAIN, 35);
         graphics.setFont(title);
         graphics.setColor(Color.white);
-        graphics.drawString(registrationForm, 370, 90);
+        graphics.drawString("Registration Form", 370, 90);
 
         Font fieldName = new Font("Arial", Font.PLAIN, 25);
         graphics.setFont(fieldName);
-        graphics.drawString(userName, fieldNameX, fieldNameY);
-        graphics.drawString(firstName, fieldNameX, fieldNameY + 60);
-        graphics.drawString(lastName, fieldNameX, fieldNameY + 120);
-        graphics.drawString(password, fieldNameX, fieldNameY + 180);
+        graphics.drawString("Username:", fieldNameX, fieldNameY);
+        graphics.drawString("First Name:", fieldNameX, fieldNameY + 60);
+        graphics.drawString("Last Name:", fieldNameX, fieldNameY + 120);
+        graphics.drawString("Password:", fieldNameX, fieldNameY + 180);
 
         graphics.fillRect(rectBoxX, rectBoxY, 300, 40);
         userRect = new Rectangle(rectBoxX, rectBoxY, 300, 40);
@@ -87,10 +81,10 @@ public class RegistrationFormState extends State {
         Font inputText = new Font("Arial", Font.BOLD, 20);
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
-        graphics.drawString(userString.toString(), rectBoxX + 30, rectBoxY + 25);
-        graphics.drawString(firstString.toString(), rectBoxX + 30, rectBoxY + 85);
-        graphics.drawString(lastString.toString(), rectBoxX + 30, rectBoxY + 145);
-        graphics.drawString(passString.toString(), rectBoxX + 30, rectBoxY + 205);
+        graphics.drawString(username.toString(), rectBoxX + 30, rectBoxY + 25);
+        graphics.drawString(firstName.toString(), rectBoxX + 30, rectBoxY + 85);
+        graphics.drawString(lastName.toString(), rectBoxX + 30, rectBoxY + 145);
+        graphics.drawString(password.toString(), rectBoxX + 30, rectBoxY + 205);
 
         backToMenuButton.draw(graphics);
         registerButton.draw(graphics);

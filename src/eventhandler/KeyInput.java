@@ -52,31 +52,31 @@ public class KeyInput implements KeyListener {
             String type = RegistrationFormState.fieldType;
             switch (type) {
                 case "user":
-                    if (key>='A' && key<='Z' && RegistrationFormState.userString.length() < 15) {
-                        RegistrationFormState.userString.append((char) key);
-                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.userString.length() > 0) {
-                        RegistrationFormState.userString.deleteCharAt(RegistrationFormState.userString.length() - 1);
+                    if (key>='A' && key<='Z' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.username.append((char) key);
+                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.username.length() > 0) {
+                        RegistrationFormState.username.deleteCharAt(RegistrationFormState.username.length() - 1);
                     }
                     break;
                 case "first":
-                    if (key>='A' && key<='Z' && RegistrationFormState.firstString.length() < 15) {
-                        RegistrationFormState.firstString.append((char) key);
-                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.firstString.length() > 0) {
-                        RegistrationFormState.firstString.deleteCharAt(RegistrationFormState.firstString.length() - 1);
+                    if (key>='A' && key<='Z' && RegistrationFormState.firstName.length() < 15) {
+                        RegistrationFormState.firstName.append((char) key);
+                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.firstName.length() > 0) {
+                        RegistrationFormState.firstName.deleteCharAt(RegistrationFormState.firstName.length() - 1);
                     }
                     break;
                 case "last":
-                    if (key>='A' && key<='Z' && RegistrationFormState.lastString.length() < 15) {
-                        RegistrationFormState.lastString.append((char) key);
-                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.lastString.length() > 0) {
-                        RegistrationFormState.lastString.deleteCharAt(RegistrationFormState.lastString.length() - 1);
+                    if (key>='A' && key<='Z' && RegistrationFormState.lastName.length() < 15) {
+                        RegistrationFormState.lastName.append((char) key);
+                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.lastName.length() > 0) {
+                        RegistrationFormState.lastName.deleteCharAt(RegistrationFormState.lastName.length() - 1);
                     }
                     break;
                 case "pass":
-                    if (key>='A' && key<='Z' && RegistrationFormState.passString.length() < 15) {
-                        RegistrationFormState.passString.append((char) key);
-                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.passString.length() > 0) {
-                        RegistrationFormState.passString.deleteCharAt(RegistrationFormState.passString.length() - 1);
+                    if (key>='A' && key<='Z' && RegistrationFormState.password.length() < 15) {
+                        RegistrationFormState.password.append((char) key);
+                    } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.password.length() > 0) {
+                        RegistrationFormState.password.deleteCharAt(RegistrationFormState.password.length() - 1);
                     }
                     break;
             }

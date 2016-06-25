@@ -11,7 +11,6 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class UserRepository {
@@ -85,7 +84,7 @@ public class UserRepository {
     }
     
     // Save registered user into a .txt file
-    public void save(User user) {
+    private void save(User user) {
     	 try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.USERS_FILE_PATH, true), true)) { 	
          	writer.println(user.getUsername() + " " 
          				+ user.getFirstName() + " "

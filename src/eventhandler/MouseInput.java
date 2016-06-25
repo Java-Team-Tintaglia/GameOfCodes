@@ -2,6 +2,7 @@ package eventhandler;
 
 import enums.StudentType;
 import graphics.Display;
+import models.User;
 import repositories.StudentScoresRepository;
 import repositories.UserRepository;
 import states.*;
@@ -10,6 +11,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.Map;
+
+import authentication.AuthenticationProvider;
+import authentication.Encoder;
 
 public class MouseInput implements MouseListener {
 	private Display display;
@@ -35,8 +39,8 @@ public class MouseInput implements MouseListener {
             // Play Button
         	if(MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
                 //set to RegistrationState for testing
-                //StateManager.setCurrentState(new RegistrationFormState(userRepository));
-                StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
+                StateManager.setCurrentState(new RegistrationFormState(userRepository));
+                //StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
             }
 
             // Scores Button
@@ -46,7 +50,13 @@ public class MouseInput implements MouseListener {
             
             // Exit Button
             if (MainMenuState.buttonExit.getColliderBox().contains(mouseX, mouseY)) {
-                System.exit(0);
+                //System.exit(0);
+            	// TESTING LOGIN/LOGOUT
+                AuthenticationProvider ap = new AuthenticationProvider(userRepository);
+                ap.authenticate("MARIA", "MIMI");
+                System.out.println(AuthenticationProvider.currentUser);
+                ap.logout();
+                // end of testing
             }
             
         } else if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
@@ -107,13 +117,28 @@ public class MouseInput implements MouseListener {
             } else if (RegistrationFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
                 RegistrationFormState.isFieldSelected = false;
                 RegistrationFormState.fieldType = null;
-                RegistrationFormState.userString.setLength(0);
-                RegistrationFormState.firstString.setLength(0);
-                RegistrationFormState.lastString.setLength(0);
-                RegistrationFormState.passString.setLength(0);
+                RegistrationFormState.username.setLength(0);
+                RegistrationFormState.firstName.setLength(0);
+                RegistrationFormState.lastName.setLength(0);
+                RegistrationFormState.password.setLength(0);
                 StateManager.setCurrentState(new MainMenuState(userRepository));
             } else if (RegistrationFormState.registerButton.getColliderBox().contains(mouseX, mouseY)) {
-
+            	String passwordHash = Encoder.cryptingPassword(RegistrationFormState.password.toString());
+            	String username = RegistrationFormState.username.toString();
+            	String firstName = RegistrationFormState.firstName.toString();
+            	String lastName = RegistrationFormState.lastName.toString();
+            	
+            	User userToRegister = new User(username, firstName, lastName, passwordHash);
+            	userRepository.addUser(userToRegister);
+            	
+            	RegistrationFormState.isFieldSelected = false;
+                RegistrationFormState.fieldType = null;
+                RegistrationFormState.username.setLength(0);
+                RegistrationFormState.firstName.setLength(0);
+                RegistrationFormState.lastName.setLength(0);
+                RegistrationFormState.password.setLength(0);
+                
+                StateManager.setCurrentState(new MainMenuState(userRepository));
             }
         }
     }
