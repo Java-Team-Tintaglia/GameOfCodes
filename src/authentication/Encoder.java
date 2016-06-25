@@ -1,11 +1,8 @@
-package encoder;
+package authentication;
 
 import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
