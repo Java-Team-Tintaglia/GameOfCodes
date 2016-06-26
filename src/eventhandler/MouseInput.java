@@ -149,7 +149,35 @@ public class MouseInput implements MouseListener {
                 
                 StateManager.setCurrentState(new MainMenuState(userRepository));
             }
+        }else if (StateManager.getCurrentState() instanceof LogInFormState) {
+            if (LogInFormState.userRect.contains(mouseX, mouseY)) {
+                LogInFormState.isFieldSelected = true;
+                LogInFormState.fieldType = "user";
+            } else if (LogInFormState.passRect.contains(mouseX, mouseY)) {
+                LogInFormState.isFieldSelected = true;
+                LogInFormState.fieldType = "pass";
+            } else if (LogInFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+                LogInFormState.isFieldSelected = false;
+                LogInFormState.fieldType = null;
+                LogInFormState.username.setLength(0);
+                LogInFormState.password.setLength(0);
+                StateManager.setCurrentState(new MainMenuState(userRepository));
+            } else if (LogInFormState.loginButton.getColliderBox().contains(mouseX, mouseY)) {
+                String passwordHash = Encoder.cryptingPassword(LogInFormState.password.toString());
+                String username = LogInFormState.username.toString();
+
+                User userToRegister = new User(username, passwordHash);
+                userRepository.addUser(userToRegister);
+
+                LogInFormState.isFieldSelected = false;
+                LogInFormState.fieldType = null;
+                LogInFormState.username.setLength(0);
+                LogInFormState.password.setLength(0);
+
+//                StateManager.setCurrentState(new MainMenuState(userRepository));
+            }
         }
+
     }
 
     @Override
