@@ -49,31 +49,38 @@ public class KeyInput implements KeyListener {
                  GameState.student.setMovingRight(true);
              }
         } else if (StateManager.getCurrentState() instanceof RegistrationFormState) {
+            if (!RegistrationFormState.isFieldSelected) {
+                return;
+            }
             String type = RegistrationFormState.fieldType;
             switch (type) {
                 case "user":
-                    if (key>='A' && key<='Z' && RegistrationFormState.username.length() < 15) {
+                    if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                            key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && RegistrationFormState.username.length() < 15) {
                         RegistrationFormState.username.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.username.length() > 0) {
                         RegistrationFormState.username.deleteCharAt(RegistrationFormState.username.length() - 1);
                     }
                     break;
                 case "first":
-                    if (key>='A' && key<='Z' && RegistrationFormState.firstName.length() < 15) {
+                    if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                            key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && RegistrationFormState.firstName.length() < 15) {
                         RegistrationFormState.firstName.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.firstName.length() > 0) {
                         RegistrationFormState.firstName.deleteCharAt(RegistrationFormState.firstName.length() - 1);
                     }
                     break;
                 case "last":
-                    if (key>='A' && key<='Z' && RegistrationFormState.lastName.length() < 15) {
+                    if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                            key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && RegistrationFormState.lastName.length() < 15) {
                         RegistrationFormState.lastName.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.lastName.length() > 0) {
                         RegistrationFormState.lastName.deleteCharAt(RegistrationFormState.lastName.length() - 1);
                     }
                     break;
                 case "pass":
-                    if (key>='A' && key<='Z' && RegistrationFormState.password.length() < 15) {
+                    if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                            key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && RegistrationFormState.password.length() < 15) {
                         RegistrationFormState.password.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.password.length() > 0) {
                         RegistrationFormState.password.deleteCharAt(RegistrationFormState.password.length() - 1);

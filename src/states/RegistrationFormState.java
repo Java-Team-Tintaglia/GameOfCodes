@@ -21,8 +21,8 @@ public class RegistrationFormState extends State {
     public static Rectangle lastRect;
     public static Rectangle passRect;
 
-    public static boolean isFieldSelected = false;
-    public static String fieldType = null;
+    public static boolean isFieldSelected = true;
+    public static String fieldType = "user";
 
     public RegistrationFormState(UserRepository userRepository) {
         super(userRepository);
@@ -84,7 +84,7 @@ public class RegistrationFormState extends State {
         graphics.drawString(username.toString(), rectBoxX + 30, rectBoxY + 25);
         graphics.drawString(firstName.toString(), rectBoxX + 30, rectBoxY + 85);
         graphics.drawString(lastName.toString(), rectBoxX + 30, rectBoxY + 145);
-        graphics.drawString(password.toString(), rectBoxX + 30, rectBoxY + 205);
+        graphics.drawString(drawPassword(password.length()), rectBoxX + 30, rectBoxY + 210);
 
         backToMenuButton.draw(graphics);
         registerButton.draw(graphics);
@@ -92,5 +92,13 @@ public class RegistrationFormState extends State {
 
     @Override
     public void update() {
+    }
+
+    private String drawPassword(int length) {
+        StringBuilder password = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            password.append("*");
+        }
+        return password.toString();
     }
 }
