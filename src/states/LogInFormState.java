@@ -2,8 +2,8 @@ package states;
 
 import graphics.Assets;
 import models.Button;
-import repositories.UserRepository;
 import utils.Constants;
+import utils.Utils;
 
 import java.awt.*;
 
@@ -17,13 +17,8 @@ public class LogInFormState extends State {
     public static Rectangle userRect;
     public static Rectangle passRect;
 
-    public static boolean isFieldSelected = false;
-    public static String fieldType = null;
-
-    public LogInFormState(UserRepository userRepository) {
-        super(userRepository);
-    }
-
+    public static boolean isFieldSelected = true;
+    public static String fieldType = "user";
 
     @Override
     public void draw(Graphics graphics) {
@@ -66,7 +61,7 @@ public class LogInFormState extends State {
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
         graphics.drawString(username.toString(), rectBoxX + 30, rectBoxY + 25);
-        graphics.drawString(password.toString(), rectBoxX + 30, rectBoxY + 85);
+        graphics.drawString(Utils.hidePassword(password.length()), rectBoxX + 30, rectBoxY + 85);
 
         backToMenuButton.draw(graphics);
         loginButton.draw(graphics);

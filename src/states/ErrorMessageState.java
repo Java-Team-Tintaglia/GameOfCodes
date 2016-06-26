@@ -1,13 +1,11 @@
 package states;
 
-import repositories.UserRepository;
 import java.awt.*;
 
 public class ErrorMessageState extends State{
     private String message;
 
-    public ErrorMessageState(UserRepository userRepository, String message) {
-        super(userRepository);
+    public ErrorMessageState(String message) {
         this.message = message;
     }
 

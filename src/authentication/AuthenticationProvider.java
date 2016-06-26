@@ -2,11 +2,15 @@ package authentication;
 
 import models.User;
 import repositories.UserRepository;
+import states.ErrorMessageState;
+import states.StateManager;
+import states.SuccessMessageState;
 
 public class AuthenticationProvider {
 
     public static User currentUser;
     private UserRepository userRepository;
+    
 
     public AuthenticationProvider(UserRepository userRepository) {
 		this.userRepository = userRepository;
@@ -16,27 +20,37 @@ public class AuthenticationProvider {
     	User user = userRepository.findUserByUsername(username);
 
     	if (user == null) {
-			// TODO new ErrorState
+    		ErrorMessageState errorMessageState = new ErrorMessageState(
+    				"User with username: " + username + " was NOT found!");
+    		StateManager.setCurrentState(errorMessageState);
     		return;
 		} 
     	
     	String decodedPass = Encoder.decryptPassword(user.getPassword());
-    	System.out.println(decodedPass);
     	if (!password.equals(decodedPass)) {
-    		// TODO new ErrorState
+    		ErrorMessageState errorMessageState = new ErrorMessageState(
+    				"Password does NOT match!");
+    		StateManager.setCurrentState(errorMessageState);
     		return;
 		} 
        
     	currentUser = user;
-
+    	SuccessMessageState successMessageState = new SuccessMessageState(
+    			"You have logged in sucessfully!");
+    	StateManager.setCurrentState(successMessageState);
     }
     
     public void logout() {
     	if (currentUser != null) {
 			currentUser = null;
-			// new SuccessState
+			SuccessMessageState successMessageState = new SuccessMessageState(
+					"You have logged out successfully!");
+			//StateManager.setCurrentState(successMessageState);
+			
 		} else {
-			// new ErrorState
+			ErrorMessageState errorMessageState = new ErrorMessageState(
+					"There is no logged in user!");
+			//StateManager.setCurrentState(errorMessageState);
 		}
     }
 }

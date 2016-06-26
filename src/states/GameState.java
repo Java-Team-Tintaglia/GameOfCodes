@@ -8,12 +8,13 @@ import graphics.Assets;
 import models.programmingLanguages.ProgrammingLanguage;
 import models.students.Student;
 import models.wizards.Wizard;
-import repositories.UserRepository;
 import utils.Constants;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
+import authentication.AuthenticationProvider;
 
 public class GameState extends State {
 	
@@ -31,10 +32,12 @@ public class GameState extends State {
 	public static Student student;
     private StudentFactory studentFactory;
  
-    public GameState(UserRepository userRepository,StudentType studentType, String name) {
-		super(userRepository);
+    public GameState(StudentType studentType) {
 		studentFactory = new StudentFactory();
-		student = studentFactory.create(studentType, Constants.DEFAUL_PLAYER_X_COORD, Constants.DEFAUL_PLAYER_Y_COORD, name);
+		student = studentFactory.create(studentType, 
+				Constants.DEFAUL_PLAYER_X_COORD, 
+				Constants.DEFAUL_PLAYER_Y_COORD, 
+				AuthenticationProvider.currentUser.getUsername());
 		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 		wizard = MapInitializor.generateWizard();
 	}
@@ -42,7 +45,7 @@ public class GameState extends State {
 
 	@Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.wallToolbar, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.floor, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
 		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 20);
@@ -95,7 +98,7 @@ public class GameState extends State {
 		}
     	
         if (seconds <= 0) {
-			StateManager.setCurrentState(new StudentScoreState(getUserRepository(), student));
+			StateManager.setCurrentState(new StudentScoreState(student));
 		}
         
         student.update();

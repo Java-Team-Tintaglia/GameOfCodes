@@ -2,6 +2,7 @@ package enums;
 
 public enum  ImageAlbum {
     Wall("/wall.png"),
+    WallToolbar("/wallToolbar.png"),
     FLoor("/floor.png"),
     PlayerCustomization("/playerCustomization.png"),
     HighScoresBackground("/highScoresImage.png"),

@@ -17,11 +17,13 @@ import java.util.Map;
 public class MouseInput implements MouseListener {
     private Display display;
     private UserRepository userRepository;
+    private AuthenticationProvider authenticationProvider;
 
-    public MouseInput(Display display, UserRepository userRepository) {
+    public MouseInput(Display display, UserRepository userRepository, AuthenticationProvider authenticationProvider) {
         display.getCanvas().addMouseListener(this);
         this.display = display;
         this.userRepository = userRepository;
+        this.authenticationProvider = authenticationProvider;
     }
 
     @Override
@@ -37,30 +39,34 @@ public class MouseInput implements MouseListener {
         if (StateManager.getCurrentState() instanceof MainMenuState) {
             // Login Button
             if (AuthenticationProvider.currentUser == null && MainMenuState.buttonLogIn.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new LogInFormState(userRepository));
+                StateManager.setCurrentState(new LogInFormState());
             }
+            
+            // LogOut Button
+            if (AuthenticationProvider.currentUser != null && MainMenuState.buttonLogOut.getColliderBox().contains(mouseX, mouseY)) {
+            	//StateManager.setCurrentState(new MainMenuState());
+            	authenticationProvider.logout();
+            	
+            }
+            
             // Register Button
             if (AuthenticationProvider.currentUser == null && MainMenuState.buttonRegister.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new RegistrationFormState(userRepository));
+                StateManager.setCurrentState(new RegistrationFormState());
             }
+            
             // Play Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
+                StateManager.setCurrentState(new PlayerCustomizationState());
             }
+            
             // Scores Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new ScoresState(userRepository));
+                StateManager.setCurrentState(new ScoresState());
             }
 
             // Exit Button
             if (MainMenuState.buttonExit.getColliderBox().contains(mouseX, mouseY)) {
                 System.exit(0);
-                // TESTING LOGIN/LOGOUT
-//                AuthenticationProvider ap = new AuthenticationProvider(userRepository);
-//                ap.authenticate("MARIA", "MIMI");
-//                System.out.println(AuthenticationProvider.currentUser);
-//                ap.logout();
-                // end of testing
             }
         } else if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
 
@@ -79,20 +85,18 @@ public class MouseInput implements MouseListener {
                 PlayerCustomizationState.isSelected = true;
             }
 
-            // Eenter a name
+            // Select player
             if (PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
-                String name = PlayerCustomizationState.stringBuilger.toString();
                 StudentType type = PlayerCustomizationState.studentType;
 
-                StateManager.setCurrentState(new GameState(userRepository, type, name));
+                StateManager.setCurrentState(new GameState(type));
 
-                PlayerCustomizationState.stringBuilger.setLength(0);
                 PlayerCustomizationState.isSelected = false;
 
             }
         } else if (StateManager.getCurrentState() instanceof ScoresState) {
             if (ScoresState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new MainMenuState(userRepository));
+                StateManager.setCurrentState(new MainMenuState());
             }
         } else if (StateManager.getCurrentState() instanceof StudentScoreState) {
             if (StudentScoreState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
@@ -102,7 +106,7 @@ public class MouseInput implements MouseListener {
 
                 StudentScoresRepository.saveToFile(studentName, studentGrades);
 
-                StateManager.setCurrentState(new MainMenuState(userRepository));
+                StateManager.setCurrentState(new MainMenuState());
             }
         } else if (StateManager.getCurrentState() instanceof RegistrationFormState) {
             if (RegistrationFormState.userRect.contains(mouseX, mouseY)) {
@@ -124,7 +128,7 @@ public class MouseInput implements MouseListener {
                 RegistrationFormState.firstName.setLength(0);
                 RegistrationFormState.lastName.setLength(0);
                 RegistrationFormState.password.setLength(0);
-                StateManager.setCurrentState(new MainMenuState(userRepository));
+                StateManager.setCurrentState(new MainMenuState());
             } else if (RegistrationFormState.registerButton.getColliderBox().contains(mouseX, mouseY)) {
                 String passwordHash = Encoder.cryptingPassword(RegistrationFormState.password.toString());
                 String username = RegistrationFormState.username.toString();
@@ -141,7 +145,7 @@ public class MouseInput implements MouseListener {
                 RegistrationFormState.lastName.setLength(0);
                 RegistrationFormState.password.setLength(0);
 
-                StateManager.setCurrentState(new MainMenuState(userRepository));
+                StateManager.setCurrentState(new MainMenuState());
             }
         } else if (StateManager.getCurrentState() instanceof LogInFormState) {
             if (LogInFormState.userRect.contains(mouseX, mouseY)) {
@@ -155,20 +159,19 @@ public class MouseInput implements MouseListener {
                 LogInFormState.fieldType = null;
                 LogInFormState.username.setLength(0);
                 LogInFormState.password.setLength(0);
-                StateManager.setCurrentState(new MainMenuState(userRepository));
+                StateManager.setCurrentState(new MainMenuState());
             } else if (LogInFormState.loginButton.getColliderBox().contains(mouseX, mouseY)) {
-                String passwordHash = Encoder.cryptingPassword(LogInFormState.password.toString());
+                String password = LogInFormState.password.toString();
                 String username = LogInFormState.username.toString();
-
-                AuthenticationProvider provider = new AuthenticationProvider(userRepository);
-                provider.authenticate(username, passwordHash);
+                
+                authenticationProvider.authenticate(username, password);
 
                 LogInFormState.isFieldSelected = false;
                 LogInFormState.fieldType = null;
                 LogInFormState.username.setLength(0);
                 LogInFormState.password.setLength(0);
 
-                StateManager.setCurrentState(new MainMenuState(userRepository));
+                StateManager.setCurrentState(new MainMenuState());
             }
         }
     }

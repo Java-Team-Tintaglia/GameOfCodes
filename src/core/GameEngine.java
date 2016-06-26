@@ -13,6 +13,8 @@ import utils.Constants;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
+import authentication.AuthenticationProvider;
+
 public class GameEngine implements Runnable {
     private final String title;
     private boolean isRunning;
@@ -24,6 +26,7 @@ public class GameEngine implements Runnable {
     private State mainMenuState;
     private MouseInput mouseInput;
     private UserRepository userRepository;
+    AuthenticationProvider authenticationProvider;
 
     public GameEngine(String title) {
         this.title = title;
@@ -118,9 +121,12 @@ public class GameEngine implements Runnable {
         userRepository = new UserRepository();
         userRepository.load();
         
+        authenticationProvider = new AuthenticationProvider(userRepository);
         this.keyinput = new KeyInput(this, this.display);
-        this.mouseInput = new MouseInput(this.display, userRepository);
-        mainMenuState = new MainMenuState(userRepository);
+        this.mouseInput = new MouseInput(this.display, userRepository, authenticationProvider);
+        
+        
+        mainMenuState = new MainMenuState();
         StateManager.setCurrentState(mainMenuState);
     }
 }

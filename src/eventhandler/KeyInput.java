@@ -3,7 +3,7 @@ package eventhandler;
 import core.GameEngine;
 import graphics.Display;
 import states.GameState;
-import states.PlayerCustomizationState;
+import states.LogInFormState;
 import states.RegistrationFormState;
 import states.StateManager;
 
@@ -22,15 +22,8 @@ public class KeyInput implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        // User input
-        if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
-            if (key>='A' && key<='Z' && PlayerCustomizationState.stringBuilger.length() < 10) {
-                PlayerCustomizationState.stringBuilger.append((char) key);
-            }
-            else if (key == KeyEvent.VK_BACK_SPACE && PlayerCustomizationState.stringBuilger.length() > 0) {
-                PlayerCustomizationState.stringBuilger.deleteCharAt(PlayerCustomizationState.stringBuilger.length() - 1);
-            }
-        } else if (StateManager.getCurrentState() instanceof GameState) {
+
+        if (StateManager.getCurrentState() instanceof GameState) {
              int keyCode = e.getKeyCode();
 
              if (keyCode == KeyEvent.VK_UP) {
@@ -86,7 +79,30 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.password.deleteCharAt(RegistrationFormState.password.length() - 1);
                     }
                     break;
-            }
+            	}
+            } else if (StateManager.getCurrentState() instanceof LogInFormState) {
+                if (!LogInFormState.isFieldSelected) {
+                    return;
+                }
+                String type = LogInFormState.fieldType;
+                switch (type) {
+                    case "user":
+                        if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                                key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && LogInFormState.username.length() < 15) {
+                        	LogInFormState.username.append((char) key);
+                        } else if (key == KeyEvent.VK_BACK_SPACE && LogInFormState.username.length() > 0) {
+                        	LogInFormState.username.deleteCharAt(LogInFormState.username.length() - 1);
+                        }
+                        break;
+                    case "pass":
+                        if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                                key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && LogInFormState.password.length() < 15) {
+                        	LogInFormState.password.append((char) key);
+                        } else if (key == KeyEvent.VK_BACK_SPACE && LogInFormState.password.length() > 0) {
+                        	LogInFormState.password.deleteCharAt(LogInFormState.password.length() - 1);
+                        }
+                        break;
+                }
         }
     }
 

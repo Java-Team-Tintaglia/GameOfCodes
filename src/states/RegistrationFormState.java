@@ -2,8 +2,8 @@ package states;
 
 import graphics.Assets;
 import models.Button;
-import repositories.UserRepository;
 import utils.Constants;
+import utils.Utils;
 
 import java.awt.*;
 
@@ -23,10 +23,6 @@ public class RegistrationFormState extends State {
 
     public static boolean isFieldSelected = true;
     public static String fieldType = "user";
-
-    public RegistrationFormState(UserRepository userRepository) {
-        super(userRepository);
-    }
 
 
     @Override
@@ -84,7 +80,7 @@ public class RegistrationFormState extends State {
         graphics.drawString(username.toString(), rectBoxX + 30, rectBoxY + 25);
         graphics.drawString(firstName.toString(), rectBoxX + 30, rectBoxY + 85);
         graphics.drawString(lastName.toString(), rectBoxX + 30, rectBoxY + 145);
-        graphics.drawString(drawPassword(password.length()), rectBoxX + 30, rectBoxY + 210);
+        graphics.drawString(Utils.hidePassword(password.length()), rectBoxX + 30, rectBoxY + 210);
 
         backToMenuButton.draw(graphics);
         registerButton.draw(graphics);
@@ -94,11 +90,4 @@ public class RegistrationFormState extends State {
     public void update() {
     }
 
-    private String drawPassword(int length) {
-        StringBuilder password = new StringBuilder();
-        for (int i = 0; i < length; i++) {
-            password.append("*");
-        }
-        return password.toString();
-    }
 }

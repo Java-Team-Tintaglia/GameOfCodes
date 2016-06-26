@@ -2,16 +2,14 @@ package states;
 
 import java.awt.*;
 
+import authentication.AuthenticationProvider;
 import enums.StudentType;
 import graphics.Assets;
 import models.Button;
-import repositories.UserRepository;
 import utils.Constants;
 
 public class PlayerCustomizationState extends State {
 
-    public static StringBuilder stringBuilger = new StringBuilder();
-    
     public static StudentType studentType;
     public static boolean isSelected = false;
     
@@ -22,11 +20,6 @@ public class PlayerCustomizationState extends State {
     public static Button nerdBoyButton = new Button(558, 300, Assets.buttonNerdBoy);
     public static Button nerdLadyButton = new Button(800, 300, Assets.buttonNerdLady);
 
-   
-    public PlayerCustomizationState(UserRepository userRepository) {
-		super(userRepository);
-	}
-
 	@Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.playerCustomization, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
@@ -35,10 +28,6 @@ public class PlayerCustomizationState extends State {
         Font textFont = new Font("Comic Sans MS", Font.BOLD, 20);
         graphics.setFont(textFont);
         graphics.setColor(Color.green);
-
-        String name = "Enter Name:";
-        graphics.drawString(name, 400, 410);
-        graphics.fillRect(400, 420, 205, 40);
 
         if (isSelected) {
             switch (studentType) {
@@ -58,8 +47,16 @@ public class PlayerCustomizationState extends State {
         }
 
         graphics.setColor(Color.black);
-        graphics.drawString(stringBuilger.toString(), 410, 450);
 
+        if (AuthenticationProvider.currentUser != null) {
+        	Font title = new Font("Comic Sans MS", Font.PLAIN, 20);
+            graphics.setFont(title);
+            graphics.setColor(Color.green);
+    		graphics.fillRect(880, 10, 150, 30);
+    		
+    		graphics.setColor(Color.white);
+    		graphics.drawString(AuthenticationProvider.currentUser.getUsername(), 900, 30);
+		}
         playButton.draw(graphics);
         badBoyButton.draw(graphics);
         hotChickButton.draw(graphics);
