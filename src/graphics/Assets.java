@@ -36,6 +36,13 @@ public class Assets {
     public static BufferedImage buttonPlay;
     public static BufferedImage buttonBackToMenu;
 
+    public static BufferedImage buttonEdit;
+    public static BufferedImage buttonLogOut;
+    public static BufferedImage buttonLogIn;
+    public static BufferedImage buttonOk;
+    public static BufferedImage buttonProfile;
+    public static BufferedImage buttonRegister;
+
     public static BufferedImage wizard;
     public static BufferedImage wizardBeer;
     public static BufferedImage wizardCoffee;
@@ -59,7 +66,14 @@ public class Assets {
         buttonExit = ImageLoader.loadingImage(ImageAlbum.Button_Exit.getPath());
         buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
         buttonBackToMenu = ImageLoader.loadingImage(ImageAlbum.Button_BackToMenu.getPath());
-        
+
+        buttonEdit = ImageLoader.loadingImage(ImageAlbum.Button_Edit.getPath());
+        buttonLogOut = ImageLoader.loadingImage(ImageAlbum.Button_LogOut.getPath());
+        buttonLogIn = ImageLoader.loadingImage(ImageAlbum.Button_LogIn.getPath());
+        buttonOk = ImageLoader.loadingImage(ImageAlbum.Button_Ok.getPath());
+        buttonProfile = ImageLoader.loadingImage(ImageAlbum.Button_Profile.getPath());
+        buttonRegister = ImageLoader.loadingImage(ImageAlbum.Button_Register.getPath());
+
         buttonBadBoy = ImageLoader.loadingImage(ImageAlbum.BadBoyButton.getPath());
         buttonHotChick = ImageLoader.loadingImage(ImageAlbum.HotChickButton.getPath());
         buttonNerdBoy = ImageLoader.loadingImage(ImageAlbum.NerdBoyButton.getPath());
