@@ -9,16 +9,12 @@ import java.awt.*;
 
 public class LogInFormState extends State {
     public static StringBuilder username = new StringBuilder();
-//    public static StringBuilder firstName = new StringBuilder();
-//    public static StringBuilder lastName = new StringBuilder();
     public static StringBuilder password = new StringBuilder();
 
     public static Button backToMenuButton = new Button(712, 510, Assets.buttonBackToMenu);
     public static Button loginButton = new Button(496, 510, Assets.buttonLogIn);//TO DO change x and y
 
     public static Rectangle userRect;
-//    public static Rectangle firstRect;
-//    public static Rectangle lastRect;
     public static Rectangle passRect;
 
     public static boolean isFieldSelected = false;

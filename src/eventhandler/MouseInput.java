@@ -61,10 +61,10 @@ public class MouseInput implements MouseListener {
             if (MainMenuState.buttonExit.getColliderBox().contains(mouseX, mouseY)) {
                 System.exit(0);
             	// TESTING LOGIN/LOGOUT
-//                AuthenticationProvider ap = new AuthenticationProvider(userRepository);
-//                ap.authenticate("MARIA", "MIMI");
-//                System.out.println(AuthenticationProvider.currentUser);
-//                ap.logout();
+                AuthenticationProvider ap = new AuthenticationProvider(userRepository);
+                ap.authenticate("MARIA", "MIMI");
+                System.out.println(AuthenticationProvider.currentUser);
+                ap.logout();
                 // end of testing
             }
             
@@ -166,15 +166,15 @@ public class MouseInput implements MouseListener {
                 String passwordHash = Encoder.cryptingPassword(LogInFormState.password.toString());
                 String username = LogInFormState.username.toString();
 
-                User userToRegister = new User(username, passwordHash);
-                userRepository.addUser(userToRegister);
+                AuthenticationProvider provider = new AuthenticationProvider(userRepository);
+                provider.authenticate(username,passwordHash);
 
                 LogInFormState.isFieldSelected = false;
                 LogInFormState.fieldType = null;
                 LogInFormState.username.setLength(0);
                 LogInFormState.password.setLength(0);
 
-//                StateManager.setCurrentState(new MainMenuState(userRepository));
+                StateManager.setCurrentState(new MainMenuState(userRepository));
             }
         }
 
