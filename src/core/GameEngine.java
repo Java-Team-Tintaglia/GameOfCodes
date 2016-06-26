@@ -1,18 +1,17 @@
 package core;
 
-import java.awt.*;
-import java.awt.image.BufferStrategy;
-
 import eventhandler.KeyInput;
 import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
-import models.User;
 import repositories.UserRepository;
 import states.MainMenuState;
 import states.State;
 import states.StateManager;
 import utils.Constants;
+
+import java.awt.*;
+import java.awt.image.BufferStrategy;
 
 public class GameEngine implements Runnable {
     private final String title;

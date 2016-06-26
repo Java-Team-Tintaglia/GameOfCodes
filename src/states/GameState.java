@@ -1,20 +1,19 @@
 package states;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-
+import core.CollisionHandler;
+import core.MapInitializor;
+import enums.StudentType;
 import factories.StudentFactory;
 import graphics.Assets;
-import models.programmingLanguages.*;
-import models.students.NerdBoy;
+import models.programmingLanguages.ProgrammingLanguage;
 import models.students.Student;
 import models.wizards.Wizard;
 import repositories.UserRepository;
 import utils.Constants;
-import core.CollisionHandler;
-import core.MapInitializor;
-import enums.StudentType;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameState extends State {
 	
@@ -46,7 +45,15 @@ public class GameState extends State {
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.floor, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-        student.draw(graphics);
+		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 20);
+		graphics.setFont(secondsFont);
+		graphics.setColor(Color.yellow);
+
+		graphics.drawString(Integer.toString(student.getVitality()), 80, 35);
+		graphics.drawString(Integer.toString(student.getKnowledge()), 250, 35);
+		graphics.drawString(Integer.toString(student.getIntelligence()), 455, 35);
+
+		student.draw(graphics);
         
         if (!programmingLanguages.isEmpty()) {
         	 for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
@@ -59,12 +66,7 @@ public class GameState extends State {
         	wizard.draw(graphics);
 		}
 
-		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, 20);
-		graphics.setFont(secondsFont);
-		graphics.setColor(Color.yellow);
-
-		
-		graphics.drawString(Integer.toString(seconds), 960, 30);
+		graphics.drawString(Integer.toString(seconds), 950, 35);
     }
 
     @Override
