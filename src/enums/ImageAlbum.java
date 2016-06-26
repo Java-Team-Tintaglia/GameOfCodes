@@ -22,7 +22,7 @@ public enum  ImageAlbum {
     Button_Edit("/buttonEdit.png"),
     Button_LogOut("/buttonLogOut.png"),
     Button_LogIn("/buttonLogIn.png"),
-    Button_Ok("/buttonLogOk.png"),
+    Button_Ok("/buttonOk.png"),
     Button_Profile("/buttonProfile.png"),
     Button_Register("/buttonRegister.png"),
     MainMenu("/frontPage.png"),

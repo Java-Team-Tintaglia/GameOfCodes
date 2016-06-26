@@ -36,26 +36,34 @@ public class MouseInput implements MouseListener {
         int mouseY = e.getY();
 
         if(StateManager.getCurrentState() instanceof MainMenuState) {
-            // Play Button
-        	if(MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
-                //set to RegistrationState for testing
+        	// Login Button 
+        	if(AuthenticationProvider.currentUser == null && MainMenuState.buttonLogin.getColliderBox().contains(mouseX, mouseY)) {
+                // TODO new LOGIN FORM
+            }
+        	
+        	// Register Button
+        	if(AuthenticationProvider.currentUser == null && MainMenuState.buttonRegister.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new RegistrationFormState(userRepository));
-                //StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
+            }
+        	
+            // Play Button
+        	if(AuthenticationProvider.currentUser != null && MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
+                StateManager.setCurrentState(new PlayerCustomizationState(userRepository));
             }
 
             // Scores Button
-            if (MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
+            if (AuthenticationProvider.currentUser != null && MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new ScoresState(userRepository));
             }
             
             // Exit Button
             if (MainMenuState.buttonExit.getColliderBox().contains(mouseX, mouseY)) {
-                //System.exit(0);
+                System.exit(0);
             	// TESTING LOGIN/LOGOUT
-                AuthenticationProvider ap = new AuthenticationProvider(userRepository);
-                ap.authenticate("MARIA", "MIMI");
-                System.out.println(AuthenticationProvider.currentUser);
-                ap.logout();
+//                AuthenticationProvider ap = new AuthenticationProvider(userRepository);
+//                ap.authenticate("MARIA", "MIMI");
+//                System.out.println(AuthenticationProvider.currentUser);
+//                ap.logout();
                 // end of testing
             }
             

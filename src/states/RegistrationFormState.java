@@ -14,7 +14,7 @@ public class RegistrationFormState extends State {
     public static StringBuilder password = new StringBuilder();
 
     public static Button backToMenuButton = new Button(712, 510, Assets.buttonBackToMenu);
-    public static Button registerButton = new Button(496, 510, Assets.buttonPlay);
+    public static Button registerButton = new Button(496, 510, Assets.buttonRegister);
 
     public static Rectangle userRect;
     public static Rectangle firstRect;
