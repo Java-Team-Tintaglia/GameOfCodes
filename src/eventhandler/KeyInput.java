@@ -22,8 +22,10 @@ public class KeyInput implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-
+        boolean isShiftClicked = e.isShiftDown();
+        		
         if (StateManager.getCurrentState() instanceof GameState) {
+
              int keyCode = e.getKeyCode();
 
              if (keyCode == KeyEvent.VK_UP) {
@@ -53,6 +55,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.username.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.username.length() > 0) {
                         RegistrationFormState.username.deleteCharAt(RegistrationFormState.username.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.username.append("_");
                     }
                     break;
                 case "first":
@@ -61,6 +65,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.firstName.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.firstName.length() > 0) {
                         RegistrationFormState.firstName.deleteCharAt(RegistrationFormState.firstName.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.firstName.append("_");
                     }
                     break;
                 case "last":
@@ -69,6 +75,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.lastName.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.lastName.length() > 0) {
                         RegistrationFormState.lastName.deleteCharAt(RegistrationFormState.lastName.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.lastName.append("_");
                     }
                     break;
                 case "pass":
@@ -77,6 +85,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.password.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.password.length() > 0) {
                         RegistrationFormState.password.deleteCharAt(RegistrationFormState.password.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.password.append("_");
                     }
                     break;
             	}
@@ -92,6 +102,8 @@ public class KeyInput implements KeyListener {
                         	LogInFormState.username.append((char) key);
                         } else if (key == KeyEvent.VK_BACK_SPACE && LogInFormState.username.length() > 0) {
                         	LogInFormState.username.deleteCharAt(LogInFormState.username.length() - 1);
+                        } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                            LogInFormState.username.append("_");
                         }
                         break;
                     case "pass":
@@ -100,6 +112,8 @@ public class KeyInput implements KeyListener {
                         	LogInFormState.password.append((char) key);
                         } else if (key == KeyEvent.VK_BACK_SPACE && LogInFormState.password.length() > 0) {
                         	LogInFormState.password.deleteCharAt(LogInFormState.password.length() - 1);
+                        } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                            LogInFormState.password.append("_");
                         }
                         break;
                 }
