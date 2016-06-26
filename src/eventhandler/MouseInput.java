@@ -38,7 +38,8 @@ public class MouseInput implements MouseListener {
         if(StateManager.getCurrentState() instanceof MainMenuState) {
         	// Login Button 
         	if(AuthenticationProvider.currentUser == null && MainMenuState.buttonLogin.getColliderBox().contains(mouseX, mouseY)) {
-                // TODO new LOGIN FORM
+                StateManager.setCurrentState(new LogInFormState(userRepository));
+
             }
         	
         	// Register Button
