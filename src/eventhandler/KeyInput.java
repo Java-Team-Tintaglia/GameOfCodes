@@ -22,6 +22,7 @@ public class KeyInput implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
+        boolean isShiftClicked = e.isShiftDown();
         // User input
         if (StateManager.getCurrentState() instanceof PlayerCustomizationState) {
             if (key>='A' && key<='Z' && PlayerCustomizationState.stringBuilger.length() < 10) {
@@ -60,6 +61,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.username.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.username.length() > 0) {
                         RegistrationFormState.username.deleteCharAt(RegistrationFormState.username.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.username.append("_");
                     }
                     break;
                 case "first":
@@ -68,6 +71,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.firstName.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.firstName.length() > 0) {
                         RegistrationFormState.firstName.deleteCharAt(RegistrationFormState.firstName.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.firstName.append("_");
                     }
                     break;
                 case "last":
@@ -76,6 +81,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.lastName.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.lastName.length() > 0) {
                         RegistrationFormState.lastName.deleteCharAt(RegistrationFormState.lastName.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.lastName.append("_");
                     }
                     break;
                 case "pass":
@@ -84,6 +91,8 @@ public class KeyInput implements KeyListener {
                         RegistrationFormState.password.append((char) key);
                     } else if (key == KeyEvent.VK_BACK_SPACE && RegistrationFormState.password.length() > 0) {
                         RegistrationFormState.password.deleteCharAt(RegistrationFormState.password.length() - 1);
+                    } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
+                        RegistrationFormState.password.append("_");
                     }
                     break;
             }
