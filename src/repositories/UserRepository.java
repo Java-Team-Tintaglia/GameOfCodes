@@ -1,6 +1,12 @@
 package repositories;
 
 import models.User;
+import states.ErrorMessageState;
+import states.LogInFormState;
+import states.MainMenuState;
+import states.RegistrationFormState;
+import states.StateManager;
+import states.SuccessMessageState;
 import utils.Constants;
 
 import java.io.BufferedReader;
@@ -19,25 +25,23 @@ public class UserRepository {
 
     public void addUser(User user) {
         if (users.containsKey(user.getUsername())) {
-            System.out.println("User already exist"); // TODO new ErrorMessageState
-            return;
+        	ErrorMessageState errorMessageState = new ErrorMessageState(
+       			 "User " + user.getUsername() + " already exist!",
+       			new RegistrationFormState());
+       	 
+       	 StateManager.setCurrentState(errorMessageState);
         } else {
         	 users.put(user.getUsername(), user);
         	 save(user);
-        	 // TODO new SuccessMessageState;
+        	 SuccessMessageState successMessageState = new SuccessMessageState(
+        			 "You have successfully registered!",
+        			 new MainMenuState());
+        	 
+        	 StateManager.setCurrentState(successMessageState);
         }
     }
     
-    public String getUserFullName(String username) {
-    	User user = users.get(username);
-    	if (user == null) {
-			// TODO new ErrorMessageState
-		} 
-    	
-    	String fullName = user.getFirstName() + " " + user.getLastName();
-    	return fullName;
-    }
-    
+    // TODO: Edit Profile
     public static void updateUser(User user) {
     }
     
@@ -45,7 +49,11 @@ public class UserRepository {
        User user = null;
        
        if (!users.containsKey(username)) {
-		 // TODO: new ErrorMessageState
+    	   ErrorMessageState errorMessageState = new ErrorMessageState(
+         			 "User with " + username + " does NOT exists!",
+         			new LogInFormState());
+         	 
+         	 StateManager.setCurrentState(errorMessageState);
        } else {
     	   user = users.get(username);
        }

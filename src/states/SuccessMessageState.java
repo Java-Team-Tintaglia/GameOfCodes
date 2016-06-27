@@ -6,13 +6,16 @@ import utils.Constants;
 import java.awt.*;
 import java.util.StringTokenizer;
 
-public class SuccessMessageState extends State{
+public class SuccessMessageState extends State { 
+	
+	private State nextState;
     private String message;
 
     public static models.Button okButton = new models.Button(400, 310, Assets.buttonOk);
 
-    public SuccessMessageState(String message) {
+    public SuccessMessageState(String message, State nextState) {
         this.message = message;
+        this.nextState = nextState;
     }
 
     @Override
@@ -51,6 +54,10 @@ public class SuccessMessageState extends State{
 
     @Override
     public void update() {
-
     }
+
+	public State getNextState() {
+		return nextState;
+	}
+    
 }

@@ -7,13 +7,16 @@ import utils.Constants;
 import java.awt.*;
 import java.util.StringTokenizer;
 
-public class ErrorMessageState extends State{
+public class ErrorMessageState extends State {
+	
     private String message;
+    private State nextState;
 
     public static Button okButton = new Button(400, 310, Assets.buttonOk);
 
-    public ErrorMessageState(String message) {
+    public ErrorMessageState(String message, State nextState) {
         this.message = message;
+        this.nextState = nextState;
     }
 
     @Override
@@ -53,4 +56,9 @@ public class ErrorMessageState extends State{
     public void update() {
 
     }
+
+	public State getNextState() {
+		return nextState;
+	}
+
 }

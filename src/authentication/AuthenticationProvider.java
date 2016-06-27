@@ -3,6 +3,8 @@ package authentication;
 import models.User;
 import repositories.UserRepository;
 import states.ErrorMessageState;
+import states.LogInFormState;
+import states.MainMenuState;
 import states.StateManager;
 import states.SuccessMessageState;
 
@@ -21,7 +23,9 @@ public class AuthenticationProvider {
 
     	if (user == null) {
     		ErrorMessageState errorMessageState = new ErrorMessageState(
-    				"User with username: " + username + " was NOT found!");
+    				"User with username: " + username + " was NOT found!",
+    				new LogInFormState());
+    		
     		StateManager.setCurrentState(errorMessageState);
     		return;
 		} 
@@ -29,28 +33,44 @@ public class AuthenticationProvider {
     	String decodedPass = Encoder.decryptPassword(user.getPassword());
     	if (!password.equals(decodedPass)) {
     		ErrorMessageState errorMessageState = new ErrorMessageState(
-    				"Password does NOT match!");
+    				"Password does NOT match!",
+    				new LogInFormState());
+    		
     		StateManager.setCurrentState(errorMessageState);
     		return;
 		} 
        
     	currentUser = user;
+    	
     	SuccessMessageState successMessageState = new SuccessMessageState(
-    			"You have logged in sucessfully!");
+    			"You have logged in sucessfully!",
+    			new MainMenuState());
+    	
     	StateManager.setCurrentState(successMessageState);
     }
     
     public void logout() {
     	if (currentUser != null) {
-			currentUser = null;
+    		currentUser = null;
 			SuccessMessageState successMessageState = new SuccessMessageState(
-					"You have logged out successfully!");
-			//StateManager.setCurrentState(successMessageState);
+					"You have logged out successfully!",
+					new MainMenuState());			
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			StateManager.setCurrentState(successMessageState);
 			
 		} else {
 			ErrorMessageState errorMessageState = new ErrorMessageState(
-					"There is no logged in user!");
-			//StateManager.setCurrentState(errorMessageState);
+					"There is no logged in user!",
+					new MainMenuState());
+			
+			StateManager.setCurrentState(errorMessageState);
 		}
     }
 }

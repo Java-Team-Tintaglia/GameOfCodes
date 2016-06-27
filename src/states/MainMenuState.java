@@ -27,7 +27,7 @@ public class MainMenuState extends State {
     	
     	if (AuthenticationProvider.currentUser != null) {
     		graphics.setColor(Color.green);
-    		graphics.fillRect(880, 10, 150, 30);
+    		graphics.fillRect(860, 10, 180, 30);
     		
     		graphics.setColor(Color.white);
     		graphics.drawString(AuthenticationProvider.currentUser.getUsername(), 900, 30);
@@ -38,7 +38,7 @@ public class MainMenuState extends State {
 			buttonLogIn.draw(graphics);
 			buttonRegister.draw(graphics);
 			buttonExit.draw(graphics);
-		}
+		}	
     }
 
     @Override

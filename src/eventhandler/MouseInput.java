@@ -44,9 +44,7 @@ public class MouseInput implements MouseListener {
             
             // LogOut Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonLogOut.getColliderBox().contains(mouseX, mouseY)) {
-            	//StateManager.setCurrentState(new MainMenuState());
             	authenticationProvider.logout();
-            	
             }
             
             // Register Button
@@ -87,10 +85,8 @@ public class MouseInput implements MouseListener {
 
             // Select player
             if (PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
-                StudentType type = PlayerCustomizationState.studentType;
-
-                StateManager.setCurrentState(new GameState(type));
-
+                StudentType studentType = PlayerCustomizationState.studentType;
+                StateManager.setCurrentState(new GameState(studentType));
                 PlayerCustomizationState.isSelected = false;
 
             }
@@ -103,7 +99,6 @@ public class MouseInput implements MouseListener {
                 StudentScoreState studentScoreState = (StudentScoreState) StateManager.getCurrentState();
                 String studentName = studentScoreState.getStudent().getUsername();
                 Map<String, List<Integer>> studentGrades = studentScoreState.getStudent().getStudentGrades();
-
                 StudentScoresRepository.saveToFile(studentName, studentGrades);
 
                 StateManager.setCurrentState(new MainMenuState());
@@ -144,8 +139,6 @@ public class MouseInput implements MouseListener {
                 RegistrationFormState.firstName.setLength(0);
                 RegistrationFormState.lastName.setLength(0);
                 RegistrationFormState.password.setLength(0);
-
-                StateManager.setCurrentState(new MainMenuState());
             }
         } else if (StateManager.getCurrentState() instanceof LogInFormState) {
             if (LogInFormState.userRect.contains(mouseX, mouseY)) {
@@ -159,7 +152,6 @@ public class MouseInput implements MouseListener {
                 LogInFormState.fieldType = null;
                 LogInFormState.username.setLength(0);
                 LogInFormState.password.setLength(0);
-                StateManager.setCurrentState(new MainMenuState());
             } else if (LogInFormState.loginButton.getColliderBox().contains(mouseX, mouseY)) {
                 String password = LogInFormState.password.toString();
                 String username = LogInFormState.username.toString();
@@ -170,8 +162,16 @@ public class MouseInput implements MouseListener {
                 LogInFormState.fieldType = null;
                 LogInFormState.username.setLength(0);
                 LogInFormState.password.setLength(0);
-
-                StateManager.setCurrentState(new MainMenuState());
+            }
+        } else if (StateManager.getCurrentState() instanceof ErrorMessageState) {
+        	ErrorMessageState ems = (ErrorMessageState) StateManager.getCurrentState();
+            if (ErrorMessageState.okButton.getColliderBox().contains(mouseX, mouseY)) {
+            	StateManager.setCurrentState(ems.getNextState());
+            }
+        } else if (StateManager.getCurrentState() instanceof SuccessMessageState) {
+        	SuccessMessageState sms = (SuccessMessageState) StateManager.getCurrentState();
+            if (SuccessMessageState.okButton.getColliderBox().contains(mouseX, mouseY)) {
+            	StateManager.setCurrentState(sms.getNextState());
             }
         }
     }
