@@ -44,9 +44,6 @@ public class KeyInput implements KeyListener {
                  GameState.student.setMovingRight(true);
              }
         } else if (StateManager.getCurrentState() instanceof RegistrationFormState) {
-            if (!RegistrationFormState.isFieldSelected) {
-                return;
-            }
             String type = RegistrationFormState.fieldType;
             switch (type) {
                 case "user":
@@ -91,9 +88,6 @@ public class KeyInput implements KeyListener {
                     break;
             	}
             } else if (StateManager.getCurrentState() instanceof LogInFormState) {
-                if (!LogInFormState.isFieldSelected) {
-                    return;
-                }
                 String type = LogInFormState.fieldType;
                 switch (type) {
                     case "user":

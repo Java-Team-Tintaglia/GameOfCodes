@@ -17,15 +17,14 @@ public class LogInFormState extends State {
     public static Rectangle userRect;
     public static Rectangle passRect;
 
-    public static boolean isFieldSelected = true;
     public static String fieldType = "user";
 
     @Override
     public void draw(Graphics graphics) {
         int fieldNameX = 270;
-        int fieldNameY = 190;
+        int fieldNameY = 200;
         int rectBoxX = 440;
-        int rectBoxY = 162;
+        int rectBoxY = 172;
 
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(100, 40, 824, 450);
@@ -33,7 +32,7 @@ public class LogInFormState extends State {
         Font title = new Font("Arial", Font.PLAIN, 35);
         graphics.setFont(title);
         graphics.setColor(Color.white);
-        graphics.drawString("LogIn Form", 370, 90);
+        graphics.drawString("Login Form", 420, 90);
 
         Font fieldName = new Font("Arial", Font.PLAIN, 25);
         graphics.setFont(fieldName);
@@ -46,15 +45,14 @@ public class LogInFormState extends State {
         passRect = new Rectangle(rectBoxX, rectBoxY + 60, 300, 40);
 
         graphics.setColor(Color.gray);
-        if (isFieldSelected) {
-            switch (fieldType) {
-                case "user":
-                    graphics.drawRect((int)userRect.getX() - 3, (int)userRect.getY() - 3, 306, 46);
-                    break;
-                case "pass":
-                    graphics.drawRect((int)passRect.getX() - 3, (int)passRect.getY() - 3, 306, 46);
-                    break;
-            }
+
+        switch (fieldType) {
+            case "user":
+                graphics.drawRect((int)userRect.getX() - 3, (int)userRect.getY() - 3, 306, 46);
+                break;
+            case "pass":
+                graphics.drawRect((int)passRect.getX() - 3, (int)passRect.getY() - 3, 306, 46);
+                break;
         }
 
         Font inputText = new Font("Arial", Font.BOLD, 20);

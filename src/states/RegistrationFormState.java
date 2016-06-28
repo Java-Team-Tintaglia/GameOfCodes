@@ -21,7 +21,6 @@ public class RegistrationFormState extends State {
     public static Rectangle lastRect;
     public static Rectangle passRect;
 
-    public static boolean isFieldSelected = true;
     public static String fieldType = "user";
 
 
@@ -57,21 +56,19 @@ public class RegistrationFormState extends State {
         passRect = new Rectangle(rectBoxX, rectBoxY + 180, 300, 40);
 
         graphics.setColor(Color.gray);
-        if (isFieldSelected) {
-            switch (fieldType) {
-                case "user":
-                    graphics.drawRect((int)userRect.getX() - 3, (int)userRect.getY() - 3, 306, 46);
-                    break;
-                case "first":
-                    graphics.drawRect((int)firstRect.getX() - 3, (int)firstRect.getY() - 3, 306, 46);
-                    break;
-                case "last":
-                    graphics.drawRect((int)lastRect.getX() - 3, (int)lastRect.getY() - 3, 306, 46);
-                    break;
-                case "pass":
-                    graphics.drawRect((int)passRect.getX() - 3, (int)passRect.getY() - 3, 306, 46);
-                    break;
-            }
+        switch (fieldType) {
+            case "user":
+                graphics.drawRect((int)userRect.getX() - 3, (int)userRect.getY() - 3, 306, 46);
+                break;
+            case "first":
+                graphics.drawRect((int)firstRect.getX() - 3, (int)firstRect.getY() - 3, 306, 46);
+                break;
+            case "last":
+                graphics.drawRect((int)lastRect.getX() - 3, (int)lastRect.getY() - 3, 306, 46);
+                break;
+            case "pass":
+                graphics.drawRect((int)passRect.getX() - 3, (int)passRect.getY() - 3, 306, 46);
+                break;
         }
 
         Font inputText = new Font("Arial", Font.BOLD, 20);

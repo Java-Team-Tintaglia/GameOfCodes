@@ -105,19 +105,14 @@ public class MouseInput implements MouseListener {
             }
         } else if (StateManager.getCurrentState() instanceof RegistrationFormState) {
             if (RegistrationFormState.userRect.contains(mouseX, mouseY)) {
-                RegistrationFormState.isFieldSelected = true;
                 RegistrationFormState.fieldType = "user";
             } else if (RegistrationFormState.firstRect.contains(mouseX, mouseY)) {
-                RegistrationFormState.isFieldSelected = true;
                 RegistrationFormState.fieldType = "first";
             } else if (RegistrationFormState.lastRect.contains(mouseX, mouseY)) {
-                RegistrationFormState.isFieldSelected = true;
                 RegistrationFormState.fieldType = "last";
             } else if (RegistrationFormState.passRect.contains(mouseX, mouseY)) {
-                RegistrationFormState.isFieldSelected = true;
                 RegistrationFormState.fieldType = "pass";
             } else if (RegistrationFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
-                RegistrationFormState.isFieldSelected = true;
                 RegistrationFormState.fieldType = "user";
                 RegistrationFormState.username.setLength(0);
                 RegistrationFormState.firstName.setLength(0);
@@ -133,7 +128,6 @@ public class MouseInput implements MouseListener {
                 User userToRegister = new User(username, firstName, lastName, passwordHash);
                 userRepository.addUser(userToRegister);
 
-                RegistrationFormState.isFieldSelected = true;
                 RegistrationFormState.fieldType = "user";
                 RegistrationFormState.username.setLength(0);
                 RegistrationFormState.firstName.setLength(0);
@@ -142,24 +136,21 @@ public class MouseInput implements MouseListener {
             }
         } else if (StateManager.getCurrentState() instanceof LogInFormState) {
             if (LogInFormState.userRect.contains(mouseX, mouseY)) {
-                LogInFormState.isFieldSelected = true;
                 LogInFormState.fieldType = "user";
             } else if (LogInFormState.passRect.contains(mouseX, mouseY)) {
-                LogInFormState.isFieldSelected = true;
                 LogInFormState.fieldType = "pass";
             } else if (LogInFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
-                LogInFormState.isFieldSelected = false;
-                LogInFormState.fieldType = null;
+                LogInFormState.fieldType = "user";
                 LogInFormState.username.setLength(0);
                 LogInFormState.password.setLength(0);
+                StateManager.setCurrentState(new MainMenuState());
             } else if (LogInFormState.loginButton.getColliderBox().contains(mouseX, mouseY)) {
                 String password = LogInFormState.password.toString();
                 String username = LogInFormState.username.toString();
                 
                 authenticationProvider.authenticate(username, password);
 
-                LogInFormState.isFieldSelected = false;
-                LogInFormState.fieldType = null;
+                LogInFormState.fieldType = "user";
                 LogInFormState.username.setLength(0);
                 LogInFormState.password.setLength(0);
             }
