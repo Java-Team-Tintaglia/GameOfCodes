@@ -11,7 +11,7 @@ public class SuccessMessageState extends State {
 	private State nextState;
     private String message;
 
-    public static models.Button okButton = new models.Button(400, 310, Assets.buttonOk);
+    public static models.Button okButton = new models.Button(700, 350, Assets.buttonOk);
 
     public SuccessMessageState(String message, State nextState) {
         this.message = message;
@@ -20,7 +20,7 @@ public class SuccessMessageState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        int messagePositionX = 270;
+        int messagePositionX = 220;
         int messagePositionY = 190;
 
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
@@ -29,25 +29,26 @@ public class SuccessMessageState extends State {
         Font titleFont = new Font("Arial", Font.BOLD, 35);
         graphics.setFont(titleFont);
         graphics.setColor(Color.green);
-        graphics.drawString("Success", 370, 90);
+        graphics.drawString("Success", 220, 90);
 
         StringTokenizer tokens = new StringTokenizer(this.message, " ");
-        StringBuilder output = new StringBuilder(this.message.length());
+        graphics.setFont(new Font("Arial", Font.PLAIN, 25));
+
+        String line = "";
         int lineLen = 0;
         while (tokens.hasMoreTokens()) {
             String word = tokens.nextToken();
 
-            if (lineLen + word.length() > 23) {
-                output.append("\n");
+            if (lineLen + word.length() > 40) {
                 lineLen = 0;
+                graphics.drawString(line, messagePositionX, messagePositionY);
+                line = "";
+                messagePositionY += 30;
             }
-            output.append(word + " ");
+            line += (word + " ");
             lineLen += word.length();
         }
-
-        Font messageFont = new Font("Arial", Font.PLAIN, 25);
-        graphics.setFont(messageFont);
-        graphics.drawString(output.toString(), messagePositionX, messagePositionY);
+        graphics.drawString(line, messagePositionX, messagePositionY);
 
         okButton.draw(graphics);
     }
