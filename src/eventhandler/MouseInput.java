@@ -177,14 +177,13 @@ public class MouseInput implements MouseListener {
                 StudentProfileState.fieldType = "last";
             } else if (StudentProfileState.passRect.contains(mouseX, mouseY)) {
                 StudentProfileState.fieldType = "pass";
-            } else if(StudentProfileState.editFirstNameButton.getColliderBox().contains(mouseX, mouseY)){
-                System.out.printf("edit first name button");
-
-            }else if(StudentProfileState.editSurNameButton.getColliderBox().contains(mouseX, mouseY)){
-                System.out.printf("edit sur name button");
-
-            }else if(StudentProfileState.editPasswordButton.getColliderBox().contains(mouseX, mouseY)){
-                System.out.printf("edit Password button");
+            } else if(StudentProfileState.editButton.getColliderBox().contains(mouseX, mouseY)){
+                User user = AuthenticationProvider.currentUser;
+                user.setFirstName(StudentProfileState.firstName.toString());
+                user.setLastName(StudentProfileState.lastName.toString());
+                String passwordHash = Encoder.cryptingPassword(StudentProfileState.password.toString());
+                user.setPassword(passwordHash);
+                UserRepository.updateUser(user);
 
             }else if (StudentProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
                  StateManager.setCurrentState(new MainMenuState());

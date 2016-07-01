@@ -2,10 +2,7 @@ package eventhandler;
 
 import core.GameEngine;
 import graphics.Display;
-import states.GameState;
-import states.LogInFormState;
-import states.RegistrationFormState;
-import states.StateManager;
+import states.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -111,6 +108,41 @@ public class KeyInput implements KeyListener {
                         }
                         break;
                 }
+        } else if (StateManager.getCurrentState() instanceof StudentProfileState) {
+            String type = StudentProfileState.fieldType;
+            switch (type) {
+                case "first":
+                    if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                            key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && StudentProfileState.firstName.length() < 15) {
+                        StudentProfileState.firstName.append((char) key);
+                    } else if (key == KeyEvent.VK_BACK_SPACE && StudentProfileState.firstName.length() > 0) {
+                        StudentProfileState.firstName.deleteCharAt(StudentProfileState.firstName.length() - 1);
+                    } else if (isShiftClicked && key == '-' && StudentProfileState.firstName.length() < 15) {
+                        StudentProfileState.firstName.append("_");
+                    }
+                    break;
+                case "last":
+                    if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                            key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && StudentProfileState.lastName.length() < 15) {
+                        StudentProfileState.lastName.append((char) key);
+                    } else if (key == KeyEvent.VK_BACK_SPACE && StudentProfileState.lastName.length() > 0) {
+                        StudentProfileState.lastName.deleteCharAt(StudentProfileState.lastName.length() - 1);
+                    } else if (isShiftClicked && key == '-' && StudentProfileState.lastName.length() < 15) {
+                        StudentProfileState.lastName.append("_");
+                    }
+                    break;
+
+                case "pass":
+                    if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
+                            key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && StudentProfileState.password.length() < 15) {
+                        StudentProfileState.password.append((char) key);
+                    } else if (key == KeyEvent.VK_BACK_SPACE && StudentProfileState.password.length() > 0) {
+                        StudentProfileState.password.deleteCharAt(StudentProfileState.password.length() - 1);
+                    } else if (isShiftClicked && key == '-' && StudentProfileState.password.length() < 15) {
+                        StudentProfileState.password.append("_");
+                    }
+                    break;
+            }
         }
     }
 

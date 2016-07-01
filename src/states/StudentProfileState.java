@@ -13,16 +13,15 @@ import java.awt.*;
 
 public class StudentProfileState extends State {
 
-    public static StringBuilder firstName = new StringBuilder();
-    public static StringBuilder lastName = new StringBuilder();
-    public static StringBuilder password = new StringBuilder();
 
     private static User user = AuthenticationProvider.currentUser;
 
+    public static StringBuilder firstName = new StringBuilder(user.getFirstName());
+    public static StringBuilder lastName = new StringBuilder(user.getLastName());
+    public static StringBuilder password = new StringBuilder(user.getPassword());
+
     public static Button backToMenuButton = new Button(410, 510, Assets.buttonBackToMenu);
-    public static Button editFirstNameButton = new Button(700, 182,Assets.buttonEdit);
-    public static Button editSurNameButton = new Button(700, 242,Assets.buttonEdit);
-    public static Button editPasswordButton = new Button(700, 302,Assets.buttonEdit);
+    public static Button editButton = new Button(730, 242,Assets.buttonEdit);
 
     public static Rectangle firstRect;
     public static Rectangle lastRect;
@@ -36,7 +35,7 @@ public class StudentProfileState extends State {
 
         int fieldNameX = 220;
         int fieldNameY = 208;
-        int rectBoxX = 390;
+        int rectBoxX = 420;
         int rectBoxY = 182;
 
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
@@ -48,11 +47,14 @@ public class StudentProfileState extends State {
         String userProfile = user.getUsername();
         graphics.drawString("User: " + userProfile, 390, 90);
 
+
+        String currentProfile = String.format("First name: %s  Fast name: %s", user.getFirstName(), user.getLastName());
+
         Font fieldName = new Font("Arial", Font.PLAIN, 25);
         graphics.setFont(fieldName);
         graphics.drawString("First Name:", fieldNameX, fieldNameY);
         graphics.drawString("Last Name:", fieldNameX, fieldNameY + 60);
-        graphics.drawString("Password:", fieldNameX, fieldNameY + 120);
+        graphics.drawString("New Password:", fieldNameX, fieldNameY + 120);
 
         graphics.fillRect(rectBoxX, rectBoxY, 300, 40);
         firstRect = new Rectangle(rectBoxX, rectBoxY, 300, 40);
@@ -79,15 +81,13 @@ public class StudentProfileState extends State {
         Font inputText = new Font("Arial", Font.BOLD, 20);
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
-        graphics.drawString(firstName.toString(), rectBoxX + 30, rectBoxY + 85);
-        graphics.drawString(lastName.toString(), rectBoxX + 30, rectBoxY + 145);
-        graphics.drawString(Utils.hidePassword(password.length()), rectBoxX + 30, rectBoxY + 210);
+        graphics.drawString(firstName.toString(), rectBoxX + 30, rectBoxY + 26);
+        graphics.drawString(lastName.toString(), rectBoxX + 30, rectBoxY + 86);
+        graphics.drawString(Utils.hidePassword(password.length()), rectBoxX + 30, rectBoxY + 146);
 
         backToMenuButton.draw(graphics);
-        editFirstNameButton.draw(graphics);
-        editSurNameButton.draw(graphics);
-        editPasswordButton.draw(graphics);
-        System.out.println(firstName.toString());
+        editButton.draw(graphics);
+       // System.out.println(firstName.toString());
     }
 
     @Override
