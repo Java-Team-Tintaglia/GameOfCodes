@@ -2,7 +2,7 @@ package repositories;
 
 import models.User;
 import states.ErrorMessageState;
-import states.LogInFormState;
+import states.LoginFormState;
 import states.MainMenuState;
 import states.RegistrationFormState;
 import states.StateManager;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class UserRepository {
 
-    private static Map<String, User> users = new HashMap<>();
+    private Map<String, User> users = new HashMap<>();
 
     public void addUser(User user) {
         if (users.containsKey(user.getUsername())) {
@@ -42,24 +42,12 @@ public class UserRepository {
     }
 
 
-    // TODO: Edit Profile
-    public static void updateUser(User user) {
-        users.put(user.getUsername(), user);
+   
+    public void updateUser(User user) {
+        this.users.put(user.getUsername(), user);
 
-
-        try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.USERS_FILE_PATH), true)) {
-            for (Map.Entry<String, User> entry : users.entrySet()) {
-                writer.println(entry.getValue().getUsername() + " "
-                        + entry.getValue().getFirstName() + " "
-                        + entry.getValue().getLastName() + " "
-                        + entry.getValue().getPassword());
-            }
-        } catch (IOException exception) {
-            System.err.println("Cannot write to file");
-            exception.printStackTrace();
-
-
-        }
+        // TODO: find the user with that username from .txt and replace the row with the new data
+        
     }
 
     public User findUserByUsername(String username) {
@@ -68,7 +56,7 @@ public class UserRepository {
         if (!users.containsKey(username)) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
                     "User with " + username + " does NOT exists!",
-                    new LogInFormState());
+                    new LoginFormState());
 
             StateManager.setCurrentState(errorMessageState);
         } else {

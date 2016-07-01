@@ -84,27 +84,27 @@ public class KeyInput implements KeyListener {
                     }
                     break;
             	}
-            } else if (StateManager.getCurrentState() instanceof LogInFormState) {
-                String type = LogInFormState.fieldType;
+            } else if (StateManager.getCurrentState() instanceof LoginFormState) {
+                String type = LoginFormState.fieldType;
                 switch (type) {
                     case "user":
                         if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
-                                key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && LogInFormState.username.length() < 15) {
-                        	LogInFormState.username.append((char) key);
-                        } else if (key == KeyEvent.VK_BACK_SPACE && LogInFormState.username.length() > 0) {
-                        	LogInFormState.username.deleteCharAt(LogInFormState.username.length() - 1);
+                                key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && LoginFormState.username.length() < 15) {
+                        	LoginFormState.username.append((char) key);
+                        } else if (key == KeyEvent.VK_BACK_SPACE && LoginFormState.username.length() > 0) {
+                        	LoginFormState.username.deleteCharAt(LoginFormState.username.length() - 1);
                         } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
-                            LogInFormState.username.append("_");
+                            LoginFormState.username.append("_");
                         }
                         break;
                     case "pass":
                         if ((key >= KeyEvent.VK_0 && key <= KeyEvent.VK_9 ||
-                                key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && LogInFormState.password.length() < 15) {
-                        	LogInFormState.password.append((char) key);
-                        } else if (key == KeyEvent.VK_BACK_SPACE && LogInFormState.password.length() > 0) {
-                        	LogInFormState.password.deleteCharAt(LogInFormState.password.length() - 1);
+                                key >= KeyEvent.VK_A && key <= KeyEvent.VK_Z) && LoginFormState.password.length() < 15) {
+                        	LoginFormState.password.append((char) key);
+                        } else if (key == KeyEvent.VK_BACK_SPACE && LoginFormState.password.length() > 0) {
+                        	LoginFormState.password.deleteCharAt(LoginFormState.password.length() - 1);
                         } else if (isShiftClicked && key == '-' && RegistrationFormState.username.length() < 15) {
-                            LogInFormState.password.append("_");
+                            LoginFormState.password.append("_");
                         }
                         break;
                 }

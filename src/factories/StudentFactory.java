@@ -8,14 +8,8 @@ import models.students.NerdLady;
 import models.students.Student;
 
 public class StudentFactory {
-	private static final String DEFAULT_PLAYER_NAME = "player"; // no defaul should be authenticated
-
 	public Student create(StudentType type, int x ,int y, String username) {
 		Student student = null;
-
-		if (username == null || username.equals("")) {
-			username = DEFAULT_PLAYER_NAME;
-		}
 
 		if (type == null) {
 			student = new BadBoy(x, y, username);

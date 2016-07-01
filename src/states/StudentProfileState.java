@@ -10,10 +10,7 @@ import utils.Utils;
 
 import java.awt.*;
 
-
-
 public class StudentProfileState extends State {
-
 
     private static User user = AuthenticationProvider.currentUser;
 
@@ -33,8 +30,6 @@ public class StudentProfileState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        System.out.println(password);
-
         int fieldNameX = 220;
         int fieldNameY = 208;
         int rectBoxX = 420;
@@ -89,7 +84,6 @@ public class StudentProfileState extends State {
 
         backToMenuButton.draw(graphics);
         editButton.draw(graphics);
-       // System.out.println(firstName.toString());
     }
 
     @Override
