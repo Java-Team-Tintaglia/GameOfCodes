@@ -7,7 +7,7 @@ import utils.Utils;
 
 import java.awt.*;
 
-public class LogInFormState extends State {
+public class LoginFormState extends State {
     public static StringBuilder username = new StringBuilder();
     public static StringBuilder password = new StringBuilder();
 
