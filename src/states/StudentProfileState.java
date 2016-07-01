@@ -1,6 +1,7 @@
 package states;
 
 import authentication.AuthenticationProvider;
+import authentication.Encoder;
 import graphics.Assets;
 import models.Button;
 import models.User;
@@ -18,7 +19,7 @@ public class StudentProfileState extends State {
 
     public static StringBuilder firstName = new StringBuilder(user.getFirstName());
     public static StringBuilder lastName = new StringBuilder(user.getLastName());
-    public static StringBuilder password = new StringBuilder(user.getPassword());
+    public static StringBuilder password = new StringBuilder(Encoder.decryptPassword(user.getPassword()));
 
     public static Button backToMenuButton = new Button(410, 510, Assets.buttonBackToMenu);
     public static Button editButton = new Button(730, 242,Assets.buttonEdit);
@@ -32,6 +33,7 @@ public class StudentProfileState extends State {
 
     @Override
     public void draw(Graphics graphics) {
+        System.out.println(password);
 
         int fieldNameX = 220;
         int fieldNameY = 208;
