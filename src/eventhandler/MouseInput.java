@@ -5,6 +5,7 @@ import authentication.Encoder;
 import enums.StudentType;
 import graphics.Display;
 import models.User;
+import models.students.Student;
 import repositories.StudentScoresRepository;
 import repositories.UserRepository;
 import states.*;
@@ -60,6 +61,11 @@ public class MouseInput implements MouseListener {
             // Scores Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new ScoresState());
+            }
+
+            //Profile Button
+            if (AuthenticationProvider.currentUser != null && MainMenuState.buttonProfile.getColliderBox().contains(mouseX, mouseY)) {
+                StateManager.setCurrentState(new StudentProfileState());
             }
 
             // Exit Button
@@ -164,6 +170,25 @@ public class MouseInput implements MouseListener {
             if (SuccessMessageState.okButton.getColliderBox().contains(mouseX, mouseY)) {
             	StateManager.setCurrentState(sms.getNextState());
             }
+        } else if (StateManager.getCurrentState() instanceof StudentProfileState) {
+            if (StudentProfileState.firstRect.contains(mouseX, mouseY)) {
+                StudentProfileState.fieldType = "first";
+            } else if (StudentProfileState.lastRect.contains(mouseX, mouseY)) {
+                StudentProfileState.fieldType = "last";
+            } else if (StudentProfileState.passRect.contains(mouseX, mouseY)) {
+                StudentProfileState.fieldType = "pass";
+            } else if(StudentProfileState.editFirstNameButton.getColliderBox().contains(mouseX, mouseY)){
+                System.out.printf("edit first name button");
+
+            }else if(StudentProfileState.editSurNameButton.getColliderBox().contains(mouseX, mouseY)){
+                System.out.printf("edit sur name button");
+
+            }else if(StudentProfileState.editPasswordButton.getColliderBox().contains(mouseX, mouseY)){
+                System.out.printf("edit Password button");
+
+            }else if (StudentProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+                 StateManager.setCurrentState(new MainMenuState());
+             }
         }
     }
 

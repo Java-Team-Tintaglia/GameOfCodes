@@ -13,7 +13,8 @@ public class MainMenuState extends State {
 	public static Button buttonRegister = new Button(800,450,Assets.buttonRegister);
 	public static Button buttonExit = new Button(800,520,Assets.buttonExit);
 	 
-    public static Button buttonStart = new Button(800,380, Assets.buttonStart);
+    public static Button buttonStart = new Button(800,310, Assets.buttonStart);
+	public static Button buttonProfile = new Button(800, 380, Assets.buttonProfile);
     public static Button buttonScore = new Button(800,450,Assets.buttonScore);
     public static Button buttonLogOut = new Button(800,520, Assets.buttonLogOut);
 
@@ -32,6 +33,7 @@ public class MainMenuState extends State {
     		graphics.setColor(Color.white);
     		graphics.drawString(AuthenticationProvider.currentUser.getUsername(), 900, 30);
     		 buttonStart.draw(graphics);
+			 buttonProfile.draw(graphics);
     	     buttonScore.draw(graphics);
 			 buttonLogOut.draw(graphics);
 		} else {
