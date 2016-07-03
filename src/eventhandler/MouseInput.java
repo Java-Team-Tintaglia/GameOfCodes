@@ -5,7 +5,6 @@ import authentication.Encoder;
 import enums.StudentType;
 import graphics.Display;
 import models.User;
-import models.students.Student;
 import repositories.StudentScoresRepository;
 import repositories.UserRepository;
 import states.*;
@@ -38,26 +37,28 @@ public class MouseInput implements MouseListener {
         int mouseY = e.getY();
 
         if (StateManager.getCurrentState() instanceof MainMenuState) {
+
             // Login Button
             if (AuthenticationProvider.currentUser == null && MainMenuState.buttonLogIn.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new LoginFormState());
             }
-            
+
             // LogOut Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonLogOut.getColliderBox().contains(mouseX, mouseY)) {
-            	authenticationProvider.logout();
+                authenticationProvider.logout();
+                return;
             }
-            
+
             // Register Button
             if (AuthenticationProvider.currentUser == null && MainMenuState.buttonRegister.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new RegistrationFormState());
             }
-            
+
             // Play Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonStart.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new PlayerCustomizationState());
             }
-            
+
             // Scores Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
                 StateManager.setCurrentState(new ScoresState());

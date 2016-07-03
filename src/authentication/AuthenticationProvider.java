@@ -55,14 +55,7 @@ public class AuthenticationProvider {
 			SuccessMessageState successMessageState = new SuccessMessageState(
 					"You have logged out successfully!",
 					new MainMenuState());			
-			
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+
 			StateManager.setCurrentState(successMessageState);
 			
 		} else {
