@@ -3,7 +3,7 @@ package authentication;
 import models.User;
 import repositories.UserRepository;
 import states.ErrorMessageState;
-import states.LogInFormState;
+import states.LoginFormState;
 import states.MainMenuState;
 import states.StateManager;
 import states.SuccessMessageState;
@@ -24,7 +24,7 @@ public class AuthenticationProvider {
     	if (user == null) {
     		ErrorMessageState errorMessageState = new ErrorMessageState(
     				"User with username: " + username + " was NOT found!",
-    				new LogInFormState());
+    				new LoginFormState());
     		
     		StateManager.setCurrentState(errorMessageState);
     		return;
@@ -34,7 +34,7 @@ public class AuthenticationProvider {
     	if (!password.equals(decodedPass)) {
     		ErrorMessageState errorMessageState = new ErrorMessageState(
     				"Password does NOT match!",
-    				new LogInFormState());
+    				new LoginFormState());
     		
     		StateManager.setCurrentState(errorMessageState);
     		return;

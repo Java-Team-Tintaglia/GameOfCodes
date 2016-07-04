@@ -2,7 +2,7 @@ package repositories;
 
 import models.User;
 import states.ErrorMessageState;
-import states.LogInFormState;
+import states.LoginFormState;
 import states.MainMenuState;
 import states.RegistrationFormState;
 import states.StateManager;
@@ -100,7 +100,7 @@ public class UserRepository {
         if (!users.containsKey(username)) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
                     "User with " + username + " does NOT exists!",
-                    new LogInFormState());
+                    new LoginFormState());
 
             StateManager.setCurrentState(errorMessageState);
         } else {

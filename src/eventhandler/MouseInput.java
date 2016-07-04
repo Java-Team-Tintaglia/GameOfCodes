@@ -40,7 +40,7 @@ public class MouseInput implements MouseListener {
 
             // Login Button
             if (AuthenticationProvider.currentUser == null && MainMenuState.buttonLogIn.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new LogInFormState());
+                StateManager.setCurrentState(new LoginFormState());
             }
 
             // LogOut Button
@@ -140,25 +140,25 @@ public class MouseInput implements MouseListener {
                 RegistrationFormState.lastName.setLength(0);
                 RegistrationFormState.password.setLength(0);
             }
-        } else if (StateManager.getCurrentState() instanceof LogInFormState) {
-            if (LogInFormState.userRect.contains(mouseX, mouseY)) {
-                LogInFormState.fieldType = "user";
-            } else if (LogInFormState.passRect.contains(mouseX, mouseY)) {
-                LogInFormState.fieldType = "pass";
-            } else if (LogInFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
-                LogInFormState.fieldType = "user";
-                LogInFormState.username.setLength(0);
-                LogInFormState.password.setLength(0);
+        } else if (StateManager.getCurrentState() instanceof LoginFormState) {
+            if (LoginFormState.userRect.contains(mouseX, mouseY)) {
+            	LoginFormState.fieldType = "user";
+            } else if (LoginFormState.passRect.contains(mouseX, mouseY)) {
+            	LoginFormState.fieldType = "pass";
+            } else if (LoginFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+            	LoginFormState.fieldType = "user";
+            	LoginFormState.username.setLength(0);
+            	LoginFormState.password.setLength(0);
                 StateManager.setCurrentState(new MainMenuState());
-            } else if (LogInFormState.loginButton.getColliderBox().contains(mouseX, mouseY)) {
-                String password = LogInFormState.password.toString();
-                String username = LogInFormState.username.toString();
+            } else if (LoginFormState.loginButton.getColliderBox().contains(mouseX, mouseY)) {
+                String password = LoginFormState.password.toString();
+                String username = LoginFormState.username.toString();
                 
                 authenticationProvider.authenticate(username, password);
 
-                LogInFormState.fieldType = "user";
-                LogInFormState.username.setLength(0);
-                LogInFormState.password.setLength(0);
+                LoginFormState.fieldType = "user";
+                LoginFormState.username.setLength(0);
+                LoginFormState.password.setLength(0);
             }
         } else if (StateManager.getCurrentState() instanceof ErrorMessageState) {
         	ErrorMessageState ems = (ErrorMessageState) StateManager.getCurrentState();
