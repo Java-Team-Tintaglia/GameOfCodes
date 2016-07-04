@@ -12,13 +12,13 @@ import java.awt.*;
 public class EditProfileState extends State {
 
     public static StringBuilder firstName = new StringBuilder(
-    								AuthenticationProvider.currentUser.getFirstName());
+    										AuthenticationProvider.currentUser.getFirstName());
     
     public static StringBuilder lastName = new StringBuilder(
-    								AuthenticationProvider.currentUser.getLastName());
+    										AuthenticationProvider.currentUser.getLastName());
     
     public static StringBuilder password = new StringBuilder(
-    								Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
+    										Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
 
     public static Button backToMenuButton = new Button(410, 510, Assets.buttonBackToMenu);
     public static Button editButton = new Button(730, 242,Assets.buttonEdit);
@@ -45,11 +45,6 @@ public class EditProfileState extends State {
         graphics.setColor(Color.white);
         String userProfile = AuthenticationProvider.currentUser.getUsername();
         graphics.drawString("User: " + userProfile, 390, 90);
-
-        
-        String currentProfile = String.format("First name: %s  Fast name: %s", 
-        		AuthenticationProvider.currentUser.getFirstName(), 
-        		AuthenticationProvider.currentUser.getLastName());
 
         Font fieldName = new Font("Arial", Font.PLAIN, 25);
         graphics.setFont(fieldName);
@@ -92,6 +87,20 @@ public class EditProfileState extends State {
 
     @Override
     public void update() {
+    	if (!AuthenticationProvider.currentUser.getUsername().equals(firstName.toString())) {
+    		firstName = new StringBuilder(
+					AuthenticationProvider.currentUser.getFirstName());
+		}
+    	
+    	if (!AuthenticationProvider.currentUser.getUsername().equals(lastName.toString())) {
+    		lastName = new StringBuilder(
+					AuthenticationProvider.currentUser.getLastName());
+		}
+    	
+    	if (!AuthenticationProvider.currentUser.getUsername().equals(password.toString())) {
+    		password = new StringBuilder(
+					AuthenticationProvider.currentUser.getPassword());
+		}
     	
     }
 }
