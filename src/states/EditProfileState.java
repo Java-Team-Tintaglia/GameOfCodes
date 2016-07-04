@@ -4,7 +4,6 @@ import authentication.AuthenticationProvider;
 import authentication.Encoder;
 import graphics.Assets;
 import models.Button;
-import models.User;
 import utils.Constants;
 import utils.Utils;
 
@@ -12,11 +11,14 @@ import java.awt.*;
 
 public class EditProfileState extends State {
 
-    private static User user = AuthenticationProvider.currentUser;
-
-    public static StringBuilder firstName = new StringBuilder(user.getFirstName());
-    public static StringBuilder lastName = new StringBuilder(user.getLastName());
-    public static StringBuilder password = new StringBuilder(Encoder.decryptPassword(user.getPassword()));
+    public static StringBuilder firstName = new StringBuilder(
+    								AuthenticationProvider.currentUser.getFirstName());
+    
+    public static StringBuilder lastName = new StringBuilder(
+    								AuthenticationProvider.currentUser.getLastName());
+    
+    public static StringBuilder password = new StringBuilder(
+    								Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
 
     public static Button backToMenuButton = new Button(410, 510, Assets.buttonBackToMenu);
     public static Button editButton = new Button(730, 242,Assets.buttonEdit);
@@ -41,11 +43,13 @@ public class EditProfileState extends State {
         Font title = new Font("Arial", Font.PLAIN, 35);
         graphics.setFont(title);
         graphics.setColor(Color.white);
-        String userProfile = user.getUsername();
+        String userProfile = AuthenticationProvider.currentUser.getUsername();
         graphics.drawString("User: " + userProfile, 390, 90);
 
-
-        String currentProfile = String.format("First name: %s  Fast name: %s", user.getFirstName(), user.getLastName());
+        
+        String currentProfile = String.format("First name: %s  Fast name: %s", 
+        		AuthenticationProvider.currentUser.getFirstName(), 
+        		AuthenticationProvider.currentUser.getLastName());
 
         Font fieldName = new Font("Arial", Font.PLAIN, 25);
         graphics.setFont(fieldName);
@@ -88,5 +92,6 @@ public class EditProfileState extends State {
 
     @Override
     public void update() {
+    	
     }
 }

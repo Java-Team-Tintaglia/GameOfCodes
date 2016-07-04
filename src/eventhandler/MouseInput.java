@@ -90,7 +90,6 @@ public class MouseInput implements MouseListener {
                 PlayerCustomizationState.isSelected = true;
             }
 
-            // Select player
             if (PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
                 StudentType studentType = PlayerCustomizationState.studentType;
                 StateManager.setCurrentState(new GameState(studentType));
