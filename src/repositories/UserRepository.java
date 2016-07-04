@@ -9,11 +9,7 @@ import states.StateManager;
 import states.SuccessMessageState;
 import utils.Constants;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +23,15 @@ public class UserRepository {
         if (users.containsKey(user.getUsername())) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
                     "User " + user.getUsername() + " already exist!",
+                    new RegistrationFormState());
+
+            StateManager.setCurrentState(errorMessageState);
+        } else if (user.getFirstName().length() == 0
+                || user.getLastName().length() == 0
+                || user.getPassword().length() == 0
+                || user.getUsername().length() == 0) {
+            ErrorMessageState errorMessageState = new ErrorMessageState(
+                    "Please fill all empty fields!",
                     new RegistrationFormState());
 
             StateManager.setCurrentState(errorMessageState);
@@ -44,10 +49,42 @@ public class UserRepository {
 
    
     public void updateUser(User user) {
+        String editedData = String.format("%s %s %s %s",
+                user.getUsername(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getPassword());
+
         this.users.put(user.getUsername(), user);
 
-        // TODO: find the user with that username from .txt and replace the row with the new data
-        
+        try (BufferedReader reader = new BufferedReader(new FileReader(Constants.USERS_FILE_PATH))) {
+            StringBuilder text = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] lineTokens = line.split("\\s+");
+                if (lineTokens[0].equals(user.getUsername())) {
+                    text.append(editedData);
+                } else {
+                    text.append(line);
+                }
+                text.append("\n");
+            }
+
+            FileOutputStream writer = new FileOutputStream(Constants.USERS_FILE_PATH);
+            writer.write(text.toString().getBytes());
+        } catch (FileNotFoundException e) {
+            System.out.println("File cannot be found!");
+            e.printStackTrace();
+        } catch (IOException e) {
+            System.out.println("Cannot write to file!");
+            e.printStackTrace();
+        }
+
+        SuccessMessageState successMessageState = new SuccessMessageState(
+                "You have successfully edited your profile!",
+                new MainMenuState());
+
+        StateManager.setCurrentState(successMessageState);
     }
 
     public User findUserByUsername(String username) {
