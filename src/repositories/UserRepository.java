@@ -57,6 +57,7 @@ public class UserRepository {
 
         this.users.put(user.getUsername(), user);
 
+        FileOutputStream writer = null;
         try (BufferedReader reader = new BufferedReader(new FileReader(Constants.USERS_FILE_PATH))) {
             StringBuilder text = new StringBuilder();
             String line;
@@ -70,7 +71,7 @@ public class UserRepository {
                 text.append("\n");
             }
 
-            FileOutputStream writer = new FileOutputStream(Constants.USERS_FILE_PATH);
+            writer = new FileOutputStream(Constants.USERS_FILE_PATH);
             writer.write(text.toString().getBytes());
         } catch (FileNotFoundException e) {
             System.out.println("File cannot be found!");
@@ -78,6 +79,12 @@ public class UserRepository {
         } catch (IOException e) {
             System.out.println("Cannot write to file!");
             e.printStackTrace();
+        } finally {
+        	try {
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
         }
 
         SuccessMessageState successMessageState = new SuccessMessageState(

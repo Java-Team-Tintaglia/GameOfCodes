@@ -66,7 +66,7 @@ public class MouseInput implements MouseListener {
 
             // Profile Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonProfile.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new StudentProfileState());
+                StateManager.setCurrentState(new EditProfileState());
             }
 
             // Exit Button
@@ -90,7 +90,6 @@ public class MouseInput implements MouseListener {
                 PlayerCustomizationState.isSelected = true;
             }
 
-            // Select player
             if (PlayerCustomizationState.playButton.getColliderBox().contains(mouseX, mouseY)) {
                 StudentType studentType = PlayerCustomizationState.studentType;
                 StateManager.setCurrentState(new GameState(studentType));
@@ -171,23 +170,23 @@ public class MouseInput implements MouseListener {
             if (SuccessMessageState.okButton.getColliderBox().contains(mouseX, mouseY)) {
             	StateManager.setCurrentState(sms.getNextState());
             }
-        } else if (StateManager.getCurrentState() instanceof StudentProfileState) {
-            if (StudentProfileState.firstRect.contains(mouseX, mouseY)) {
-                StudentProfileState.fieldType = "first";
-            } else if (StudentProfileState.lastRect.contains(mouseX, mouseY)) {
-                StudentProfileState.fieldType = "last";
-            } else if (StudentProfileState.passRect.contains(mouseX, mouseY)) {
-                StudentProfileState.fieldType = "pass";
-            } else if(StudentProfileState.editButton.getColliderBox().contains(mouseX, mouseY)){
+        } else if (StateManager.getCurrentState() instanceof EditProfileState) {
+            if (EditProfileState.firstRect.contains(mouseX, mouseY)) {
+                EditProfileState.fieldType = "first";
+            } else if (EditProfileState.lastRect.contains(mouseX, mouseY)) {
+                EditProfileState.fieldType = "last";
+            } else if (EditProfileState.passRect.contains(mouseX, mouseY)) {
+                EditProfileState.fieldType = "pass";
+            } else if(EditProfileState.editButton.getColliderBox().contains(mouseX, mouseY)){
                 User user = AuthenticationProvider.currentUser;
-                user.setFirstName(StudentProfileState.firstName.toString());
-                user.setLastName(StudentProfileState.lastName.toString());
-                String passwordHash = Encoder.cryptingPassword(StudentProfileState.password.toString());
+                user.setFirstName(EditProfileState.firstName.toString());
+                user.setLastName(EditProfileState.lastName.toString());
+                String passwordHash = Encoder.cryptingPassword(EditProfileState.password.toString());
                 user.setPassword(passwordHash);
                 
                 userRepository.updateUser(user);
 
-            } else if (StudentProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+            } else if (EditProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
                  StateManager.setCurrentState(new MainMenuState());
              }
         }
