@@ -10,7 +10,7 @@ import utils.Utils;
 
 import java.awt.*;
 
-public class StudentProfileState extends State {
+public class EditProfileState extends State {
 
     private static User user = AuthenticationProvider.currentUser;
 
