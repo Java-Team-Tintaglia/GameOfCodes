@@ -8,6 +8,7 @@ public class Assets {
 
     public static BufferedImage wall;
     public static BufferedImage wallToolbar;
+    public static BufferedImage background;
     public static BufferedImage floor;
     public static BufferedImage mainMenu;
     public static BufferedImage playerCustomization;
@@ -50,6 +51,7 @@ public class Assets {
 
     public static void init() {
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
+        background = ImageLoader.loadingImage(ImageAlbum.Background.getPath());
         wallToolbar = ImageLoader.loadingImage(ImageAlbum.WallToolbar.getPath());
         floor = ImageLoader.loadingImage(ImageAlbum.FLoor.getPath());
         mainMenu = ImageLoader.loadingImage(ImageAlbum.MainMenu.getPath());

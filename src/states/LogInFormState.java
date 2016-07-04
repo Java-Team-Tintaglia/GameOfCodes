@@ -7,7 +7,7 @@ import utils.Utils;
 
 import java.awt.*;
 
-public class LoginFormState extends State {
+public class LogInFormState extends State {
     public static StringBuilder username = new StringBuilder();
     public static StringBuilder password = new StringBuilder();
 
@@ -26,7 +26,7 @@ public class LoginFormState extends State {
         int rectBoxX = 440;
         int rectBoxY = 172;
 
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(100, 40, 824, 450);
 
         Font title = new Font("Arial", Font.PLAIN, 35);

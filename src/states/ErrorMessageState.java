@@ -24,7 +24,7 @@ public class ErrorMessageState extends State {
         int messagePositionX = 220;
         int messagePositionY = 190;
 
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(100, 40, 824, 450);
 
         Font titleFont = new Font("Arial", Font.BOLD, 35);

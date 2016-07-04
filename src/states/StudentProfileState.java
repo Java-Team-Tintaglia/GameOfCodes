@@ -35,7 +35,7 @@ public class StudentProfileState extends State {
         int rectBoxX = 420;
         int rectBoxY = 182;
 
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(100, 40, 824, 450);
 
         Font title = new Font("Arial", Font.PLAIN, 35);
