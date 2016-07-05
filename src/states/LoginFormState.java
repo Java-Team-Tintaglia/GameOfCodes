@@ -42,18 +42,18 @@ public class LoginFormState extends State {
 //        graphics.drawString("Password:", fieldNameX, fieldNameY + 60);
 
         // graphics.fillRect(rectBoxX, rectBoxY, 300, 40);
-        userRect = new Rectangle(rectBoxX-139, rectBoxY-4, 544, 60);
+        userRect = new Rectangle(rectBoxX-139, rectBoxY-17, 544, 68);
         // graphics.fillRect(rectBoxX, rectBoxY + 60, 300, 40);
-        passRect = new Rectangle(rectBoxX-139, rectBoxY + 90, 544, 60);
+        passRect = new Rectangle(rectBoxX-139, rectBoxY + 77, 544, 68);
 
         graphics.setColor(Color.gray);
 
         switch (fieldType) {
             case "user":
-                graphics.drawRect((int)userRect.getX()+4 , (int)userRect.getY()-15, 542, 75);
+                graphics.drawRect((int)userRect.getX()+4 , (int)userRect.getY()-6, 542, 75);
                 break;
             case "pass":
-                graphics.drawRect((int)passRect.getX()+4 , (int)passRect.getY()-15, 542, 75);
+                graphics.drawRect((int)passRect.getX()+4 , (int)passRect.getY()-2, 542, 75);
                 break;
         }
 
