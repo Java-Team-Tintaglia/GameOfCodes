@@ -12,7 +12,7 @@ public class VitalityWizard extends Wizard {
 	
     @Override
     public void boost(Student student) {
-        int vitality = student.getVitality() + 10;
+        int vitality = student.getVitality() + 30;
         student.setVitality(vitality);
     }
 }

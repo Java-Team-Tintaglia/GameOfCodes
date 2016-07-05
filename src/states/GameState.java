@@ -1,5 +1,6 @@
 package states;
 
+import authentication.AuthenticationProvider;
 import core.CollisionHandler;
 import core.MapInitializor;
 import enums.StudentType;
@@ -13,8 +14,6 @@ import utils.Constants;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import authentication.AuthenticationProvider;
 
 public class GameState extends State {
 	
@@ -84,6 +83,7 @@ public class GameState extends State {
     	
 		if(elapsedSeconds > this.timeDelay) {
 			seconds--;
+			student.reduceValues();
 			timerSeconds = System.nanoTime();
 		}
     	

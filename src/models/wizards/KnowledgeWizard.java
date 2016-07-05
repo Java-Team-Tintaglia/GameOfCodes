@@ -12,7 +12,7 @@ public class KnowledgeWizard extends Wizard {
     
     @Override
     public void boost(Student student) {
-        int knowledge = student.getKnowledge() + 10;
-        student.setVitality(knowledge);
+        int knowledge = student.getKnowledge() + 30;
+        student.setKnowledge(knowledge);
     }
 }

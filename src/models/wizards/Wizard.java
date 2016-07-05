@@ -1,12 +1,11 @@
 package models.wizards;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-
 import enums.WizardType;
 import models.GameObject;
 import models.students.Student;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class Wizard extends GameObject {
 
@@ -18,9 +17,12 @@ public abstract class Wizard extends GameObject {
 
     private boolean exist;
 
+    private boolean createdNewWizard;
+
     public Wizard(int x, int y, WizardType wizardType, BufferedImage image ) {
         super(x, y);
         this.exist = true;
+        this.createdNewWizard = true;
         this.wizardType = wizardType;
         this.image = image;
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
@@ -33,6 +35,14 @@ public abstract class Wizard extends GameObject {
 
     public void setExist(boolean exist) {
         this.exist = exist;
+    }
+
+    public boolean isCreatedNewWizard() {
+        return createdNewWizard;
+    }
+
+    public void setCreatedNewWizard(boolean createdNewWizard) {
+        this.createdNewWizard = createdNewWizard;
     }
 
     public Rectangle getColliderBox() {

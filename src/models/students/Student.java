@@ -80,6 +80,14 @@ public abstract class Student extends GameObject {
     }
 
     public void setIntelligence(int intelligence) {
+        if (intelligence > 100) {
+            this.intelligence = 100;
+            return;
+        }
+        if (intelligence < 0) {
+            this.intelligence = 0;
+            return;
+        }
         this.intelligence = intelligence;
     }
 
@@ -88,6 +96,14 @@ public abstract class Student extends GameObject {
     }
 
     public void setKnowledge(int knowledge) {
+        if (knowledge > 100) {
+            this.knowledge = 100;
+            return;
+        }
+        if (knowledge < 0) {
+            this.knowledge = 0;
+            return;
+        }
         this.knowledge = knowledge;
     }
 
@@ -96,6 +112,14 @@ public abstract class Student extends GameObject {
     }
 
     public void setVitality(int vitality) {
+        if (vitality > 100) {
+            this.vitality = 100;
+            return;
+        }
+        if (vitality < 0) {
+            this.vitality = 0;
+            return;
+        }
         this.vitality = vitality;
     }
 
@@ -175,15 +199,14 @@ public abstract class Student extends GameObject {
     public int calculateGrade(ProgrammingLanguage language) {
         int grade = Constants.FAILURE;
         int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / 3;
-        int random = new Random().nextInt(ratio);
 
-        if (this.vitality <= 0 || random <= (0.2 * ratio)) {
+        if (ratio >= 0 && ratio <= 55) {
             grade = Constants.FAILURE;
-        } else if (random > (0.2 * ratio) && random <= (0.4 * ratio)) {
+        } else if (ratio > 55 && ratio <= 65) {
             grade = Constants.PASSABLE;
-        } else if (random > (0.4 * ratio) && random <= (0.6 * ratio)) {
+        } else if (ratio > 65 && ratio <= 75) {
             grade = Constants.GOOD;
-        } else if (random > (0.6 * ratio) && random <= (0.8 * ratio)) {
+        } else if (ratio > 75 && ratio <= 85) {
             grade = Constants.VERY_GOOD;
         } else {
             grade = Constants.EXCELLENT;
@@ -206,7 +229,7 @@ public abstract class Student extends GameObject {
                 break;
         }
 
-        int vitality = this.getVitality() - language.getVitalityDamagePoints() <= 0 ? 0 : this.getVitality() - language.getVitalityDamagePoints();
+        int vitality = this.getVitality() - language.getVitalityDamagePoints();
         this.setVitality(vitality);
 
         return grade;
@@ -234,5 +257,11 @@ public abstract class Student extends GameObject {
         if (isMovingUp && this.getY() - DEFAULT_SPEED >= 255) {
             this.setY(this.getY() - DEFAULT_SPEED);
         }
+    }
+
+    public void reduceValues() {
+//        this.setVitality(this.getVitality() - 1);
+        this.setKnowledge(this.getKnowledge() - 3);
+        this.setIntelligence(this.getIntelligence() - 3);
     }
 }

@@ -1,18 +1,19 @@
 package core;
 
-import java.util.List;
-
 import models.programmingLanguages.ProgrammingLanguage;
 import models.students.Student;
 import models.wizards.Wizard;
+
+import java.util.List;
 
 public class CollisionHandler {
 
     public static void handleCollisions(Student student,
                                         Wizard wizard,
                                         List<ProgrammingLanguage> programmingLanguages) {
-        if (wizard != null && student.getColliderBox().intersects(wizard.getColliderBox())) {
+        if (wizard != null && wizard.isCreatedNewWizard() && student.getColliderBox().intersects(wizard.getColliderBox())) {
             wizard.setExist(false);
+            wizard.setCreatedNewWizard(false);
             wizard.boost(student);
         }
 
@@ -22,6 +23,7 @@ public class CollisionHandler {
                     programmingLanguage.setExist(false);
                     int score = student.calculateGrade(programmingLanguage);
                     student.addScore(score, programmingLanguage);
+                    System.out.println(score);
                 }
             }
         }

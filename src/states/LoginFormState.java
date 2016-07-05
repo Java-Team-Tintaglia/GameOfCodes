@@ -59,7 +59,7 @@ public class LoginFormState extends State {
 
         Font inputText = new Font("Arial", Font.BOLD, 20);
         graphics.setFont(inputText);
-        graphics.setColor(Color.black);
+        graphics.setColor(Color.white);
         graphics.drawString(username.toString(), rectBoxX + 30, rectBoxY + 25);
         graphics.drawString(Utils.hidePassword(password.length()), rectBoxX + 30, rectBoxY + 125);
 
