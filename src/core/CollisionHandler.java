@@ -11,9 +11,8 @@ public class CollisionHandler {
     public static void handleCollisions(Student student,
                                         Wizard wizard,
                                         List<ProgrammingLanguage> programmingLanguages) {
-        if (wizard != null && wizard.isCreatedNewWizard() && student.getColliderBox().intersects(wizard.getColliderBox())) {
+        if (wizard != null && wizard.isExist() && student.getColliderBox().intersects(wizard.getColliderBox())) {
             wizard.setExist(false);
-            wizard.setCreatedNewWizard(false);
             wizard.boost(student);
         }
 
