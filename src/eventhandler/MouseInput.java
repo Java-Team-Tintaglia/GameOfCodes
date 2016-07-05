@@ -66,7 +66,7 @@ public class MouseInput implements MouseListener {
 
             // Profile Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonProfile.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new EditProfileState());
+                StateManager.setCurrentState(new StudentProfileState());
             }
 
             // Exit Button
@@ -170,7 +170,15 @@ public class MouseInput implements MouseListener {
             if (SuccessMessageState.okButton.getColliderBox().contains(mouseX, mouseY)) {
             	StateManager.setCurrentState(sms.getNextState());
             }
-        } else if (StateManager.getCurrentState() instanceof EditProfileState) {
+        }else if(StateManager.getCurrentState() instanceof StudentProfileState) {
+
+            if (StudentProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)){
+                StateManager.setCurrentState(new MainMenuState());
+            }else if(StudentProfileState.editButton.getColliderBox().contains(mouseX, mouseY)){
+                StateManager.setCurrentState(new EditProfileState());
+            }
+
+        }else if (StateManager.getCurrentState() instanceof EditProfileState) {
             if (EditProfileState.firstRect.contains(mouseX, mouseY)) {
                 EditProfileState.fieldType = "first";
             } else if (EditProfileState.lastRect.contains(mouseX, mouseY)) {
@@ -183,9 +191,7 @@ public class MouseInput implements MouseListener {
                 user.setLastName(EditProfileState.lastName.toString());
                 String passwordHash = Encoder.cryptingPassword(EditProfileState.password.toString());
                 user.setPassword(passwordHash);
-                
                 userRepository.updateUser(user);
-
             } else if (EditProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
                  StateManager.setCurrentState(new MainMenuState());
              }
