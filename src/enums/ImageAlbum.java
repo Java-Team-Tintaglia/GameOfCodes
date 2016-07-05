@@ -3,6 +3,8 @@ package enums;
 public enum  ImageAlbum {
     Wall("/wall.png"),
     Login("/login.jpg"),
+    Error("/error.jpg"),
+    Success("/success.jpg"),
     WallToolbar("/wallToolbar.png"),
     Background("/background.png"),
     FLoor("/floor.png"),

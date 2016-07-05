@@ -20,16 +20,16 @@ public class SuccessMessageState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        int messagePositionX = 220;
-        int messagePositionY = 190;
+        int messagePositionX = 250;
+        int messagePositionY = 450;
 
-        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        graphics.fillRect(100, 40, 824, 450);
+        graphics.drawImage(Assets.success, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-        Font titleFont = new Font("Arial", Font.BOLD, 35);
+
+        Font titleFont = new Font("Arial", Font.BOLD, 20);
         graphics.setFont(titleFont);
-        graphics.setColor(Color.green);
-        graphics.drawString("Success", 220, 90);
+        graphics.setColor(Color.white);
+
 
         StringTokenizer tokens = new StringTokenizer(this.message, " ");
         graphics.setFont(new Font("Arial", Font.PLAIN, 25));

@@ -21,19 +21,19 @@ public class ErrorMessageState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        int messagePositionX = 220;
-        int messagePositionY = 190;
+        int messagePositionX = 250;
+        int messagePositionY = 450;
 
-        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        graphics.fillRect(100, 40, 824, 450);
+        graphics.drawImage(Assets.error, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-        Font titleFont = new Font("Arial", Font.BOLD, 35);
+
+        Font titleFont = new Font("Arial", Font.BOLD, 20);
         graphics.setFont(titleFont);
-        graphics.setColor(Color.red);
-        graphics.drawString("Error", 220, 90);
+        graphics.setColor(Color.black);
+
 
         StringTokenizer tokens = new StringTokenizer(this.message, " ");
-        graphics.setFont(new Font("Arial", Font.PLAIN, 25));
+
 
         int lineLen = 0;
         String line = "";
