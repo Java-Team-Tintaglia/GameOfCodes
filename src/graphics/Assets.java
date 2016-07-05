@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
 
+    public static BufferedImage login;
     public static BufferedImage wall;
     public static BufferedImage wallToolbar;
     public static BufferedImage background;
@@ -50,6 +51,7 @@ public class Assets {
     public static BufferedImage wizardCoffee;
 
     public static void init() {
+        login=ImageLoader.loadingImage(ImageAlbum.Login.getPath());
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
         background = ImageLoader.loadingImage(ImageAlbum.Background.getPath());
         wallToolbar = ImageLoader.loadingImage(ImageAlbum.WallToolbar.getPath());
