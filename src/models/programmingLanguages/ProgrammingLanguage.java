@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 
 import enums.ProgrammingLanguageType;
 import models.GameObject;
+import utils.RandomGenerator;
 
 public abstract class ProgrammingLanguage extends GameObject {
 	
@@ -64,6 +65,18 @@ public abstract class ProgrammingLanguage extends GameObject {
 	public void draw(Graphics graphics) {
 		if(exist) {
 			graphics.drawImage(this.image, this.getX(), this.getY(), null);
+			//
+			int randomY = RandomGenerator.genNextRandomMinMax(120, 500);
+			int currentX = this.getX();
+			int currentY = this.getY();
+			int currnetWidth = (int) this.colliderBox.getWidth();
+			int currentHeight = (int) this.colliderBox.getHeight();
+			while(currentY < randomY){
+				this.setY(currentY++);
+				graphics.drawImage(this.image, this.getX(), this.getY(), null);
+			}
+			this.colliderBox.setBounds(currentX, currentY,
+					currnetWidth, currentHeight);
 		}
 	}
 
