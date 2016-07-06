@@ -19,7 +19,7 @@ public class ScoresState extends State {
 
     public ScoresState(StudentScoresRepository studentScoresRepository) {
     	this.studentScoresRepository = studentScoresRepository;
-    	studentScoresRepository.readFromFile();
+    	this.studentScoresRepository.readFromFile();
     }
 	    
 	@Override

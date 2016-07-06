@@ -85,18 +85,5 @@ public class EditProfileState extends State {
 
     @Override
     public void update() {
-//    	if (!AuthenticationProvider.currentUser.getUsername().equals(firstName.toString())) {
-//    		firstName = new StringBuilder(
-//					AuthenticationProvider.currentUser.getFirstName());
-//		}
-//    	if (!AuthenticationProvider.currentUser.getUsername().equals(lastName.toString())) {
-//    		lastName = new StringBuilder(
-//					AuthenticationProvider.currentUser.getLastName());
-//		}
-//    	if (!AuthenticationProvider.currentUser.getUsername().equals(password.toString())) {
-//    		password = new StringBuilder(
-//					AuthenticationProvider.currentUser.getPassword());
-//		}
-    	
     }
 }
