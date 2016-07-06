@@ -22,30 +22,8 @@ public class LoginFormState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-
-<<<<<<< Updated upstream
         graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        graphics.drawImage(Assets.login,100,40,824,450,null);
-        //  graphics.fillRect(100, 40, 824, 450);
-
-//        Font title = new Font("Arial", Font.PLAIN, 35);
-//        graphics.setFont(title);
-//        graphics.setColor(Color.white);
-//        graphics.drawString("Login Form", 420, 90);
-
-//        Font fieldName = new Font("Arial", Font.PLAIN, 25);
-//        graphics.setFont(fieldName);
-//        graphics.drawString("Username:", fieldNameX, fieldNameY);
-//        graphics.drawString("Password:", fieldNameX, fieldNameY + 60);
-
-        // graphics.fillRect(rectBoxX, rectBoxY, 300, 40);
-        userRect = new Rectangle(rectBoxX-139, rectBoxY-17, 544, 68);
-        // graphics.fillRect(rectBoxX, rectBoxY + 60, 300, 40);
-        passRect = new Rectangle(rectBoxX-139, rectBoxY + 77, 544, 68);
-=======
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.login, 250, 100, 524, 300, null);
->>>>>>> Stashed changes
 
         graphics.setColor(Color.gray);
 
