@@ -22,7 +22,6 @@ public class CollisionHandler {
                     programmingLanguage.setExist(false);
                     int score = student.calculateGrade(programmingLanguage);
                     student.addScore(score, programmingLanguage);
-                    System.out.println(score);
                 }
             }
         }

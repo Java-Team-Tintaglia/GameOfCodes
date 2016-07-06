@@ -6,7 +6,7 @@ public class Constants {
 
 	public static final int WALL_HEIGHT = 300;
 	public static final int FLOOR_HEIGHT = 305;
-	public static final int TOOLBAR_HEIGHT = 67;
+	public static final int TOOLBAR_HEIGHT = 50;
 
 	public static final int DEFAUL_PLAYER_X_COORD = 500;
 	public static final int DEFAUL_PLAYER_Y_COORD = 500;

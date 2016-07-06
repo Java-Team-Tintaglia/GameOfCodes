@@ -44,7 +44,7 @@ public class GameState extends State {
 
 	@Override
     public void draw(Graphics graphics) {
-		graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.WALL_HEIGHT, null);
+		graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 		graphics.drawImage(Assets.wallToolbar, 0, 0, Constants.SCREEN_WIDTH, Constants.TOOLBAR_HEIGHT, null);
 		graphics.drawImage(Assets.floor, 0, 295, Constants.SCREEN_WIDTH, Constants.FLOOR_HEIGHT, null);
 
