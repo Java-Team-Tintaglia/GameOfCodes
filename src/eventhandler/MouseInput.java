@@ -165,11 +165,14 @@ public class MouseInput implements MouseListener {
                 LoginFormState.fieldType = "user";
                 LoginFormState.username.setLength(0);
                 LoginFormState.password.setLength(0);
-                EditProfileState.firstName = new StringBuilder(AuthenticationProvider.currentUser.getFirstName());
-                EditProfileState.lastName = new StringBuilder(AuthenticationProvider.currentUser.getLastName());
-                EditProfileState.password = new StringBuilder(Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
-                StudentProfileState.firstName = new StringBuilder(AuthenticationProvider.currentUser.getFirstName());
-                StudentProfileState.lastName = new StringBuilder(AuthenticationProvider.currentUser.getLastName());
+                
+                if (AuthenticationProvider.currentUser != null) {
+                    EditProfileState.firstName = new StringBuilder(AuthenticationProvider.currentUser.getFirstName());
+                    EditProfileState.lastName = new StringBuilder(AuthenticationProvider.currentUser.getLastName());
+                    EditProfileState.password = new StringBuilder(Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
+                    StudentProfileState.firstName = new StringBuilder(AuthenticationProvider.currentUser.getFirstName());
+                    StudentProfileState.lastName = new StringBuilder(AuthenticationProvider.currentUser.getLastName());
+                }
             }
         } else if (StateManager.getCurrentState() instanceof ErrorMessageState) {
         	ErrorMessageState ems = (ErrorMessageState) StateManager.getCurrentState();
