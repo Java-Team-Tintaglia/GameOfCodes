@@ -4,6 +4,7 @@ import eventhandler.KeyInput;
 import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
+import repositories.StudentScoresRepository;
 import repositories.UserRepository;
 import states.MainMenuState;
 import states.State;
@@ -26,7 +27,8 @@ public class GameEngine implements Runnable {
     private State mainMenuState;
     private MouseInput mouseInput;
     private UserRepository userRepository;
-    AuthenticationProvider authenticationProvider;
+    private AuthenticationProvider authenticationProvider;
+    private StudentScoresRepository studentScoresRepository;
 
     public GameEngine(String title) {
         this.title = title;
@@ -120,10 +122,11 @@ public class GameEngine implements Runnable {
         this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);      
         userRepository = new UserRepository();
         userRepository.load();
+        studentScoresRepository = new StudentScoresRepository();
         
         authenticationProvider = new AuthenticationProvider(userRepository);
         this.keyinput = new KeyInput(this, this.display);
-        this.mouseInput = new MouseInput(this.display, userRepository, authenticationProvider);
+        this.mouseInput = new MouseInput(this.display, this.userRepository, this.authenticationProvider, this.studentScoresRepository);
         
         
         mainMenuState = new MainMenuState();

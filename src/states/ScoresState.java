@@ -15,10 +15,16 @@ public class ScoresState extends State {
 
 	public static Button backToMenuButton = new Button(730, 500, Assets.buttonBackToMenu);	
 
+	private StudentScoresRepository studentScoresRepository;
+
+    public ScoresState(StudentScoresRepository studentScoresRepository) {
+    	this.studentScoresRepository = studentScoresRepository;
+    	studentScoresRepository.readFromFile();
+    }
+	    
 	@Override
     public void draw(Graphics graphics) {
         int yCoord = 125;
-        StudentScoresRepository.readFromFile();
         
         Map<String, List<Integer>> sorted = StudentScoresRepository.studentsScore.entrySet()
 				.stream()

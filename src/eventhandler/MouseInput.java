@@ -15,15 +15,21 @@ import java.util.List;
 import java.util.Map;
 
 public class MouseInput implements MouseListener {
+	
     private Display display;
     private UserRepository userRepository;
     private AuthenticationProvider authenticationProvider;
+    private StudentScoresRepository studentScoresRepository;
 
-    public MouseInput(Display display, UserRepository userRepository, AuthenticationProvider authenticationProvider) {
+    public MouseInput(Display display, 
+    		UserRepository userRepository, 
+    		AuthenticationProvider authenticationProvider,
+    		StudentScoresRepository studentScoresRepository) {
         display.getCanvas().addMouseListener(this);
         this.display = display;
         this.userRepository = userRepository;
         this.authenticationProvider = authenticationProvider;
+        this.studentScoresRepository = studentScoresRepository;
     }
 
     @Override
@@ -61,12 +67,12 @@ public class MouseInput implements MouseListener {
 
             // Scores Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonScore.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new ScoresState());
+                StateManager.setCurrentState(new ScoresState(this.studentScoresRepository));
             }
 
             // Profile Button
             if (AuthenticationProvider.currentUser != null && MainMenuState.buttonProfile.getColliderBox().contains(mouseX, mouseY)) {
-                StateManager.setCurrentState(new StudentProfileState());
+                StateManager.setCurrentState(new StudentProfileState(this.studentScoresRepository));
                 StudentProfileState.firstName = new StringBuilder(AuthenticationProvider.currentUser.getFirstName());
                 StudentProfileState.lastName = new StringBuilder(AuthenticationProvider.currentUser.getLastName());
             }
@@ -111,7 +117,7 @@ public class MouseInput implements MouseListener {
                 StudentScoreState studentScoreState = (StudentScoreState) StateManager.getCurrentState();
                 String studentName = studentScoreState.getStudent().getUsername();
                 Map<String, List<Integer>> studentGrades = studentScoreState.getStudent().getStudentGrades();
-                StudentScoresRepository.saveToFile(studentName, studentGrades);
+                studentScoresRepository.saveToFile(studentName, studentGrades);
 
                 StateManager.setCurrentState(new MainMenuState());
             }

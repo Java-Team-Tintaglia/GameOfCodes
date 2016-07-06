@@ -21,7 +21,13 @@ public class StudentProfileState extends State {
 
     public static Button backToMenuButton = new Button(550, 520, Assets.buttonBackToMenu);
     public static Button editButton = new Button(450, 200, Assets.buttonEdit);
+    
+    private StudentScoresRepository studentScoresRepository;
 
+    public StudentProfileState(StudentScoresRepository studentScoresRepository) {
+    	this.studentScoresRepository = studentScoresRepository;
+    }
+    
     @Override
     public void draw(Graphics graphics) {
         int scorePosition = 0;
@@ -43,9 +49,8 @@ public class StudentProfileState extends State {
         graphics.drawString("Last Name:", 390, 180);
         graphics.drawString(lastName.toString(), 590, 180);
 
-        //Grades
         TreeMap<String, ArrayList<Integer>> gradesBySubject = new TreeMap<>(
-                StudentScoresRepository.getAllGrades(AuthenticationProvider.currentUser.getFirstName()));
+        		studentScoresRepository.getAllGradesBySubject(AuthenticationProvider.currentUser.getFirstName()));
         
         graphics.drawString("GRADES:", 470, 290);
         
@@ -62,7 +67,6 @@ public class StudentProfileState extends State {
 			 graphics.drawString("List is empty", 440, 340);
 		}
         
-    
         graphics.setColor(Color.gray);
 
         backToMenuButton.draw(graphics);

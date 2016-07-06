@@ -13,7 +13,7 @@ public class StudentScoresRepository {
     public static TreeMap<String, List<Integer>> studentsScore
             = new TreeMap<>();
 
-    public static void saveToFile(String studentName, Map<String, List<Integer>> studentsGrades) {
+    public void saveToFile(String studentName, Map<String, List<Integer>> studentsGrades) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.SCORES_FILE_PATH, true), true)) {
             StringBuilder save = new StringBuilder();
             save.append(studentName + " ");
@@ -31,6 +31,8 @@ public class StudentScoresRepository {
 
             writer.print(save.toString());
             writer.println();
+            
+            
 
         } catch (IOException exception) {
             System.err.println("Cannot write to file");
@@ -38,7 +40,7 @@ public class StudentScoresRepository {
         }
     }
 
-    public static void readFromFile() {
+    public void readFromFile() {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.SCORES_FILE_PATH))) {
             String line = bufferedReader.readLine();
 
@@ -72,7 +74,7 @@ public class StudentScoresRepository {
 
     }
 
-    public static TreeMap<String, ArrayList<Integer>> getAllGrades(String username) {
+    public TreeMap<String, ArrayList<Integer>> getAllGradesBySubject(String username) {
         TreeMap<String, ArrayList<Integer>> grades = new TreeMap<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.SCORES_FILE_PATH))) {
             String line = bufferedReader.readLine();
