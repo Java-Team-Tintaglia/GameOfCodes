@@ -1,19 +1,20 @@
 package states;
 
-import java.awt.*;
-
 import authentication.AuthenticationProvider;
 import enums.StudentType;
 import graphics.Assets;
 import models.Button;
 import utils.Constants;
 
+import java.awt.*;
+
 public class PlayerCustomizationState extends State {
 
     public static StudentType studentType;
     public static boolean isSelected = false;
     
-    public static Button playButton = new Button(800, 520, Assets.buttonPlay);
+    public static Button playButton = new Button(496, 510, Assets.buttonPlay);
+    public static Button backToMenuButton = new Button(712, 510, Assets.buttonBackToMenu);
     
     public static Button badBoyButton = new Button(74, 300, Assets.buttonBadBoy);
     public static Button hotChickButton = new Button(316, 300, Assets.buttonHotChick);
@@ -58,6 +59,7 @@ public class PlayerCustomizationState extends State {
     		graphics.drawString(AuthenticationProvider.currentUser.getUsername(), 900, 30);
 		}
         playButton.draw(graphics);
+        backToMenuButton.draw(graphics);
         badBoyButton.draw(graphics);
         hotChickButton.draw(graphics);
         nerdBoyButton.draw(graphics);

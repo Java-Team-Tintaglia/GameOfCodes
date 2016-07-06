@@ -95,6 +95,10 @@ public class MouseInput implements MouseListener {
                 StateManager.setCurrentState(new GameState(studentType));
                 PlayerCustomizationState.isSelected = false;
 
+            } else if (PlayerCustomizationState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
+                StateManager.setCurrentState(new MainMenuState());
+                PlayerCustomizationState.isSelected = false;
+                PlayerCustomizationState.studentType = StudentType.BAD_BOY;
             }
         } else if (StateManager.getCurrentState() instanceof ScoresState) {
             if (ScoresState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
