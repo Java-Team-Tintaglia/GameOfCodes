@@ -13,10 +13,9 @@ public class EditProfileState extends State {
 
     public static StringBuilder firstName = new StringBuilder(
     										AuthenticationProvider.currentUser.getFirstName());
-    
     public static StringBuilder lastName = new StringBuilder(
     										AuthenticationProvider.currentUser.getLastName());
-    
+
     public static StringBuilder password = new StringBuilder(
     										Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
 
@@ -28,7 +27,6 @@ public class EditProfileState extends State {
     public static Rectangle passRect;
 
     public static String fieldType = "first";
-
 
     @Override
     public void draw(Graphics graphics) {
@@ -87,20 +85,18 @@ public class EditProfileState extends State {
 
     @Override
     public void update() {
-    	if (!AuthenticationProvider.currentUser.getUsername().equals(firstName.toString())) {
-    		firstName = new StringBuilder(
-					AuthenticationProvider.currentUser.getFirstName());
-		}
-    	
-    	if (!AuthenticationProvider.currentUser.getUsername().equals(lastName.toString())) {
-    		lastName = new StringBuilder(
-					AuthenticationProvider.currentUser.getLastName());
-		}
-    	
-    	if (!AuthenticationProvider.currentUser.getUsername().equals(password.toString())) {
-    		password = new StringBuilder(
-					AuthenticationProvider.currentUser.getPassword());
-		}
+//    	if (!AuthenticationProvider.currentUser.getUsername().equals(firstName.toString())) {
+//    		firstName = new StringBuilder(
+//					AuthenticationProvider.currentUser.getFirstName());
+//		}
+//    	if (!AuthenticationProvider.currentUser.getUsername().equals(lastName.toString())) {
+//    		lastName = new StringBuilder(
+//					AuthenticationProvider.currentUser.getLastName());
+//		}
+//    	if (!AuthenticationProvider.currentUser.getUsername().equals(password.toString())) {
+//    		password = new StringBuilder(
+//					AuthenticationProvider.currentUser.getPassword());
+//		}
     	
     }
 }
