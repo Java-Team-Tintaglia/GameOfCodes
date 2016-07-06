@@ -12,7 +12,7 @@ public class IntelligenceWizard extends Wizard{
 
     @Override
     public void boost(Student student) {
-        int intelligence = student.getIntelligence() + 30;
+        int intelligence = student.getIntelligence() + 5;
         student.setIntelligence(intelligence);
     }
 }

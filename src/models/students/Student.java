@@ -200,13 +200,13 @@ public abstract class Student extends GameObject {
         int grade = Constants.FAILURE;
         int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / 3;
 
-        if (ratio >= 0 && ratio <= 55) {
+        if (ratio >= 0 && ratio <= 50) {
             grade = Constants.FAILURE;
-        } else if (ratio > 55 && ratio <= 65) {
+        } else if (ratio > 50 && ratio <= 60) {
             grade = Constants.PASSABLE;
-        } else if (ratio > 65 && ratio <= 75) {
+        } else if (ratio > 60 && ratio <= 75) {
             grade = Constants.GOOD;
-        } else if (ratio > 75 && ratio <= 85) {
+        } else if (ratio > 75 && ratio <= 90) {
             grade = Constants.VERY_GOOD;
         } else {
             grade = Constants.EXCELLENT;
@@ -259,9 +259,7 @@ public abstract class Student extends GameObject {
         }
     }
 
-    public void reduceValues() {
-//        this.setVitality(this.getVitality() - 1);
-        this.setKnowledge(this.getKnowledge() - 3);
-        this.setIntelligence(this.getIntelligence() - 3);
+    public void reduce() {
+        this.setVitality(this.getVitality() - 1);
     }
 }
