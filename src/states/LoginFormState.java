@@ -13,20 +13,17 @@ public class LoginFormState extends State {
     public static StringBuilder password = new StringBuilder();
 
     public static Button backToMenuButton = new Button(712, 510, Assets.buttonBackToMenu);
-    public static Button loginButton = new Button(496, 510, Assets.buttonLogIn);//TO DO change x and y
+    public static Button loginButton = new Button(496, 510, Assets.buttonLogIn);
 
-    public static Rectangle userRect;
-    public static Rectangle passRect;
+    public static Rectangle userRect = new Rectangle(335, 180, 346, 49);
+    public static Rectangle passRect = new Rectangle(335, 243, 346, 49);
 
     public static String fieldType = "user";
 
     @Override
     public void draw(Graphics graphics) {
-        int fieldNameX = 270;
-        int fieldNameY = 200;
-        int rectBoxX = 370;
-        int rectBoxY = 180;
 
+<<<<<<< Updated upstream
         graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.login,100,40,824,450,null);
         //  graphics.fillRect(100, 40, 824, 450);
@@ -45,23 +42,27 @@ public class LoginFormState extends State {
         userRect = new Rectangle(rectBoxX-139, rectBoxY-17, 544, 68);
         // graphics.fillRect(rectBoxX, rectBoxY + 60, 300, 40);
         passRect = new Rectangle(rectBoxX-139, rectBoxY + 77, 544, 68);
+=======
+        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.login, 250, 100, 524, 300, null);
+>>>>>>> Stashed changes
 
         graphics.setColor(Color.gray);
 
         switch (fieldType) {
             case "user":
-                graphics.drawRect((int)userRect.getX()+4 , (int)userRect.getY()-6, 542, 75);
+                graphics.drawRect((int)userRect.getX() - 3 , (int)userRect.getY() - 3, (int)userRect.getWidth() + 6, (int)userRect.getHeight() + 6);
                 break;
             case "pass":
-                graphics.drawRect((int)passRect.getX()+4 , (int)passRect.getY()-2, 542, 75);
+                graphics.drawRect((int)passRect.getX() - 3 , (int)passRect.getY() - 3, (int)passRect.getWidth() + 6, (int)passRect.getHeight() + 6);
                 break;
         }
 
         Font inputText = new Font("Arial", Font.BOLD, 20);
         graphics.setFont(inputText);
         graphics.setColor(Color.white);
-        graphics.drawString(username.toString(), rectBoxX + 30, rectBoxY + 25);
-        graphics.drawString(Utils.hidePassword(password.length()), rectBoxX + 30, rectBoxY + 125);
+        graphics.drawString(username.toString(), 400, 212);
+        graphics.drawString(Utils.hidePassword(password.length()), 400, 275);
 
         backToMenuButton.draw(graphics);
         loginButton.draw(graphics);
