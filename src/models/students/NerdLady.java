@@ -4,10 +4,10 @@ import graphics.Assets;
 
 public class NerdLady extends Student {
 	
-	private static final int imageWidth = 41;
-	private static final int imageHeight = 44;
+	private static final int NERD_LADY_WIDTH = 41;
+	private static final int NERD_LADY_HEIGHT = 44;
 
 	public NerdLady(int x, int y, String username) {
-		super(x, y, Assets.nerdLadyPlayer, imageWidth, imageHeight, 80, 70, 100, username);
+		super(x, y, Assets.nerdLadyPlayer, NERD_LADY_WIDTH, NERD_LADY_HEIGHT, 70, 60, 100, username);
 	}
 }

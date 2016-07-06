@@ -11,8 +11,8 @@ import states.SuccessMessageState;
 public class AuthenticationProvider {
 
     public static User currentUser;
-    private UserRepository userRepository;
     
+    private UserRepository userRepository;
 
     public AuthenticationProvider(UserRepository userRepository) {
 		this.userRepository = userRepository;

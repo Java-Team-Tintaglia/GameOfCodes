@@ -6,6 +6,7 @@ import states.LoginFormState;
 import states.MainMenuState;
 import states.RegistrationFormState;
 import states.StateManager;
+import states.StudentProfileState;
 import states.SuccessMessageState;
 import utils.Constants;
 
