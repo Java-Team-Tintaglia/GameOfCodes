@@ -20,8 +20,8 @@ public class EditProfileState extends State {
     public static StringBuilder password = new StringBuilder(
     										Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
 
-    public static Button backToMenuButton = new Button(410, 510, Assets.buttonBackToMenu);
-    public static Button editButton = new Button(730, 242,Assets.buttonEdit);
+    public static Button backToMenuButton = new Button(500, 510, Assets.buttonBackToMenu);
+    public static Button editButton = new Button(330, 510, Assets.buttonEdit);
 
     public static Rectangle firstRect;
     public static Rectangle lastRect;

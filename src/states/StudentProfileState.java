@@ -8,6 +8,7 @@ import utils.Constants;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class StudentProfileState extends State {
@@ -18,69 +19,59 @@ public class StudentProfileState extends State {
     public static StringBuilder lastName = new StringBuilder(
             AuthenticationProvider.currentUser.getLastName());
 
-    public static Button backToMenuButton = new Button(300, 510, Assets.buttonBackToMenu);
-    public static Button editButton = new Button(550, 510, Assets.buttonEdit);
-
-    public static TreeMap<String, ArrayList<Integer>> grades = new TreeMap<>(
-            StudentScoresRepository.getAllGrades(AuthenticationProvider.currentUser.getFirstName()));
-
-
-    public double averageGradeCSharp = 0.0;
-    public double averageJava = 0.0;
-    public double averageCPlusPlus = 0.0;
-    public double averageJavaScript = 0.0;
-    public double averagePhp = 0.0;
-
+    public static Button backToMenuButton = new Button(550, 520, Assets.buttonBackToMenu);
+    public static Button editButton = new Button(450, 200, Assets.buttonEdit);
 
     @Override
     public void draw(Graphics graphics) {
-        int fieldNameX = 220;
-        int fieldNameY = 208;
-        int rectBoxX = 420;
-        int rectBoxY = 182;
+        int scorePosition = 0;
 
         graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        graphics.fillRect(100, 40, 824, 450);
+        graphics.fillRect(100, 40, 824, 460);
 
-
-        Font title = new Font("Arial", Font.PLAIN, 35);
+        Font title = new Font("Arial", Font.BOLD, 28);
         graphics.setFont(title);
         graphics.setColor(Color.white);
         String userProfile = AuthenticationProvider.currentUser.getUsername();
-        graphics.drawString("User: " + userProfile, 390, 90);
+        graphics.drawString("User: " + userProfile, 450, 90);
 
-        Font fieldName = new Font("Arial", Font.PLAIN, 25);
+        Font fieldName = new Font("Arial", Font.BOLD, 23);
         graphics.setFont(fieldName);
-        graphics.drawString("First Name:  " + firstName.toString(), fieldNameX, fieldNameY);
-        graphics.drawString("Last Name:  " + lastName.toString(), fieldNameX + 350, fieldNameY);
+        graphics.drawString("First Name:", 390, 140);
+        graphics.drawString(firstName.toString(), 590, 140);
+        
+        graphics.drawString("Last Name:", 390, 180);
+        graphics.drawString(lastName.toString(), 590, 180);
 
         //Grades
-        graphics.drawString("GRADES", fieldNameX + 250, fieldNameY + 60);
-
-        graphics.drawString("C#:               " + String.format("%.1f", averageGradeCSharp) + " ", fieldNameX, fieldNameY + 80);
-        graphics.drawString("Java:            " + String.format("%.1f", averageJava) + " ", fieldNameX, fieldNameY + 110);
-        graphics.drawString("C++:             " + String.format("%.1f", averageCPlusPlus) + " ", fieldNameX, fieldNameY + 140);
-        graphics.drawString("JavaScript:   " + String.format("%.1f", averageJavaScript) + " ", fieldNameX, fieldNameY + 170);
-        graphics.drawString("PHP:            " + String.format("%.1f", averagePhp) + " ", fieldNameX, fieldNameY + 200);
-
+        TreeMap<String, ArrayList<Integer>> gradesBySubject = new TreeMap<>(
+                StudentScoresRepository.getAllGrades(AuthenticationProvider.currentUser.getFirstName()));
+        
+        graphics.drawString("GRADES:", 470, 290);
+        
+        Font font = new Font("Arial", Font.ITALIC, 24);
+        graphics.setFont(font);
+        if (!gradesBySubject.isEmpty()) {
+        	for (Entry<String, ArrayList<Integer>> entry : gradesBySubject.entrySet()) {
+    			double averageGrade = entry.getValue().stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
+    			 graphics.drawString(entry.getKey() + ":", 390, 340 + scorePosition);
+    			 graphics.drawString(String.format("%.2f", averageGrade), 590, 340 + scorePosition);
+    			 scorePosition += 30;
+            }
+		} else {
+			 graphics.drawString("List is empty", 440, 340);
+		}
+        
+    
         graphics.setColor(Color.gray);
 
         backToMenuButton.draw(graphics);
         editButton.draw(graphics);
 
-
     }
 
     @Override
     public void update() {
-        try {
-            averageGradeCSharp = grades.get("C#").stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
-            averageJava = grades.get("Java").stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
-            averageCPlusPlus = grades.get("C++").stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
-            averageJavaScript = grades.get("JavaScript").stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
-            averagePhp = grades.get("PHP").stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
-        } catch (NullPointerException e) {
-        }
     }
 
 }
