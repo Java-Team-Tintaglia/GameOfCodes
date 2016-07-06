@@ -43,7 +43,7 @@ public class AuthenticationProvider {
     	currentUser = user;
     	
     	SuccessMessageState successMessageState = new SuccessMessageState(
-    			"You have logged in sucessfully!",
+    			"You have logged in successfully!",
     			new MainMenuState());
     	
     	StateManager.setCurrentState(successMessageState);
