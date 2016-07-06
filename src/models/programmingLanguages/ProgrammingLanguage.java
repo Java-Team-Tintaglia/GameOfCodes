@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 
 import enums.ProgrammingLanguageType;
 import models.GameObject;
-import utils.RandomGenerator;
 
 public abstract class ProgrammingLanguage extends GameObject {
 	
@@ -16,7 +15,6 @@ public abstract class ProgrammingLanguage extends GameObject {
 	private BufferedImage image;
 	private Rectangle colliderBox;
 	private boolean exist;
-	private boolean isOnFloor;
 
 	public ProgrammingLanguage(int x, int y,
 							   ProgrammingLanguageType programmingLanguageType,
@@ -31,7 +29,6 @@ public abstract class ProgrammingLanguage extends GameObject {
 		this.image = image;
 		this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.image.getWidth(), this.image.getHeight());
-		this.isOnFloor = false;
 	}
 
 	public boolean isExist() {
@@ -67,21 +64,6 @@ public abstract class ProgrammingLanguage extends GameObject {
 	public void draw(Graphics graphics) {
 		if(exist) {
 			graphics.drawImage(this.image, this.getX(), this.getY(), null);
-			//
-			int randomY = RandomGenerator.genNextRandomMinMax(230, 515);
-			int currentX = this.getX();
-			int currentY = this.getY();
-			int currentWidth = (int) this.colliderBox.getWidth();
-			int currentHeight = (int) this.colliderBox.getHeight();
-			while(!this.isOnFloor){
-				this.setY(currentY += 5);
-				graphics.drawImage(this.image, this.getX(), this.getY(), null);
-				if(currentY > randomY){
-					this.isOnFloor = true;
-				}
-			}
-			this.colliderBox.setBounds(currentX, currentY,
-					currentWidth, currentHeight);
 		}
 	}
 
