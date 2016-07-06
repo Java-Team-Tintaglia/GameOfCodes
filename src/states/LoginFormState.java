@@ -13,7 +13,7 @@ public class LoginFormState extends State {
     public static StringBuilder password = new StringBuilder();
 
     public static Button backToMenuButton = new Button(712, 510, Assets.buttonBackToMenu);
-    public static Button loginButton = new Button(496, 510, Assets.buttonLogIn);
+    public static Button loginButton = new Button(440, 320, Assets.buttonLogIn);
 
     public static Rectangle userRect = new Rectangle(335, 180, 346, 49);
     public static Rectangle passRect = new Rectangle(335, 243, 346, 49);
