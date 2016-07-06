@@ -26,7 +26,7 @@ public class StudentProfileState extends State {
     public void draw(Graphics graphics) {
         int scorePosition = 0;
 
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(100, 40, 824, 460);
 
         Font title = new Font("Arial", Font.BOLD, 28);
