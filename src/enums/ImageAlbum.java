@@ -2,6 +2,7 @@ package enums;
 
 public enum  ImageAlbum {
     Wall("/wall.png"),
+    WallTwo("/wall_half02.png"),
     Login("/login.jpg"),
     Error("/error.jpg"),
     Success("/success.jpg"),

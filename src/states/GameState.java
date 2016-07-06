@@ -27,6 +27,10 @@ public class GameState extends State {
 	private long timerSeconds = System.nanoTime();
 	private long timeDelay = 1000;
 	private int seconds = 30;
+    private int i =0;
+    private int j =4;
+    private int height = 0;
+    private int heightTwo = -300;
 
 	public static Student student;
     private StudentFactory studentFactory;
@@ -44,7 +48,8 @@ public class GameState extends State {
 
 	@Override
     public void draw(Graphics graphics) {
-		graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.wall, 0, height-(height-i), Constants.SCREEN_WIDTH, 300, null);
+        graphics.drawImage(Assets.wallTwo, 0, heightTwo-(height-j), Constants.SCREEN_WIDTH, 300, null);
 		graphics.drawImage(Assets.wallToolbar, 0, 0, Constants.SCREEN_WIDTH, Constants.TOOLBAR_HEIGHT, null);
 		graphics.drawImage(Assets.floor, 0, 295, Constants.SCREEN_WIDTH, Constants.FLOOR_HEIGHT, null);
 
@@ -74,6 +79,17 @@ public class GameState extends State {
 
     @Override
     public void update() {
+
+        i++;
+        j++;
+
+        if (i>=300){
+            i=-296;
+        }
+
+        if(j>596){
+            j=0;
+        }
 		
     	long elapsedNewWizard = (System.nanoTime() - this.timerNewWizard) / 1000000;
 		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timerNewProgrammingLanguage) / 1000000;

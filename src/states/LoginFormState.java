@@ -27,7 +27,7 @@ public class LoginFormState extends State {
         int rectBoxX = 370;
         int rectBoxY = 180;
 
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.drawImage(Assets.login,100,40,824,450,null);
         //  graphics.fillRect(100, 40, 824, 450);
 

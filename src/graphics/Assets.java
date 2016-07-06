@@ -10,6 +10,7 @@ public class Assets {
     public static BufferedImage error;
     public static BufferedImage success;
     public static BufferedImage wall;
+    public static BufferedImage wallTwo;
     public static BufferedImage wallToolbar;
     public static BufferedImage background;
     public static BufferedImage floor;
@@ -57,6 +58,7 @@ public class Assets {
         error=ImageLoader.loadingImage(ImageAlbum.Error.getPath());
         success=ImageLoader.loadingImage(ImageAlbum.Success.getPath());
         wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
+        wallTwo = ImageLoader.loadingImage(ImageAlbum.WallTwo.getPath());
         background = ImageLoader.loadingImage(ImageAlbum.Background.getPath());
         wallToolbar = ImageLoader.loadingImage(ImageAlbum.WallToolbar.getPath());
         floor = ImageLoader.loadingImage(ImageAlbum.FLoor.getPath());
