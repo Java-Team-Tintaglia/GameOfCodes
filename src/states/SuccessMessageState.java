@@ -11,7 +11,7 @@ public class SuccessMessageState extends State {
 	private State nextState;
     private String message;
 
-    public static models.Button okButton = new models.Button(700, 350, Assets.buttonOk);
+    public static models.Button okButton = new models.Button(450, 500, Assets.buttonOk);
 
     public SuccessMessageState(String message, State nextState) {
         this.message = message;
@@ -21,18 +21,18 @@ public class SuccessMessageState extends State {
     @Override
     public void draw(Graphics graphics) {
         int messagePositionX = 250;
-        int messagePositionY = 450;
+        int messagePositionY = 400;
 
         graphics.drawImage(Assets.success, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
 
         Font titleFont = new Font("Arial", Font.BOLD, 20);
         graphics.setFont(titleFont);
-        graphics.setColor(Color.white);
+        graphics.setColor(Color.black);
 
 
         StringTokenizer tokens = new StringTokenizer(this.message, " ");
-        graphics.setFont(new Font("Arial", Font.PLAIN, 25));
+        graphics.setFont(new Font("Arial", Font.BOLD, 22));
 
         String line = "";
         int lineLen = 0;

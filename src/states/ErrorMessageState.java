@@ -12,7 +12,7 @@ public class ErrorMessageState extends State {
     private String message;
     private State nextState;
 
-    public static Button okButton = new Button(700, 350, Assets.buttonOk);
+    public static Button okButton = new Button(450, 500, Assets.buttonOk);
 
     public ErrorMessageState(String message, State nextState) {
         this.message = message;
@@ -22,7 +22,7 @@ public class ErrorMessageState extends State {
     @Override
     public void draw(Graphics graphics) {
         int messagePositionX = 250;
-        int messagePositionY = 450;
+        int messagePositionY = 400;
 
         graphics.drawImage(Assets.error, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
