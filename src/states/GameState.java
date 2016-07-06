@@ -83,7 +83,7 @@ public class GameState extends State {
     	
 		if(elapsedSeconds > this.timeDelay) {
 			seconds--;
-			student.reduce();
+			student.getExhausted();
 			timerSeconds = System.nanoTime();
 		}
     	

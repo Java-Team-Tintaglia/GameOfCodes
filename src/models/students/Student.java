@@ -259,7 +259,7 @@ public abstract class Student extends GameObject {
         }
     }
 
-    public void reduce() {
+    public void getExhausted() {
         this.setVitality(this.getVitality() - 1);
     }
 }
