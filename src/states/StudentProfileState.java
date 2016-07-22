@@ -64,7 +64,7 @@ public class StudentProfileState extends State {
     			 scorePosition += 30;
             }
 		} else {
-			 graphics.drawString("List is empty", 440, 340);
+			 graphics.drawString(Constants.EMPTY_LIST_MESSAGE, 440, 340);
 		}
         
         graphics.setColor(Color.gray);

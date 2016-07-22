@@ -1,13 +1,7 @@
 package repositories;
 
 import models.User;
-import states.ErrorMessageState;
-import states.LoginFormState;
-import states.MainMenuState;
-import states.RegistrationFormState;
-import states.StateManager;
-import states.StudentProfileState;
-import states.SuccessMessageState;
+import states.*;
 import utils.Constants;
 
 import java.io.*;
@@ -23,7 +17,7 @@ public class UserRepository {
     public void addUser(User user) {
         if (users.containsKey(user.getUsername())) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
-                    "User " + user.getUsername() + " already exist!",
+                    String.format(Constants.ALREADY_EXISTING_USER_MESSAGE, user.getUsername()),
                     new RegistrationFormState());
 
             StateManager.setCurrentState(errorMessageState);
@@ -32,7 +26,7 @@ public class UserRepository {
                 || user.getPassword().length() == 0
                 || user.getUsername().length() == 0) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
-                    "Please fill all empty fields!",
+                    Constants.FILL_ALL_EMPTY_FIELDS_MESSAGE,
                     new RegistrationFormState());
 
             StateManager.setCurrentState(errorMessageState);
@@ -40,7 +34,7 @@ public class UserRepository {
             users.put(user.getUsername(), user);
             save(user);
             SuccessMessageState successMessageState = new SuccessMessageState(
-                    "You have successfully registered!",
+                    Constants.SUCCESSFUL_REGISTER_MESSAGE,
                     new MainMenuState());
 
             StateManager.setCurrentState(successMessageState);
@@ -75,10 +69,10 @@ public class UserRepository {
             writer = new FileOutputStream(Constants.USERS_FILE_PATH);
             writer.write(text.toString().getBytes());
         } catch (FileNotFoundException e) {
-            System.out.println("File cannot be found!");
+            System.out.println(Constants.FILE_FOUNDING_UNSUCCESSFUL_MESSAGE);
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println("Cannot write to file!");
+            System.out.println(Constants.FILE_WRITING_FAILURE_MESSAGE);
             e.printStackTrace();
         } finally {
         	try {
@@ -89,7 +83,7 @@ public class UserRepository {
         }
 
         SuccessMessageState successMessageState = new SuccessMessageState(
-                "You have successfully edited your profile!",
+                Constants.PROFILE_SUCCESSFUL_EDITING_MESSAGE,
                 new MainMenuState());
 
         StateManager.setCurrentState(successMessageState);
@@ -100,7 +94,7 @@ public class UserRepository {
 
         if (!users.containsKey(username)) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
-                    "User with " + username + " does NOT exists!",
+                    String.format(Constants.USER_DOES_NOT_EXIST_MESSAGE, username),
                     new LoginFormState());
 
             StateManager.setCurrentState(errorMessageState);
@@ -136,7 +130,7 @@ public class UserRepository {
                 line = bufferedReader.readLine();
             }
         } catch (IOException exception) {
-            System.err.println("Cannot read file.");
+            System.err.println(Constants.FILE_READING_FAILURE_MESSAGE);
             exception.printStackTrace();
         }
     }
@@ -150,7 +144,7 @@ public class UserRepository {
                     + user.getPassword());
 
         } catch (IOException exception) {
-            System.err.println("Cannot write to file");
+            System.err.println(Constants.FILE_WRITING_FAILURE_MESSAGE);
             exception.printStackTrace();
         }
     }

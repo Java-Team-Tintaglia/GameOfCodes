@@ -35,7 +35,7 @@ public class StudentScoresRepository {
             
 
         } catch (IOException exception) {
-            System.err.println("Cannot write to file");
+            System.err.println(Constants.FILE_WRITING_FAILURE_MESSAGE);
             exception.printStackTrace();
         }
     }
@@ -68,7 +68,7 @@ public class StudentScoresRepository {
                 line = bufferedReader.readLine();
             }
         } catch (IOException exception) {
-            System.err.println("Cannot read file.");
+            System.err.println(Constants.FILE_READING_FAILURE_MESSAGE);
             exception.printStackTrace();
         }
 
@@ -99,7 +99,7 @@ public class StudentScoresRepository {
                 line = bufferedReader.readLine();
             }
         } catch (IOException exception) {
-            System.err.println("Cannot read file.");
+            System.err.println(Constants.FILE_READING_FAILURE_MESSAGE);
             exception.printStackTrace();
         }
         return grades;

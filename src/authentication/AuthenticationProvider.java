@@ -7,6 +7,7 @@ import states.LoginFormState;
 import states.MainMenuState;
 import states.StateManager;
 import states.SuccessMessageState;
+import utils.Constants;
 
 public class AuthenticationProvider {
 
@@ -22,8 +23,9 @@ public class AuthenticationProvider {
     	User user = userRepository.findUserByUsername(username);
 
     	if (user == null) {
+
     		ErrorMessageState errorMessageState = new ErrorMessageState(
-    				"User with username: " + username + " was NOT found!",
+    				String.format(Constants.USER_WAS_NOT_FOUND_MESSAGE, username),
     				new LoginFormState());
     		
     		StateManager.setCurrentState(errorMessageState);
@@ -33,7 +35,7 @@ public class AuthenticationProvider {
     	String decodedPass = Encoder.decryptPassword(user.getPassword());
     	if (!password.equals(decodedPass)) {
     		ErrorMessageState errorMessageState = new ErrorMessageState(
-    				"Password does NOT match!",
+    				Constants.PASSWORD_DOES_NOT_MATCH_MESSAGE,
     				new LoginFormState());
     		
     		StateManager.setCurrentState(errorMessageState);
@@ -43,9 +45,9 @@ public class AuthenticationProvider {
     	currentUser = user;
     	
     	SuccessMessageState successMessageState = new SuccessMessageState(
-    			"You have logged in successfully!",
+    			Constants.SUCCESSFUL_LOG_IN_MESSAGE,
     			new MainMenuState());
-    	
+
     	StateManager.setCurrentState(successMessageState);
     }
     
@@ -53,14 +55,14 @@ public class AuthenticationProvider {
     	if (currentUser != null) {
     		currentUser = null;
 			SuccessMessageState successMessageState = new SuccessMessageState(
-					"You have logged out successfully!",
+					Constants.SUCCESSFUL_LOG_OUT_MESSAGE,
 					new MainMenuState());			
 
 			StateManager.setCurrentState(successMessageState);
 			
 		} else {
 			ErrorMessageState errorMessageState = new ErrorMessageState(
-					"There is no logged in user!",
+					Constants.NO_LOGGED_IN_USER_MESSAGE,
 					new MainMenuState());
 			
 			StateManager.setCurrentState(errorMessageState);
