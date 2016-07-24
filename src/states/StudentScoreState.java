@@ -11,35 +11,40 @@ import models.students.Student;
 import utils.Constants;
 
 public class StudentScoreState extends State {
-
     private Student student;
 
-    public static Button backToMenuButton = new Button(730, 520, Assets.buttonBackToMenu);
+    private static int backToMenuButtonXCoord = 730;
+    private static int backToMenuButtonYCoord = 520;
+    private int userFullNameFontSize = 16;
+    private int gradesFontSize = 20;
+    private int subjectNameXCoord = 420;
+    private int subjectAverageGradeXCoord = 570;
+    public static Button backToMenuButton = new Button(backToMenuButtonXCoord,
+            backToMenuButtonYCoord, Assets.buttonBackToMenu);
 
     public StudentScoreState(Student student) {
 		this.student = student;
 	}
 
-
 	@Override
     public void draw(Graphics graphics) {
     	graphics.drawImage(Assets.diploma, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-    	graphics.setFont(new Font("Arial", Font.BOLD, 16));
+    	graphics.setFont(new Font("Arial", Font.BOLD, userFullNameFontSize));
         graphics.setColor(Color.green);
         
         String fullName = AuthenticationProvider.currentUser.getFirstName() +  " "
         		+ AuthenticationProvider.currentUser.getLastName();
-    	graphics.drawString(fullName,510,205);
+    	graphics.drawString(fullName, 510, 205);
         
-    	graphics.setFont(new Font("Arial", Font.BOLD, 20));
+    	graphics.setFont(new Font("Arial", Font.BOLD, gradesFontSize));
     	int currentY = 280;
         for (Map.Entry<String, List<Integer>> entry : this.student.getStudentGrades().entrySet()) {
             double totalGrades = (double)entry.getValue().stream().mapToInt(Integer::intValue).sum();
             int totalAmountOfGrades = entry.getValue().size();
         	double averageGrade = totalGrades / totalAmountOfGrades;
         	
-            graphics.drawString(entry.getKey(), 420, currentY);
-            graphics.drawString(String.format("%.2f", averageGrade < 3 ? 2 : averageGrade), 570, currentY);
+            graphics.drawString(entry.getKey(), subjectNameXCoord, currentY);
+            graphics.drawString(String.format("%.2f", averageGrade < 3 ? 2 : averageGrade), subjectAverageGradeXCoord, currentY);
             currentY+=40;
         }
         

@@ -11,8 +11,13 @@ public class ErrorMessageState extends State {
 	
     private String message;
     private State nextState;
+    private static int okButtonXCoord = 450;
+    private static int okButtonYCoord = 500;
+    private int messagePositionX = 250;
+    private int messagePositionY = 400;
+    private int titleFontSize = 20;
 
-    public static Button okButton = new Button(450, 500, Assets.buttonOk);
+    public static Button okButton = new Button(okButtonXCoord, okButtonYCoord, Assets.buttonOk);
 
     public ErrorMessageState(String message, State nextState) {
         this.message = message;
@@ -21,13 +26,11 @@ public class ErrorMessageState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        int messagePositionX = 250;
-        int messagePositionY = 400;
+
 
         graphics.drawImage(Assets.error, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-
-        Font titleFont = new Font("Arial", Font.BOLD, 20);
+        Font titleFont = new Font("Arial", Font.BOLD, titleFontSize);
         graphics.setFont(titleFont);
         graphics.setColor(Color.black);
 

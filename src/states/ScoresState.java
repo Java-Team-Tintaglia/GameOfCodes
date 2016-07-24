@@ -12,10 +12,17 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class ScoresState extends State {
+    private StudentScoresRepository studentScoresRepository;
+    private static int backToMenuButtonXCoord = 730;
+    private static int backToMenuButtonYCoord = 500;
+    private int fontSize = 25;
+    private int playerNameXCoord = 160;
+    private int counterXCoord = 120;
+    private int averageGradeXCoord = 520;
+    private int subjectAverageGradeXCoord = 560;
 
-	public static Button backToMenuButton = new Button(730, 500, Assets.buttonBackToMenu);	
-
-	private StudentScoresRepository studentScoresRepository;
+    public static Button backToMenuButton = new Button(backToMenuButtonXCoord,
+            backToMenuButtonYCoord, Assets.buttonBackToMenu);
 
     public ScoresState(StudentScoresRepository studentScoresRepository) {
     	this.studentScoresRepository = studentScoresRepository;
@@ -25,7 +32,7 @@ public class ScoresState extends State {
 	@Override
     public void draw(Graphics graphics) {
         int yCoord = 125;
-        
+
         Map<String, List<Integer>> sorted = StudentScoresRepository.studentsScore.entrySet()
 				.stream()
 				.sorted((a, b) -> Double.compare((double)b.getValue().stream().mapToInt(Integer::intValue).sum() / b.getValue().size(),
@@ -36,11 +43,11 @@ public class ScoresState extends State {
         
         graphics.drawImage(Assets.highScoresBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-        Font font = new Font("Consolas", Font.PLAIN, 25);
+        Font font = new Font("Consolas", Font.PLAIN, fontSize);
         graphics.setFont(font);
         graphics.setColor(Color.white);
-        graphics.drawString("Player name", 160, yCoord);
-        graphics.drawString("Average grade", 520, yCoord);
+        graphics.drawString("Player name", playerNameXCoord, yCoord);
+        graphics.drawString("Average grade", averageGradeXCoord, yCoord);
    
         int counter = 1;
         for(Entry<String, List<Integer>> entry : sorted.entrySet()){
@@ -51,9 +58,9 @@ public class ScoresState extends State {
         	double averageGrade = totalGrades / totalAmountOfGrades; 
 
             yCoord += 40;
-            graphics.drawString(String.format("%d.", counter), 120, yCoord);
-            graphics.drawString(name, 160, yCoord);
-            graphics.drawString(String.format("%.2f", averageGrade < 3 ? 2 : averageGrade), 560, yCoord);
+            graphics.drawString(String.format("%d.", counter), counterXCoord, yCoord);
+            graphics.drawString(name, playerNameXCoord, yCoord);
+            graphics.drawString(String.format("%.2f", averageGrade < 3 ? 2 : averageGrade), subjectAverageGradeXCoord, yCoord);
             counter++;
            
         }

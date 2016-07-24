@@ -12,6 +12,32 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class StudentProfileState extends State {
+    private StudentScoresRepository studentScoresRepository;
+
+    private static int backToMenuButtonXCoord  = 550;
+    private static int backToMenuButtonYCoord = 520;
+    private static int editButtonXCoord = 450;
+    private static int editButtonYCoord = 200;
+    private int scorePosition = 0;
+    private int rectangleXCoord = 100;
+    private int rectangleYCoord = 40;
+    private int rectangleWidth = 824;
+    private int rectangleHeight = 460;
+    private int titleFontSize = 28;
+    private int titleXCoord = 450;
+    private int titleYCoord = 90;
+    private int fieldFontSize = 23;
+    private int fieldNameXCoord = 390;
+    private int nameYCoord = 140;
+    private int playerNameXCoord = 590;
+    private int gradesTitleXCoord = 470;
+    private int gradesTitleYCoord = 290;
+    private int gradesFontSize = 24;
+    private int subjectNameXCoord = 390;
+    private int subjectYCoord = 340;
+    private int averageGradeXCoord = 590;
+    private int emptyListMessageXCoord = 440;
+    private int emptyListMessageYCoord = 340;
 
     public static StringBuilder firstName = new StringBuilder(
             AuthenticationProvider.currentUser.getFirstName());
@@ -19,10 +45,10 @@ public class StudentProfileState extends State {
     public static StringBuilder lastName = new StringBuilder(
             AuthenticationProvider.currentUser.getLastName());
 
-    public static Button backToMenuButton = new Button(550, 520, Assets.buttonBackToMenu);
-    public static Button editButton = new Button(450, 200, Assets.buttonEdit);
-    
-    private StudentScoresRepository studentScoresRepository;
+    public static Button backToMenuButton = new Button(backToMenuButtonXCoord,
+            backToMenuButtonYCoord, Assets.buttonBackToMenu);
+    public static Button editButton = new Button(editButtonXCoord,
+            editButtonYCoord, Assets.buttonEdit);
 
     public StudentProfileState(StudentScoresRepository studentScoresRepository) {
     	this.studentScoresRepository = studentScoresRepository;
@@ -30,41 +56,39 @@ public class StudentProfileState extends State {
     
     @Override
     public void draw(Graphics graphics) {
-        int scorePosition = 0;
-
         graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
-        graphics.fillRect(100, 40, 824, 460);
+        graphics.fillRect(rectangleXCoord, rectangleYCoord, rectangleWidth, rectangleHeight);
 
-        Font title = new Font("Arial", Font.BOLD, 28);
+        Font title = new Font("Arial", Font.BOLD, titleFontSize);
         graphics.setFont(title);
         graphics.setColor(Color.white);
         String userProfile = AuthenticationProvider.currentUser.getUsername();
-        graphics.drawString("User: " + userProfile, 450, 90);
+        graphics.drawString("User: " + userProfile, titleXCoord, titleYCoord);
 
-        Font fieldName = new Font("Arial", Font.BOLD, 23);
+        Font fieldName = new Font("Arial", Font.BOLD, fieldFontSize);
         graphics.setFont(fieldName);
-        graphics.drawString("First Name:", 390, 140);
-        graphics.drawString(firstName.toString(), 590, 140);
+        graphics.drawString("First Name:", fieldNameXCoord, nameYCoord);
+        graphics.drawString(firstName.toString(), playerNameXCoord, nameYCoord);
         
-        graphics.drawString("Last Name:", 390, 180);
-        graphics.drawString(lastName.toString(), 590, 180);
+        graphics.drawString("Last Name:", fieldNameXCoord, nameYCoord + 40);
+        graphics.drawString(lastName.toString(), playerNameXCoord, nameYCoord + 40);
 
         TreeMap<String, ArrayList<Integer>> gradesBySubject = new TreeMap<>(
         		studentScoresRepository.getAllGradesBySubject(AuthenticationProvider.currentUser.getFirstName()));
         
-        graphics.drawString("GRADES:", 470, 290);
+        graphics.drawString("GRADES:", gradesTitleXCoord, gradesTitleYCoord);
         
-        Font font = new Font("Arial", Font.ITALIC, 24);
+        Font font = new Font("Arial", Font.ITALIC, gradesFontSize);
         graphics.setFont(font);
         if (!gradesBySubject.isEmpty()) {
         	for (Entry<String, ArrayList<Integer>> entry : gradesBySubject.entrySet()) {
     			double averageGrade = entry.getValue().stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
-    			 graphics.drawString(entry.getKey() + ":", 390, 340 + scorePosition);
-    			 graphics.drawString(String.format("%.2f", averageGrade), 590, 340 + scorePosition);
+    			 graphics.drawString(entry.getKey() + ":", subjectNameXCoord, subjectYCoord + scorePosition);
+    			 graphics.drawString(String.format("%.2f", averageGrade), averageGradeXCoord, subjectYCoord + scorePosition);
     			 scorePosition += 30;
             }
 		} else {
-			 graphics.drawString(Constants.EMPTY_LIST_MESSAGE, 440, 340);
+			 graphics.drawString(Constants.EMPTY_LIST_MESSAGE, emptyListMessageXCoord, emptyListMessageYCoord);
 		}
         
         graphics.setColor(Color.gray);
