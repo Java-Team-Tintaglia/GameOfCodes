@@ -117,7 +117,7 @@ public class MouseInput implements MouseListener {
                 StudentScoreState studentScoreState = (StudentScoreState) StateManager.getCurrentState();
                 String studentName = studentScoreState.getStudent().getUsername();
                 Map<String, List<Integer>> studentGrades = studentScoreState.getStudent().getStudentGrades();
-                studentScoresRepository.saveToFile(studentName, studentGrades);
+                this.studentScoresRepository.saveToFile(studentName, studentGrades);
 
                 StateManager.setCurrentState(new MainMenuState());
             }
@@ -144,7 +144,7 @@ public class MouseInput implements MouseListener {
                 String lastName = RegistrationFormState.lastName.toString();
 
                 User userToRegister = new User(username, firstName, lastName, passwordHash);
-                userRepository.addUser(userToRegister);
+                this.userRepository.addUser(userToRegister);
 
                 RegistrationFormState.fieldType = "user";
                 RegistrationFormState.username.setLength(0);
@@ -166,7 +166,7 @@ public class MouseInput implements MouseListener {
                 String password = LoginFormState.password.toString();
                 String username = LoginFormState.username.toString();
                 
-                authenticationProvider.authenticate(username, password);
+                this.authenticationProvider.authenticate(username, password);
 
                 LoginFormState.fieldType = "user";
                 LoginFormState.username.setLength(0);
@@ -181,14 +181,14 @@ public class MouseInput implements MouseListener {
                 }
             }
         } else if (StateManager.getCurrentState() instanceof ErrorMessageState) {
-        	ErrorMessageState ems = (ErrorMessageState) StateManager.getCurrentState();
+        	ErrorMessageState errorMessageState = (ErrorMessageState) StateManager.getCurrentState();
             if (ErrorMessageState.okButton.getColliderBox().contains(mouseX, mouseY)) {
-            	StateManager.setCurrentState(ems.getNextState());
+            	StateManager.setCurrentState(errorMessageState.getNextState());
             }
         } else if (StateManager.getCurrentState() instanceof SuccessMessageState) {
-        	SuccessMessageState sms = (SuccessMessageState) StateManager.getCurrentState();
+        	SuccessMessageState successMessageState = (SuccessMessageState) StateManager.getCurrentState();
             if (SuccessMessageState.okButton.getColliderBox().contains(mouseX, mouseY)) {
-            	StateManager.setCurrentState(sms.getNextState());
+            	StateManager.setCurrentState(successMessageState.getNextState());
             }
         }else if(StateManager.getCurrentState() instanceof StudentProfileState) {
 
@@ -211,7 +211,7 @@ public class MouseInput implements MouseListener {
                 user.setLastName(EditProfileState.lastName.toString());
                 String passwordHash = Encoder.cryptingPassword(EditProfileState.password.toString());
                 user.setPassword(passwordHash);
-                userRepository.updateUser(user);
+                this.userRepository.updateUser(user);
             } else if (EditProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
                  StateManager.setCurrentState(new MainMenuState());
              }

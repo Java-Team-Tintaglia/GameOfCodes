@@ -75,7 +75,6 @@ public class KeyInput implements KeyListener {
                 case "last":
                 	generateKeywords(key, isShiftClicked, EditProfileState.lastName, true);
                     break;
-
                 case "pass":
                 	generateKeywords(key, isShiftClicked, EditProfileState.password, false);
                     break;
@@ -120,6 +119,4 @@ public class KeyInput implements KeyListener {
 			ouput.append("_");
 		}
 	}
-
-
 }

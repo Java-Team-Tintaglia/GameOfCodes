@@ -15,7 +15,7 @@ public class RandomGenerator {
         return random.nextInt(maxValue);
     }
     
-    public static int genNextRandomMinMax(int minValue, int maxValue) {
+    public static int getNextRandom(int minValue, int maxValue) {
         if (random == null){
             init();
         }

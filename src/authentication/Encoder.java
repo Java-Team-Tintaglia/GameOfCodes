@@ -8,24 +8,22 @@ import java.io.UnsupportedEncodingException;
 
 public class Encoder {
     private static final String DEFAULT_ENCODING = "UTF-8";
+    private static final String DEFAULT_KEY = "key phrase used for XOR-ing";
     private static String cryptedPassword;
     private static String decoded;
-    static BASE64Encoder enc = new BASE64Encoder();
-    static BASE64Decoder dec = new BASE64Decoder();
+    private static BASE64Encoder enc = new BASE64Encoder();
+    private static BASE64Decoder dec = new BASE64Decoder();
 
     public static String cryptingPassword(String password) {
-        String key = "key phrase used for XOR-ing";
-        password = xorMessage(password, key);
-
+        password = xorMessage(password, DEFAULT_KEY);
         cryptedPassword = base64encode(password);
         return cryptedPassword;
 
     }
 
     public static String decryptPassword(String encryptedpassword) {
-        String key = "key phrase used for XOR-ing";
         encryptedpassword = base64decode(encryptedpassword);
-        decoded = xorMessage(encryptedpassword, key);
+        decoded = xorMessage(encryptedpassword, DEFAULT_KEY);
         return decoded;
     }
     
@@ -49,18 +47,18 @@ public class Encoder {
         try {
             if (message == null || key == null) return null;
 
-            char[] keys = key.toCharArray();
-            char[] mesg = message.toCharArray();
+            char[] keyArray = key.toCharArray();
+            char[] messageArray = message.toCharArray();
 
-            int ml = mesg.length;
-            int kl = keys.length;
-            char[] newmsg = new char[ml];
+            int messageLength = messageArray.length;
+            int keylength = keyArray.length;
+            char[] newMessage = new char[messageLength];
 
-            for (int i = 0; i < ml; i++) {
-                newmsg[i] = (char) (mesg[i] ^ keys[i % kl]);
+            for (int index = 0; index < messageLength; index++) {
+                newMessage[index] = (char) (messageArray[index] ^ keyArray[index % keylength]);
             }
 
-            return new String(newmsg);
+            return new String(newMessage);
         } catch (Exception e) {
             return null;
         }

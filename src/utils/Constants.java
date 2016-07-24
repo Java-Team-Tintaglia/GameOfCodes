@@ -1,6 +1,8 @@
 package utils;
 
 public class Constants {
+	public static final String GAME_TITLE = "Game of Codes";
+	
 	public static final int SCREEN_WIDTH = 1024;
 	public static final int SCREEN_HEIGHT = 600;
 
@@ -35,7 +37,7 @@ public class Constants {
 	public static final String USER_DOES_NOT_EXIST_MESSAGE = "User with %S does NOT exists!";
 	public static final String EMPTY_LIST_MESSAGE =  "List is empty";
 
-
+	
 
 
 

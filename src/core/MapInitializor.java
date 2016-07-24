@@ -10,6 +10,9 @@ import models.wizards.Wizard;
 import utils.RandomGenerator;
 
 public class MapInitializor {
+	private static final int MAX_X_COORD = 950;
+	private static final int MIN_Y_COORD = 235;
+	private static final int MAX_Y_COORD = 515;
 
     public static ProgrammingLanguage generateProgrammingLanguage() {
         ProgrammingLanguageType[] programmingLanguages = {
@@ -23,8 +26,8 @@ public class MapInitializor {
         
         ProgrammingLanguageType randomLanguage = programmingLanguages[randomIndex];
 
-        int randomX = RandomGenerator.genNextRandomMinMax(0, 950);
-        int randomY = RandomGenerator.genNextRandomMinMax(220, 515);
+        int randomX = RandomGenerator.getNextRandom(0, MAX_X_COORD);
+        int randomY = RandomGenerator.getNextRandom(MIN_Y_COORD, MAX_Y_COORD);
 
         ProgrammingLanguage languageToBeCreated = null;
 
@@ -59,8 +62,8 @@ public class MapInitializor {
         int randomIndex = RandomGenerator.getNextRandom(wizard.length);
         WizardType randomWizard = wizard[randomIndex];
 
-        int randomX = RandomGenerator.genNextRandomMinMax(0, 950);
-        int randomY = RandomGenerator.genNextRandomMinMax(235, 520);
+        int randomX = RandomGenerator.getNextRandom(0, MAX_X_COORD);
+        int randomY = RandomGenerator.getNextRandom(MIN_Y_COORD, MAX_Y_COORD);
 
         Wizard wizardToBeCreated = null;
 

@@ -20,7 +20,7 @@ public abstract class GameObject implements Drawable, Updatable{
     protected GameObject() {
     }
 
-    public int getX(){
+    public int getX() {
         return x;
     }
 
@@ -28,7 +28,7 @@ public abstract class GameObject implements Drawable, Updatable{
         this.x = x;
     }
 
-    public int getY(){
+    public int getY() {
         return y;
     }
 

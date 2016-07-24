@@ -8,7 +8,7 @@ import models.students.NerdLady;
 import models.students.Student;
 
 public class StudentFactory {
-	public Student create(StudentType type, int x ,int y, String username) {
+	public Student create(StudentType type, int x, int y, String username) {
 		Student student = null;
 
 		if (type == null) {

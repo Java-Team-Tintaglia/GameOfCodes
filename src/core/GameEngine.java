@@ -120,11 +120,11 @@ public class GameEngine implements Runnable {
     private void init() {
         Assets.init();
         this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);      
-        userRepository = new UserRepository();
-        userRepository.load();
-        studentScoresRepository = new StudentScoresRepository();
+        this.userRepository = new UserRepository();
+        this.userRepository.load();
+        this.studentScoresRepository = new StudentScoresRepository();
         
-        authenticationProvider = new AuthenticationProvider(userRepository);
+        this.authenticationProvider = new AuthenticationProvider(this.userRepository);
         this.keyinput = new KeyInput(this, this.display);
         this.mouseInput = new MouseInput(this.display, this.userRepository, this.authenticationProvider, this.studentScoresRepository);
         

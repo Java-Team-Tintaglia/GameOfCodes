@@ -20,7 +20,7 @@ public class AuthenticationProvider {
 	}
     
     public void authenticate(String username, String password) {
-    	User user = userRepository.findUserByUsername(username);
+    	User user = this.userRepository.findUserByUsername(username);
 
     	if (user == null) {
 
