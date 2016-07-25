@@ -9,22 +9,39 @@ import java.awt.*;
 
 public class RegistrationFormState extends State {
 
-    private static final int BUTTON_COORD_X = 496;
-    private static final int BUTTON_COORD_Y = 510;
-    private static final int BUTTON_DISTANCE_BY_X = 216;
-    private static final int FIELD_COORD_X = 440;
-    private static final int FIELD_COORD_Y = 162;
-    private static final int FIELD_WIDTH = 300;
-    private static final int FIELD_HEIGHT = 40;
-    private static final int FIELD_DISTANCE_BY_Y = 60;
+    private static final int REGISTER_BUTTON_COORD_X = 496;
+    private static final int REGISTER_BUTTON_COORD_Y = 510;
+    private static final int BACK_BUTTON_COORD_X = 712;
+    private static final int BACK_BUTTON_COORD_Y = 510;
+    private static final int USER_RECT_COORD_X = 440;
+    private static final int USER_RECT_COORD_Y = 162;
+    private static final int FIRST_RECT_COORD_X = 440;
+    private static final int FIRST_RECT_COORD_Y = 222;
+    private static final int LAST_RECT_COORD_X = 440;
+    private static final int LAST_RECT_COORD_Y = 282;
+    private static final int PASS_RECT_COORD_X = 440;
+    private static final int PASS_RECT_COORD_Y = 342;
+    private static final int RECT_WIDTH = 300;
+    private static final int RECT_HEIGHT = 40;
     private static final int COLIDER_BOX_MARGIN = 3;
     private static final int COLIDER_BOX_WIDTH = 306;
     private static final int COLIDER_BOX_HEIGHT = 46;
-    private static final int FIELD_NAME_COORD_X = 270;
-    private static final int FIELD_NAME_COORD_Y = 190;
-    private static final int TEXT_IN_FIELD_COORD_X = FIELD_COORD_X + 30;
-    private static final int TEXT_IN_FIELD_COORD_Y = FIELD_COORD_Y + 25;
-    private static final int TEXT_IN_FIELD_DISTANCE_BY_Y = 60;
+    private static final int USERNAME_COORD_X = 270;
+    private static final int USERNAME_COORD_Y = 190;
+    private static final int FIRST_NAME_COORD_X = 270;
+    private static final int FIRST_NAME_COORD_Y = 250;
+    private static final int LAST_NAME_COORD_X = 270;
+    private static final int LAST_NAME_COORD_Y = 310;
+    private static final int PASSWORD_COORD_X = 270;
+    private static final int PASSWORD_COORD_Y = 370;
+    private static final int USER_STRING_COORD_X = 470;
+    private static final int USER_STRING_COORD_Y = 187;
+    private static final int FIRST_STRING_COORD_X = 470;
+    private static final int FIRST_STRING_COORD_Y = 247;
+    private static final int LAST_STRING_COORD_X = 470;
+    private static final int LAST_STRING_COORD_Y = 307;
+    private static final int PASS_STRING_COORD_X = 470;
+    private static final int PASS_STRING_COORD_Y = 367;
     private static final int TITLE_COORD_X = 370;
     private static final int TITLE_COORD_Y = 90;
     private static final int BLACK_BACKGROUND_COORD_X = 100;
@@ -32,12 +49,12 @@ public class RegistrationFormState extends State {
     private static final int BLACK_BACKGROUND_WIDTH = 824;
     private static final int BLACK_BACKGROUND_HEIGHT = 450;
 
-    public static Button registerButton = new Button(BUTTON_COORD_X, BUTTON_COORD_Y, Assets.buttonRegister);
-    public static Button backToMenuButton = new Button(BUTTON_COORD_X + BUTTON_DISTANCE_BY_X, BUTTON_COORD_Y, Assets.buttonBackToMenu);
-    public static Rectangle userRect = new Rectangle(FIELD_COORD_X, FIELD_COORD_Y, FIELD_WIDTH, FIELD_HEIGHT);
-    public static Rectangle firstRect = new Rectangle(FIELD_COORD_X, FIELD_COORD_Y + FIELD_DISTANCE_BY_Y, FIELD_WIDTH, FIELD_HEIGHT);
-    public static Rectangle lastRect = new Rectangle(FIELD_COORD_X, FIELD_COORD_Y + 2 * FIELD_DISTANCE_BY_Y, FIELD_WIDTH, FIELD_HEIGHT);
-    public static Rectangle passRect = new Rectangle(FIELD_COORD_X, FIELD_COORD_Y + 3 * FIELD_DISTANCE_BY_Y, FIELD_WIDTH, FIELD_HEIGHT);
+    public static Button registerButton = new Button(REGISTER_BUTTON_COORD_X, REGISTER_BUTTON_COORD_Y, Assets.buttonRegister);
+    public static Button backToMenuButton = new Button(BACK_BUTTON_COORD_X, BACK_BUTTON_COORD_Y, Assets.buttonBackToMenu);
+    public static Rectangle userRect = new Rectangle(USER_RECT_COORD_X, USER_RECT_COORD_Y, RECT_WIDTH, RECT_HEIGHT);
+    public static Rectangle firstRect = new Rectangle(FIRST_RECT_COORD_X, FIRST_RECT_COORD_Y, RECT_WIDTH, RECT_HEIGHT);
+    public static Rectangle lastRect = new Rectangle(LAST_RECT_COORD_X, LAST_RECT_COORD_Y, RECT_WIDTH, RECT_HEIGHT);
+    public static Rectangle passRect = new Rectangle(PASS_RECT_COORD_X, PASS_RECT_COORD_Y, RECT_WIDTH, RECT_HEIGHT);
     public static StringBuilder username = new StringBuilder();
     public static StringBuilder firstName = new StringBuilder();
     public static StringBuilder lastName = new StringBuilder();
@@ -62,10 +79,10 @@ public class RegistrationFormState extends State {
 
         Font fieldName = new Font("Arial", Font.PLAIN, 25);
         graphics.setFont(fieldName);
-        graphics.drawString(usernameAsString, FIELD_NAME_COORD_X, FIELD_NAME_COORD_Y);
-        graphics.drawString(firstNameAsString, FIELD_NAME_COORD_X, FIELD_NAME_COORD_Y + FIELD_DISTANCE_BY_Y);
-        graphics.drawString(lastNameAsString, FIELD_NAME_COORD_X, FIELD_NAME_COORD_Y + 2 * FIELD_DISTANCE_BY_Y);
-        graphics.drawString(passwordAsString, FIELD_NAME_COORD_X, FIELD_NAME_COORD_Y + 3 * FIELD_DISTANCE_BY_Y);
+        graphics.drawString(usernameAsString, USERNAME_COORD_X, USERNAME_COORD_Y);
+        graphics.drawString(firstNameAsString, FIRST_NAME_COORD_X, FIRST_NAME_COORD_Y);
+        graphics.drawString(lastNameAsString, LAST_NAME_COORD_X, LAST_NAME_COORD_Y);
+        graphics.drawString(passwordAsString, PASSWORD_COORD_X, PASSWORD_COORD_Y);
 
         graphics.fillRect(userRect.x, userRect.y, userRect.width, userRect.height);
         graphics.fillRect(firstRect.x, firstRect.y, firstRect.width, firstRect.height);
@@ -80,10 +97,10 @@ public class RegistrationFormState extends State {
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
 
-        graphics.drawString(username.toString(), TEXT_IN_FIELD_COORD_X, TEXT_IN_FIELD_COORD_Y);
-        graphics.drawString(firstName.toString(), TEXT_IN_FIELD_COORD_X, TEXT_IN_FIELD_COORD_Y + TEXT_IN_FIELD_DISTANCE_BY_Y);
-        graphics.drawString(lastName.toString(), TEXT_IN_FIELD_COORD_X, TEXT_IN_FIELD_COORD_Y + 2 * TEXT_IN_FIELD_DISTANCE_BY_Y);
-        graphics.drawString(Utils.hidePassword(password.length()), TEXT_IN_FIELD_COORD_X, TEXT_IN_FIELD_COORD_Y + 3 * TEXT_IN_FIELD_DISTANCE_BY_Y);
+        graphics.drawString(username.toString(), USER_STRING_COORD_X, USER_STRING_COORD_Y);
+        graphics.drawString(firstName.toString(), FIRST_STRING_COORD_X, FIRST_STRING_COORD_Y);
+        graphics.drawString(lastName.toString(), LAST_STRING_COORD_X, LAST_STRING_COORD_Y);
+        graphics.drawString(Utils.hidePassword(password.length()), PASS_STRING_COORD_X, PASS_STRING_COORD_Y);
 
         backToMenuButton.draw(graphics);
         registerButton.draw(graphics);
