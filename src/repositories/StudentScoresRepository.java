@@ -1,6 +1,7 @@
 package repositories;
 
 import utils.Constants;
+import utils.Messages;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class StudentScoresRepository {
             
 
         } catch (IOException exception) {
-            System.err.println(Constants.FILE_WRITING_FAILURE_MESSAGE);
+            System.err.println(Messages.FILE_WRITING_FAILURE);
             exception.printStackTrace();
         }
     }
@@ -68,7 +69,7 @@ public class StudentScoresRepository {
                 line = bufferedReader.readLine();
             }
         } catch (IOException exception) {
-            System.err.println(Constants.FILE_READING_FAILURE_MESSAGE);
+            System.err.println(Messages.FILE_READING_FAILURE);
             exception.printStackTrace();
         }
 
@@ -99,7 +100,7 @@ public class StudentScoresRepository {
                 line = bufferedReader.readLine();
             }
         } catch (IOException exception) {
-            System.err.println(Constants.FILE_READING_FAILURE_MESSAGE);
+            System.err.println(Messages.FILE_READING_FAILURE);
             exception.printStackTrace();
         }
         return grades;

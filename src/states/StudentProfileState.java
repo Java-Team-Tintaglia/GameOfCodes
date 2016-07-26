@@ -5,11 +5,14 @@ import graphics.Assets;
 import models.Button;
 import repositories.StudentScoresRepository;
 import utils.Constants;
+import utils.Messages;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Map.Entry;
 import java.util.TreeMap;
+
+import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
 public class StudentProfileState extends State {
     private StudentScoresRepository studentScoresRepository;
@@ -88,7 +91,7 @@ public class StudentProfileState extends State {
     			 scorePosition += 30;
             }
 		} else {
-			 graphics.drawString(Constants.EMPTY_LIST_MESSAGE, emptyListMessageXCoord, emptyListMessageYCoord);
+			 graphics.drawString(Messages.EMPTY_LIST, emptyListMessageXCoord, emptyListMessageYCoord);
 		}
         
         graphics.setColor(Color.gray);

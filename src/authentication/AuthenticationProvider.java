@@ -8,6 +8,7 @@ import states.MainMenuState;
 import states.StateManager;
 import states.SuccessMessageState;
 import utils.Constants;
+import utils.Messages;
 
 public class AuthenticationProvider {
 
@@ -25,7 +26,7 @@ public class AuthenticationProvider {
     	if (user == null) {
 
     		ErrorMessageState errorMessageState = new ErrorMessageState(
-    				String.format(Constants.USER_WAS_NOT_FOUND_MESSAGE, username),
+    				String.format(Messages.USER_WAS_NOT_FOUND, username),
     				new LoginFormState());
     		
     		StateManager.setCurrentState(errorMessageState);
@@ -35,7 +36,7 @@ public class AuthenticationProvider {
     	String decodedPass = Encoder.decryptPassword(user.getPassword());
     	if (!password.equals(decodedPass)) {
     		ErrorMessageState errorMessageState = new ErrorMessageState(
-    				Constants.PASSWORD_DOES_NOT_MATCH_MESSAGE,
+    				Messages.PASSWORD_DOES_NOT_MATCH,
     				new LoginFormState());
     		
     		StateManager.setCurrentState(errorMessageState);
@@ -45,7 +46,7 @@ public class AuthenticationProvider {
     	currentUser = user;
     	
     	SuccessMessageState successMessageState = new SuccessMessageState(
-    			Constants.SUCCESSFUL_LOG_IN_MESSAGE,
+    			Messages.SUCCESSFUL_LOG_IN,
     			new MainMenuState());
 
     	StateManager.setCurrentState(successMessageState);
@@ -55,14 +56,14 @@ public class AuthenticationProvider {
     	if (currentUser != null) {
     		currentUser = null;
 			SuccessMessageState successMessageState = new SuccessMessageState(
-					Constants.SUCCESSFUL_LOG_OUT_MESSAGE,
+					Messages.SUCCESSFUL_LOG_OUT,
 					new MainMenuState());			
 
 			StateManager.setCurrentState(successMessageState);
 			
 		} else {
 			ErrorMessageState errorMessageState = new ErrorMessageState(
-					Constants.NO_LOGGED_IN_USER_MESSAGE,
+					Messages.NO_LOGGED_IN_USER,
 					new MainMenuState());
 			
 			StateManager.setCurrentState(errorMessageState);

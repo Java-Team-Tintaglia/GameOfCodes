@@ -3,6 +3,7 @@ package repositories;
 import models.User;
 import states.*;
 import utils.Constants;
+import utils.Messages;
 
 import java.io.*;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ public class UserRepository {
     public void addUser(User user) {
         if (users.containsKey(user.getUsername())) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
-                    String.format(Constants.ALREADY_EXISTING_USER_MESSAGE, user.getUsername()),
+                    String.format(Messages.ALREADY_EXISTING_USER, user.getUsername()),
                     new RegistrationFormState());
 
             StateManager.setCurrentState(errorMessageState);
@@ -26,7 +27,7 @@ public class UserRepository {
                 || user.getPassword().length() == 0
                 || user.getUsername().length() == 0) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
-                    Constants.FILL_ALL_EMPTY_FIELDS_MESSAGE,
+            		Messages.FILL_ALL_EMPTY_FIELDS,
                     new RegistrationFormState());
 
             StateManager.setCurrentState(errorMessageState);
@@ -34,7 +35,7 @@ public class UserRepository {
             users.put(user.getUsername(), user);
             save(user);
             SuccessMessageState successMessageState = new SuccessMessageState(
-                    Constants.SUCCESSFUL_REGISTER_MESSAGE,
+            		Messages.SUCCESSFUL_REGISTER,
                     new MainMenuState());
 
             StateManager.setCurrentState(successMessageState);
@@ -69,10 +70,10 @@ public class UserRepository {
             writer = new FileOutputStream(Constants.USERS_FILE_PATH);
             writer.write(text.toString().getBytes());
         } catch (FileNotFoundException e) {
-            System.out.println(Constants.FILE_FOUNDING_UNSUCCESSFUL_MESSAGE);
+            System.out.println(Messages.FILE_FOUNDING_UNSUCCESSFUL);
             e.printStackTrace();
         } catch (IOException e) {
-            System.out.println(Constants.FILE_WRITING_FAILURE_MESSAGE);
+            System.out.println(Messages.FILE_WRITING_FAILURE);
             e.printStackTrace();
         } finally {
         	try {
@@ -83,7 +84,7 @@ public class UserRepository {
         }
 
         SuccessMessageState successMessageState = new SuccessMessageState(
-                Constants.PROFILE_SUCCESSFUL_EDITING_MESSAGE,
+        		Messages.PROFILE_SUCCESSFUL_EDITING,
                 new MainMenuState());
 
         StateManager.setCurrentState(successMessageState);
@@ -94,7 +95,7 @@ public class UserRepository {
 
         if (!users.containsKey(username)) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
-                    String.format(Constants.USER_DOES_NOT_EXIST_MESSAGE, username),
+                    String.format(Messages.USER_DOES_NOT_EXIST, username),
                     new LoginFormState());
 
             StateManager.setCurrentState(errorMessageState);
@@ -130,7 +131,7 @@ public class UserRepository {
                 line = bufferedReader.readLine();
             }
         } catch (IOException exception) {
-            System.err.println(Constants.FILE_READING_FAILURE_MESSAGE);
+            System.err.println(Messages.FILE_READING_FAILURE);
             exception.printStackTrace();
         }
     }
@@ -144,7 +145,7 @@ public class UserRepository {
                     + user.getPassword());
 
         } catch (IOException exception) {
-            System.err.println(Constants.FILE_WRITING_FAILURE_MESSAGE);
+            System.err.println(Messages.FILE_WRITING_FAILURE);
             exception.printStackTrace();
         }
     }

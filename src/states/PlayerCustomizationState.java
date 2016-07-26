@@ -5,6 +5,7 @@ import enums.StudentType;
 import graphics.Assets;
 import models.Button;
 import utils.Constants;
+import utils.Coordinates;
 
 import java.awt.*;
 
