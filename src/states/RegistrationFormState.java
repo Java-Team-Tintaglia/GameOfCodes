@@ -14,30 +14,36 @@ public class RegistrationFormState extends State {
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_X,
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_Y,
             Assets.buttonRegister);
+    
     public static Button backToMenuButton = new Button(
             Coordinates.REGISTRATION_STATE_BACK_BUTTON_X,
             Coordinates.REGISTRATION_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
+    
     public static Rectangle userRect = new Rectangle(
             Coordinates.REGISTRATION_STATE_USER_RECT_X,
             Coordinates.REGISTRATION_STATE_USER_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
+    
     public static Rectangle firstRect = new Rectangle(
             Coordinates.REGISTRATION_STATE_FIRST_RECT_X,
             Coordinates.REGISTRATION_STATE_FIRST_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
+    
     public static Rectangle lastRect = new Rectangle(
             Coordinates.REGISTRATION_STATE_LAST_RECT_X,
             Coordinates.REGISTRATION_STATE_LAST_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
+    
     public static Rectangle passRect = new Rectangle(
             Coordinates.REGISTRATION_STATE_PASS_RECT_X,
             Coordinates.REGISTRATION_STATE_PASS_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
+    
     public static StringBuilder username = new StringBuilder();
     public static StringBuilder firstName = new StringBuilder();
     public static StringBuilder lastName = new StringBuilder();
@@ -53,6 +59,7 @@ public class RegistrationFormState extends State {
         String passwordAsString = "Password:";
 
         graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        
         graphics.fillRect(
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_X,
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_Y,
@@ -62,6 +69,7 @@ public class RegistrationFormState extends State {
         Font title = new Font("Arial", Font.PLAIN, 35);
         graphics.setFont(title);
         graphics.setColor(Color.white);
+        
         graphics.drawString(
                 registrationFormAsString,
                 Coordinates.REGISTRATION_STATE_TITLE_X,
@@ -69,18 +77,22 @@ public class RegistrationFormState extends State {
 
         Font fieldName = new Font("Arial", Font.PLAIN, 25);
         graphics.setFont(fieldName);
+        
         graphics.drawString(
                 usernameAsString,
                 Coordinates.REGISTRATION_STATE_USERNAME_X,
                 Coordinates.REGISTRATION_STATE_USERNAME_Y);
+        
         graphics.drawString(
                 firstNameAsString,
                 Coordinates.REGISTRATION_STATE_FIRST_NAME_X,
                 Coordinates.REGISTRATION_STATE_FIRST_NAME_Y);
+        
         graphics.drawString(
                 lastNameAsString,
                 Coordinates.REGISTRATION_STATE_LAST_NAME_X,
                 Coordinates.REGISTRATION_STATE_LAST_NAME_Y);
+        
         graphics.drawString(
                 passwordAsString,
                 Coordinates.REGISTRATION_STATE_PASSWORD_X,
@@ -103,14 +115,17 @@ public class RegistrationFormState extends State {
                 username.toString(),
                 Coordinates.REGISTRATION_STATE_USER_STRING_X,
                 Coordinates.REGISTRATION_STATE_USER_STRING_Y);
+        
         graphics.drawString(
                 firstName.toString(),
                 Coordinates.REGISTRATION_STATE_FIRST_STRING_X,
                 Coordinates.REGISTRATION_STATE_FIRST_STRING_Y);
+        
         graphics.drawString(
                 lastName.toString(),
                 Coordinates.REGISTRATION_STATE_LAST_STRING_X,
                 Coordinates.REGISTRATION_STATE_LAST_STRING_Y);
+        
         graphics.drawString(
                 Utils.hidePassword(password.length()),
                 Coordinates.REGISTRATION_STATE_PASS_STRING_X,
@@ -129,29 +144,29 @@ public class RegistrationFormState extends State {
         switch (fieldType) {
             case "user":
                 rectangle = new Rectangle(
-                        (int) userRect.getX() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        (int) userRect.getY() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        userRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        userRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "first":
                 rectangle = new Rectangle(
-                        (int) firstRect.getX() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        (int) firstRect.getY() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        firstRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        firstRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "last":
                 rectangle = new Rectangle(
-                        (int) lastRect.getX() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        (int) lastRect.getY() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        lastRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        lastRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "pass":
                 rectangle = new Rectangle(
-                        (int) passRect.getX() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        (int) passRect.getY() - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        passRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        passRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;

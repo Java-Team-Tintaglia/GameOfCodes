@@ -77,20 +77,20 @@ public class EditProfileState extends State {
 
         switch (fieldType) {
             case "first":
-                graphics.drawRect((int)firstRect.getX() - 3,
-                        (int)firstRect.getY() - 3,
+                graphics.drawRect(firstRect.x - 3,
+                        firstRect.y - 3,
                         inputFieldWidth,
                         inputFieldHeight);
                 break;
             case "last":
-                graphics.drawRect((int)lastRect.getX() - 3,
-                        (int)lastRect.getY() - 3,
+                graphics.drawRect(lastRect.x - 3,
+                        lastRect.y - 3,
                         inputFieldWidth,
                         inputFieldHeight);
                 break;
             case "pass":
-                graphics.drawRect((int)passRect.getX() - 3,
-                        (int)passRect.getY() - 3,
+                graphics.drawRect(passRect.x - 3,
+                        passRect.y - 3,
                         inputFieldWidth,
                         inputFieldHeight);
                 break;

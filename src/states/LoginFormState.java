@@ -14,20 +14,24 @@ public class LoginFormState extends State {
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_X,
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_Y,
             Assets.buttonLogIn);
+    
     public static Button backToMenuButton = new Button(
             Coordinates.LOGIN_STATE_BACK_BUTTON_X,
             Coordinates.LOGIN_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
+    
     public static Rectangle userRect = new Rectangle(
             Coordinates.LOGIN_STATE_USERNAME_FIELD_X,
             Coordinates.LOGIN_STATE_USERNAME_FIELD_Y,
             Coordinates.LOGIN_STATE_FIELD_WIDTH,
             Coordinates.LOGIN_STATE_FIELD_HEIGHT);
+    
     public static Rectangle passRect = new Rectangle(
             Coordinates.LOGIN_STATE_PASSWORD_FIELD_X,
             Coordinates.LOGIN_STATE_PASSWORD_FIELD_Y,
             Coordinates.LOGIN_STATE_FIELD_WIDTH,
             Coordinates.LOGIN_STATE_FIELD_HEIGHT);
+    
     public static StringBuilder username = new StringBuilder();
     public static StringBuilder password = new StringBuilder();
     public static String fieldType = "user";
@@ -72,15 +76,15 @@ public class LoginFormState extends State {
         switch (fieldType) {
             case "user":
                 coliderBox = new Rectangle(
-                        (int)userRect.getX() - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
-                        (int)userRect.getY() - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                        userRect.x - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                        userRect.y - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.LOGIN_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.LOGIN_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "pass":
                 coliderBox = new Rectangle(
-                        (int)passRect.getX() - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
-                        (int)passRect.getY() - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                        passRect.x - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                        passRect.y - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.LOGIN_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.LOGIN_STATE_COLIDER_BOX_HEIGHT);
                 break;

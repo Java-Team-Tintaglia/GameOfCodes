@@ -15,26 +15,32 @@ public class PlayerCustomizationState extends State {
             Coordinates.PLAYER_STATE_PLAY_BUTTON_X,
             Coordinates.PLAYER_STATE_PLAY_BUTTON_Y,
             Assets.buttonPlay);
+    
     public static Button backToMenuButton = new Button(
             Coordinates.PLAYER_STATE_BACK_BUTTON_X,
             Coordinates.PLAYER_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
+    
     public static Button badBoyButton = new Button(
             Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_X,
             Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_Y,
             Assets.buttonBadBoy);
+    
     public static Button hotChickButton = new Button(
             Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_X,
             Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_Y,
             Assets.buttonHotChick);
+    
     public static Button nerdBoyButton = new Button(
             Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_X,
             Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_Y,
             Assets.buttonNerdBoy);
+    
     public static Button nerdLadyButton = new Button(
             Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_X,
             Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_Y,
             Assets.buttonNerdLady);
+    
     public static StudentType studentType;
     public static boolean isSelected = false;
 
