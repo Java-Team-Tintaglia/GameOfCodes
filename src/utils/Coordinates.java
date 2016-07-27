@@ -92,4 +92,13 @@ public class Coordinates {
     public static final int REGISTRATION_STATE_BLACK_BACKGROUND_Y = 40;
     public static final int REGISTRATION_STATE_BLACK_BACKGROUND_WIDTH = 824;
     public static final int REGISTRATION_STATE_BLACK_BACKGROUND_HEIGHT = 450;
+
+    //ErrorMessageState
+    public static final int ERROR_X=0;
+    public static final int ERROR_Y=0;
+
+
+    //EditProfileState
+    public static final int WALL_X=0;
+    public static final int WALL_Y=0;
 }

@@ -5,11 +5,19 @@ import authentication.Encoder;
 import graphics.Assets;
 import models.Button;
 import utils.Constants;
+import utils.Coordinates;
 import utils.Utils;
 
 import java.awt.*;
 
 public class EditProfileState extends State {
+
+    private static final int OFFSET_LAST_NAME =60;
+    private static final int OFFSET_NEW_PASSWORD =120;
+    private static final int OFFSET_RECTBOX_Y=60;
+    private static final int RECTANGLE_MARGIN=3;
+
+
     private static int backToMenuButtonXCoord = 500;
     private static int backToMenuButtonYCoord = 510;
     private static int editButtonXCoord = 330;
@@ -50,7 +58,7 @@ public class EditProfileState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.wall, Coordinates.WALL_X, Coordinates.WALL_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(backgroundRectXCoord, backgroundRectYCoord, backgroundRectWidth, backgroundRectHeight);
 
         Font title = new Font("Arial", Font.PLAIN, titleFontSize);
@@ -62,35 +70,35 @@ public class EditProfileState extends State {
         Font fieldName = new Font("Arial", Font.PLAIN, fieldFontSize);
         graphics.setFont(fieldName);
         graphics.drawString("First Name:", fieldNameX, fieldNameY);
-        graphics.drawString("Last Name:", fieldNameX, fieldNameY + 60);
-        graphics.drawString("New Password:", fieldNameX, fieldNameY + 120);
+        graphics.drawString("Last Name:", fieldNameX, fieldNameY + OFFSET_LAST_NAME);
+        graphics.drawString("New Password:", fieldNameX, fieldNameY + OFFSET_NEW_PASSWORD);
 
         graphics.fillRect(rectBoxX, rectBoxY, inputFieldRectXCoord, inputFieldRectYCoord);
         firstRect = new Rectangle(rectBoxX, rectBoxY, inputFieldRectXCoord, inputFieldRectYCoord);
-        graphics.fillRect(rectBoxX, rectBoxY + 60, inputFieldRectXCoord, inputFieldRectYCoord);
-        lastRect = new Rectangle(rectBoxX, rectBoxY + 60, inputFieldRectXCoord, inputFieldRectYCoord);
-        graphics.fillRect(rectBoxX, rectBoxY + 120, inputFieldRectXCoord, inputFieldRectYCoord);
-        passRect = new Rectangle(rectBoxX, rectBoxY + 120, inputFieldRectXCoord, inputFieldRectYCoord);
+        graphics.fillRect(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y, inputFieldRectXCoord, inputFieldRectYCoord);
+        lastRect = new Rectangle(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y, inputFieldRectXCoord, inputFieldRectYCoord);
+        graphics.fillRect(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y*2, inputFieldRectXCoord, inputFieldRectYCoord);
+        passRect = new Rectangle(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y*2, inputFieldRectXCoord, inputFieldRectYCoord);
 
 
         graphics.setColor(Color.gray);
 
         switch (fieldType) {
             case "first":
-                graphics.drawRect(firstRect.x - 3,
-                        firstRect.y - 3,
+                graphics.drawRect(firstRect.x - RECTANGLE_MARGIN,
+                        firstRect.y - RECTANGLE_MARGIN,
                         inputFieldWidth,
                         inputFieldHeight);
                 break;
             case "last":
-                graphics.drawRect(lastRect.x - 3,
-                        lastRect.y - 3,
+                graphics.drawRect(lastRect.x - RECTANGLE_MARGIN,
+                        lastRect.y - RECTANGLE_MARGIN,
                         inputFieldWidth,
                         inputFieldHeight);
                 break;
             case "pass":
-                graphics.drawRect(passRect.x - 3,
-                        passRect.y - 3,
+                graphics.drawRect(passRect.x - RECTANGLE_MARGIN,
+                        passRect.y - RECTANGLE_MARGIN,
                         inputFieldWidth,
                         inputFieldHeight);
                 break;

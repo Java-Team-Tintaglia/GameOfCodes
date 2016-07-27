@@ -1,14 +1,17 @@
 package states;
 
+import com.sun.corba.se.impl.orbutil.closure.Constant;
+import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import graphics.Assets;
 import models.Button;
 import utils.Constants;
+import utils.Coordinates;
 
 import java.awt.*;
 import java.util.StringTokenizer;
 
 public class ErrorMessageState extends State {
-	
+
     private String message;
     private State nextState;
     private static int okButtonXCoord = 450;
@@ -28,7 +31,7 @@ public class ErrorMessageState extends State {
     public void draw(Graphics graphics) {
 
 
-        graphics.drawImage(Assets.error, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.error, Coordinates.ERROR_X, Coordinates.ERROR_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
         Font titleFont = new Font("Arial", Font.BOLD, titleFontSize);
         graphics.setFont(titleFont);
