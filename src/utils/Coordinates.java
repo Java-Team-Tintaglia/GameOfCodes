@@ -97,13 +97,21 @@ public class Coordinates {
     //ErrorMessageState
 
 
-
     //EditProfileState
 
 
     //StudentProfileState
 
 
-    public static final int STUDENTPOFILE_STATE_OFFSET_NAME_Y=40;
+    public static final int STUDENTPOFILE_STATE_OFFSET_NAME_Y = 40;
+
+    //MainMenuState
+    public static final int BUTTON_X_COORD = 800;
+    public static final int BUTTON_Y_COORD = 310;
+    public static final int RECTANGLE_X_COORD = 860;
+    public static final int RECTANGLE_Y_COORD = 10;
+
+   public static final int USER_NAME_X_COORD = 900;
+   public static final int USER_NAME_Y_COORD = 30;
 
 }

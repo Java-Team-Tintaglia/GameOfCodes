@@ -10,6 +10,7 @@ import java.awt.*;
 
 public class LoginFormState extends State {
 
+    private static final int INPUT_TEXT_FONT_SIZE = 20;
     public static Button loginButton = new Button(
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_X,
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_Y,
@@ -51,7 +52,7 @@ public class LoginFormState extends State {
         Rectangle coliderBox = setColiderBox(fieldType);
         graphics.drawRect(coliderBox.x, coliderBox.y, coliderBox.width, coliderBox.height);
 
-        Font inputText = new Font("Arial", Font.BOLD, 20);
+        Font inputText = new Font("Arial", Font.BOLD, INPUT_TEXT_FONT_SIZE);
         graphics.setFont(inputText);
         graphics.setColor(Color.white);
         graphics.drawString(
