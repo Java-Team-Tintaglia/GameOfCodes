@@ -9,16 +9,14 @@ import java.awt.*;
 import java.util.StringTokenizer;
 
 public class ErrorMessageState extends State {
-
+    private static final int TITLE_FONT_SIZE = 20;
+    private static final int MESSAGE_POSITION_X = 250;
     private String message;
     private State nextState;
-    private static int okButtonXCoord = 450;
-    private static int okButtonYCoord = 500;
-    private int messagePositionX = 250;
     private int messagePositionY = 400;
-    private int titleFontSize = 20;
 
-    public static Button okButton = new Button(okButtonXCoord, okButtonYCoord, Assets.buttonOk);
+
+    public static Button okButton = new Button(Coordinates.OK_BUTTON_X_COORD, Coordinates.OK_BUTTON_Y_COORD, Assets.buttonOk);
 
     public ErrorMessageState(String message, State nextState) {
         this.message = message;
@@ -31,7 +29,7 @@ public class ErrorMessageState extends State {
 
         graphics.drawImage(Assets.error, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
-        Font titleFont = new Font("Arial", Font.BOLD, titleFontSize);
+        Font titleFont = new Font("Arial", Font.BOLD, TITLE_FONT_SIZE);
         graphics.setFont(titleFont);
         graphics.setColor(Color.black);
 
@@ -46,14 +44,14 @@ public class ErrorMessageState extends State {
 
             if (lineLen + word.length() > 40) {
                 lineLen = 0;
-                graphics.drawString(line, messagePositionX, messagePositionY);
+                graphics.drawString(line, MESSAGE_POSITION_X, messagePositionY);
                 line = "";
                 messagePositionY += 30;
             }
             line += (word + " ");
             lineLen += word.length();
         }
-        graphics.drawString(line, messagePositionX, messagePositionY);
+        graphics.drawString(line, MESSAGE_POSITION_X, messagePositionY);
 
         okButton.draw(graphics);
     }

@@ -61,7 +61,7 @@ public class RegistrationFormState extends State {
         String lastNameAsString = "Last Name:";
         String passwordAsString = "Password:";
 
-        graphics.drawImage(Assets.background, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_X, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0,0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         
         graphics.fillRect(
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_X,

@@ -95,7 +95,8 @@ public class Coordinates {
 
 
     //ErrorMessageState
-
+    public  static final int OK_BUTTON_X_COORD = 450;
+    public static final int OK_BUTTON_Y_COORD = 500;
 
     //EditProfileState
 
@@ -103,7 +104,7 @@ public class Coordinates {
     //StudentProfileState
 
 
-    public static final int STUDENTPOFILE_STATE_OFFSET_NAME_Y = 40;
+    public static final int STUDENT_PROFILE_STATE_OFFSET_NAME_Y = 40;
 
     //MainMenuState
     public static final int BUTTON_X_COORD = 800;

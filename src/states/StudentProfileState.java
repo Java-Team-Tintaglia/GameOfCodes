@@ -73,8 +73,8 @@ public class StudentProfileState extends State {
         graphics.drawString("First Name:", fieldNameXCoord, nameYCoord);
         graphics.drawString(firstName.toString(), playerNameXCoord, nameYCoord);
         
-        graphics.drawString("Last Name:", fieldNameXCoord, nameYCoord + Coordinates.STUDENTPOFILE_STATE_OFFSET_NAME_Y);
-        graphics.drawString(lastName.toString(), playerNameXCoord, nameYCoord + Coordinates.STUDENTPOFILE_STATE_OFFSET_NAME_Y);
+        graphics.drawString("Last Name:", fieldNameXCoord, nameYCoord + Coordinates.STUDENT_PROFILE_STATE_OFFSET_NAME_Y);
+        graphics.drawString(lastName.toString(), playerNameXCoord, nameYCoord + Coordinates.STUDENT_PROFILE_STATE_OFFSET_NAME_Y);
 
         TreeMap<String, ArrayList<Integer>> gradesBySubject = new TreeMap<>(
         		studentScoresRepository.getAllGradesBySubject(AuthenticationProvider.currentUser.getFirstName()));
