@@ -29,7 +29,7 @@ public class ErrorMessageState extends State {
     public void draw(Graphics graphics) {
 
 
-        graphics.drawImage(Assets.error, Coordinates.ERRORMESSAGE_STATE_ERROR_X, Coordinates.ERRORMESSAGE_STATE_ERROR_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.error, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
 
         Font titleFont = new Font("Arial", Font.BOLD, titleFontSize);
         graphics.setFont(titleFont);

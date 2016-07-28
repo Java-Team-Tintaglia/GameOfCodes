@@ -95,18 +95,15 @@ public class Coordinates {
 
 
     //ErrorMessageState
-    public static final int ERRORMESSAGE_STATE_ERROR_X =0;
-    public static final int ERRORMESSAGE_STATE_ERROR_Y =0;
+
 
 
     //EditProfileState
-    public static final int EDITPROFILE_STATE_WALL_X =0;
-    public static final int EDITPROFILE_STATE_WALL_Y =0;
+
 
     //StudentProfileState
 
-    public static final int STUDENTPOFILE_STATE_BACKGROUND_X=0;
-    public static final int STUDENTPOFILE_STATE_BACKGROUND_Y=0;
+
     public static final int STUDENTPOFILE_STATE_OFFSET_NAME_Y=40;
 
 }

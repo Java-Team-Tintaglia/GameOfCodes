@@ -59,7 +59,7 @@ public class StudentProfileState extends State {
     
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.background, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_X, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(rectangleXCoord, rectangleYCoord, rectangleWidth, rectangleHeight);
 
         Font title = new Font("Arial", Font.BOLD, titleFontSize);
