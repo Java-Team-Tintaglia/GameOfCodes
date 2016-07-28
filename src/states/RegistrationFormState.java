@@ -9,6 +9,9 @@ import utils.Utils;
 import java.awt.*;
 
 public class RegistrationFormState extends State {
+    private static final int TITLE_FONT_SIZE =35;
+    private static final int FILED_NAME_FONT_SIZE = 25;
+    private static final int INPUT_TEXT_FONT_SIZE = 20;
 
     public static Button registerButton = new Button(
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_X,
@@ -58,7 +61,7 @@ public class RegistrationFormState extends State {
         String lastNameAsString = "Last Name:";
         String passwordAsString = "Password:";
 
-        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_X, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         
         graphics.fillRect(
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_X,
@@ -66,7 +69,7 @@ public class RegistrationFormState extends State {
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_WIDTH,
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_HEIGHT);
 
-        Font title = new Font("Arial", Font.PLAIN, 35);
+        Font title = new Font("Arial", Font.PLAIN, TITLE_FONT_SIZE);
         graphics.setFont(title);
         graphics.setColor(Color.white);
         
@@ -75,7 +78,7 @@ public class RegistrationFormState extends State {
                 Coordinates.REGISTRATION_STATE_TITLE_X,
                 Coordinates.REGISTRATION_STATE_TITLE_Y);
 
-        Font fieldName = new Font("Arial", Font.PLAIN, 25);
+        Font fieldName = new Font("Arial", Font.PLAIN, FILED_NAME_FONT_SIZE);
         graphics.setFont(fieldName);
         
         graphics.drawString(
@@ -107,7 +110,7 @@ public class RegistrationFormState extends State {
         Rectangle coliderBox = setColiderBox(fieldType);
         graphics.drawRect(coliderBox.x, coliderBox.y, coliderBox.width, coliderBox.height);
 
-        Font inputText = new Font("Arial", Font.BOLD, 20);
+        Font inputText = new Font("Arial", Font.BOLD, INPUT_TEXT_FONT_SIZE);
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
 

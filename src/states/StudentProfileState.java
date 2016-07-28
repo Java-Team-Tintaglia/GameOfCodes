@@ -5,6 +5,7 @@ import graphics.Assets;
 import models.Button;
 import repositories.StudentScoresRepository;
 import utils.Constants;
+import utils.Coordinates;
 import utils.Messages;
 
 import java.awt.*;
@@ -13,6 +14,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class StudentProfileState extends State {
+    private static final int SCORE_OFFSET=30;
     private StudentScoresRepository studentScoresRepository;
 
     private static int backToMenuButtonXCoord  = 550;
@@ -57,7 +59,7 @@ public class StudentProfileState extends State {
     
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_X, Coordinates.STUDENTPOFILE_STATE_BACKGROUND_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(rectangleXCoord, rectangleYCoord, rectangleWidth, rectangleHeight);
 
         Font title = new Font("Arial", Font.BOLD, titleFontSize);
@@ -71,8 +73,8 @@ public class StudentProfileState extends State {
         graphics.drawString("First Name:", fieldNameXCoord, nameYCoord);
         graphics.drawString(firstName.toString(), playerNameXCoord, nameYCoord);
         
-        graphics.drawString("Last Name:", fieldNameXCoord, nameYCoord + 40);
-        graphics.drawString(lastName.toString(), playerNameXCoord, nameYCoord + 40);
+        graphics.drawString("Last Name:", fieldNameXCoord, nameYCoord + Coordinates.STUDENTPOFILE_STATE_OFFSET_NAME_Y);
+        graphics.drawString(lastName.toString(), playerNameXCoord, nameYCoord + Coordinates.STUDENTPOFILE_STATE_OFFSET_NAME_Y);
 
         TreeMap<String, ArrayList<Integer>> gradesBySubject = new TreeMap<>(
         		studentScoresRepository.getAllGradesBySubject(AuthenticationProvider.currentUser.getFirstName()));
@@ -86,7 +88,7 @@ public class StudentProfileState extends State {
     			double averageGrade = entry.getValue().stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
     			 graphics.drawString(entry.getKey() + ":", subjectNameXCoord, subjectYCoord + scorePosition);
     			 graphics.drawString(String.format("%.2f", averageGrade), averageGradeXCoord, subjectYCoord + scorePosition);
-    			 scorePosition += 30;
+    			 scorePosition += SCORE_OFFSET;
             }
 		} else {
 			 graphics.drawString(Messages.EMPTY_LIST, emptyListMessageXCoord, emptyListMessageYCoord);

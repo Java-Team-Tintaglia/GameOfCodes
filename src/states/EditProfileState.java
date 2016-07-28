@@ -58,7 +58,7 @@ public class EditProfileState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall, Coordinates.WALL_X, Coordinates.WALL_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.wall, Coordinates.EDITPROFILE_STATE_WALL_X, Coordinates.EDITPROFILE_STATE_WALL_Y, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
         graphics.fillRect(backgroundRectXCoord, backgroundRectYCoord, backgroundRectWidth, backgroundRectHeight);
 
         Font title = new Font("Arial", Font.PLAIN, titleFontSize);
