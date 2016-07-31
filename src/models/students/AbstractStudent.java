@@ -4,7 +4,6 @@ import graphics.SpriteSheet;
 import interfaces.ProgrammingLanguage;
 import interfaces.Student;
 import models.AbstractGameObject;
-import models.programmingLanguages.AbstractProgrammingLanguage;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -12,7 +11,7 @@ import java.util.*;
 
 import constants.Common;
 
-public abstract class AbstractStudent extends AbstractGameObject implements Student{
+public abstract class AbstractStudent extends AbstractGameObject implements Student {
 
     private static final int DEFAULT_SPEED = 8;
     

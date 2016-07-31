@@ -3,7 +3,7 @@ package interfaces;
 import java.util.List;
 import java.util.Map;
 
-public interface Student extends Collidable, Moveable, Drawable, Updatable {
+public interface Student extends GameObject, Collidable, Moveable {
 
     int getIntelligence();
 

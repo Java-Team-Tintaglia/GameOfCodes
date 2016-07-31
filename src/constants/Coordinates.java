@@ -109,8 +109,31 @@ public class Coordinates {
     public  static final int OK_BUTTON_X_COORD = 450;
     public static final int OK_BUTTON_Y_COORD = 500;
 
-    //EditProfileState
-
+    //EditProfileState   
+    public static final int EDIT_PROFILE_STATE_OFFSET = 60;
+    public static final int EDIT_PROFILE_STATE_TEXT_OFFSET = 30;
+    public static final int EDIT_PROFILE_STATE_RECTANGLE_MARGIN = 3;
+    public static final int EDIT_PROFILE_STATE_BACK_BUTTON_X = 500;
+    public static final int EDIT_PROFILE_STATE_BACK_BUTTON_Y = 510;
+    public static final int EDIT_PROFILE_STATE_EDIT_BUTTON_X = 330;
+    public static final int EDIT_PROFILE_STATE_EDIT_BUTTON_Y = 510;
+    public static final int EDIT_PROFILE_STATE_FIELD_NAME_X = 220;
+    public static final int EDIT_PROFILE_STATE_FIELD_NAME_Y = 208;
+    public static final int EDIT_PROFILE_STATE_INPUT_FIELD_X = 420;
+    public static final int EDIT_PROFILE_STATE_INPUT_FIELD_Y = 182;
+    public static final int EDIT_PROFILE_STATE_INPUT_FORM_X = 100;
+    public static final int EDIT_PROFILE_STATE_INPUT_FORM_Y = 40;
+    public static final int EDIT_PROFILE_STATE_INPUT_FORM_WIDTH = 824;
+    public static final int EDIT_PROFILE_STATE_INPUT_FORM_HEIGHT = 450;
+    public static final int EDIT_PROFILE_STATE_USER_INFO_X = 390;
+    public static final int EDIT_PROFILE_STATE_USER_INFO_Y = 90;
+    public static final int EDIT_PROFILE_STATE_INPUT_FIELD_WIDTH = 300;
+    public static final int EDIT_PROFILE_STATE_INPUT_FIELD_HEIGHT = 40;
+    public static final int EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_WIDTH = 306;
+    public static final int EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_HEIGTH = 46;
+    public static final int EDIT_PROFILE_STATE_FIRST_NAME_MARGIN = 26;
+    public static final int EDIT_PROFILE_STATE_LAST_NAME_MARGIN = 86;
+    public static final int EDIT_PROFILE_STATE_PASSWORD_MARGIN = 146;
 
     //StudentProfileState
 

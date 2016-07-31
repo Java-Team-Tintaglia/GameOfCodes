@@ -34,8 +34,6 @@ public class StudentScoresRepository {
             writer.print(save.toString());
             writer.println();
             
-            
-
         } catch (IOException exception) {
             System.err.println(Messages.FILE_WRITING_FAILURE);
             exception.printStackTrace();

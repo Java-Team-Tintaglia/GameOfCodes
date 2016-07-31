@@ -3,6 +3,7 @@ package states;
 import authentication.AuthenticationProvider;
 import authentication.Encoder;
 import constants.Coordinates;
+import constants.Fonts;
 import graphics.Assets;
 import models.ButtonImpl;
 import interfaces.Button;
@@ -13,32 +14,7 @@ import java.awt.*;
 
 public class EditProfileState implements State {
 
-    private static final int OFFSET_LAST_NAME =60;
-    private static final int OFFSET_NEW_PASSWORD =120;
-    private static final int OFFSET_RECTBOX_Y=60;
-    private static final int RECTANGLE_MARGIN=3;
-
-    private static int backToMenuButtonXCoord = 500;
-    private static int backToMenuButtonYCoord = 510;
-    private static int editButtonXCoord = 330;
-    private static int editButtonYCoord = 510;
-    private int fieldNameX = 220;
-    private int fieldNameY = 208;
-    private int rectBoxX = 420;
-    private int rectBoxY = 182;
-    private int backgroundRectXCoord = 100;
-    private int backgroundRectYCoord = 40;
-    private int backgroundRectWidth = 824;
-    private int backgroundRectHeight = 450;
-    private int titleFontSize = 35;
-    private int fieldFontSize = 25;
-    private int userInfoXCoord = 390;
-    private int userInfoYCoord = 90;
-    private int inputFieldRectXCoord = 300;
-    private int inputFieldRectYCoord = 40;
-    private int inputFieldWidth = 306;
-    private int inputFieldHeight = 46;
-    private int inputFieldFontSize = 20;
+    
     
     public static StringBuilder firstName = new StringBuilder(
     										AuthenticationProvider.currentUser.getFirstName());
@@ -49,71 +25,152 @@ public class EditProfileState implements State {
     public static StringBuilder password = new StringBuilder(
     										Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
    
-    public static Button backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
-                                            backToMenuButtonYCoord, Assets.buttonBackToMenu);
-    public static Button editButton = new ButtonImpl(editButtonXCoord,
-                                            editButtonYCoord, Assets.buttonEdit);
+    public static Button backToMenuButton = new ButtonImpl(
+										    		Coordinates.EDIT_PROFILE_STATE_BACK_BUTTON_X,
+										    		Coordinates.EDIT_PROFILE_STATE_BACK_BUTTON_Y, 
+										    		Assets.buttonBackToMenu);
+    
+    public static Button editButton = new ButtonImpl(
+    											Coordinates.EDIT_PROFILE_STATE_EDIT_BUTTON_X,
+    											Coordinates.EDIT_PROFILE_STATE_EDIT_BUTTON_Y, 
+    											Assets.buttonEdit);
 
-    public static Rectangle firstRect;
-    public static Rectangle lastRect;
-    public static Rectangle passRect;
+    public static Rectangle firstNameRectangle;
+    public static Rectangle lastNameRectangle;
+    public static Rectangle passwordRectangle;
 
     public static String fieldType = "first";
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall,0,0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
-        graphics.fillRect(backgroundRectXCoord, backgroundRectYCoord, backgroundRectWidth, backgroundRectHeight);
+        graphics.drawImage(Assets.wall, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
+        
+        graphics.fillRect(
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FORM_X, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FORM_Y, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FORM_WIDTH, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FORM_HEIGHT);
 
-        Font title = new Font("Arial", Font.PLAIN, titleFontSize);
+        Font title = new Font(Fonts.ARIAL_FONT, Font.PLAIN, Fonts.TITLE_FONT_SIZE);
         graphics.setFont(title);
         graphics.setColor(Color.white);
-        String userProfile = AuthenticationProvider.currentUser.getUsername();
-        graphics.drawString("User: " + userProfile, userInfoXCoord, userInfoYCoord);
-
-        Font fieldName = new Font("Arial", Font.PLAIN, fieldFontSize);
+        
+        String username = AuthenticationProvider.currentUser.getUsername();
+        graphics.drawString(
+        		"User: " + username, 
+        		Coordinates.EDIT_PROFILE_STATE_USER_INFO_X, 
+        		Coordinates.EDIT_PROFILE_STATE_USER_INFO_Y);
+        
+        Font fieldName = new Font("Arial", Font.PLAIN, Fonts.INPUT_FIELD_FONT_SIZE);
         graphics.setFont(fieldName);
-        graphics.drawString("First Name:", fieldNameX, fieldNameY);
-        graphics.drawString("Last Name:", fieldNameX, fieldNameY + OFFSET_LAST_NAME);
-        graphics.drawString("New Password:", fieldNameX, fieldNameY + OFFSET_NEW_PASSWORD);
+        
+        graphics.drawString(
+        		"First Name:", 
+        		Coordinates.EDIT_PROFILE_STATE_FIELD_NAME_X, 
+        		Coordinates.EDIT_PROFILE_STATE_FIELD_NAME_Y);
+        
+        graphics.drawString(
+        		"Last Name:", 
+        		Coordinates.EDIT_PROFILE_STATE_FIELD_NAME_X, 
+        		Coordinates.EDIT_PROFILE_STATE_FIELD_NAME_Y 
+        		+ Coordinates.EDIT_PROFILE_STATE_OFFSET);
+        
+        graphics.drawString(
+        		"New Password:", 
+        		Coordinates.EDIT_PROFILE_STATE_FIELD_NAME_X, 
+        		Coordinates.EDIT_PROFILE_STATE_FIELD_NAME_Y 
+        		+ 2 * Coordinates.EDIT_PROFILE_STATE_OFFSET);
 
-        graphics.fillRect(rectBoxX, rectBoxY, inputFieldRectXCoord, inputFieldRectYCoord);
-        firstRect = new Rectangle(rectBoxX, rectBoxY, inputFieldRectXCoord, inputFieldRectYCoord);
-        graphics.fillRect(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y, inputFieldRectXCoord, inputFieldRectYCoord);
-        lastRect = new Rectangle(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y, inputFieldRectXCoord, inputFieldRectYCoord);
-        graphics.fillRect(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y*2, inputFieldRectXCoord, inputFieldRectYCoord);
-        passRect = new Rectangle(rectBoxX, rectBoxY + OFFSET_RECTBOX_Y*2, inputFieldRectXCoord, inputFieldRectYCoord);
-
+        graphics.fillRect(
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_WIDTH, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_HEIGHT);
+        
+        firstNameRectangle = new Rectangle(
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_WIDTH, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_HEIGHT);
+        
+        graphics.fillRect(
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y 
+        		+ Coordinates.EDIT_PROFILE_STATE_OFFSET, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_WIDTH, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_HEIGHT);
+        
+        lastNameRectangle = new Rectangle(
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y 
+        		+ Coordinates.EDIT_PROFILE_STATE_OFFSET, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_WIDTH, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_HEIGHT);
+        
+        graphics.fillRect(
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y + 
+        		Coordinates.EDIT_PROFILE_STATE_OFFSET * 2, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_WIDTH, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_HEIGHT);
+        
+        passwordRectangle = new Rectangle(
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y 
+        		+ Coordinates.EDIT_PROFILE_STATE_OFFSET * 2, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_WIDTH, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_HEIGHT);
 
         graphics.setColor(Color.gray);
 
         switch (fieldType) {
             case "first":
-                graphics.drawRect(firstRect.x - RECTANGLE_MARGIN,
-                        firstRect.y - RECTANGLE_MARGIN,
-                        inputFieldWidth,
-                        inputFieldHeight);
+                graphics.drawRect(
+                		firstNameRectangle.x - Coordinates.EDIT_PROFILE_STATE_RECTANGLE_MARGIN,
+                        firstNameRectangle.y - Coordinates.EDIT_PROFILE_STATE_RECTANGLE_MARGIN,
+                        Coordinates.EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_WIDTH,
+                        Coordinates.EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_HEIGTH);
                 break;
             case "last":
-                graphics.drawRect(lastRect.x - RECTANGLE_MARGIN,
-                        lastRect.y - RECTANGLE_MARGIN,
-                        inputFieldWidth,
-                        inputFieldHeight);
+                graphics.drawRect(
+                		lastNameRectangle.x - Coordinates.EDIT_PROFILE_STATE_RECTANGLE_MARGIN,
+                        lastNameRectangle.y - Coordinates.EDIT_PROFILE_STATE_RECTANGLE_MARGIN,
+                        Coordinates.EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_WIDTH,
+                        Coordinates.EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_HEIGTH);
                 break;
             case "pass":
-                graphics.drawRect(passRect.x - RECTANGLE_MARGIN,
-                        passRect.y - RECTANGLE_MARGIN,
-                        inputFieldWidth,
-                        inputFieldHeight);
+                graphics.drawRect(
+                		passwordRectangle.x - Coordinates.EDIT_PROFILE_STATE_RECTANGLE_MARGIN,
+                        passwordRectangle.y - Coordinates.EDIT_PROFILE_STATE_RECTANGLE_MARGIN,
+                        Coordinates.EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_WIDTH,
+                        Coordinates.EDIT_PROFILE_STATE_HIGHLIGHTED_FIELD_HEIGTH);
                 break;
         }
 
-        Font inputText = new Font("Arial", Font.BOLD, inputFieldFontSize);
+        Font inputText = new Font("Arial", Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
-        graphics.drawString(firstName.toString(), rectBoxX + 30, rectBoxY + 26);
-        graphics.drawString(lastName.toString(), rectBoxX + 30, rectBoxY + 86);
-        graphics.drawString(Utils.hidePassword(password.length()), rectBoxX + 30, rectBoxY + 146);
+        
+        graphics.drawString(
+        		firstName.toString(), 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X 
+        		+ Coordinates.EDIT_PROFILE_STATE_TEXT_OFFSET, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y 
+        		+ Coordinates.EDIT_PROFILE_STATE_FIRST_NAME_MARGIN);
+        
+        graphics.drawString(
+        		lastName.toString(), 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X 
+        		+ Coordinates.EDIT_PROFILE_STATE_TEXT_OFFSET, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y 
+        		+ Coordinates.EDIT_PROFILE_STATE_LAST_NAME_MARGIN);
+        
+        graphics.drawString(
+        		Utils.hidePassword(password.length()), 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_X 
+        		+ Coordinates.EDIT_PROFILE_STATE_TEXT_OFFSET, 
+        		Coordinates.EDIT_PROFILE_STATE_INPUT_FIELD_Y 
+        		+ Coordinates.EDIT_PROFILE_STATE_PASSWORD_MARGIN);
 
         backToMenuButton.draw(graphics);
         editButton.draw(graphics);

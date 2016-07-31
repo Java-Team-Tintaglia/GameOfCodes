@@ -200,11 +200,11 @@ public class MouseInput implements MouseListener {
             }
 
         }else if (StateManager.getCurrentState() instanceof EditProfileState) {
-            if (EditProfileState.firstRect.contains(mouseX, mouseY)) {
+            if (EditProfileState.firstNameRectangle.contains(mouseX, mouseY)) {
                 EditProfileState.fieldType = "first";
-            } else if (EditProfileState.lastRect.contains(mouseX, mouseY)) {
+            } else if (EditProfileState.lastNameRectangle.contains(mouseX, mouseY)) {
                 EditProfileState.fieldType = "last";
-            } else if (EditProfileState.passRect.contains(mouseX, mouseY)) {
+            } else if (EditProfileState.passwordRectangle.contains(mouseX, mouseY)) {
                 EditProfileState.fieldType = "pass";
             } else if(EditProfileState.editButton.getColliderBox().contains(mouseX, mouseY)){
                 User user = AuthenticationProvider.currentUser;

@@ -4,7 +4,7 @@ import interfaces.GameObject;
 
 import java.awt.*;
 
-public abstract class AbstractGameObject implements GameObject{
+public abstract class AbstractGameObject implements GameObject {
 
     private int x;
     private int y;
@@ -19,7 +19,7 @@ public abstract class AbstractGameObject implements GameObject{
     
     @Override
     public int getX() {
-        return x;
+        return this.x;
     }
     
     @Override
@@ -29,7 +29,7 @@ public abstract class AbstractGameObject implements GameObject{
     
     @Override
     public int getY() {
-        return y;
+        return this.y;
     }
     
     @Override
