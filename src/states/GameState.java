@@ -1,13 +1,14 @@
 package states;
 
 import authentication.AuthenticationProvider;
-import constants.Common;
+import constants.Coordinates;
 import core.CollisionHandler;
 import core.MapInitializor;
 import enums.StudentType;
 import factories.StudentFactory;
 import graphics.Assets;
 import interfaces.ProgrammingLanguage;
+import interfaces.State;
 import interfaces.Student;
 import interfaces.Wizard;
 
@@ -15,7 +16,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameState extends State {
+public class GameState implements State {
 	
     private List<ProgrammingLanguage> programmingLanguages = new ArrayList<>();
     private Wizard wizard;
@@ -45,8 +46,8 @@ public class GameState extends State {
     public GameState(StudentType studentType) {
 		studentFactory = new StudentFactory();
 		student = studentFactory.create(studentType, 
-				Common.DEFAUL_PLAYER_X_COORD, 
-				Common.DEFAUL_PLAYER_Y_COORD, 
+				Coordinates.DEFAUL_PLAYER_X_COORD, 
+				Coordinates.DEFAUL_PLAYER_Y_COORD, 
 				AuthenticationProvider.currentUser.getUsername());
 		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 		wizard = MapInitializor.generateWizard();
@@ -57,10 +58,10 @@ public class GameState extends State {
     public void draw(Graphics graphics) {
 
 
-        graphics.drawImage(Assets.wall, 0, height-(height-i), Common.SCREEN_WIDTH, 300, null);
-        graphics.drawImage(Assets.wallTwo, 0, heightTwo-(height-j), Common.SCREEN_WIDTH, 300, null);
-		graphics.drawImage(Assets.wallToolbar, 0, 0, Common.SCREEN_WIDTH, Common.TOOLBAR_HEIGHT, null);
-		graphics.drawImage(Assets.floor, 0, 295, Common.SCREEN_WIDTH, Common.FLOOR_HEIGHT, null);
+        graphics.drawImage(Assets.wall, 0, height-(height-i), Coordinates.SCREEN_WIDTH, 300, null);
+        graphics.drawImage(Assets.wallTwo, 0, heightTwo-(height-j), Coordinates.SCREEN_WIDTH, 300, null);
+		graphics.drawImage(Assets.wallToolbar, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.TOOLBAR_HEIGHT, null);
+		graphics.drawImage(Assets.floor, 0, 295, Coordinates.SCREEN_WIDTH, Coordinates.FLOOR_HEIGHT, null);
 
 		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, secondsFontSize);
 		graphics.setFont(secondsFont);

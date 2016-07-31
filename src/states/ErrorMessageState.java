@@ -2,14 +2,15 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.Button;
+import interfaces.State;
 
 import java.awt.*;
 import java.util.StringTokenizer;
 
-import constants.Common;
 import constants.Coordinates;
 
-public class ErrorMessageState extends State {
+public class ErrorMessageState implements State {
     private static final int TITLE_FONT_SIZE = 20;
     private static final int MESSAGE_POSITION_X = 250;
     private String message;
@@ -17,7 +18,10 @@ public class ErrorMessageState extends State {
     private int messagePositionY = 400;
 
 
-    public static ButtonImpl okButton = new ButtonImpl(Coordinates.OK_BUTTON_X_COORD, Coordinates.OK_BUTTON_Y_COORD, Assets.buttonOk);
+    public static Button okButton = new ButtonImpl(
+    		Coordinates.OK_BUTTON_X_COORD, 
+    		Coordinates.OK_BUTTON_Y_COORD, 
+    		Assets.buttonOk);
 
     public ErrorMessageState(String message, State nextState) {
         this.message = message;
@@ -26,17 +30,12 @@ public class ErrorMessageState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-
-
-        graphics.drawImage(Assets.error, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
-
+        graphics.drawImage(Assets.error, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         Font titleFont = new Font("Arial", Font.BOLD, TITLE_FONT_SIZE);
         graphics.setFont(titleFont);
         graphics.setColor(Color.black);
 
-
         StringTokenizer tokens = new StringTokenizer(this.message, " ");
-
 
         int lineLen = 0;
         String line = "";

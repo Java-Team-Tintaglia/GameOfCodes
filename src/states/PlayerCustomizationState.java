@@ -1,42 +1,43 @@
 package states;
 
 import authentication.AuthenticationProvider;
-import constants.Common;
 import constants.Coordinates;
 import enums.StudentType;
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.Button;
+import interfaces.State;
 
 import java.awt.*;
 
-public class PlayerCustomizationState extends State {
+public class PlayerCustomizationState implements State {
 
-    public static ButtonImpl playButton = new ButtonImpl(
+    public static Button playButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_PLAY_BUTTON_X,
             Coordinates.PLAYER_STATE_PLAY_BUTTON_Y,
             Assets.buttonPlay);
     
-    public static ButtonImpl backToMenuButton = new ButtonImpl(
+    public static Button backToMenuButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_BACK_BUTTON_X,
             Coordinates.PLAYER_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
     
-    public static ButtonImpl badBoyButton = new ButtonImpl(
+    public static Button badBoyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_X,
             Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_Y,
             Assets.buttonBadBoy);
     
-    public static ButtonImpl hotChickButton = new ButtonImpl(
+    public static Button hotChickButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_X,
             Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_Y,
             Assets.buttonHotChick);
     
-    public static ButtonImpl nerdBoyButton = new ButtonImpl(
+    public static Button nerdBoyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_X,
             Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_Y,
             Assets.buttonNerdBoy);
     
-    public static ButtonImpl nerdLadyButton = new ButtonImpl(
+    public static Button nerdLadyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_X,
             Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_Y,
             Assets.buttonNerdLady);
@@ -46,7 +47,7 @@ public class PlayerCustomizationState extends State {
 
 	@Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.playerCustomization, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.playerCustomization, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         graphics.drawImage(
                 Assets.selectPlayer,
                 Coordinates.PLAYER_STATE_TITLE_X,

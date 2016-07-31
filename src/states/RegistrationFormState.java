@@ -2,24 +2,26 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.Button;
+import interfaces.State;
 import utils.Utils;
 
 import java.awt.*;
 
-import constants.Common;
 import constants.Coordinates;
 
-public class RegistrationFormState extends State {
+public class RegistrationFormState implements State {
+	
     private static final int TITLE_FONT_SIZE =35;
     private static final int FILED_NAME_FONT_SIZE = 25;
     private static final int INPUT_TEXT_FONT_SIZE = 20;
 
-    public static ButtonImpl registerButton = new ButtonImpl(
+    public static Button registerButton = new ButtonImpl(
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_X,
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_Y,
             Assets.buttonRegister);
     
-    public static ButtonImpl backToMenuButton = new ButtonImpl(
+    public static Button backToMenuButton = new ButtonImpl(
             Coordinates.REGISTRATION_STATE_BACK_BUTTON_X,
             Coordinates.REGISTRATION_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
@@ -62,7 +64,7 @@ public class RegistrationFormState extends State {
         String lastNameAsString = "Last Name:";
         String passwordAsString = "Password:";
 
-        graphics.drawImage(Assets.background, 0,0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0,0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         
         graphics.fillRect(
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_X,

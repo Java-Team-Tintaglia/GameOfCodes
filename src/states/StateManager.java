@@ -1,6 +1,9 @@
 package states;
 
+import interfaces.State;
+
 public class StateManager {
+	
     private static State currentState;
 
     public static State getCurrentState() {

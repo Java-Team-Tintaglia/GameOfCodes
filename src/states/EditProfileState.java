@@ -2,20 +2,21 @@ package states;
 
 import authentication.AuthenticationProvider;
 import authentication.Encoder;
-import constants.Common;
+import constants.Coordinates;
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.Button;
+import interfaces.State;
 import utils.Utils;
 
 import java.awt.*;
 
-public class EditProfileState extends State {
+public class EditProfileState implements State {
 
     private static final int OFFSET_LAST_NAME =60;
     private static final int OFFSET_NEW_PASSWORD =120;
     private static final int OFFSET_RECTBOX_Y=60;
     private static final int RECTANGLE_MARGIN=3;
-
 
     private static int backToMenuButtonXCoord = 500;
     private static int backToMenuButtonYCoord = 510;
@@ -38,15 +39,19 @@ public class EditProfileState extends State {
     private int inputFieldWidth = 306;
     private int inputFieldHeight = 46;
     private int inputFieldFontSize = 20;
+    
     public static StringBuilder firstName = new StringBuilder(
     										AuthenticationProvider.currentUser.getFirstName());
+    
     public static StringBuilder lastName = new StringBuilder(
     										AuthenticationProvider.currentUser.getLastName());
+    
     public static StringBuilder password = new StringBuilder(
     										Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
-    public static ButtonImpl backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
+   
+    public static Button backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
                                             backToMenuButtonYCoord, Assets.buttonBackToMenu);
-    public static ButtonImpl editButton = new ButtonImpl(editButtonXCoord,
+    public static Button editButton = new ButtonImpl(editButtonXCoord,
                                             editButtonYCoord, Assets.buttonEdit);
 
     public static Rectangle firstRect;
@@ -57,7 +62,7 @@ public class EditProfileState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall,0,0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.wall,0,0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         graphics.fillRect(backgroundRectXCoord, backgroundRectYCoord, backgroundRectWidth, backgroundRectHeight);
 
         Font title = new Font("Arial", Font.PLAIN, titleFontSize);

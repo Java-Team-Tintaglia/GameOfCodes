@@ -6,8 +6,7 @@ public class RandomGenerator {
 
     private static Random random;
 
-    public static int getNextRandom(int maxValue)
-    {
+    public static int getNextRandom(int maxValue) {
         if (random == null) {
             init();
         }

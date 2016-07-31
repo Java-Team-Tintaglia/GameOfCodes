@@ -2,22 +2,24 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.Button;
+import interfaces.State;
 import utils.Utils;
 
 import java.awt.*;
 
-import constants.Common;
 import constants.Coordinates;
 
-public class LoginFormState extends State {
+public class LoginFormState implements State {
 
     private static final int INPUT_TEXT_FONT_SIZE = 20;
-    public static ButtonImpl loginButton = new ButtonImpl(
+    
+    public static Button loginButton = new ButtonImpl(
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_X,
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_Y,
             Assets.buttonLogIn);
     
-    public static ButtonImpl backToMenuButton = new ButtonImpl(
+    public static Button backToMenuButton = new ButtonImpl(
             Coordinates.LOGIN_STATE_BACK_BUTTON_X,
             Coordinates.LOGIN_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
@@ -40,7 +42,7 @@ public class LoginFormState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.background, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         graphics.drawImage(
                 Assets.login,
                 Coordinates.LOGIN_STATE_LOGIN_FORM_X,

@@ -4,10 +4,10 @@ import eventhandler.KeyInput;
 import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
+import interfaces.State;
 import repositories.StudentScoresRepository;
 import repositories.UserRepository;
 import states.MainMenuState;
-import states.State;
 import states.StateManager;
 
 import java.awt.*;
@@ -15,6 +15,7 @@ import java.awt.image.BufferStrategy;
 
 import authentication.AuthenticationProvider;
 import constants.Common;
+import constants.Coordinates;
 
 public class GameEngine implements Runnable {
     private final String title;
@@ -105,7 +106,7 @@ public class GameEngine implements Runnable {
         this.graphics = this.bufferStrategy.getDrawGraphics();
 
         // -> START DRAWING
-        this.graphics.clearRect(0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT);
+        this.graphics.clearRect(0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT);
         
         if (StateManager.getCurrentState() != null) {
             StateManager.getCurrentState().draw(graphics);
@@ -119,7 +120,7 @@ public class GameEngine implements Runnable {
 
     private void init() {
         Assets.init();
-        this.display = new Display(Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, this.title);      
+        this.display = new Display(Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, this.title);      
         this.userRepository = new UserRepository();
         this.userRepository.load();
         this.studentScoresRepository = new StudentScoresRepository();

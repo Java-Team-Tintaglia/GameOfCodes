@@ -2,6 +2,17 @@ package constants;
 
 public class Coordinates {
 
+	public static final int SCREEN_WIDTH = 1024;
+	public static final int SCREEN_HEIGHT = 600;
+	
+	//GameState
+	public static final int DEFAUL_PLAYER_X_COORD = 500;
+	public static final int DEFAUL_PLAYER_Y_COORD = 500;
+	
+	public static final int WALL_HEIGHT = 300;
+	public static final int FLOOR_HEIGHT = 305;
+	public static final int TOOLBAR_HEIGHT = 50;
+	
     //LoginFormState
     public static final int LOGIN_STATE_LOGIN_BUTTON_X = 440;
     public static final int LOGIN_STATE_LOGIN_BUTTON_Y = 320;

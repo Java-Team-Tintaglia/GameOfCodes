@@ -1,14 +1,15 @@
 package states;
 
 import graphics.Assets;
+import interfaces.State;
 import models.ButtonImpl;
 
 import java.awt.*;
 import java.util.StringTokenizer;
 
-import constants.Common;
+import constants.Coordinates;
 
-public class SuccessMessageState extends State {
+public class SuccessMessageState implements State {
 	private State nextState;
     private String message;
 
@@ -30,7 +31,7 @@ public class SuccessMessageState extends State {
         int messagePositionX = 250;
         int messagePositionY = 400;
 
-        graphics.drawImage(Assets.success, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.success, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
 
 
         Font titleFont = new Font("Arial", Font.BOLD, titleFontSize);

@@ -2,6 +2,8 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.Button;
+import interfaces.State;
 import repositories.StudentScoresRepository;
 
 import java.awt.*;
@@ -10,9 +12,10 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
-import constants.Common;
+import constants.Coordinates;
 
-public class ScoresState extends State {
+public class ScoresState implements State {
+	
     private StudentScoresRepository studentScoresRepository;
     private static int backToMenuButtonXCoord = 730;
     private static int backToMenuButtonYCoord = 500;
@@ -22,7 +25,7 @@ public class ScoresState extends State {
     private int averageGradeXCoord = 520;
     private int subjectAverageGradeXCoord = 560;
 
-    public static ButtonImpl backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
+    public static Button backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
             backToMenuButtonYCoord, Assets.buttonBackToMenu);
 
     public ScoresState(StudentScoresRepository studentScoresRepository) {
@@ -42,7 +45,7 @@ public class ScoresState extends State {
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
 						(e1, e2) -> e1, LinkedHashMap::new));
         
-        graphics.drawImage(Assets.highScoresBackground, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.highScoresBackground, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
 
         Font font = new Font("Consolas", Font.PLAIN, fontSize);
         graphics.setFont(font);

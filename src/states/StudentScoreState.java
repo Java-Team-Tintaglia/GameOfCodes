@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Map;
 
 import authentication.AuthenticationProvider;
-import constants.Common;
+import constants.Coordinates;
 import graphics.Assets;
+import interfaces.State;
 import interfaces.Student;
 import models.ButtonImpl;
-import models.students.AbstractStudent;
 
-public class StudentScoreState extends State {
+public class StudentScoreState implements State {
     private Student student;
 
     private static int backToMenuButtonXCoord = 730;
@@ -29,7 +29,7 @@ public class StudentScoreState extends State {
 
 	@Override
     public void draw(Graphics graphics) {
-    	graphics.drawImage(Assets.diploma, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+    	graphics.drawImage(Assets.diploma, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
     	graphics.setFont(new Font("Arial", Font.BOLD, userFullNameFontSize));
         graphics.setColor(Color.green);
         

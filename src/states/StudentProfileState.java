@@ -1,10 +1,10 @@
 package states;
 
 import authentication.AuthenticationProvider;
-import constants.Common;
 import constants.Coordinates;
 import constants.Messages;
 import graphics.Assets;
+import interfaces.State;
 import models.ButtonImpl;
 import repositories.StudentScoresRepository;
 
@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class StudentProfileState extends State {
+public class StudentProfileState implements State {
+	
     private static final int SCORE_OFFSET=30;
     private StudentScoresRepository studentScoresRepository;
 
@@ -59,7 +60,7 @@ public class StudentProfileState extends State {
     
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.background, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         graphics.fillRect(rectangleXCoord, rectangleYCoord, rectangleWidth, rectangleHeight);
 
         Font title = new Font("Arial", Font.BOLD, titleFontSize);

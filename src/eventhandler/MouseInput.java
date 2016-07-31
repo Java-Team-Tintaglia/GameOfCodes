@@ -4,6 +4,7 @@ import authentication.AuthenticationProvider;
 import authentication.Encoder;
 import enums.StudentType;
 import graphics.Display;
+import interfaces.User;
 import models.UserImpl;
 import repositories.StudentScoresRepository;
 import repositories.UserRepository;
@@ -143,7 +144,7 @@ public class MouseInput implements MouseListener {
                 String firstName = RegistrationFormState.firstName.toString();
                 String lastName = RegistrationFormState.lastName.toString();
 
-                UserImpl userToRegister = new UserImpl(username, firstName, lastName, passwordHash);
+                User userToRegister = new UserImpl(username, firstName, lastName, passwordHash);
                 this.userRepository.addUser(userToRegister);
 
                 RegistrationFormState.fieldType = "user";
@@ -206,12 +207,12 @@ public class MouseInput implements MouseListener {
             } else if (EditProfileState.passRect.contains(mouseX, mouseY)) {
                 EditProfileState.fieldType = "pass";
             } else if(EditProfileState.editButton.getColliderBox().contains(mouseX, mouseY)){
-                UserImpl userImpl = AuthenticationProvider.currentUser;
-                userImpl.setFirstName(EditProfileState.firstName.toString());
-                userImpl.setLastName(EditProfileState.lastName.toString());
+                User user = AuthenticationProvider.currentUser;
+                user.setFirstName(EditProfileState.firstName.toString());
+                user.setLastName(EditProfileState.lastName.toString());
                 String passwordHash = Encoder.cryptingPassword(EditProfileState.password.toString());
-                userImpl.setPassword(passwordHash);
-                this.userRepository.updateUser(userImpl);
+                user.setPassword(passwordHash);
+                this.userRepository.updateUser(user);
             } else if (EditProfileState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
                  StateManager.setCurrentState(new MainMenuState());
              }
