@@ -61,7 +61,7 @@ public class EditProfileState implements State {
         		Coordinates.EDIT_PROFILE_STATE_USER_INFO_X, 
         		Coordinates.EDIT_PROFILE_STATE_USER_INFO_Y);
         
-        Font fieldName = new Font("Arial", Font.PLAIN, Fonts.TEXT_FONT_SIZE);
+        Font fieldName = new Font(Fonts.ARIAL_FONT, Font.PLAIN, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(fieldName);
         
         graphics.drawString(

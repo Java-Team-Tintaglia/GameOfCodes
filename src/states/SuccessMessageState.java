@@ -28,7 +28,7 @@ public class SuccessMessageState implements State {
     @Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.success, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
-        Font titleFont = new Font("Arial", Font.BOLD, Fonts.TEXT_FONT_SIZE);
+        Font titleFont = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(titleFont);
         graphics.setColor(Color.black);
 

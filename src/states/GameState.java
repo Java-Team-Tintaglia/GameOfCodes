@@ -93,8 +93,8 @@ public class GameState implements State {
 
 		graphics.drawString(
 				Integer.toString(this.seconds), 
-				Coordinates.GAME_STATE_SECONDS_X, 
-				Coordinates.GAME_STATE_SECONDS_Y);
+				Coordinates.GAME_STATE_TIMER_X, 
+				Coordinates.GAME_STATE_TIMER_Y);
 		
 		student.draw(graphics);
         

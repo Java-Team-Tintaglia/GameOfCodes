@@ -17,8 +17,8 @@ public class Coordinates {
 	public static final int GAME_STATE_STUDENT_KNOWLEDGE_POINTS_X = 250;
 	public static final int GAME_STATE_STUDENT_INTELLIGENCE_POINTS_X = 455;
 	public static final int GAME_STATE_STUDENT_POINTS_Y = 35;
-	public static final int GAME_STATE_SECONDS_X = 950;
-	public static final int GAME_STATE_SECONDS_Y = 35;
+	public static final int GAME_STATE_TIMER_X = 950;
+	public static final int GAME_STATE_TIMER_Y = 35;
 	public static final int GAME_STATE_FLOOR_Y = 295;
 	
     //LoginFormState
