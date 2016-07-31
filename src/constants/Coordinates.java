@@ -149,11 +149,19 @@ public class Coordinates {
     public static final int STUDENT_PROFILE_STATE_EMPTY_LIST_Y = 340;
 
     //MainMenuState
-    public static final int BUTTON_X_COORD = 800;
-    public static final int BUTTON_Y_COORD = 310;
-    public static final int RECTANGLE_X_COORD = 860;
-    public static final int RECTANGLE_Y_COORD = 10;
-    public static final int USER_NAME_X_COORD = 900;
-    public static final int USER_NAME_Y_COORD = 30;
+    public static final int MAIN_MENU_STATE_BUTTON_X = 800;
+    public static final int MAIN_MENU_STATE_LOGIN_BUTTON_Y = 380;
+    public static final int MAIN_MENU_STATE_REGISTER_BUTTON_LOGIN_Y = 450;
+    public static final int MAIN_MENU_STATE_EXIT_BUTTON_LOGIN_Y = 520;
+    public static final int MAIN_MENU_STATE_START_BUTTON_LOGIN_Y = 310;
+    public static final int MAIN_MENU_STATE_PROFILE_BUTTON_LOGIN_Y = 380;
+    public static final int MAIN_MENU_STATE_SCORE_BUTTON_LOGIN_Y = 450;
+    public static final int MAIN_MENU_STATE_LOGOUT_BUTTON_LOGIN_Y = 520;
+    public static final int MAIN_MENU_STATE_USER_RECTANGLE_X = 860;
+    public static final int MAIN_MENU_STATE_USER_RECTANGLE_Y = 10;
+    public static final int MAIN_MENU_STATE_USER_RECTANGLE_WIDTH =180;
+    public static final int MAIN_MENU_STATE_USER_RECTANGLE_HEIGHT = 30;
+    public static final int MAIN_MENU_STATE_USERNAME_X = 900;
+    public static final int MAIN_MENU_STATE_USERNAME_Y = 30;
 
 }
