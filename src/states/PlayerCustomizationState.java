@@ -58,7 +58,7 @@ public class PlayerCustomizationState implements State {
                 Coordinates.PLAYER_STATE_TITLE_HEIGHT,
                 null);
 
-        Font textFont = new Font(Fonts.COMIS_SANS_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
+        Font textFont = new Font(Fonts.COMIS_SANS_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(textFont);
         graphics.setColor(Color.green);
 
@@ -70,7 +70,7 @@ public class PlayerCustomizationState implements State {
         graphics.setColor(Color.black);
         
         if (AuthenticationProvider.currentUser != null) {
-        	Font title = new Font(Fonts.COMIS_SANS_FONT, Font.PLAIN, Fonts.INPUT_FIELD_FONT_SIZE);
+        	Font title = new Font(Fonts.COMIS_SANS_FONT, Font.PLAIN, Fonts.TEXT_FONT_SIZE);
             graphics.setFont(title);
             graphics.setColor(Color.green);
     		

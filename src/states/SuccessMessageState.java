@@ -3,23 +3,22 @@ package states;
 import graphics.Assets;
 import interfaces.State;
 import models.ButtonImpl;
+import interfaces.Button;
 
 import java.awt.*;
 import java.util.StringTokenizer;
 
 import constants.Coordinates;
+import constants.Fonts;
 
 public class SuccessMessageState implements State {
 	private State nextState;
     private String message;
 
-    private static int okButtonXCoord = 450;
-    private static int okButtonYCoord = 500;
-    private int titleFontSize = 20;
-    private int messageFontSize = 22;
-
-    public static ButtonImpl okButton = new ButtonImpl(okButtonXCoord,
-            okButtonYCoord, Assets.buttonOk);
+    public static Button okButton = new ButtonImpl(
+    										Coordinates.MESSAGE_STATE_OK_BUTTON_X,
+    										Coordinates.MESSAGE_STATE_OK_BUTTON_Y, 
+    										Assets.buttonOk);
 
     public SuccessMessageState(String message, State nextState) {
         this.message = message;
@@ -28,45 +27,39 @@ public class SuccessMessageState implements State {
 
     @Override
     public void draw(Graphics graphics) {
-        int messagePositionX = 250;
-        int messagePositionY = 400;
-
         graphics.drawImage(Assets.success, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
-
-
-        Font titleFont = new Font("Arial", Font.BOLD, titleFontSize);
+        Font titleFont = new Font("Arial", Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(titleFont);
         graphics.setColor(Color.black);
 
-
         StringTokenizer tokens = new StringTokenizer(this.message, " ");
-        graphics.setFont(new Font("Arial", Font.BOLD, messageFontSize));
 
         String line = "";
-        int lineLen = 0;
+        int lineLength = 0;
+        int messagePositionY = 400;
+        int maxLettersPerRow = 40;
         while (tokens.hasMoreTokens()) {
             String word = tokens.nextToken();
 
-            if (lineLen + word.length() > 40) {
-                lineLen = 0;
-                graphics.drawString(line, messagePositionX, messagePositionY);
+            if (lineLength + word.length() > maxLettersPerRow) {
+                lineLength = 0;
+                graphics.drawString(line, Coordinates.MESSAGE_STATE_MESSAGE_POSITION_X, messagePositionY);
                 line = "";
-                messagePositionY += 30;
+                messagePositionY += Coordinates.MESSAGE_STATE_MESSAGE_OFFSET;
             }
+            
             line += (word + " ");
-            lineLen += word.length();
+            lineLength += word.length();
         }
-        graphics.drawString(line, messagePositionX, messagePositionY);
+        graphics.drawString(line, Coordinates.MESSAGE_STATE_MESSAGE_POSITION_X, messagePositionY);
 
         okButton.draw(graphics);
     }
 
     @Override
-    public void update() {
-    }
+    public void update() {}
 
 	public State getNextState() {
 		return nextState;
-	}
-    
+	}  
 }

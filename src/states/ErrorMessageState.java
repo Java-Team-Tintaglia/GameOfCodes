@@ -9,18 +9,16 @@ import java.awt.*;
 import java.util.StringTokenizer;
 
 import constants.Coordinates;
+import constants.Fonts;
 
 public class ErrorMessageState implements State {
-    private static final int TITLE_FONT_SIZE = 20;
-    private static final int MESSAGE_POSITION_X = 250;
+
     private String message;
     private State nextState;
-    private int messagePositionY = 400;
-
 
     public static Button okButton = new ButtonImpl(
-    		Coordinates.OK_BUTTON_X_COORD, 
-    		Coordinates.OK_BUTTON_Y_COORD, 
+    		Coordinates.MESSAGE_STATE_OK_BUTTON_X, 
+    		Coordinates.MESSAGE_STATE_OK_BUTTON_Y, 
     		Assets.buttonOk);
 
     public ErrorMessageState(String message, State nextState) {
@@ -31,35 +29,34 @@ public class ErrorMessageState implements State {
     @Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.error, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
-        Font titleFont = new Font("Arial", Font.BOLD, TITLE_FONT_SIZE);
+        Font titleFont = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(titleFont);
         graphics.setColor(Color.black);
 
         StringTokenizer tokens = new StringTokenizer(this.message, " ");
 
-        int lineLen = 0;
+        int lineLength = 0;
         String line = "";
+        int messagePositionY = 400;
+        int maxLettersPerRow = 40;
         while (tokens.hasMoreTokens()) {
             String word = tokens.nextToken();
 
-            if (lineLen + word.length() > 40) {
-                lineLen = 0;
-                graphics.drawString(line, MESSAGE_POSITION_X, messagePositionY);
+            if (lineLength + word.length() > maxLettersPerRow) {
+                lineLength = 0;
+                graphics.drawString(line, Coordinates.MESSAGE_STATE_MESSAGE_POSITION_X, messagePositionY);
                 line = "";
-                messagePositionY += 30;
+                messagePositionY += Coordinates.MESSAGE_STATE_MESSAGE_OFFSET;
             }
             line += (word + " ");
-            lineLen += word.length();
+            lineLength += word.length();
         }
-        graphics.drawString(line, MESSAGE_POSITION_X, messagePositionY);
-
+        graphics.drawString(line, Coordinates.MESSAGE_STATE_MESSAGE_POSITION_X, messagePositionY);
         okButton.draw(graphics);
     }
 
     @Override
-    public void update() {
-
-    }
+    public void update() {}
 
 	public State getNextState() {
 		return nextState;

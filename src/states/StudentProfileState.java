@@ -56,7 +56,7 @@ public class StudentProfileState implements State {
         		Coordinates.STUDENT_PROFILE_STATE_TITLE_X, 
         		Coordinates.STUDENT_PROFILE_STATE_TITLE_Y);
 
-        Font fieldName = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
+        Font fieldName = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(fieldName);
         
         graphics.drawString(
@@ -89,7 +89,7 @@ public class StudentProfileState implements State {
         		Coordinates.STUDENT_PROFILE_STATE_TITLE_GRADES_X, 
         		Coordinates.STUDENT_PROFILE_STATE_TITLE_GRADES_Y);
         
-        Font font = new Font("Arial", Font.ITALIC, Fonts.INPUT_FIELD_FONT_SIZE);
+        Font font = new Font("Arial", Font.ITALIC, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(font);
         
         int scorePosition = 0;

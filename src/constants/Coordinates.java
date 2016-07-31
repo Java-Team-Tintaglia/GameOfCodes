@@ -92,10 +92,12 @@ public class Coordinates {
     public static final int REGISTRATION_STATE_BLACK_BACKGROUND_WIDTH = 824;
     public static final int REGISTRATION_STATE_BLACK_BACKGROUND_HEIGHT = 450;
 
-    //ErrorMessageState
-    public  static final int OK_BUTTON_X_COORD = 450;
-    public static final int OK_BUTTON_Y_COORD = 500;
-
+    //MessageStates
+    public static final int MESSAGE_STATE_OK_BUTTON_X = 450;
+    public static final int MESSAGE_STATE_OK_BUTTON_Y = 500;
+    public static final int MESSAGE_STATE_MESSAGE_POSITION_X = 250;
+    public static final int MESSAGE_STATE_MESSAGE_OFFSET = 30;
+    
     //EditProfileState   
     public static final int EDIT_PROFILE_STATE_OFFSET = 60;
     public static final int EDIT_PROFILE_STATE_TEXT_OFFSET = 30;

@@ -78,7 +78,7 @@ public class RegistrationFormState implements State {
                 Coordinates.REGISTRATION_STATE_TITLE_X,
                 Coordinates.REGISTRATION_STATE_TITLE_Y);
 
-        Font fieldName = new Font(Fonts.ARIAL_FONT, Font.PLAIN, Fonts.INPUT_FIELD_FONT_SIZE);
+        Font fieldName = new Font(Fonts.ARIAL_FONT, Font.PLAIN, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(fieldName);
         
         graphics.drawString(
@@ -110,7 +110,7 @@ public class RegistrationFormState implements State {
         Rectangle coliderBox = setColiderBox(fieldType);
         graphics.drawRect(coliderBox.x, coliderBox.y, coliderBox.width, coliderBox.height);
 
-        Font inputText = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
+        Font inputText = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
 

@@ -55,7 +55,7 @@ public class LoginFormState implements State {
         Rectangle coliderBox = setColiderBox(fieldType);
         graphics.drawRect(coliderBox.x, coliderBox.y, coliderBox.width, coliderBox.height);
 
-        Font inputText = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
+        Font inputText = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(inputText);
         graphics.setColor(Color.white);
         
