@@ -2,6 +2,7 @@ package states;
 
 import authentication.AuthenticationProvider;
 import constants.Coordinates;
+import constants.Fonts;
 import core.CollisionHandler;
 import core.MapInitializor;
 import enums.StudentType;
@@ -18,113 +19,129 @@ import java.util.List;
 
 public class GameState implements State {
 	
+	private static final long TIME_DELAY_NEW_WIZARD = 3000;
+	private static final long timeDelayNewProgrammingLanguage = 2000;
+	private static final long timeDelay = 1000;
+	private static final int STARTING_POSITION = 78;
+	private static final int HEIGHT = 3;
+	
+	public static Student student;
     private List<ProgrammingLanguage> programmingLanguages = new ArrayList<>();
     private Wizard wizard;
-    
-    private long timerNewWizard = System.nanoTime();
-	private long timerNewProgrammingLanguage = System.nanoTime();
-	private long timeDelayNewWizard = 3000;
-	private long timeDelayNewProgrammingLanguage = 2000;
-	private long timerSeconds = System.nanoTime();
-	private long timeDelay = 1000;
-	private int seconds = 30;
-    private int i =0;
-    private int j =4;
-    private int height = 0;
-    private int heightTwo = -300;
-	private int secondsFontSize = 20;
-	private int studentVitalityXCoord = 80;
-	private int studentKnowledgeXCoord = 250;
-	private int studentIntelligenceXCoord = 455;
-	private int studentStatsYCoord = 35;
-	private int secondsXCoord = 950;
-	private int secondsYCoord = 35;
-
-	public static Student student;
     private StudentFactory studentFactory;
+    private long timerNewWizard;
+	private long timerNewProgrammingLanguage;
+	private long timerSeconds;
+	private int seconds = 30;
+    
+    private int step = STARTING_POSITION;
  
     public GameState(StudentType studentType) {
-		studentFactory = new StudentFactory();
+		this.studentFactory = new StudentFactory();
+		
 		student = studentFactory.create(studentType, 
 				Coordinates.DEFAUL_PLAYER_X_COORD, 
 				Coordinates.DEFAUL_PLAYER_Y_COORD, 
 				AuthenticationProvider.currentUser.getUsername());
-		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
-		wizard = MapInitializor.generateWizard();
+		
+		this.programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
+		this.wizard = MapInitializor.generateWizard();
+		this.timerNewWizard = System.nanoTime();
+		this.timerNewProgrammingLanguage = System.nanoTime();
+		this.timerSeconds = System.nanoTime();
 	}
 
-
-	@Override
+	@Override 
     public void draw(Graphics graphics) {
+		int x = 0;
+		int y = HEIGHT - (HEIGHT * this.step);
+        graphics.drawImage(Assets.background, x, y, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
+		
+        graphics.drawImage(
+        		Assets.wallToolbar, 
+        		0, 
+        		0, 
+        		Coordinates.SCREEN_WIDTH, 
+        		Coordinates.TOOLBAR_HEIGHT, 
+        		null);
+		
+		graphics.drawImage(
+				Assets.floor, 0, 
+				Coordinates.GAME_STATE_FLOOR_Y, 
+				Coordinates.SCREEN_WIDTH, 
+				Coordinates.FLOOR_HEIGHT, 
+				null);
 
-
-        graphics.drawImage(Assets.wall, 0, height-(height-i), Coordinates.SCREEN_WIDTH, 300, null);
-        graphics.drawImage(Assets.wallTwo, 0, heightTwo-(height-j), Coordinates.SCREEN_WIDTH, 300, null);
-		graphics.drawImage(Assets.wallToolbar, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.TOOLBAR_HEIGHT, null);
-		graphics.drawImage(Assets.floor, 0, 295, Coordinates.SCREEN_WIDTH, Coordinates.FLOOR_HEIGHT, null);
-
-		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, secondsFontSize);
+		Font secondsFont = new Font(Fonts.COMIS_SANS_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
 		graphics.setFont(secondsFont);
 		graphics.setColor(Color.yellow);
 
-		graphics.drawString(Integer.toString(student.getVitality()), studentVitalityXCoord, studentStatsYCoord);
-		graphics.drawString(Integer.toString(student.getKnowledge()), studentKnowledgeXCoord, studentStatsYCoord);
-		graphics.drawString(Integer.toString(student.getIntelligence()), studentIntelligenceXCoord, studentStatsYCoord);
+		graphics.drawString(
+				Integer.toString(student.getVitality()), 
+				Coordinates.GAME_STATE_STUDENT_VITALITY_POINTS_X, 
+				Coordinates.GAME_STATE_STUDENT_POINTS_Y);
+		
+		graphics.drawString(
+				Integer.toString(student.getKnowledge()), 
+				Coordinates.GAME_STATE_STUDENT_KNOWLEDGE_POINTS_X, 
+				Coordinates.GAME_STATE_STUDENT_POINTS_Y);
+		
+		graphics.drawString(
+				Integer.toString(student.getIntelligence()), 
+				Coordinates.GAME_STATE_STUDENT_INTELLIGENCE_POINTS_X, 
+				Coordinates.GAME_STATE_STUDENT_POINTS_Y);
 
+		graphics.drawString(
+				Integer.toString(this.seconds), 
+				Coordinates.GAME_STATE_SECONDS_X, 
+				Coordinates.GAME_STATE_SECONDS_Y);
+		
 		student.draw(graphics);
         
-        if (!programmingLanguages.isEmpty()) {
-        	 for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
+        if (!this.programmingLanguages.isEmpty()) {
+        	 for (ProgrammingLanguage programmingLanguage : this.programmingLanguages) {
         		 programmingLanguage.draw(graphics);
      		}
 		}
        
-       
-        if (wizard != null) {
-        	wizard.draw(graphics);
+        if (this.wizard != null) {
+        	this.wizard.draw(graphics);
 		}
-
-		graphics.drawString(Integer.toString(seconds), secondsXCoord, secondsYCoord);
     }
 
     @Override
     public void update() {
 
-        i++;
-        j++;
-
-        if (i>=300){
-            i=-296;
-        }
-
-        if(j>596){
-            j=0;
-        }
-		
-    	long elapsedNewWizard = (System.nanoTime() - this.timerNewWizard) / 1000000;
-		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timerNewProgrammingLanguage) / 1000000;
-		long elapsedSeconds = (System.nanoTime() - this.timerSeconds) / 1000000;
-		
-    	CollisionHandler.handleCollisions(student, wizard, programmingLanguages);
+    	this.step--;
     	
-		if(elapsedSeconds > this.timeDelay) {
-			seconds--;
+    	if (this.step <= 1) {
+    		this.step = STARTING_POSITION;
+		}
+    	
+        CollisionHandler.handleCollisions(student, wizard, programmingLanguages);
+        
+    	long elapsedNewWizard = (System.nanoTime() - this.timerNewWizard) / 1_000_000;
+		long elapsedNewProgrammingLanguage = (System.nanoTime() - this.timerNewProgrammingLanguage) / 1_000_000;
+		long elapsedSeconds = (System.nanoTime() - this.timerSeconds) / 1_000_000;
+
+		if(elapsedSeconds > timeDelay) {
+			this.seconds--;
 			student.getExhausted();
-			timerSeconds = System.nanoTime();
+			this.timerSeconds = System.nanoTime();
 		}
     	
-        if (elapsedNewWizard > this.timeDelayNewWizard) {
-        	wizard.setExist(false);
-			wizard = MapInitializor.generateWizard();
-			timerNewWizard = System.nanoTime();
+        if (elapsedNewWizard > TIME_DELAY_NEW_WIZARD) {
+        	this.wizard.setExist(false);
+			this.wizard = MapInitializor.generateWizard();
+			this.timerNewWizard = System.nanoTime();
 		}
     	
-        if (elapsedNewProgrammingLanguage > this.timeDelayNewProgrammingLanguage) {
-        	programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
-			timerNewProgrammingLanguage = System.nanoTime();
+        if (elapsedNewProgrammingLanguage > timeDelayNewProgrammingLanguage) {
+        	this.programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
+			this.timerNewProgrammingLanguage = System.nanoTime();
 		}
     	
-        if (seconds <= 0) {
+        if (this.seconds <= 0) {
 			StateManager.setCurrentState(new StudentScoreState(student));
 		}
         
