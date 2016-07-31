@@ -22,7 +22,7 @@ public class StudentProfileState implements State {
     private static int backToMenuButtonYCoord = 520;
     private static int editButtonXCoord = 450;
     private static int editButtonYCoord = 200;
-    private int scorePosition = 0;
+    
     private int rectangleXCoord = 100;
     private int rectangleYCoord = 40;
     private int rectangleWidth = 824;
@@ -84,11 +84,23 @@ public class StudentProfileState implements State {
         
         Font font = new Font("Arial", Font.ITALIC, gradesFontSize);
         graphics.setFont(font);
+        
+        int scorePosition = 0;
         if (!gradesBySubject.isEmpty()) {
         	for (Entry<String, ArrayList<Integer>> entry : gradesBySubject.entrySet()) {
-    			double averageGrade = entry.getValue().stream().mapToDouble(s -> s.intValue()).average().getAsDouble();
-    			 graphics.drawString(entry.getKey() + ":", subjectNameXCoord, subjectYCoord + scorePosition);
-    			 graphics.drawString(String.format("%.2f", averageGrade), averageGradeXCoord, subjectYCoord + scorePosition);
+    			double averageGrade = entry.getValue().stream()
+    					.mapToDouble(s -> s.intValue())
+    					.average()
+    					.getAsDouble();
+    			
+    			 graphics.drawString(entry.getKey() + ":", 
+    					 subjectNameXCoord, 
+    					 subjectYCoord + scorePosition);
+    			 
+    			 graphics.drawString(String.format("%.2f", averageGrade), 
+    					 averageGradeXCoord, 
+    					 subjectYCoord + scorePosition);
+    			 
     			 scorePosition += SCORE_OFFSET;
             }
 		} else {
@@ -96,10 +108,8 @@ public class StudentProfileState implements State {
 		}
         
         graphics.setColor(Color.gray);
-
         backToMenuButton.draw(graphics);
         editButton.draw(graphics);
-
     }
 
     @Override

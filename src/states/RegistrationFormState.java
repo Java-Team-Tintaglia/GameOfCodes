@@ -24,25 +24,25 @@ public class RegistrationFormState implements State {
             Assets.buttonBackToMenu);
     
     public static Rectangle usernameRectangle = new Rectangle(
-            Coordinates.REGISTRATION_STATE_USERNAME_RECT_X,
+            Coordinates.REGISTRATION_STATE_FIELD_RECT_X,
             Coordinates.REGISTRATION_STATE_USERNAME_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
     
     public static Rectangle firstNameRectangle = new Rectangle(
-            Coordinates.REGISTRATION_STATE_FIRST_NAME_RECT_X,
+            Coordinates.REGISTRATION_STATE_FIELD_RECT_X,
             Coordinates.REGISTRATION_STATE_FIRST_NAME_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
     
     public static Rectangle lastNameRectangle = new Rectangle(
-            Coordinates.REGISTRATION_STATE_LAST_NAME_RECT_X,
+            Coordinates.REGISTRATION_STATE_FIELD_RECT_X,
             Coordinates.REGISTRATION_STATE_LAST_NAME_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
     
     public static Rectangle passwordRectangle = new Rectangle(
-            Coordinates.REGISTRATION_STATE_PASSWORD_RECT_X,
+            Coordinates.REGISTRATION_STATE_FIELD_RECT_X,
             Coordinates.REGISTRATION_STATE_PASSWORD_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
@@ -83,22 +83,22 @@ public class RegistrationFormState implements State {
         
         graphics.drawString(
                 usernameAsString,
-                Coordinates.REGISTRATION_STATE_USERNAME_X,
+                Coordinates.REGISTRATION_STATE_USER_INFO_X,
                 Coordinates.REGISTRATION_STATE_USERNAME_Y);
         
         graphics.drawString(
                 firstNameAsString,
-                Coordinates.REGISTRATION_STATE_FIRST_NAME_X,
+                Coordinates.REGISTRATION_STATE_USER_INFO_X,
                 Coordinates.REGISTRATION_STATE_FIRST_NAME_Y);
         
         graphics.drawString(
                 lastNameAsString,
-                Coordinates.REGISTRATION_STATE_LAST_NAME_X,
+                Coordinates.REGISTRATION_STATE_USER_INFO_X,
                 Coordinates.REGISTRATION_STATE_LAST_NAME_Y);
         
         graphics.drawString(
                 passwordAsString,
-                Coordinates.REGISTRATION_STATE_PASSWORD_X,
+                Coordinates.REGISTRATION_STATE_USER_INFO_X,
                 Coordinates.REGISTRATION_STATE_PASSWORD_Y);
 
         graphics.fillRect(usernameRectangle.x, usernameRectangle.y, usernameRectangle.width, usernameRectangle.height);
@@ -116,22 +116,22 @@ public class RegistrationFormState implements State {
 
         graphics.drawString(
                 username.toString(),
-                Coordinates.REGISTRATION_STATE_USER_STRING_X,
+                Coordinates.REGISTRATION_STATE_INPUT_X,
                 Coordinates.REGISTRATION_STATE_USER_STRING_Y);
         
         graphics.drawString(
                 firstName.toString(),
-                Coordinates.REGISTRATION_STATE_FIRST_STRING_X,
+                Coordinates.REGISTRATION_STATE_INPUT_X,
                 Coordinates.REGISTRATION_STATE_FIRST_STRING_Y);
         
         graphics.drawString(
                 lastName.toString(),
-                Coordinates.REGISTRATION_STATE_LAST_STRING_X,
+                Coordinates.REGISTRATION_STATE_INPUT_X,
                 Coordinates.REGISTRATION_STATE_LAST_STRING_Y);
         
         graphics.drawString(
                 Utils.hidePassword(password.length()),
-                Coordinates.REGISTRATION_STATE_PASS_STRING_X,
+                Coordinates.REGISTRATION_STATE_INPUT_X,
                 Coordinates.REGISTRATION_STATE_PASS_STRING_Y);
 
         backToMenuButton.draw(graphics);

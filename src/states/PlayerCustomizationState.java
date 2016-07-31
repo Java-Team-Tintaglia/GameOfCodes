@@ -25,22 +25,22 @@ public class PlayerCustomizationState implements State {
     
     public static Button badBoyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_X,
-            Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_Y,
+            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
             Assets.buttonBadBoy);
     
     public static Button hotChickButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_X,
-            Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_Y,
+            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
             Assets.buttonHotChick);
     
     public static Button nerdBoyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_X,
-            Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_Y,
+            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
             Assets.buttonNerdBoy);
     
     public static Button nerdLadyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_X,
-            Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_Y,
+            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
             Assets.buttonNerdLady);
     
     public static StudentType studentType;
