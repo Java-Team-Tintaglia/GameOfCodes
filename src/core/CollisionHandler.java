@@ -1,8 +1,9 @@
 package core;
 
+import interfaces.Wizard;
 import models.programmingLanguages.ProgrammingLanguage;
 import models.students.Student;
-import models.wizards.Wizard;
+import models.wizards.WizardImpl;
 
 import java.util.List;
 

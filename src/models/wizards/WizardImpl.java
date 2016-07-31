@@ -1,13 +1,14 @@
 package models.wizards;
 
 import enums.WizardType;
+import interfaces.Wizard;
 import models.GameObject;
 import models.students.Student;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class Wizard extends GameObject {
+public abstract class WizardImpl extends GameObject implements Wizard {
 
     private BufferedImage image;
 
@@ -17,7 +18,7 @@ public abstract class Wizard extends GameObject {
 
     private boolean exist;
 
-    public Wizard(int x, int y, WizardType wizardType, BufferedImage image ) {
+    public WizardImpl(int x, int y, WizardType wizardType, BufferedImage image ) {
         super(x, y);
         this.exist = true;
         this.wizardType = wizardType;

@@ -2,11 +2,12 @@ package core;
 
 import enums.ProgrammingLanguageType;
 import enums.WizardType;
+import interfaces.Wizard;
 import models.programmingLanguages.*;
 import models.wizards.IntelligenceWizard;
 import models.wizards.KnowledgeWizard;
 import models.wizards.VitalityWizard;
-import models.wizards.Wizard;
+import models.wizards.WizardImpl;
 import utils.RandomGenerator;
 
 public class MapInitializor {

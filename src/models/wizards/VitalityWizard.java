@@ -4,7 +4,7 @@ import enums.WizardType;
 import graphics.Assets;
 import models.students.Student;
 
-public class VitalityWizard extends Wizard {
+public class VitalityWizard extends WizardImpl {
 
 	public VitalityWizard(int x , int y) {
         super(x, y, WizardType.VITALITY_WIZARD, Assets.wizardBeer);
