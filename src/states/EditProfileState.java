@@ -43,7 +43,7 @@ public class EditProfileState implements State {
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         
         graphics.fillRect(
         		Coordinates.EDIT_PROFILE_STATE_INPUT_FORM_X, 

@@ -2,10 +2,12 @@ package states;
 
 import authentication.AuthenticationProvider;
 import constants.Coordinates;
+import constants.Fonts;
 import constants.Messages;
 import graphics.Assets;
 import interfaces.State;
 import models.ButtonImpl;
+import interfaces.Button;
 import repositories.StudentScoresRepository;
 
 import java.awt.*;
@@ -15,45 +17,21 @@ import java.util.TreeMap;
 
 public class StudentProfileState implements State {
 	
-    private static final int SCORE_OFFSET=30;
-    private StudentScoresRepository studentScoresRepository;
+    public static StringBuilder firstName = new StringBuilder(AuthenticationProvider.currentUser.getFirstName());
+    public static StringBuilder lastName = new StringBuilder(AuthenticationProvider.currentUser.getLastName());
 
-    private static int backToMenuButtonXCoord  = 550;
-    private static int backToMenuButtonYCoord = 520;
-    private static int editButtonXCoord = 450;
-    private static int editButtonYCoord = 200;
+    public static Button backToMenuButton = new ButtonImpl(
+    												Coordinates.STUDENT_PROFILE_STATE_BACK_BUTTON_X,
+    												Coordinates.STUDENT_PROFILE_STATE_BACK_BUTTON_Y, 
+    												Assets.buttonBackToMenu);
     
-    private int rectangleXCoord = 100;
-    private int rectangleYCoord = 40;
-    private int rectangleWidth = 824;
-    private int rectangleHeight = 460;
-    private int titleFontSize = 28;
-    private int titleXCoord = 450;
-    private int titleYCoord = 90;
-    private int fieldFontSize = 23;
-    private int fieldNameXCoord = 390;
-    private int nameYCoord = 140;
-    private int playerNameXCoord = 590;
-    private int gradesTitleXCoord = 470;
-    private int gradesTitleYCoord = 290;
-    private int gradesFontSize = 24;
-    private int subjectNameXCoord = 390;
-    private int subjectYCoord = 340;
-    private int averageGradeXCoord = 590;
-    private int emptyListMessageXCoord = 440;
-    private int emptyListMessageYCoord = 340;
+    public static Button editButton = new ButtonImpl(
+    											Coordinates.STUDENT_PROFILE_STATE_EDIT_BUTTON_X,
+    											Coordinates.STUDENT_PROFILE_STATE_EDIT_BUTTON_Y, 
+    											Assets.buttonEdit);
 
-    public static StringBuilder firstName = new StringBuilder(
-            AuthenticationProvider.currentUser.getFirstName());
-
-    public static StringBuilder lastName = new StringBuilder(
-            AuthenticationProvider.currentUser.getLastName());
-
-    public static ButtonImpl backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
-            backToMenuButtonYCoord, Assets.buttonBackToMenu);
-    public static ButtonImpl editButton = new ButtonImpl(editButtonXCoord,
-            editButtonYCoord, Assets.buttonEdit);
-
+    private StudentScoresRepository studentScoresRepository;
+    
     public StudentProfileState(StudentScoresRepository studentScoresRepository) {
     	this.studentScoresRepository = studentScoresRepository;
     }
@@ -61,28 +39,57 @@ public class StudentProfileState implements State {
     @Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.background, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
-        graphics.fillRect(rectangleXCoord, rectangleYCoord, rectangleWidth, rectangleHeight);
+        
+        graphics.fillRect(
+        		Coordinates.STUDENT_PROFILE_STATE_RECTANGLE_BOX_X, 
+        		Coordinates.STUDENT_PROFILE_STATE_RECTANGLE_BOX_Y, 
+        		Coordinates.STUDENT_PROFILE_STATE_RECTANGLE_BOX_WIDTH, 
+        		Coordinates.STUDENT_PROFILE_STATE_RECTANGLE_BOX_HEIGHT);
 
-        Font title = new Font("Arial", Font.BOLD, titleFontSize);
+        Font title = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TITLE_FONT_SIZE);
         graphics.setFont(title);
         graphics.setColor(Color.white);
-        String userProfile = AuthenticationProvider.currentUser.getUsername();
-        graphics.drawString("User: " + userProfile, titleXCoord, titleYCoord);
-
-        Font fieldName = new Font("Arial", Font.BOLD, fieldFontSize);
-        graphics.setFont(fieldName);
-        graphics.drawString("First Name:", fieldNameXCoord, nameYCoord);
-        graphics.drawString(firstName.toString(), playerNameXCoord, nameYCoord);
+        String username = AuthenticationProvider.currentUser.getUsername();
         
-        graphics.drawString("Last Name:", fieldNameXCoord, nameYCoord + Coordinates.STUDENT_PROFILE_STATE_OFFSET_NAME_Y);
-        graphics.drawString(lastName.toString(), playerNameXCoord, nameYCoord + Coordinates.STUDENT_PROFILE_STATE_OFFSET_NAME_Y);
+        graphics.drawString(
+        		"User: " + username, 
+        		Coordinates.STUDENT_PROFILE_STATE_TITLE_X, 
+        		Coordinates.STUDENT_PROFILE_STATE_TITLE_Y);
+
+        Font fieldName = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
+        graphics.setFont(fieldName);
+        
+        graphics.drawString(
+        		"First Name:", 
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_NAME_X, 
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_NAME_Y);
+        
+        graphics.drawString(
+        		firstName.toString(), 
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_PLAYER_NAME_X, 
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_NAME_Y);
+        
+        graphics.drawString(
+        		"Last Name:", 
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_NAME_X,
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_NAME_Y 
+        		+ Coordinates.STUDENT_PROFILE_STATE_OFFSET_NAME);
+        
+        graphics.drawString(
+        		lastName.toString(), 
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_PLAYER_NAME_X, 
+        		Coordinates.STUDENT_PROFILE_STATE_FIELD_NAME_Y 
+        		+ Coordinates.STUDENT_PROFILE_STATE_OFFSET_NAME);
 
         TreeMap<String, ArrayList<Integer>> gradesBySubject = new TreeMap<>(
         		studentScoresRepository.getAllGradesBySubject(AuthenticationProvider.currentUser.getFirstName()));
         
-        graphics.drawString("GRADES:", gradesTitleXCoord, gradesTitleYCoord);
+        graphics.drawString(
+        		"GRADES:", 
+        		Coordinates.STUDENT_PROFILE_STATE_TITLE_GRADES_X, 
+        		Coordinates.STUDENT_PROFILE_STATE_TITLE_GRADES_Y);
         
-        Font font = new Font("Arial", Font.ITALIC, gradesFontSize);
+        Font font = new Font("Arial", Font.ITALIC, Fonts.INPUT_FIELD_FONT_SIZE);
         graphics.setFont(font);
         
         int scorePosition = 0;
@@ -94,17 +101,20 @@ public class StudentProfileState implements State {
     					.getAsDouble();
     			
     			 graphics.drawString(entry.getKey() + ":", 
-    					 subjectNameXCoord, 
-    					 subjectYCoord + scorePosition);
+    					 Coordinates.STUDENT_PROFILE_STATE_SUBJECT_NAME_X, 
+    					 Coordinates.STUDENT_PROFILE_STATE_SUBJECT_NAME_Y + scorePosition);
     			 
     			 graphics.drawString(String.format("%.2f", averageGrade), 
-    					 averageGradeXCoord, 
-    					 subjectYCoord + scorePosition);
+    					 Coordinates.STUDENT_PROFILE_STATE_AVERAGE_GRADE_X, 
+    					 Coordinates.STUDENT_PROFILE_STATE_SUBJECT_NAME_Y + scorePosition);
     			 
-    			 scorePosition += SCORE_OFFSET;
+    			 scorePosition += Coordinates.STUDENT_PROFILE_STATE_OFFSET_SCORE;
             }
 		} else {
-			 graphics.drawString(Messages.EMPTY_LIST, emptyListMessageXCoord, emptyListMessageYCoord);
+			 graphics.drawString(
+					 Messages.EMPTY_LIST, 
+					 Coordinates.STUDENT_PROFILE_STATE_EMPTY_LIST_X, 
+					 Coordinates.STUDENT_PROFILE_STATE_EMPTY_LIST_Y);
 		}
         
         graphics.setColor(Color.gray);

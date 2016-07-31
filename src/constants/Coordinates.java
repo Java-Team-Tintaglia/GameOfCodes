@@ -123,14 +123,35 @@ public class Coordinates {
     public static final int EDIT_PROFILE_STATE_PASSWORD_MARGIN = 146;
 
     //StudentProfileState
-    public static final int STUDENT_PROFILE_STATE_OFFSET_NAME_Y = 40;
+    public static final int STUDENT_PROFILE_STATE_OFFSET_NAME = 40;
+    public static final int STUDENT_PROFILE_STATE_OFFSET_SCORE = 30;
+    public static final int STUDENT_PROFILE_STATE_BACK_BUTTON_X  = 550;
+    public static final int STUDENT_PROFILE_STATE_BACK_BUTTON_Y = 520;
+    public static final int STUDENT_PROFILE_STATE_EDIT_BUTTON_X = 450;
+    public static final int STUDENT_PROFILE_STATE_EDIT_BUTTON_Y = 200;
+    public static final int STUDENT_PROFILE_STATE_RECTANGLE_BOX_X = 100;
+    public static final int STUDENT_PROFILE_STATE_RECTANGLE_BOX_Y = 40;
+    public static final int STUDENT_PROFILE_STATE_RECTANGLE_BOX_WIDTH = 824;
+    public static final int STUDENT_PROFILE_STATE_RECTANGLE_BOX_HEIGHT = 460;
+    public static final int STUDENT_PROFILE_STATE_TITLE_X = 420;
+    public static final int STUDENT_PROFILE_STATE_TITLE_Y = 90;
+    public static final int STUDENT_PROFILE_STATE_FIELD_NAME_X = 390;
+    public static final int STUDENT_PROFILE_STATE_FIELD_NAME_Y = 140;
+    public static final int STUDENT_PROFILE_STATE_FIELD_PLAYER_NAME_X = 590;
+    public static final int STUDENT_PROFILE_STATE_TITLE_GRADES_X = 450;
+    public static final int STUDENT_PROFILE_STATE_TITLE_GRADES_Y = 290;
+    public static final int STUDENT_PROFILE_STATE_SUBJECT_NAME_X = 390;
+    public static final int STUDENT_PROFILE_STATE_SUBJECT_NAME_Y = 340;
+    public static final int STUDENT_PROFILE_STATE_AVERAGE_GRADE_X = 590;
+    public static final int STUDENT_PROFILE_STATE_EMPTY_LIST_X = 440;
+    public static final int STUDENT_PROFILE_STATE_EMPTY_LIST_Y = 340;
 
     //MainMenuState
     public static final int BUTTON_X_COORD = 800;
     public static final int BUTTON_Y_COORD = 310;
     public static final int RECTANGLE_X_COORD = 860;
     public static final int RECTANGLE_Y_COORD = 10;
-   public static final int USER_NAME_X_COORD = 900;
-   public static final int USER_NAME_Y_COORD = 30;
+    public static final int USER_NAME_X_COORD = 900;
+    public static final int USER_NAME_Y_COORD = 30;
 
 }
