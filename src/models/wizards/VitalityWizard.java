@@ -2,7 +2,8 @@ package models.wizards;
 
 import enums.WizardType;
 import graphics.Assets;
-import models.students.Student;
+import interfaces.Student;
+import models.students.StudentImpl;
 
 public class VitalityWizard extends WizardImpl {
 

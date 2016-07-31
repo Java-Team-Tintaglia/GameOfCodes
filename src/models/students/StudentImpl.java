@@ -1,7 +1,10 @@
 package models.students;
 
 import graphics.SpriteSheet;
-import models.GameObject;
+import interfaces.Collidable;
+import interfaces.Moveable;
+import interfaces.Student;
+import models.GameObjectImpl;
 import models.programmingLanguages.ProgrammingLanguage;
 import utils.Constants;
 
@@ -9,7 +12,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.*;
 
-public abstract class Student extends GameObject {
+public abstract class StudentImpl extends GameObjectImpl implements Student{
 
     private static final int DEFAULT_SPEED = 8;
     private int row;
@@ -32,10 +35,10 @@ public abstract class Student extends GameObject {
     private boolean isMovingUp;
     private boolean isMovingDown;
 
-    public Student(int x, int y, SpriteSheet spriteSheet,
-                   int width, int height,
-                   int intelligence, int knowledge, int vitality, 
-                   String username) {
+    public StudentImpl(int x, int y, SpriteSheet spriteSheet,
+                       int width, int height,
+                       int intelligence, int knowledge, int vitality,
+                       String username) {
         super(x, y);
         
         this.spriteSheet = spriteSheet;
@@ -50,7 +53,7 @@ public abstract class Student extends GameObject {
         
         this.studentGrades = new HashMap<>();
     }	
-
+    @Override
 	public String getUsername() {
 		return username;
 	}
@@ -70,15 +73,15 @@ public abstract class Student extends GameObject {
     public void setHeight(int height) {
         this.height = height;
     }
-
+    @Override
     public Map<String, List<Integer>> getStudentGrades() {
         return studentGrades;
     }
-
+    @Override
     public int getIntelligence() {
         return intelligence;
     }
-
+    @Override
     public void setIntelligence(int intelligence) {
         if (intelligence > 100) {
             this.intelligence = 100;
@@ -90,11 +93,11 @@ public abstract class Student extends GameObject {
         }
         this.intelligence = intelligence;
     }
-
+    @Override
     public int getKnowledge() {
         return knowledge;
     }
-
+    @Override
     public void setKnowledge(int knowledge) {
         if (knowledge > 100) {
             this.knowledge = 100;
@@ -106,11 +109,11 @@ public abstract class Student extends GameObject {
         }
         this.knowledge = knowledge;
     }
-
+    @Override
     public int getVitality() {
         return vitality;
     }
-
+    @Override
     public void setVitality(int vitality) {
         if (vitality > 100) {
             this.vitality = 100;
@@ -122,39 +125,39 @@ public abstract class Student extends GameObject {
         }
         this.vitality = vitality;
     }
-
+    @Override
     public Rectangle getColliderBox() {
         return colliderBox;
     }
-
+    @Override
     public boolean isMovingLeft() {
 		return isMovingLeft;
 	}
-
+    @Override
 	public void setMovingLeft(boolean isMovingLeft) {
 		this.isMovingLeft = isMovingLeft;
 	}
-
+    @Override
 	public boolean isMovingRight() {
 		return isMovingRight;
 	}
-
+    @Override
 	public void setMovingRight(boolean isMovingRight) {
 		this.isMovingRight = isMovingRight;
 	}
-
+    @Override
 	public boolean isMovingUp() {
 		return isMovingUp;
 	}
-
+    @Override
 	public void setMovingUp(boolean isMovingUp) {
 		this.isMovingUp = isMovingUp;
 	}
-
+    @Override
 	public boolean isMovingDown() {
 		return isMovingDown;
 	}
-
+    @Override
 	public void setMovingDown(boolean isMovingDown) {
 		this.isMovingDown = isMovingDown;
 	}
@@ -195,7 +198,7 @@ public abstract class Student extends GameObject {
                 this.width, this.height);
         move();
     }
-
+    @Override
     public int calculateGrade(ProgrammingLanguage language) {
         int grade = Constants.FAILURE;
         int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / 3;
@@ -234,7 +237,7 @@ public abstract class Student extends GameObject {
 
         return grade;
     }
-
+    @Override
     public void addScore(int grade, ProgrammingLanguage language) {
         
         if (!this.studentGrades.containsKey(language.getProgrammingLanguageType().getName())) {
@@ -258,7 +261,7 @@ public abstract class Student extends GameObject {
             this.setY(this.getY() - DEFAULT_SPEED);
         }
     }
-
+    @Override
     public void getExhausted() {
         this.setVitality(this.getVitality() - 1);
     }

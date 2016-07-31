@@ -1,14 +1,15 @@
 package models.wizards;
 
 import enums.WizardType;
+import interfaces.Student;
 import interfaces.Wizard;
-import models.GameObject;
-import models.students.Student;
+import models.GameObjectImpl;
+import models.students.StudentImpl;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class WizardImpl extends GameObject implements Wizard {
+public abstract class WizardImpl extends GameObjectImpl implements Wizard {
 
     private BufferedImage image;
 
@@ -26,23 +27,23 @@ public abstract class WizardImpl extends GameObject implements Wizard {
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.image.getWidth(), this.image.getHeight());
     }
-
+    @Override
     public boolean isExist() {
         return exist;
     }
-
+    @Override
     public void setExist(boolean exist) {
         this.exist = exist;
     }
-
+    @Override
     public Rectangle getColliderBox() {
         return colliderBox;
     }
-    
+    @Override
     public WizardType getWizardType() {
 		return wizardType;
 	}
-
+    @Override
 	public abstract void boost(Student student);
 
     @Override

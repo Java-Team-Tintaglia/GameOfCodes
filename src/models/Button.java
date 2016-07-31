@@ -1,9 +1,11 @@
 package models;
 
+import interfaces.Collidable;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Button extends GameObject{
+public class Button extends GameObjectImpl implements Collidable {
     private Rectangle colliderBox;
     private BufferedImage gameObjectIcon;
 
@@ -13,7 +15,7 @@ public class Button extends GameObject{
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.gameObjectIcon.getWidth(), this.gameObjectIcon.getHeight());
     }
-
+    @Override
     public Rectangle getColliderBox() {
         return colliderBox;
     }

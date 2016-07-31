@@ -6,10 +6,10 @@ import core.MapInitializor;
 import enums.StudentType;
 import factories.StudentFactory;
 import graphics.Assets;
+import interfaces.Student;
 import interfaces.Wizard;
 import models.programmingLanguages.ProgrammingLanguage;
-import models.students.Student;
-import models.wizards.WizardImpl;
+import models.students.StudentImpl;
 import utils.Constants;
 
 import java.awt.*;

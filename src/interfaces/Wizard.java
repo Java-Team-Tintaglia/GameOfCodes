@@ -1,14 +1,14 @@
 package interfaces;
 
 import enums.WizardType;
-import models.students.Student;
+import models.students.StudentImpl;
 
 import java.awt.*;
 
 /**
  * Created by PetyoPetrov on 31.07.2016 г..
  */
-public interface Wizard {
+public interface Wizard extends Updatable,Drawable{
     public boolean isExist();
 
     public void setExist(boolean exist);
@@ -20,9 +20,9 @@ public interface Wizard {
     public abstract void boost(Student student);
 
 
-    public void draw(Graphics graphics) ;
-
-
-    public void update() ;
+//    public void draw(Graphics graphics) ;
+//
+//
+//    public void update() ;
 
 }

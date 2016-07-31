@@ -5,9 +5,9 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import enums.ProgrammingLanguageType;
-import models.GameObject;
+import models.GameObjectImpl;
 
-public abstract class ProgrammingLanguage extends GameObject {
+public abstract class ProgrammingLanguage extends GameObjectImpl {
 	
 	private ProgrammingLanguageType programmingLanguageType;
 	private int vitalityDamagePoints;

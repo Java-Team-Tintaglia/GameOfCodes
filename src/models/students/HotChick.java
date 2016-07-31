@@ -2,7 +2,7 @@ package models.students;
 
 import graphics.Assets;
 
-public class HotChick extends Student{
+public class HotChick extends StudentImpl {
 	
     private static final int HOT_CHICK_WIDTH = 40;
     private static final int HOT_CHICK_HEIGHT = 40;

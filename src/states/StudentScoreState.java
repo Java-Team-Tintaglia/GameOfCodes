@@ -6,8 +6,9 @@ import java.util.Map;
 
 import authentication.AuthenticationProvider;
 import graphics.Assets;
+import interfaces.Student;
 import models.Button;
-import models.students.Student;
+import models.students.StudentImpl;
 import utils.Constants;
 
 public class StudentScoreState extends State {
