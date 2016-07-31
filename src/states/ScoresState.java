@@ -1,7 +1,7 @@
 package states;
 
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import repositories.StudentScoresRepository;
 import utils.Constants;
 
@@ -21,7 +21,7 @@ public class ScoresState extends State {
     private int averageGradeXCoord = 520;
     private int subjectAverageGradeXCoord = 560;
 
-    public static Button backToMenuButton = new Button(backToMenuButtonXCoord,
+    public static ButtonImpl backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
             backToMenuButtonYCoord, Assets.buttonBackToMenu);
 
     public ScoresState(StudentScoresRepository studentScoresRepository) {

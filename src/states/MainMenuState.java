@@ -2,7 +2,7 @@ package states;
 
 import authentication.AuthenticationProvider;
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import utils.Constants;
 import utils.Coordinates;
 
@@ -20,14 +20,14 @@ public class MainMenuState extends State {
 	private static final int RECTANGLE_WIDTH=180;
 	private static final int RECTANGLE_HEIGHT=30;
 
-	public static Button buttonLogIn = new Button(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_LOG_IN_COORD_Y_OFFSET, Assets.buttonLogIn);
-	public static Button buttonRegister = new Button(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_REGISTER_COORD_Y_OFFSET,Assets.buttonRegister);
-	public static Button buttonExit = new Button(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_EXIT_COORD_Y_OFFSET,Assets.buttonExit);
+	public static ButtonImpl buttonLogIn = new ButtonImpl(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_LOG_IN_COORD_Y_OFFSET, Assets.buttonLogIn);
+	public static ButtonImpl buttonRegister = new ButtonImpl(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_REGISTER_COORD_Y_OFFSET,Assets.buttonRegister);
+	public static ButtonImpl buttonExit = new ButtonImpl(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_EXIT_COORD_Y_OFFSET,Assets.buttonExit);
 	 
-    public static Button buttonStart = new Button(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD, Assets.buttonStart);
-	public static Button buttonProfile = new Button(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_PROFILE_COORD_Y_OFFSET, Assets.buttonProfile);
-    public static Button buttonScore = new Button(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_SCORE_COORD_Y_OFFSET, Assets.buttonScore);
-    public static Button buttonLogOut = new Button(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_LOG_OUT_COORD_Y_OFFSET, Assets.buttonLogOut);
+    public static ButtonImpl buttonStart = new ButtonImpl(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD, Assets.buttonStart);
+	public static ButtonImpl buttonProfile = new ButtonImpl(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_PROFILE_COORD_Y_OFFSET, Assets.buttonProfile);
+    public static ButtonImpl buttonScore = new ButtonImpl(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_SCORE_COORD_Y_OFFSET, Assets.buttonScore);
+    public static ButtonImpl buttonLogOut = new ButtonImpl(Coordinates.BUTTON_X_COORD, Coordinates.BUTTON_Y_COORD + BUTTON_LOG_OUT_COORD_Y_OFFSET, Assets.buttonLogOut);
 
 	@Override
     public void draw(Graphics graphics) {

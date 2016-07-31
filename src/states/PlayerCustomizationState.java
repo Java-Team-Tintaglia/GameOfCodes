@@ -3,7 +3,7 @@ package states;
 import authentication.AuthenticationProvider;
 import enums.StudentType;
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import utils.Constants;
 import utils.Coordinates;
 
@@ -11,32 +11,32 @@ import java.awt.*;
 
 public class PlayerCustomizationState extends State {
 
-    public static Button playButton = new Button(
+    public static ButtonImpl playButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_PLAY_BUTTON_X,
             Coordinates.PLAYER_STATE_PLAY_BUTTON_Y,
             Assets.buttonPlay);
     
-    public static Button backToMenuButton = new Button(
+    public static ButtonImpl backToMenuButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_BACK_BUTTON_X,
             Coordinates.PLAYER_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
     
-    public static Button badBoyButton = new Button(
+    public static ButtonImpl badBoyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_X,
             Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_Y,
             Assets.buttonBadBoy);
     
-    public static Button hotChickButton = new Button(
+    public static ButtonImpl hotChickButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_X,
             Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_Y,
             Assets.buttonHotChick);
     
-    public static Button nerdBoyButton = new Button(
+    public static ButtonImpl nerdBoyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_X,
             Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_Y,
             Assets.buttonNerdBoy);
     
-    public static Button nerdLadyButton = new Button(
+    public static ButtonImpl nerdLadyButton = new ButtonImpl(
             Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_X,
             Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_Y,
             Assets.buttonNerdLady);

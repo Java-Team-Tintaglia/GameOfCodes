@@ -1,9 +1,7 @@
 package interfaces;
 
-/**
- * Created by PetyoPetrov on 31.07.2016 г..
- */
 public interface Moveable {
+	
     public boolean isMovingLeft();
 
     public void setMovingLeft(boolean isMovingLeft);

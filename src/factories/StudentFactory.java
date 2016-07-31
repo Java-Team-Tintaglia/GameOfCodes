@@ -1,15 +1,15 @@
 package factories;
 
 import enums.StudentType;
+import interfaces.Student;
 import models.students.BadBoy;
 import models.students.HotChick;
 import models.students.NerdBoy;
 import models.students.NerdLady;
-import models.students.StudentImpl;
 
 public class StudentFactory {
-	public StudentImpl create(StudentType type, int x, int y, String username) {
-		StudentImpl student = null;
+	public Student create(StudentType type, int x, int y, String username) {
+		Student student = null;
 
 		if (type == null) {
 			student = new BadBoy(x, y, username);

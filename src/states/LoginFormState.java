@@ -1,7 +1,7 @@
 package states;
 
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import utils.Constants;
 import utils.Coordinates;
 import utils.Utils;
@@ -11,12 +11,12 @@ import java.awt.*;
 public class LoginFormState extends State {
 
     private static final int INPUT_TEXT_FONT_SIZE = 20;
-    public static Button loginButton = new Button(
+    public static ButtonImpl loginButton = new ButtonImpl(
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_X,
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_Y,
             Assets.buttonLogIn);
     
-    public static Button backToMenuButton = new Button(
+    public static ButtonImpl backToMenuButton = new ButtonImpl(
             Coordinates.LOGIN_STATE_BACK_BUTTON_X,
             Coordinates.LOGIN_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);

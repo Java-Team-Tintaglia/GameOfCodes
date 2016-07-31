@@ -1,28 +1,15 @@
 package interfaces;
 
 import enums.WizardType;
-import models.students.StudentImpl;
 
-import java.awt.*;
+public interface Wizard extends GameObject, Collidable {
+	
+    boolean isExist();
 
-/**
- * Created by PetyoPetrov on 31.07.2016 г..
- */
-public interface Wizard extends Updatable,Drawable{
-    public boolean isExist();
+    void setExist(boolean exist);
 
-    public void setExist(boolean exist);
+    WizardType getWizardType();
 
-    public Rectangle getColliderBox();
-
-    public WizardType getWizardType();
-
-    public abstract void boost(Student student);
-
-
-//    public void draw(Graphics graphics) ;
-//
-//
-//    public void update() ;
+    void boost(Student student);
 
 }

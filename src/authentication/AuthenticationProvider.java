@@ -1,6 +1,6 @@
 package authentication;
 
-import models.User;
+import models.UserImpl;
 import repositories.UserRepository;
 import states.ErrorMessageState;
 import states.LoginFormState;
@@ -11,7 +11,7 @@ import utils.Messages;
 
 public class AuthenticationProvider {
 
-    public static User currentUser;
+    public static UserImpl currentUser;
     
     private UserRepository userRepository;
 
@@ -20,9 +20,9 @@ public class AuthenticationProvider {
 	}
     
     public void authenticate(String username, String password) {
-    	User user = this.userRepository.findUserByUsername(username);
+    	UserImpl userImpl = this.userRepository.findUserByUsername(username);
 
-    	if (user == null) {
+    	if (userImpl == null) {
 
     		ErrorMessageState errorMessageState = new ErrorMessageState(
     				String.format(Messages.USER_WAS_NOT_FOUND, username),
@@ -32,7 +32,7 @@ public class AuthenticationProvider {
     		return;
 		} 
     	
-    	String decodedPass = Encoder.decryptPassword(user.getPassword());
+    	String decodedPass = Encoder.decryptPassword(userImpl.getPassword());
     	if (!password.equals(decodedPass)) {
     		ErrorMessageState errorMessageState = new ErrorMessageState(
     				Messages.PASSWORD_DOES_NOT_MATCH,
@@ -42,7 +42,7 @@ public class AuthenticationProvider {
     		return;
 		} 
        
-    	currentUser = user;
+    	currentUser = userImpl;
     	
     	SuccessMessageState successMessageState = new SuccessMessageState(
     			Messages.SUCCESSFUL_LOG_IN,

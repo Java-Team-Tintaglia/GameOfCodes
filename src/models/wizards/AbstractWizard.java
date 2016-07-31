@@ -3,13 +3,12 @@ package models.wizards;
 import enums.WizardType;
 import interfaces.Student;
 import interfaces.Wizard;
-import models.GameObjectImpl;
-import models.students.StudentImpl;
+import models.AbstractGameObject;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public abstract class WizardImpl extends GameObjectImpl implements Wizard {
+public abstract class AbstractWizard extends AbstractGameObject implements Wizard {
 
     private BufferedImage image;
 
@@ -19,7 +18,7 @@ public abstract class WizardImpl extends GameObjectImpl implements Wizard {
 
     private boolean exist;
 
-    public WizardImpl(int x, int y, WizardType wizardType, BufferedImage image ) {
+    public AbstractWizard(int x, int y, WizardType wizardType, BufferedImage image ) {
         super(x, y);
         this.exist = true;
         this.wizardType = wizardType;
@@ -29,7 +28,7 @@ public abstract class WizardImpl extends GameObjectImpl implements Wizard {
     }
     @Override
     public boolean isExist() {
-        return exist;
+        return this.exist;
     }
     @Override
     public void setExist(boolean exist) {
@@ -37,11 +36,11 @@ public abstract class WizardImpl extends GameObjectImpl implements Wizard {
     }
     @Override
     public Rectangle getColliderBox() {
-        return colliderBox;
+        return this.colliderBox;
     }
     @Override
     public WizardType getWizardType() {
-		return wizardType;
+		return this.wizardType;
 	}
     @Override
 	public abstract void boost(Student student);

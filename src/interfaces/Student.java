@@ -5,11 +5,9 @@ import models.programmingLanguages.ProgrammingLanguage;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by PetyoPetrov on 31.07.2016 г..
- */
-public interface Student extends Collidable, Moveable,Drawable,Updatable {
-    String getUsername();
+public interface Student extends Collidable, Moveable, Drawable, Updatable {
+    
+	String getUsername();
 
     Map<String, List<Integer>> getStudentGrades();
 
@@ -17,18 +15,18 @@ public interface Student extends Collidable, Moveable,Drawable,Updatable {
 
     void setIntelligence(int intelligence);
 
-    public int getKnowledge();
+    int getKnowledge();
 
-    public void setKnowledge(int knowledge);
+    void setKnowledge(int knowledge);
 
-    public int getVitality();
+    int getVitality();
 
-    public void setVitality(int vitality);
+    void setVitality(int vitality);
 
-    public int calculateGrade(ProgrammingLanguage language);
+    int calculateGrade(ProgrammingLanguage language);
 
-    public void addScore(int grade, ProgrammingLanguage language);
+    void addScore(int grade, ProgrammingLanguage language);
 
-    public void getExhausted();
+    void getExhausted();
 
 }

@@ -2,7 +2,7 @@ package states;
 
 import authentication.AuthenticationProvider;
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import repositories.StudentScoresRepository;
 import utils.Constants;
 import utils.Coordinates;
@@ -48,9 +48,9 @@ public class StudentProfileState extends State {
     public static StringBuilder lastName = new StringBuilder(
             AuthenticationProvider.currentUser.getLastName());
 
-    public static Button backToMenuButton = new Button(backToMenuButtonXCoord,
+    public static ButtonImpl backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
             backToMenuButtonYCoord, Assets.buttonBackToMenu);
-    public static Button editButton = new Button(editButtonXCoord,
+    public static ButtonImpl editButton = new ButtonImpl(editButtonXCoord,
             editButtonYCoord, Assets.buttonEdit);
 
     public StudentProfileState(StudentScoresRepository studentScoresRepository) {

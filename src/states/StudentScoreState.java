@@ -7,8 +7,8 @@ import java.util.Map;
 import authentication.AuthenticationProvider;
 import graphics.Assets;
 import interfaces.Student;
-import models.Button;
-import models.students.StudentImpl;
+import models.ButtonImpl;
+import models.students.AbstractStudent;
 import utils.Constants;
 
 public class StudentScoreState extends State {
@@ -20,7 +20,7 @@ public class StudentScoreState extends State {
     private int gradesFontSize = 20;
     private int subjectNameXCoord = 420;
     private int subjectAverageGradeXCoord = 570;
-    public static Button backToMenuButton = new Button(backToMenuButtonXCoord,
+    public static ButtonImpl backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
             backToMenuButtonYCoord, Assets.buttonBackToMenu);
 
     public StudentScoreState(Student student) {

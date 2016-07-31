@@ -1,7 +1,7 @@
 package states;
 
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import utils.Constants;
 import utils.Coordinates;
 
@@ -16,7 +16,7 @@ public class ErrorMessageState extends State {
     private int messagePositionY = 400;
 
 
-    public static Button okButton = new Button(Coordinates.OK_BUTTON_X_COORD, Coordinates.OK_BUTTON_Y_COORD, Assets.buttonOk);
+    public static ButtonImpl okButton = new ButtonImpl(Coordinates.OK_BUTTON_X_COORD, Coordinates.OK_BUTTON_Y_COORD, Assets.buttonOk);
 
     public ErrorMessageState(String message, State nextState) {
         this.message = message;

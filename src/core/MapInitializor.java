@@ -7,7 +7,7 @@ import models.programmingLanguages.*;
 import models.wizards.IntelligenceWizard;
 import models.wizards.KnowledgeWizard;
 import models.wizards.VitalityWizard;
-import models.wizards.WizardImpl;
+import models.wizards.AbstractWizard;
 import utils.RandomGenerator;
 
 public class MapInitializor {

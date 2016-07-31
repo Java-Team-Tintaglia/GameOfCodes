@@ -1,7 +1,7 @@
 package states;
 
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import utils.Constants;
 import utils.Coordinates;
 import utils.Utils;
@@ -13,12 +13,12 @@ public class RegistrationFormState extends State {
     private static final int FILED_NAME_FONT_SIZE = 25;
     private static final int INPUT_TEXT_FONT_SIZE = 20;
 
-    public static Button registerButton = new Button(
+    public static ButtonImpl registerButton = new ButtonImpl(
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_X,
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_Y,
             Assets.buttonRegister);
     
-    public static Button backToMenuButton = new Button(
+    public static ButtonImpl backToMenuButton = new ButtonImpl(
             Coordinates.REGISTRATION_STATE_BACK_BUTTON_X,
             Coordinates.REGISTRATION_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);

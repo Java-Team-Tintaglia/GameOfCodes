@@ -1,10 +1,8 @@
 package models.students;
 
 import graphics.SpriteSheet;
-import interfaces.Collidable;
-import interfaces.Moveable;
 import interfaces.Student;
-import models.GameObjectImpl;
+import models.AbstractGameObject;
 import models.programmingLanguages.ProgrammingLanguage;
 import utils.Constants;
 
@@ -12,9 +10,10 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.*;
 
-public abstract class StudentImpl extends GameObjectImpl implements Student{
+public abstract class AbstractStudent extends AbstractGameObject implements Student{
 
     private static final int DEFAULT_SPEED = 8;
+    
     private int row;
     private int col;
 
@@ -24,10 +23,9 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     private int intelligence;
     private int knowledge;
     private int vitality;
+    
     private Rectangle colliderBox;
-    
     private Map<String, List<Integer>> studentGrades;
-    
     private String username;
 
     private boolean isMovingLeft;
@@ -35,7 +33,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     private boolean isMovingUp;
     private boolean isMovingDown;
 
-    public StudentImpl(int x, int y, SpriteSheet spriteSheet,
+    public AbstractStudent(int x, int y, SpriteSheet spriteSheet,
                        int width, int height,
                        int intelligence, int knowledge, int vitality,
                        String username) {
@@ -55,11 +53,11 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     }	
     @Override
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
 	public int getWidth() {
-        return width;
+        return this.width;
     }
 
     public void setWidth(int width) {
@@ -67,7 +65,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     }
 
     public int getHeight() {
-        return height;
+        return this.height;
     }
 
     public void setHeight(int height) {
@@ -75,11 +73,11 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     }
     @Override
     public Map<String, List<Integer>> getStudentGrades() {
-        return studentGrades;
+        return this.studentGrades;
     }
     @Override
     public int getIntelligence() {
-        return intelligence;
+        return this.intelligence;
     }
     @Override
     public void setIntelligence(int intelligence) {
@@ -95,7 +93,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     }
     @Override
     public int getKnowledge() {
-        return knowledge;
+        return this.knowledge;
     }
     @Override
     public void setKnowledge(int knowledge) {
@@ -111,7 +109,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     }
     @Override
     public int getVitality() {
-        return vitality;
+        return this.vitality;
     }
     @Override
     public void setVitality(int vitality) {
@@ -127,11 +125,11 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     }
     @Override
     public Rectangle getColliderBox() {
-        return colliderBox;
+        return this.colliderBox;
     }
     @Override
     public boolean isMovingLeft() {
-		return isMovingLeft;
+		return this.isMovingLeft;
 	}
     @Override
 	public void setMovingLeft(boolean isMovingLeft) {
@@ -139,7 +137,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
 	}
     @Override
 	public boolean isMovingRight() {
-		return isMovingRight;
+		return this.isMovingRight;
 	}
     @Override
 	public void setMovingRight(boolean isMovingRight) {
@@ -147,7 +145,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
 	}
     @Override
 	public boolean isMovingUp() {
-		return isMovingUp;
+		return this.isMovingUp;
 	}
     @Override
 	public void setMovingUp(boolean isMovingUp) {
@@ -155,7 +153,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
 	}
     @Override
 	public boolean isMovingDown() {
-		return isMovingDown;
+		return this.isMovingDown;
 	}
     @Override
 	public void setMovingDown(boolean isMovingDown) {
@@ -164,8 +162,7 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
 
 	@Override
     public void draw(Graphics graphics) {
-
-        graphics.drawImage(this.spriteSheet.crop(col * width, row * height,
+        graphics.drawImage(this.spriteSheet.crop(this.col * this.width, this.row * this.height,
                this.width, this.height), this.getX(), this.getY(), null);
     }
 
@@ -173,25 +170,25 @@ public abstract class StudentImpl extends GameObjectImpl implements Student{
     @Override
     public void update() {
 
-        boolean isMoving= isMovingDown || isMovingUp || 
-        					isMovingRight || isMovingLeft;
+        boolean isMoving= this.isMovingDown || this.isMovingUp || 
+        		this.isMovingRight || this.isMovingLeft;
         
         if (isMoving) {
-            col++;
-            col = (col ) % 3;
+        	this.col++;
+        	this.col = (this.col) % 3;
 
-            if (isMovingLeft) {
-                row = 1;
-            } else if (isMovingRight) {
-                row = 2;
-            } else if (isMovingUp) {
-                row = 3;
-            } else if (isMovingDown) {
-                row = 0;
+            if (this.isMovingLeft) {
+            	this.row = 1;
+            } else if (this.isMovingRight) {
+            	this.row = 2;
+            } else if (this.isMovingUp) {
+            	this.row = 3;
+            } else if (this.isMovingDown) {
+            	this.row = 0;
             }
         } else {
-            row = 0;
-            col = 1;
+        	this.row = 0;
+        	this.col = 1;
         }
         
         this.getColliderBox().setBounds(this.getX(), this.getY(),

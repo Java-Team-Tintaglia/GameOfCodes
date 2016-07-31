@@ -1,23 +1,25 @@
 package models;
 
-import interfaces.Collidable;
+import interfaces.Button;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Button extends GameObjectImpl implements Collidable {
-    private Rectangle colliderBox;
+public class ButtonImpl extends AbstractGameObject implements Button{
+    
+	private Rectangle colliderBox;
     private BufferedImage gameObjectIcon;
 
-    public Button(int x, int y, BufferedImage gameObjectIcon) {
+    public ButtonImpl(int x, int y, BufferedImage gameObjectIcon) {
         super(x, y);
         this.gameObjectIcon = gameObjectIcon;
         this.colliderBox = new Rectangle(this.getX(), this.getY(),
                 this.gameObjectIcon.getWidth(), this.gameObjectIcon.getHeight());
     }
+    
     @Override
     public Rectangle getColliderBox() {
-        return colliderBox;
+        return this.colliderBox;
     }
 
     @Override

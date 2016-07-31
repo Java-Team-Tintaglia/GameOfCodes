@@ -1,7 +1,7 @@
 package states;
 
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import utils.Constants;
 
 import java.awt.*;
@@ -16,7 +16,7 @@ public class SuccessMessageState extends State {
     private int titleFontSize = 20;
     private int messageFontSize = 22;
 
-    public static Button okButton = new Button(okButtonXCoord,
+    public static ButtonImpl okButton = new ButtonImpl(okButtonXCoord,
             okButtonYCoord, Assets.buttonOk);
 
     public SuccessMessageState(String message, State nextState) {

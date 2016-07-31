@@ -1,6 +1,6 @@
 package repositories;
 
-import models.User;
+import models.UserImpl;
 import states.*;
 import utils.Constants;
 import utils.Messages;
@@ -13,27 +13,27 @@ import java.util.stream.Collectors;
 
 public class UserRepository {
 
-    private Map<String, User> users = new HashMap<>();
+    private Map<String, UserImpl> userImpls = new HashMap<>();
 
-    public void addUser(User user) {
-        if (users.containsKey(user.getUsername())) {
+    public void addUser(UserImpl userImpl) {
+        if (userImpls.containsKey(userImpl.getUsername())) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
-                    String.format(Messages.ALREADY_EXISTING_USER, user.getUsername()),
+                    String.format(Messages.ALREADY_EXISTING_USER, userImpl.getUsername()),
                     new RegistrationFormState());
 
             StateManager.setCurrentState(errorMessageState);
-        } else if (user.getFirstName().length() == 0
-                || user.getLastName().length() == 0
-                || user.getPassword().length() == 0
-                || user.getUsername().length() == 0) {
+        } else if (userImpl.getFirstName().length() == 0
+                || userImpl.getLastName().length() == 0
+                || userImpl.getPassword().length() == 0
+                || userImpl.getUsername().length() == 0) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
             		Messages.FILL_ALL_EMPTY_FIELDS,
                     new RegistrationFormState());
 
             StateManager.setCurrentState(errorMessageState);
         } else {
-            users.put(user.getUsername(), user);
-            save(user);
+            userImpls.put(userImpl.getUsername(), userImpl);
+            save(userImpl);
             SuccessMessageState successMessageState = new SuccessMessageState(
             		Messages.SUCCESSFUL_REGISTER,
                     new MainMenuState());
@@ -44,14 +44,14 @@ public class UserRepository {
 
 
    
-    public void updateUser(User user) {
+    public void updateUser(UserImpl userImpl) {
         String editedData = String.format("%s %s %s %s",
-                user.getUsername(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getPassword());
+                userImpl.getUsername(),
+                userImpl.getFirstName(),
+                userImpl.getLastName(),
+                userImpl.getPassword());
 
-        this.users.put(user.getUsername(), user);
+        this.userImpls.put(userImpl.getUsername(), userImpl);
 
         FileOutputStream writer = null;
         try (BufferedReader reader = new BufferedReader(new FileReader(Constants.USERS_FILE_PATH))) {
@@ -59,7 +59,7 @@ public class UserRepository {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] lineTokens = line.split("\\s+");
-                if (lineTokens[0].equals(user.getUsername())) {
+                if (lineTokens[0].equals(userImpl.getUsername())) {
                     text.append(editedData);
                 } else {
                     text.append(line);
@@ -90,24 +90,24 @@ public class UserRepository {
         StateManager.setCurrentState(successMessageState);
     }
 
-    public User findUserByUsername(String username) {
-        User user = null;
+    public UserImpl findUserByUsername(String username) {
+        UserImpl userImpl = null;
 
-        if (!users.containsKey(username)) {
+        if (!userImpls.containsKey(username)) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
                     String.format(Messages.USER_DOES_NOT_EXIST, username),
                     new LoginFormState());
 
             StateManager.setCurrentState(errorMessageState);
         } else {
-            user = users.get(username);
+            userImpl = userImpls.get(username);
         }
 
-        return user;
+        return userImpl;
     }
 
-    public Iterable<User> getAllUsers() {
-        List<User> allUsers = users.values().stream().collect(Collectors.toList());
+    public Iterable<UserImpl> getAllUsers() {
+        List<UserImpl> allUsers = userImpls.values().stream().collect(Collectors.toList());
         return allUsers;
     }
 
@@ -123,9 +123,9 @@ public class UserRepository {
                 String lastName = token[2];
                 String password = token[3];
 
-                if (!users.containsKey(username)) {
-                    User user = new User(username, firstName, lastName, password);
-                    users.put(username, user);
+                if (!userImpls.containsKey(username)) {
+                    UserImpl userImpl = new UserImpl(username, firstName, lastName, password);
+                    userImpls.put(username, userImpl);
                 }
 
                 line = bufferedReader.readLine();
@@ -137,12 +137,12 @@ public class UserRepository {
     }
 
     // Save registered user into a .txt file
-    private void save(User user) {
+    private void save(UserImpl userImpl) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.USERS_FILE_PATH, true), true)) {
-            writer.println(user.getUsername() + " "
-                    + user.getFirstName() + " "
-                    + user.getLastName() + " "
-                    + user.getPassword());
+            writer.println(userImpl.getUsername() + " "
+                    + userImpl.getFirstName() + " "
+                    + userImpl.getLastName() + " "
+                    + userImpl.getPassword());
 
         } catch (IOException exception) {
             System.err.println(Messages.FILE_WRITING_FAILURE);

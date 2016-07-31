@@ -3,7 +3,7 @@ package states;
 import authentication.AuthenticationProvider;
 import authentication.Encoder;
 import graphics.Assets;
-import models.Button;
+import models.ButtonImpl;
 import utils.Constants;
 import utils.Utils;
 
@@ -44,9 +44,9 @@ public class EditProfileState extends State {
     										AuthenticationProvider.currentUser.getLastName());
     public static StringBuilder password = new StringBuilder(
     										Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
-    public static Button backToMenuButton = new Button(backToMenuButtonXCoord,
+    public static ButtonImpl backToMenuButton = new ButtonImpl(backToMenuButtonXCoord,
                                             backToMenuButtonYCoord, Assets.buttonBackToMenu);
-    public static Button editButton = new Button(editButtonXCoord,
+    public static ButtonImpl editButton = new ButtonImpl(editButtonXCoord,
                                             editButtonYCoord, Assets.buttonEdit);
 
     public static Rectangle firstRect;

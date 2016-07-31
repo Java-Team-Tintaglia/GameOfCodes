@@ -3,7 +3,7 @@ package core;
 import interfaces.Student;
 import interfaces.Wizard;
 import models.programmingLanguages.ProgrammingLanguage;
-import models.students.StudentImpl;
+import models.students.AbstractStudent;
 
 import java.util.List;
 
