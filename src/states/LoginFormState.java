@@ -2,11 +2,12 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
-import utils.Constants;
-import utils.Coordinates;
 import utils.Utils;
 
 import java.awt.*;
+
+import constants.Common;
+import constants.Coordinates;
 
 public class LoginFormState extends State {
 
@@ -39,7 +40,7 @@ public class LoginFormState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
         graphics.drawImage(
                 Assets.login,
                 Coordinates.LOGIN_STATE_LOGIN_FORM_X,

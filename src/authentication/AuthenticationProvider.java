@@ -1,5 +1,6 @@
 package authentication;
 
+import constants.Messages;
 import models.UserImpl;
 import repositories.UserRepository;
 import states.ErrorMessageState;
@@ -7,7 +8,6 @@ import states.LoginFormState;
 import states.MainMenuState;
 import states.StateManager;
 import states.SuccessMessageState;
-import utils.Messages;
 
 public class AuthenticationProvider {
 

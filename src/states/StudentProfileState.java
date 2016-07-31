@@ -1,12 +1,12 @@
 package states;
 
 import authentication.AuthenticationProvider;
+import constants.Common;
+import constants.Coordinates;
+import constants.Messages;
 import graphics.Assets;
 import models.ButtonImpl;
 import repositories.StudentScoresRepository;
-import utils.Constants;
-import utils.Coordinates;
-import utils.Messages;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ public class StudentProfileState extends State {
     
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.background, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
         graphics.fillRect(rectangleXCoord, rectangleYCoord, rectangleWidth, rectangleHeight);
 
         Font title = new Font("Arial", Font.BOLD, titleFontSize);

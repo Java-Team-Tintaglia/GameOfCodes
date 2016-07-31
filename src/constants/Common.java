@@ -1,6 +1,6 @@
-package utils;
+package constants;
 
-public class Constants {
+public class Common {
 	public static final String GAME_TITLE = "Game of Codes";
 	
 	public static final int SCREEN_WIDTH = 1024;

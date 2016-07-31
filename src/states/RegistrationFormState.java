@@ -2,11 +2,12 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
-import utils.Constants;
-import utils.Coordinates;
 import utils.Utils;
 
 import java.awt.*;
+
+import constants.Common;
+import constants.Coordinates;
 
 public class RegistrationFormState extends State {
     private static final int TITLE_FONT_SIZE =35;
@@ -61,7 +62,7 @@ public class RegistrationFormState extends State {
         String lastNameAsString = "Last Name:";
         String passwordAsString = "Password:";
 
-        graphics.drawImage(Assets.background, 0,0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.background, 0,0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
         
         graphics.fillRect(
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_X,

@@ -1,13 +1,14 @@
 package repositories;
 
-import utils.Constants;
-import utils.Messages;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import constants.Common;
+import constants.Messages;
+
 import java.util.TreeMap;
 
 public class StudentScoresRepository {
@@ -15,7 +16,7 @@ public class StudentScoresRepository {
             = new TreeMap<>();
 
     public void saveToFile(String studentName, Map<String, List<Integer>> studentsGrades) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.SCORES_FILE_PATH, true), true)) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(Common.SCORES_FILE_PATH, true), true)) {
             StringBuilder save = new StringBuilder();
             save.append(studentName + " ");
             for (Entry<String, List<Integer>> studentGrades : studentsGrades.entrySet()) {
@@ -42,7 +43,7 @@ public class StudentScoresRepository {
     }
 
     public void readFromFile() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.SCORES_FILE_PATH))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Common.SCORES_FILE_PATH))) {
             String line = bufferedReader.readLine();
 
             while (line != null) {
@@ -77,7 +78,7 @@ public class StudentScoresRepository {
 
     public TreeMap<String, ArrayList<Integer>> getAllGradesBySubject(String username) {
         TreeMap<String, ArrayList<Integer>> grades = new TreeMap<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.SCORES_FILE_PATH))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Common.SCORES_FILE_PATH))) {
             String line = bufferedReader.readLine();
             while (line != null) {
                 String[] token = line.split(" ");

@@ -1,11 +1,11 @@
 package states;
 
 import authentication.AuthenticationProvider;
+import constants.Common;
+import constants.Coordinates;
 import enums.StudentType;
 import graphics.Assets;
 import models.ButtonImpl;
-import utils.Constants;
-import utils.Coordinates;
 
 import java.awt.*;
 
@@ -46,7 +46,7 @@ public class PlayerCustomizationState extends State {
 
 	@Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.playerCustomization, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.playerCustomization, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
         graphics.drawImage(
                 Assets.selectPlayer,
                 Coordinates.PLAYER_STATE_TITLE_X,

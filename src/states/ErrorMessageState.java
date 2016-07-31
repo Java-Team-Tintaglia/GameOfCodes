@@ -2,11 +2,12 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
-import utils.Constants;
-import utils.Coordinates;
 
 import java.awt.*;
 import java.util.StringTokenizer;
+
+import constants.Common;
+import constants.Coordinates;
 
 public class ErrorMessageState extends State {
     private static final int TITLE_FONT_SIZE = 20;
@@ -27,7 +28,7 @@ public class ErrorMessageState extends State {
     public void draw(Graphics graphics) {
 
 
-        graphics.drawImage(Assets.error, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.error, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
 
         Font titleFont = new Font("Arial", Font.BOLD, TITLE_FONT_SIZE);
         graphics.setFont(titleFont);

@@ -1,4 +1,4 @@
-package utils;
+package constants;
 
 public class Messages {
 	public static final String USER_WAS_NOT_FOUND = "User with username: %s was NOT found!";

@@ -2,9 +2,9 @@ package states;
 
 import authentication.AuthenticationProvider;
 import authentication.Encoder;
+import constants.Common;
 import graphics.Assets;
 import models.ButtonImpl;
-import utils.Constants;
 import utils.Utils;
 
 import java.awt.*;
@@ -57,7 +57,7 @@ public class EditProfileState extends State {
 
     @Override
     public void draw(Graphics graphics) {
-        graphics.drawImage(Assets.wall,0,0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.wall,0,0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
         graphics.fillRect(backgroundRectXCoord, backgroundRectYCoord, backgroundRectWidth, backgroundRectHeight);
 
         Font title = new Font("Arial", Font.PLAIN, titleFontSize);

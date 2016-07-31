@@ -9,12 +9,12 @@ import repositories.UserRepository;
 import states.MainMenuState;
 import states.State;
 import states.StateManager;
-import utils.Constants;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 import authentication.AuthenticationProvider;
+import constants.Common;
 
 public class GameEngine implements Runnable {
     private final String title;
@@ -105,7 +105,7 @@ public class GameEngine implements Runnable {
         this.graphics = this.bufferStrategy.getDrawGraphics();
 
         // -> START DRAWING
-        this.graphics.clearRect(0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+        this.graphics.clearRect(0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT);
         
         if (StateManager.getCurrentState() != null) {
             StateManager.getCurrentState().draw(graphics);
@@ -119,7 +119,7 @@ public class GameEngine implements Runnable {
 
     private void init() {
         Assets.init();
-        this.display = new Display(Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, this.title);      
+        this.display = new Display(Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, this.title);      
         this.userRepository = new UserRepository();
         this.userRepository.load();
         this.studentScoresRepository = new StudentScoresRepository();

@@ -1,16 +1,15 @@
 package states;
 
 import authentication.AuthenticationProvider;
+import constants.Common;
 import core.CollisionHandler;
 import core.MapInitializor;
 import enums.StudentType;
 import factories.StudentFactory;
 import graphics.Assets;
+import interfaces.ProgrammingLanguage;
 import interfaces.Student;
 import interfaces.Wizard;
-import models.programmingLanguages.ProgrammingLanguage;
-import models.students.AbstractStudent;
-import utils.Constants;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -46,8 +45,8 @@ public class GameState extends State {
     public GameState(StudentType studentType) {
 		studentFactory = new StudentFactory();
 		student = studentFactory.create(studentType, 
-				Constants.DEFAUL_PLAYER_X_COORD, 
-				Constants.DEFAUL_PLAYER_Y_COORD, 
+				Common.DEFAUL_PLAYER_X_COORD, 
+				Common.DEFAUL_PLAYER_Y_COORD, 
 				AuthenticationProvider.currentUser.getUsername());
 		programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 		wizard = MapInitializor.generateWizard();
@@ -58,10 +57,10 @@ public class GameState extends State {
     public void draw(Graphics graphics) {
 
 
-        graphics.drawImage(Assets.wall, 0, height-(height-i), Constants.SCREEN_WIDTH, 300, null);
-        graphics.drawImage(Assets.wallTwo, 0, heightTwo-(height-j), Constants.SCREEN_WIDTH, 300, null);
-		graphics.drawImage(Assets.wallToolbar, 0, 0, Constants.SCREEN_WIDTH, Constants.TOOLBAR_HEIGHT, null);
-		graphics.drawImage(Assets.floor, 0, 295, Constants.SCREEN_WIDTH, Constants.FLOOR_HEIGHT, null);
+        graphics.drawImage(Assets.wall, 0, height-(height-i), Common.SCREEN_WIDTH, 300, null);
+        graphics.drawImage(Assets.wallTwo, 0, heightTwo-(height-j), Common.SCREEN_WIDTH, 300, null);
+		graphics.drawImage(Assets.wallToolbar, 0, 0, Common.SCREEN_WIDTH, Common.TOOLBAR_HEIGHT, null);
+		graphics.drawImage(Assets.floor, 0, 295, Common.SCREEN_WIDTH, Common.FLOOR_HEIGHT, null);
 
 		Font secondsFont = new Font("Comic Sans MS", Font.BOLD, secondsFontSize);
 		graphics.setFont(secondsFont);
@@ -75,7 +74,7 @@ public class GameState extends State {
         
         if (!programmingLanguages.isEmpty()) {
         	 for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
-             	programmingLanguage.draw(graphics);
+        		 programmingLanguage.draw(graphics);
      		}
 		}
        
@@ -120,7 +119,7 @@ public class GameState extends State {
 		}
     	
         if (elapsedNewProgrammingLanguage > this.timeDelayNewProgrammingLanguage) {
-			programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
+        	programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 			timerNewProgrammingLanguage = System.nanoTime();
 		}
     	

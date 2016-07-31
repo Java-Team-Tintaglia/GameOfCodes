@@ -1,15 +1,9 @@
 package interfaces;
 
-import models.programmingLanguages.ProgrammingLanguage;
-
 import java.util.List;
 import java.util.Map;
 
 public interface Student extends Collidable, Moveable, Drawable, Updatable {
-    
-	String getUsername();
-
-    Map<String, List<Integer>> getStudentGrades();
 
     int getIntelligence();
 
@@ -28,5 +22,9 @@ public interface Student extends Collidable, Moveable, Drawable, Updatable {
     void addScore(int grade, ProgrammingLanguage language);
 
     void getExhausted();
+    
+    Map<String, List<Integer>> getStudentGrades();
+    
+    String getUsername();
 
 }

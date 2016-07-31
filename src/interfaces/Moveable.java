@@ -2,19 +2,19 @@ package interfaces;
 
 public interface Moveable {
 	
-    public boolean isMovingLeft();
+    boolean isMovingLeft();
 
-    public void setMovingLeft(boolean isMovingLeft);
+    void setMovingLeft(boolean isMovingLeft);
 
-    public boolean isMovingRight();
+    boolean isMovingRight();
 
-    public void setMovingRight(boolean isMovingRight);
+    void setMovingRight(boolean isMovingRight);
 
-    public boolean isMovingUp();
+    boolean isMovingUp();
 
-    public void setMovingUp(boolean isMovingUp);
+    void setMovingUp(boolean isMovingUp);
 
-    public boolean isMovingDown();
+    boolean isMovingDown();
 
-    public void setMovingDown(boolean isMovingDown);
+    void setMovingDown(boolean isMovingDown);
 }

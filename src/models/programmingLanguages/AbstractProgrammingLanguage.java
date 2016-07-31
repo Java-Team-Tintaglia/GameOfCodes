@@ -5,9 +5,10 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import enums.ProgrammingLanguageType;
+import interfaces.ProgrammingLanguage;
 import models.AbstractGameObject;
 
-public abstract class ProgrammingLanguage extends AbstractGameObject {
+public abstract class AbstractProgrammingLanguage extends AbstractGameObject implements ProgrammingLanguage {
 	
 	private ProgrammingLanguageType programmingLanguageType;
 	private int vitalityDamagePoints;
@@ -16,7 +17,7 @@ public abstract class ProgrammingLanguage extends AbstractGameObject {
 	private Rectangle colliderBox;
 	private boolean exist;
 
-	public ProgrammingLanguage(int x, int y,
+	public AbstractProgrammingLanguage(int x, int y,
 							   ProgrammingLanguageType programmingLanguageType,
 							   int vitalityDamagePoints,
 							   int knowledgePoints,
@@ -31,31 +32,33 @@ public abstract class ProgrammingLanguage extends AbstractGameObject {
                 this.image.getWidth(), this.image.getHeight());
 	}
 
+	@Override
 	public boolean isExist() {
 		return exist;
 	}
 
+	@Override
 	public void setExist(boolean exist) {
 
 		this.exist = exist;
 	}
 
+	@Override
 	public ProgrammingLanguageType getProgrammingLanguageType() {
 		return programmingLanguageType;
 	}
 
+	@Override
 	public int getVitalityDamagePoints() {
 		return vitalityDamagePoints;
 	}
 
+	@Override
 	public int getKnowledgePoints() {
 		return knowledgePoints;
 	}
-
-	public void setKnowledgePoints(int knowledgePoints) {
-		this.knowledgePoints = knowledgePoints;
-	}
 	
+	@Override
  	public Rectangle getColliderBox() {
 	        return colliderBox;
 	    }

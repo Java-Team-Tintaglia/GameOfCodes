@@ -1,14 +1,16 @@
 package models.students;
 
 import graphics.SpriteSheet;
+import interfaces.ProgrammingLanguage;
 import interfaces.Student;
 import models.AbstractGameObject;
-import models.programmingLanguages.ProgrammingLanguage;
-import utils.Constants;
+import models.programmingLanguages.AbstractProgrammingLanguage;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.*;
+
+import constants.Common;
 
 public abstract class AbstractStudent extends AbstractGameObject implements Student{
 
@@ -197,34 +199,34 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     }
     @Override
     public int calculateGrade(ProgrammingLanguage language) {
-        int grade = Constants.FAILURE;
+        int grade = Common.FAILURE;
         int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / 3;
 
         if (ratio >= 0 && ratio <= 50) {
-            grade = Constants.FAILURE;
+            grade = Common.FAILURE;
         } else if (ratio > 50 && ratio <= 60) {
-            grade = Constants.PASSABLE;
+            grade = Common.PASSABLE;
         } else if (ratio > 60 && ratio <= 75) {
-            grade = Constants.GOOD;
+            grade = Common.GOOD;
         } else if (ratio > 75 && ratio <= 90) {
-            grade = Constants.VERY_GOOD;
+            grade = Common.VERY_GOOD;
         } else {
-            grade = Constants.EXCELLENT;
+            grade = Common.EXCELLENT;
         }
 
         switch (grade) {
-            case Constants.FAILURE:
+            case Common.FAILURE:
                 break;
-            case Constants.PASSABLE:
+            case Common.PASSABLE:
                 this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.3));
                 break;
-            case Constants.GOOD:
+            case Common.GOOD:
                 this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.6));
                 break;
-            case Constants.VERY_GOOD:
+            case Common.VERY_GOOD:
                 this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.8));
                 break;
-            case Constants.EXCELLENT:
+            case Common.EXCELLENT:
                 this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
                 break;
         }

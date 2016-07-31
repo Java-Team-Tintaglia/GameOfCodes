@@ -1,10 +1,10 @@
 package states;
 
 import authentication.AuthenticationProvider;
+import constants.Common;
+import constants.Coordinates;
 import graphics.Assets;
 import models.ButtonImpl;
-import utils.Constants;
-import utils.Coordinates;
 
 import java.awt.*;
 
@@ -36,7 +36,7 @@ public class MainMenuState extends State {
 
 
 
-    	graphics.drawImage(Assets.mainMenu, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+    	graphics.drawImage(Assets.mainMenu, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
 
     	Font title = new Font("Comic Sans MS", Font.PLAIN, TITLE_FONT_SIZE);
         graphics.setFont(title);

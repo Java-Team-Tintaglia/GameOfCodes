@@ -2,10 +2,11 @@ package states;
 
 import graphics.Assets;
 import models.ButtonImpl;
-import utils.Constants;
 
 import java.awt.*;
 import java.util.StringTokenizer;
+
+import constants.Common;
 
 public class SuccessMessageState extends State {
 	private State nextState;
@@ -29,7 +30,7 @@ public class SuccessMessageState extends State {
         int messagePositionX = 250;
         int messagePositionY = 400;
 
-        graphics.drawImage(Assets.success, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.success, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
 
 
         Font titleFont = new Font("Arial", Font.BOLD, titleFontSize);

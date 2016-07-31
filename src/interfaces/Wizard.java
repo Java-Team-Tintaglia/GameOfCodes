@@ -2,12 +2,8 @@ package interfaces;
 
 import enums.WizardType;
 
-public interface Wizard extends GameObject, Collidable {
+public interface Wizard extends GameObject, Collidable, Existable {
 	
-    boolean isExist();
-
-    void setExist(boolean exist);
-
     WizardType getWizardType();
 
     void boost(Student student);

@@ -3,13 +3,14 @@ package states;
 import graphics.Assets;
 import models.ButtonImpl;
 import repositories.StudentScoresRepository;
-import utils.Constants;
 
 import java.awt.*;
 import java.util.*;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+
+import constants.Common;
 
 public class ScoresState extends State {
     private StudentScoresRepository studentScoresRepository;
@@ -41,7 +42,7 @@ public class ScoresState extends State {
 				.collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
 						(e1, e2) -> e1, LinkedHashMap::new));
         
-        graphics.drawImage(Assets.highScoresBackground, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+        graphics.drawImage(Assets.highScoresBackground, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
 
         Font font = new Font("Consolas", Font.PLAIN, fontSize);
         graphics.setFont(font);

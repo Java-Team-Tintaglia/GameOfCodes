@@ -2,14 +2,15 @@ package repositories;
 
 import models.UserImpl;
 import states.*;
-import utils.Constants;
-import utils.Messages;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+
+import constants.Common;
+import constants.Messages;
 
 public class UserRepository {
 
@@ -54,7 +55,7 @@ public class UserRepository {
         this.userImpls.put(userImpl.getUsername(), userImpl);
 
         FileOutputStream writer = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader(Constants.USERS_FILE_PATH))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(Common.USERS_FILE_PATH))) {
             StringBuilder text = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -67,7 +68,7 @@ public class UserRepository {
                 text.append("\n");
             }
 
-            writer = new FileOutputStream(Constants.USERS_FILE_PATH);
+            writer = new FileOutputStream(Common.USERS_FILE_PATH);
             writer.write(text.toString().getBytes());
         } catch (FileNotFoundException e) {
             System.out.println(Messages.FILE_FOUNDING_UNSUCCESSFUL);
@@ -113,7 +114,7 @@ public class UserRepository {
 
     // load all users from .txt file
     public void load() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Constants.USERS_FILE_PATH))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Common.USERS_FILE_PATH))) {
             String line = bufferedReader.readLine();
 
             while (line != null) {
@@ -138,7 +139,7 @@ public class UserRepository {
 
     // Save registered user into a .txt file
     private void save(UserImpl userImpl) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(Constants.USERS_FILE_PATH, true), true)) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(Common.USERS_FILE_PATH, true), true)) {
             writer.println(userImpl.getUsername() + " "
                     + userImpl.getFirstName() + " "
                     + userImpl.getLastName() + " "

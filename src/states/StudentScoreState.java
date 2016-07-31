@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 import authentication.AuthenticationProvider;
+import constants.Common;
 import graphics.Assets;
 import interfaces.Student;
 import models.ButtonImpl;
 import models.students.AbstractStudent;
-import utils.Constants;
 
 public class StudentScoreState extends State {
     private Student student;
@@ -29,7 +29,7 @@ public class StudentScoreState extends State {
 
 	@Override
     public void draw(Graphics graphics) {
-    	graphics.drawImage(Assets.diploma, 0, 0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT, null);
+    	graphics.drawImage(Assets.diploma, 0, 0, Common.SCREEN_WIDTH, Common.SCREEN_HEIGHT, null);
     	graphics.setFont(new Font("Arial", Font.BOLD, userFullNameFontSize));
         graphics.setColor(Color.green);
         
