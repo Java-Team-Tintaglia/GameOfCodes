@@ -14,9 +14,6 @@ public abstract class AbstractGameObject implements GameObject {
         this.y = y;
     }
 
-    protected AbstractGameObject() {
-    }
-    
     @Override
     public int getX() {
         return this.x;

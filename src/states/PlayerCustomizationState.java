@@ -2,6 +2,7 @@ package states;
 
 import authentication.AuthenticationProvider;
 import constants.Coordinates;
+import constants.Fonts;
 import enums.StudentType;
 import graphics.Assets;
 import models.ButtonImpl;
@@ -48,6 +49,7 @@ public class PlayerCustomizationState implements State {
 	@Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.playerCustomization, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
+        
         graphics.drawImage(
                 Assets.selectPlayer,
                 Coordinates.PLAYER_STATE_TITLE_X,
@@ -56,7 +58,7 @@ public class PlayerCustomizationState implements State {
                 Coordinates.PLAYER_STATE_TITLE_HEIGHT,
                 null);
 
-        Font textFont = new Font("Comic Sans MS", Font.BOLD, 20);
+        Font textFont = new Font(Fonts.COMIS_SANS_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
         graphics.setFont(textFont);
         graphics.setColor(Color.green);
 
@@ -66,17 +68,20 @@ public class PlayerCustomizationState implements State {
         }
 
         graphics.setColor(Color.black);
+        
         if (AuthenticationProvider.currentUser != null) {
-        	Font title = new Font("Comic Sans MS", Font.PLAIN, 20);
+        	Font title = new Font(Fonts.COMIS_SANS_FONT, Font.PLAIN, Fonts.INPUT_FIELD_FONT_SIZE);
             graphics.setFont(title);
             graphics.setColor(Color.green);
-    		graphics.fillRect(
+    		
+            graphics.fillRect(
     		        Coordinates.PLAYER_STATE_USER_BOX_X,
                     Coordinates.PLAYER_STATE_USER_BOX_Y,
                     Coordinates.PLAYER_STATE_USER_BOX_WIDTH,
                     Coordinates.PLAYER_STATE_USER_BOX_HEIGHT);
     		
     		graphics.setColor(Color.white);
+    		
     		graphics.drawString(
     		        AuthenticationProvider.currentUser.getUsername(),
                     Coordinates.PLAYER_STATE_USERNAME_X,
@@ -96,7 +101,6 @@ public class PlayerCustomizationState implements State {
 
     private Rectangle setColiderBox(StudentType studentType) {
         Rectangle coliderBox = null;
-
         switch (studentType) {
             case BAD_BOY:
                 coliderBox = new Rectangle(

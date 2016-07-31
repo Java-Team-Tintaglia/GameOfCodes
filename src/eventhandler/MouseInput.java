@@ -123,13 +123,13 @@ public class MouseInput implements MouseListener {
                 StateManager.setCurrentState(new MainMenuState());
             }
         } else if (StateManager.getCurrentState() instanceof RegistrationFormState) {
-            if (RegistrationFormState.userRect.contains(mouseX, mouseY)) {
+            if (RegistrationFormState.usernameRectangle.contains(mouseX, mouseY)) {
                 RegistrationFormState.fieldType = "user";
-            } else if (RegistrationFormState.firstRect.contains(mouseX, mouseY)) {
+            } else if (RegistrationFormState.firstNameRectangle.contains(mouseX, mouseY)) {
                 RegistrationFormState.fieldType = "first";
-            } else if (RegistrationFormState.lastRect.contains(mouseX, mouseY)) {
+            } else if (RegistrationFormState.lastNameRectangle.contains(mouseX, mouseY)) {
                 RegistrationFormState.fieldType = "last";
-            } else if (RegistrationFormState.passRect.contains(mouseX, mouseY)) {
+            } else if (RegistrationFormState.passwordRectangle.contains(mouseX, mouseY)) {
                 RegistrationFormState.fieldType = "pass";
             } else if (RegistrationFormState.backToMenuButton.getColliderBox().contains(mouseX, mouseY)) {
                 RegistrationFormState.fieldType = "user";

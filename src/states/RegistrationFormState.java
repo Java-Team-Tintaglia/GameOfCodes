@@ -9,12 +9,9 @@ import utils.Utils;
 import java.awt.*;
 
 import constants.Coordinates;
+import constants.Fonts;
 
 public class RegistrationFormState implements State {
-	
-    private static final int TITLE_FONT_SIZE =35;
-    private static final int FILED_NAME_FONT_SIZE = 25;
-    private static final int INPUT_TEXT_FONT_SIZE = 20;
 
     public static Button registerButton = new ButtonImpl(
             Coordinates.REGISTRATION_STATE_REGISTER_BUTTON_X,
@@ -26,27 +23,27 @@ public class RegistrationFormState implements State {
             Coordinates.REGISTRATION_STATE_BACK_BUTTON_Y,
             Assets.buttonBackToMenu);
     
-    public static Rectangle userRect = new Rectangle(
-            Coordinates.REGISTRATION_STATE_USER_RECT_X,
-            Coordinates.REGISTRATION_STATE_USER_RECT_Y,
+    public static Rectangle usernameRectangle = new Rectangle(
+            Coordinates.REGISTRATION_STATE_USERNAME_RECT_X,
+            Coordinates.REGISTRATION_STATE_USERNAME_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
     
-    public static Rectangle firstRect = new Rectangle(
-            Coordinates.REGISTRATION_STATE_FIRST_RECT_X,
-            Coordinates.REGISTRATION_STATE_FIRST_RECT_Y,
+    public static Rectangle firstNameRectangle = new Rectangle(
+            Coordinates.REGISTRATION_STATE_FIRST_NAME_RECT_X,
+            Coordinates.REGISTRATION_STATE_FIRST_NAME_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
     
-    public static Rectangle lastRect = new Rectangle(
-            Coordinates.REGISTRATION_STATE_LAST_RECT_X,
-            Coordinates.REGISTRATION_STATE_LAST_RECT_Y,
+    public static Rectangle lastNameRectangle = new Rectangle(
+            Coordinates.REGISTRATION_STATE_LAST_NAME_RECT_X,
+            Coordinates.REGISTRATION_STATE_LAST_NAME_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
     
-    public static Rectangle passRect = new Rectangle(
-            Coordinates.REGISTRATION_STATE_PASS_RECT_X,
-            Coordinates.REGISTRATION_STATE_PASS_RECT_Y,
+    public static Rectangle passwordRectangle = new Rectangle(
+            Coordinates.REGISTRATION_STATE_PASSWORD_RECT_X,
+            Coordinates.REGISTRATION_STATE_PASSWORD_RECT_Y,
             Coordinates.REGISTRATION_STATE_RECT_WIDTH,
             Coordinates.REGISTRATION_STATE_RECT_HEIGHT);
     
@@ -72,7 +69,7 @@ public class RegistrationFormState implements State {
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_WIDTH,
                Coordinates.REGISTRATION_STATE_BLACK_BACKGROUND_HEIGHT);
 
-        Font title = new Font("Arial", Font.PLAIN, TITLE_FONT_SIZE);
+        Font title = new Font(Fonts.ARIAL_FONT, Font.PLAIN, Fonts.TITLE_FONT_SIZE);
         graphics.setFont(title);
         graphics.setColor(Color.white);
         
@@ -81,7 +78,7 @@ public class RegistrationFormState implements State {
                 Coordinates.REGISTRATION_STATE_TITLE_X,
                 Coordinates.REGISTRATION_STATE_TITLE_Y);
 
-        Font fieldName = new Font("Arial", Font.PLAIN, FILED_NAME_FONT_SIZE);
+        Font fieldName = new Font(Fonts.ARIAL_FONT, Font.PLAIN, Fonts.INPUT_FIELD_FONT_SIZE);
         graphics.setFont(fieldName);
         
         graphics.drawString(
@@ -104,16 +101,16 @@ public class RegistrationFormState implements State {
                 Coordinates.REGISTRATION_STATE_PASSWORD_X,
                 Coordinates.REGISTRATION_STATE_PASSWORD_Y);
 
-        graphics.fillRect(userRect.x, userRect.y, userRect.width, userRect.height);
-        graphics.fillRect(firstRect.x, firstRect.y, firstRect.width, firstRect.height);
-        graphics.fillRect(lastRect.x, lastRect.y, lastRect.width, lastRect.height);
-        graphics.fillRect(passRect.x, passRect.y, passRect.width, passRect.height);
+        graphics.fillRect(usernameRectangle.x, usernameRectangle.y, usernameRectangle.width, usernameRectangle.height);
+        graphics.fillRect(firstNameRectangle.x, firstNameRectangle.y, firstNameRectangle.width, firstNameRectangle.height);
+        graphics.fillRect(lastNameRectangle.x, lastNameRectangle.y, lastNameRectangle.width, lastNameRectangle.height);
+        graphics.fillRect(passwordRectangle.x, passwordRectangle.y, passwordRectangle.width, passwordRectangle.height);
 
         graphics.setColor(Color.gray);
         Rectangle coliderBox = setColiderBox(fieldType);
         graphics.drawRect(coliderBox.x, coliderBox.y, coliderBox.width, coliderBox.height);
 
-        Font inputText = new Font("Arial", Font.BOLD, INPUT_TEXT_FONT_SIZE);
+        Font inputText = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
         graphics.setFont(inputText);
         graphics.setColor(Color.black);
 
@@ -150,29 +147,29 @@ public class RegistrationFormState implements State {
         switch (fieldType) {
             case "user":
                 rectangle = new Rectangle(
-                        userRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        userRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        usernameRectangle.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        usernameRectangle.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "first":
                 rectangle = new Rectangle(
-                        firstRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        firstRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        firstNameRectangle.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        firstNameRectangle.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "last":
                 rectangle = new Rectangle(
-                        lastRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        lastRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        lastNameRectangle.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        lastNameRectangle.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "pass":
                 rectangle = new Rectangle(
-                        passRect.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
-                        passRect.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        passwordRectangle.x - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
+                        passwordRectangle.y - Coordinates.REGISTRATION_STATE_COLIDER_BOX_MARGIN,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_WIDTH,
                         Coordinates.REGISTRATION_STATE_COLIDER_BOX_HEIGHT);
                 break;

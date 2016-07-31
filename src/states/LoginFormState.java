@@ -9,11 +9,10 @@ import utils.Utils;
 import java.awt.*;
 
 import constants.Coordinates;
+import constants.Fonts;
 
 public class LoginFormState implements State {
 
-    private static final int INPUT_TEXT_FONT_SIZE = 20;
-    
     public static Button loginButton = new ButtonImpl(
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_X,
             Coordinates.LOGIN_STATE_LOGIN_BUTTON_Y,
@@ -43,6 +42,7 @@ public class LoginFormState implements State {
     @Override
     public void draw(Graphics graphics) {
         graphics.drawImage(Assets.background, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
+        
         graphics.drawImage(
                 Assets.login,
                 Coordinates.LOGIN_STATE_LOGIN_FORM_X,
@@ -55,13 +55,15 @@ public class LoginFormState implements State {
         Rectangle coliderBox = setColiderBox(fieldType);
         graphics.drawRect(coliderBox.x, coliderBox.y, coliderBox.width, coliderBox.height);
 
-        Font inputText = new Font("Arial", Font.BOLD, INPUT_TEXT_FONT_SIZE);
+        Font inputText = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.INPUT_FIELD_FONT_SIZE);
         graphics.setFont(inputText);
         graphics.setColor(Color.white);
+        
         graphics.drawString(
                 username.toString(),
                 Coordinates.LOGIN_STATE_USERNAME_X,
                 Coordinates.LOGIN_STATE_USERNAME_Y);
+        
         graphics.drawString(
                 Utils.hidePassword(password.length()),
                 Coordinates.LOGIN_STATE_PASSWORD_X,
