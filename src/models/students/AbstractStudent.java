@@ -23,6 +23,12 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     private static final int MAX_LEFT_POSITION = 11;
     private static final int MAX_UP_POSITION = 255;
     private static final int MAX_DOWN_POSITION = 560;
+    private static final int IMAGES_COUNT_IN_PICTURE = 3;
+    private static final int FIRST_ROW = 0;
+    private static final int SECOND_ROW = 1;
+    private static final int THIRD_ROW = 2;
+    private static final int FOURTH_ROW = 3;
+    private static final int INTELLIGENCE_DIVIDER = 3;
 
     private int row;
     private int col;
@@ -186,20 +192,20 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
         
         if (isMoving) {
         	this.col++;
-        	this.col = (this.col) % 3;
+        	this.col = (this.col) % IMAGES_COUNT_IN_PICTURE;
 
             if (this.isMovingLeft) {
-            	this.row = 1;
+            	this.row = SECOND_ROW;
             } else if (this.isMovingRight) {
-            	this.row = 2;
+            	this.row = THIRD_ROW;
             } else if (this.isMovingUp) {
-            	this.row = 3;
+            	this.row = FOURTH_ROW;
             } else if (this.isMovingDown) {
-            	this.row = 0;
+            	this.row = FIRST_ROW;
             }
         } else {
-        	this.row = 0;
-        	this.col = 1;
+        	this.row = FIRST_ROW;
+        	this.col = SECOND_ROW;
         }
         
         this.getColliderBox().setBounds(this.getX(), this.getY(),
@@ -211,7 +217,7 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     public int calculateGrade(ProgrammingLanguage language) {
         int grade;
         Grades gradeAsEnum;
-        int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / 3;
+        int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / INTELLIGENCE_DIVIDER;
 
         if (ratio >= FAILURE.getMinRate() && ratio <= FAILURE.getMaxRate()) {
             grade = FAILURE.getGrade();
