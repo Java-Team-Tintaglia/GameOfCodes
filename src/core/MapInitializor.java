@@ -4,11 +4,9 @@ import enums.ProgrammingLanguageType;
 import enums.WizardType;
 import interfaces.ProgrammingLanguage;
 import interfaces.Wizard;
-import models.programmingLanguages.*;
-import models.wizards.IntelligenceWizard;
-import models.wizards.KnowledgeWizard;
-import models.wizards.VitalityWizard;
 import utils.RandomGenerator;
+
+import java.lang.reflect.Constructor;
 
 public class MapInitializor {
 	private static final int MAX_X_COORD = 950;
@@ -16,71 +14,43 @@ public class MapInitializor {
 	private static final int MAX_Y_COORD = 515;
 
     public static ProgrammingLanguage generateProgrammingLanguage() {
-        ProgrammingLanguageType[] programmingLanguages = {
-        		ProgrammingLanguageType.JAVA,
-        		ProgrammingLanguageType.C_PLUS_PLUS, 
-        		ProgrammingLanguageType.C_SHARP,
-        		ProgrammingLanguageType.PHP,
-        		ProgrammingLanguageType.JAVA_SCRIPT};
+        ProgrammingLanguageType[] programmingLanguages = ProgrammingLanguageType.values();
         
         int randomIndex = RandomGenerator.getNextRandom(programmingLanguages.length);
-        
-        ProgrammingLanguageType randomLanguage = programmingLanguages[randomIndex];
-
         int randomX = RandomGenerator.getNextRandom(0, MAX_X_COORD);
         int randomY = RandomGenerator.getNextRandom(MIN_Y_COORD, MAX_Y_COORD);
 
-        ProgrammingLanguage languageToBeCreated = null;
+        ProgrammingLanguageType randomLanguage = programmingLanguages[randomIndex];
+        String className = randomLanguage.getClassName();
 
-        switch (randomLanguage) {
-            case C_PLUS_PLUS:
-                languageToBeCreated = new CPlusPlus(randomX, randomY);
-                break;
-            case C_SHARP:
-                languageToBeCreated = new CSharp(randomX, randomY);
-                break;
-            case JAVA:
-                languageToBeCreated = new Java(randomX, randomY);
-                break;
-            case JAVA_SCRIPT:
-                languageToBeCreated = new JavaScript(randomX, randomY);
-                break;
-            case PHP:
-                languageToBeCreated = new Php(randomX, randomY);
-                break;
-
-        }
-        
-        return languageToBeCreated;
+        ProgrammingLanguage generatedProgrammingLanguage = createObject(randomX, randomY, className);
+        return generatedProgrammingLanguage;
     }
 
     public static Wizard generateWizard() {
-        WizardType[] wizard = {
-        		WizardType.INTELLIGENCE_WIZARD, 
-        		WizardType.KNOWLEDGE_WIZARD, 
-        		WizardType.VITALITY_WIZARD};
+        WizardType[] wizard = WizardType.values();
         
         int randomIndex = RandomGenerator.getNextRandom(wizard.length);
-        WizardType randomWizard = wizard[randomIndex];
-
         int randomX = RandomGenerator.getNextRandom(0, MAX_X_COORD);
         int randomY = RandomGenerator.getNextRandom(MIN_Y_COORD, MAX_Y_COORD);
 
-        Wizard wizardToBeCreated = null;
+        WizardType randomWizard = wizard[randomIndex];
+        String className = randomWizard.getClassName();
 
-        switch (randomWizard) {
-            case INTELLIGENCE_WIZARD:
-                wizardToBeCreated = new IntelligenceWizard(randomX,randomY);
-                break;
-            case KNOWLEDGE_WIZARD:
-                wizardToBeCreated = new KnowledgeWizard(randomX, randomY);
-                break;
-            case VITALITY_WIZARD:
-                wizardToBeCreated = new VitalityWizard(randomX, randomY);
-                break;
+        Wizard generatedWizard = createObject(randomX, randomY, className);
+        return generatedWizard;
+    }
 
+    private static <T> T createObject(int randomX, int randomY, String className) {
+        T objectToBeCreated = null;
+        try {
+            Class<T> classInfo = (Class<T>) Class.forName(className);
+            Constructor<T> ctor = classInfo.getConstructor(int.class, int.class);
+            objectToBeCreated = ctor.newInstance(randomX, randomY);
+        } catch (ReflectiveOperationException roe) {
+            roe.printStackTrace();
         }
 
-        return wizardToBeCreated;
+        return objectToBeCreated;
     }
 }
