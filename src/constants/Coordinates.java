@@ -181,4 +181,15 @@ public class Coordinates {
     public static final int STUDENT_SCORE_STATE_AVERAGE_GRADE_X = 570;
     public static final int STUDENT_SCORE_STATE_SUBJECT_AND_GRADE_Y = 280;
     public static final int STUDENT_SCORE_STATE_SUBJECT_AND_GRADE_OFFSET = 40;
+
+    //ScoreState
+    public static final int SCORE_STATE_BACK_BUTTON_X = 730;
+    public static final int SCORE_STATE_BACK_BUTTON_Y = 500;
+    public static final int SCORE_STATE_PLAYER_NAME_TITLE_X = 160;
+    public static final int SCORE_STATE_AVERAGE_GRADE_TITLE_X = 520;
+    public static final int SCORE_STATE_DEFAULT_OBJECT_Y = 125;
+    public static final int SCORE_STATE_OBJECT_OFFSET_Y = 40;
+    public static final int SCORE_STATE_COUNTER_X = 120;
+    public static final int SCORE_STATE_SUBJECT_NAME_X = 190;
+    public static final int SCORE_STATE_SUBJECT_AVERAGE_GRADE_X = 580;
 }

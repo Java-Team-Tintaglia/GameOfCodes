@@ -1,18 +1,17 @@
 package repositories;
 
+import constants.Common;
+import constants.Messages;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
-import constants.Common;
-import constants.Messages;
-
 import java.util.TreeMap;
 
 public class StudentScoresRepository {
-    public static TreeMap<String, List<Integer>> studentsScore
+    public static Map<String, List<Integer>> studentsScore
             = new TreeMap<>();
 
     public void saveToFile(String studentName, Map<String, List<Integer>> studentsGrades) {
@@ -74,7 +73,7 @@ public class StudentScoresRepository {
 
     }
 
-    public TreeMap<String, ArrayList<Integer>> getAllGradesBySubject(String username) {
+    public Map<String, ArrayList<Integer>> getAllGradesBySubject(String username) {
         TreeMap<String, ArrayList<Integer>> grades = new TreeMap<>();
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Common.SCORES_FILE_PATH))) {
             String line = bufferedReader.readLine();

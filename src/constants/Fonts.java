@@ -9,4 +9,5 @@ public class Fonts {
     public static final int TEXT_FONT_SIZE = 20;
 	public static final int USER_FULL_NAME_FONT_SIZE = 16;
 	public static final int GRADES_FONT_SIZE = 20;
+	public static final int PLAYER_NAME_AND_GRADE_FONT_SIZE = 25;
 }
