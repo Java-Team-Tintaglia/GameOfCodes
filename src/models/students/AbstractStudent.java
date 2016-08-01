@@ -1,20 +1,29 @@
+
 package models.students;
 
+import enums.Grades;
 import graphics.SpriteSheet;
 import interfaces.ProgrammingLanguage;
 import interfaces.Student;
 import models.AbstractGameObject;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.util.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import constants.Common;
+import static enums.Grades.*;
 
 public abstract class AbstractStudent extends AbstractGameObject implements Student {
 
     private static final int DEFAULT_SPEED = 8;
-    
+    private static final int MAX_STAT_POINTS = 100;
+    private static final int MAX_RIGHT_POSITION = 988;
+    private static final int MAX_LEFT_POSITION = 11;
+    private static final int MAX_UP_POSITION = 255;
+    private static final int MAX_DOWN_POSITION = 560;
+
     private int row;
     private int col;
 
@@ -51,55 +60,46 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
                 this.width, this.height);
         
         this.studentGrades = new HashMap<>();
-    }	
+    }
+
     @Override
 	public String getUsername() {
 		return this.username;
 	}
 
-	public int getWidth() {
-        return this.width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return this.height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
     @Override
     public Map<String, List<Integer>> getStudentGrades() {
         return this.studentGrades;
     }
+
     @Override
     public int getIntelligence() {
         return this.intelligence;
     }
+
     @Override
     public void setIntelligence(int intelligence) {
-        if (intelligence > 100) {
-            this.intelligence = 100;
+        if (intelligence > MAX_STAT_POINTS) {
+            this.intelligence = MAX_STAT_POINTS;
             return;
         }
         if (intelligence < 0) {
             this.intelligence = 0;
             return;
         }
+
         this.intelligence = intelligence;
     }
+
     @Override
     public int getKnowledge() {
         return this.knowledge;
     }
+
     @Override
     public void setKnowledge(int knowledge) {
-        if (knowledge > 100) {
-            this.knowledge = 100;
+        if (knowledge > MAX_STAT_POINTS) {
+            this.knowledge = MAX_STAT_POINTS;
             return;
         }
         if (knowledge < 0) {
@@ -108,14 +108,16 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
         }
         this.knowledge = knowledge;
     }
+
     @Override
     public int getVitality() {
         return this.vitality;
     }
+
     @Override
     public void setVitality(int vitality) {
-        if (vitality > 100) {
-            this.vitality = 100;
+        if (vitality > MAX_STAT_POINTS) {
+            this.vitality = MAX_STAT_POINTS;
             return;
         }
         if (vitality < 0) {
@@ -124,38 +126,47 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
         }
         this.vitality = vitality;
     }
+
     @Override
     public Rectangle getColliderBox() {
         return this.colliderBox;
     }
+
     @Override
     public boolean isMovingLeft() {
 		return this.isMovingLeft;
 	}
+
     @Override
 	public void setMovingLeft(boolean isMovingLeft) {
 		this.isMovingLeft = isMovingLeft;
 	}
+
     @Override
 	public boolean isMovingRight() {
 		return this.isMovingRight;
 	}
+
     @Override
 	public void setMovingRight(boolean isMovingRight) {
 		this.isMovingRight = isMovingRight;
 	}
+
     @Override
 	public boolean isMovingUp() {
 		return this.isMovingUp;
 	}
+
     @Override
 	public void setMovingUp(boolean isMovingUp) {
 		this.isMovingUp = isMovingUp;
 	}
+
     @Override
 	public boolean isMovingDown() {
 		return this.isMovingDown;
 	}
+
     @Override
 	public void setMovingDown(boolean isMovingDown) {
 		this.isMovingDown = isMovingDown;
@@ -167,11 +178,10 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
                this.width, this.height), this.getX(), this.getY(), null);
     }
 
-
     @Override
     public void update() {
 
-        boolean isMoving= this.isMovingDown || this.isMovingUp || 
+        boolean isMoving = this.isMovingDown || this.isMovingUp ||
         		this.isMovingRight || this.isMovingLeft;
         
         if (isMoving) {
@@ -196,45 +206,37 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
                 this.width, this.height);
         move();
     }
+
     @Override
     public int calculateGrade(ProgrammingLanguage language) {
-        int grade = Common.FAILURE;
+        int grade;
+        Grades gradeAsEnum;
         int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / 3;
 
-        if (ratio >= 0 && ratio <= 50) {
-            grade = Common.FAILURE;
-        } else if (ratio > 50 && ratio <= 60) {
-            grade = Common.PASSABLE;
-        } else if (ratio > 60 && ratio <= 75) {
-            grade = Common.GOOD;
-        } else if (ratio > 75 && ratio <= 90) {
-            grade = Common.VERY_GOOD;
+        if (ratio >= FAILURE.getMinRate() && ratio <= FAILURE.getMaxRate()) {
+            grade = FAILURE.getGrade();
+            gradeAsEnum = FAILURE;
+        } else if (ratio > PASSABLE.getMinRate() && ratio <= PASSABLE.getMaxRate()) {
+            grade = PASSABLE.getGrade();
+            gradeAsEnum = PASSABLE;
+        } else if (ratio > GOOD.getMinRate() && ratio <= GOOD.getMaxRate()) {
+            grade = GOOD.getGrade();
+            gradeAsEnum = GOOD;
+        } else if (ratio > VERY_GOOD.getMinRate() && ratio <= VERY_GOOD.getMaxRate()) {
+            grade = VERY_GOOD.getGrade();
+            gradeAsEnum = VERY_GOOD;
         } else {
-            grade = Common.EXCELLENT;
+            grade = EXCELLENT.getGrade();
+            gradeAsEnum = EXCELLENT;
         }
 
-        switch (grade) {
-            case Common.FAILURE:
-                break;
-            case Common.PASSABLE:
-                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.3));
-                break;
-            case Common.GOOD:
-                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.6));
-                break;
-            case Common.VERY_GOOD:
-                this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * 0.8));
-                break;
-            case Common.EXCELLENT:
-                this.setKnowledge(this.getKnowledge() + language.getKnowledgePoints());
-                break;
-        }
-
+        this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * gradeAsEnum.getFactor()));
         int vitality = this.getVitality() - language.getVitalityDamagePoints();
         this.setVitality(vitality);
 
         return grade;
     }
+
     @Override
     public void addScore(int grade, ProgrammingLanguage language) {
         
@@ -245,22 +247,23 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
         this.studentGrades.get(language.getProgrammingLanguageType().getName()).add(grade);
     }
     
-    private void move() {
-        if (isMovingRight && this.getX() + DEFAULT_SPEED <= 988) {
-            this.setX(this.getX() + DEFAULT_SPEED);
-        }
-        if (isMovingLeft && this.getX() + DEFAULT_SPEED >= 11) {
-            this.setX(this.getX() - DEFAULT_SPEED);
-        }
-        if (isMovingDown && this.getY() + DEFAULT_SPEED < 560) {
-            this.setY(this.getY() + DEFAULT_SPEED);
-        }
-        if (isMovingUp && this.getY() - DEFAULT_SPEED >= 255) {
-            this.setY(this.getY() - DEFAULT_SPEED);
-        }
-    }
     @Override
     public void getExhausted() {
         this.setVitality(this.getVitality() - 1);
+    }
+
+    private void move() {
+        if (isMovingRight && this.getX() + DEFAULT_SPEED <= MAX_RIGHT_POSITION) {
+            this.setX(this.getX() + DEFAULT_SPEED);
+        }
+        if (isMovingLeft && this.getX() + DEFAULT_SPEED >= MAX_LEFT_POSITION) {
+            this.setX(this.getX() - DEFAULT_SPEED);
+        }
+        if (isMovingDown && this.getY() + DEFAULT_SPEED < MAX_DOWN_POSITION) {
+            this.setY(this.getY() + DEFAULT_SPEED);
+        }
+        if (isMovingUp && this.getY() - DEFAULT_SPEED >= MAX_UP_POSITION) {
+            this.setY(this.getY() - DEFAULT_SPEED);
+        }
     }
 }

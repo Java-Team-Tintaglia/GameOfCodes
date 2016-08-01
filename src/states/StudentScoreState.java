@@ -1,9 +1,9 @@
 package states;
 
 import authentication.AuthenticationProvider;
-import constants.Common;
 import constants.Coordinates;
 import constants.Fonts;
+import enums.Grades;
 import graphics.Assets;
 import interfaces.State;
 import interfaces.Student;
@@ -71,7 +71,7 @@ public class StudentScoreState implements State {
 
             String subject = entry.getKey();
             String averageGradeToString =
-                    String.format("%.2f", averageGrade < Common.PASSABLE ? Common.FAILURE : averageGrade);
+                    String.format("%.2f", averageGrade < Grades.PASSABLE.getGrade() ? Grades.FAILURE.getGrade() : averageGrade);
 
             graphics.drawString(
                     subject,

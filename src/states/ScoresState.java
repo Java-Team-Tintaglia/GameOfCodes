@@ -1,8 +1,8 @@
 package states;
 
-import constants.Common;
 import constants.Coordinates;
 import constants.Fonts;
+import enums.Grades;
 import graphics.Assets;
 import interfaces.Button;
 import interfaces.State;
@@ -82,7 +82,7 @@ public class ScoresState implements State {
 
             String counterToString = String.format("%d.", counter);
             String gradeToString = String.format("%.2f", 
-            		averageGrade < Common.PASSABLE ? Common.FAILURE : averageGrade);
+            		averageGrade < Grades.PASSABLE.getGrade() ? Grades.FAILURE.getGrade() : averageGrade);
 
             graphics.drawString(counterToString, Coordinates.SCORE_STATE_COUNTER_X, startObjectCoordY);
             graphics.drawString(name, Coordinates.SCORE_STATE_SUBJECT_NAME_X, startObjectCoordY);
