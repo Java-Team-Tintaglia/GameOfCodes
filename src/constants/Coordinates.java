@@ -172,4 +172,13 @@ public class Coordinates {
     public static final int MAIN_MENU_STATE_USERNAME_X = 900;
     public static final int MAIN_MENU_STATE_USERNAME_Y = 30;
 
+    //StudentScoreState
+    public static final int STUDENT_SCORE_STATE_BACK_BUTTON_X = 730;
+    public static final int STUDENT_SCORE_STATE_BACK_BUTTON_Y = 520;
+    public static final int STUDENT_SCORE_STATE_FULL_NAME_X = 510;
+    public static final int STUDENT_SCORE_STATE_FULL_NAME_Y = 205;
+    public static final int STUDENT_SCORE_STATE_SUBJECT_NAME_X = 420;
+    public static final int STUDENT_SCORE_STATE_AVERAGE_GRADE_X = 570;
+    public static final int STUDENT_SCORE_STATE_SUBJECT_AND_GRADE_Y = 280;
+    public static final int STUDENT_SCORE_STATE_SUBJECT_AND_GRADE_OFFSET = 40;
 }

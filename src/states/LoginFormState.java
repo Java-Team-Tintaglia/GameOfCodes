@@ -1,39 +1,38 @@
 package states;
 
+import constants.Coordinates;
+import constants.Fonts;
 import graphics.Assets;
-import models.ButtonImpl;
 import interfaces.Button;
 import interfaces.State;
+import models.ButtonImpl;
 import utils.Utils;
 
 import java.awt.*;
 
-import constants.Coordinates;
-import constants.Fonts;
-
 public class LoginFormState implements State {
 
     public static Button loginButton = new ButtonImpl(
-            Coordinates.LOGIN_STATE_LOGIN_BUTTON_X,
-            Coordinates.LOGIN_STATE_LOGIN_BUTTON_Y,
-            Assets.buttonLogIn);
+                                                Coordinates.LOGIN_STATE_LOGIN_BUTTON_X,
+                                                Coordinates.LOGIN_STATE_LOGIN_BUTTON_Y,
+                                                Assets.buttonLogIn);
     
     public static Button backToMenuButton = new ButtonImpl(
-            Coordinates.LOGIN_STATE_BACK_BUTTON_X,
-            Coordinates.LOGIN_STATE_BACK_BUTTON_Y,
-            Assets.buttonBackToMenu);
+                                                Coordinates.LOGIN_STATE_BACK_BUTTON_X,
+                                                Coordinates.LOGIN_STATE_BACK_BUTTON_Y,
+                                                Assets.buttonBackToMenu);
     
     public static Rectangle userRect = new Rectangle(
-            Coordinates.LOGIN_STATE_USERNAME_FIELD_X,
-            Coordinates.LOGIN_STATE_USERNAME_FIELD_Y,
-            Coordinates.LOGIN_STATE_FIELD_WIDTH,
-            Coordinates.LOGIN_STATE_FIELD_HEIGHT);
+                                                Coordinates.LOGIN_STATE_USERNAME_FIELD_X,
+                                                Coordinates.LOGIN_STATE_USERNAME_FIELD_Y,
+                                                Coordinates.LOGIN_STATE_FIELD_WIDTH,
+                                                Coordinates.LOGIN_STATE_FIELD_HEIGHT);
     
     public static Rectangle passRect = new Rectangle(
-            Coordinates.LOGIN_STATE_PASSWORD_FIELD_X,
-            Coordinates.LOGIN_STATE_PASSWORD_FIELD_Y,
-            Coordinates.LOGIN_STATE_FIELD_WIDTH,
-            Coordinates.LOGIN_STATE_FIELD_HEIGHT);
+                                                Coordinates.LOGIN_STATE_PASSWORD_FIELD_X,
+                                                Coordinates.LOGIN_STATE_PASSWORD_FIELD_Y,
+                                                Coordinates.LOGIN_STATE_FIELD_WIDTH,
+                                                Coordinates.LOGIN_STATE_FIELD_HEIGHT);
     
     public static StringBuilder username = new StringBuilder();
     public static StringBuilder password = new StringBuilder();
@@ -44,12 +43,12 @@ public class LoginFormState implements State {
         graphics.drawImage(Assets.background, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         
         graphics.drawImage(
-                Assets.login,
-                Coordinates.LOGIN_STATE_LOGIN_FORM_X,
-                Coordinates.LOGIN_STATE_LOGIN_FORM_Y,
-                Coordinates.LOGIN_STATE_LOGIN_FORM_WIDTH,
-                Coordinates.LOGIN_STATE_LOGIN_FORM_HEIGHT,
-                null);
+                    Assets.login,
+                    Coordinates.LOGIN_STATE_LOGIN_FORM_X,
+                    Coordinates.LOGIN_STATE_LOGIN_FORM_Y,
+                    Coordinates.LOGIN_STATE_LOGIN_FORM_WIDTH,
+                    Coordinates.LOGIN_STATE_LOGIN_FORM_HEIGHT,
+                    null);
 
         graphics.setColor(Color.gray);
         Rectangle coliderBox = setColiderBox(fieldType);
@@ -60,14 +59,14 @@ public class LoginFormState implements State {
         graphics.setColor(Color.white);
         
         graphics.drawString(
-                username.toString(),
-                Coordinates.LOGIN_STATE_USERNAME_X,
-                Coordinates.LOGIN_STATE_USERNAME_Y);
+                        username.toString(),
+                        Coordinates.LOGIN_STATE_USERNAME_X,
+                        Coordinates.LOGIN_STATE_USERNAME_Y);
         
         graphics.drawString(
-                Utils.hidePassword(password.length()),
-                Coordinates.LOGIN_STATE_PASSWORD_X,
-                Coordinates.LOGIN_STATE_PASSWORD_Y);
+                        Utils.hidePassword(password.length()),
+                        Coordinates.LOGIN_STATE_PASSWORD_X,
+                        Coordinates.LOGIN_STATE_PASSWORD_Y);
 
         backToMenuButton.draw(graphics);
         loginButton.draw(graphics);
@@ -82,17 +81,17 @@ public class LoginFormState implements State {
         switch (fieldType) {
             case "user":
                 coliderBox = new Rectangle(
-                        userRect.x - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
-                        userRect.y - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
-                        Coordinates.LOGIN_STATE_COLIDER_BOX_WIDTH,
-                        Coordinates.LOGIN_STATE_COLIDER_BOX_HEIGHT);
+                                    userRect.x - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                                    userRect.y - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                                    Coordinates.LOGIN_STATE_COLIDER_BOX_WIDTH,
+                                    Coordinates.LOGIN_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case "pass":
                 coliderBox = new Rectangle(
-                        passRect.x - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
-                        passRect.y - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
-                        Coordinates.LOGIN_STATE_COLIDER_BOX_WIDTH,
-                        Coordinates.LOGIN_STATE_COLIDER_BOX_HEIGHT);
+                                    passRect.x - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                                    passRect.y - Coordinates.LOGIN_STATE_COLIDER_BOX_MARGIN,
+                                    Coordinates.LOGIN_STATE_COLIDER_BOX_WIDTH,
+                                    Coordinates.LOGIN_STATE_COLIDER_BOX_HEIGHT);
                 break;
         }
 

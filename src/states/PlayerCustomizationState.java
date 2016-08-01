@@ -14,34 +14,34 @@ import java.awt.*;
 public class PlayerCustomizationState implements State {
 
     public static Button playButton = new ButtonImpl(
-            Coordinates.PLAYER_STATE_PLAY_BUTTON_X,
-            Coordinates.PLAYER_STATE_PLAY_BUTTON_Y,
-            Assets.buttonPlay);
+                                                Coordinates.PLAYER_STATE_PLAY_BUTTON_X,
+                                                Coordinates.PLAYER_STATE_PLAY_BUTTON_Y,
+                                                Assets.buttonPlay);
     
     public static Button backToMenuButton = new ButtonImpl(
-            Coordinates.PLAYER_STATE_BACK_BUTTON_X,
-            Coordinates.PLAYER_STATE_BACK_BUTTON_Y,
-            Assets.buttonBackToMenu);
+                                                Coordinates.PLAYER_STATE_BACK_BUTTON_X,
+                                                Coordinates.PLAYER_STATE_BACK_BUTTON_Y,
+                                                Assets.buttonBackToMenu);
     
     public static Button badBoyButton = new ButtonImpl(
-            Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_X,
-            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
-            Assets.buttonBadBoy);
+                                                Coordinates.PLAYER_STATE_BAD_BOY_BUTTON_X,
+                                                Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
+                                                Assets.buttonBadBoy);
     
     public static Button hotChickButton = new ButtonImpl(
-            Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_X,
-            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
-            Assets.buttonHotChick);
+                                                Coordinates.PLAYER_STATE_HOT_CHICK_BUTTON_X,
+                                                Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
+                                                Assets.buttonHotChick);
     
     public static Button nerdBoyButton = new ButtonImpl(
-            Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_X,
-            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
-            Assets.buttonNerdBoy);
+                                                Coordinates.PLAYER_STATE_NERD_BOY_BUTTON_X,
+                                                Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
+                                                Assets.buttonNerdBoy);
     
     public static Button nerdLadyButton = new ButtonImpl(
-            Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_X,
-            Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
-            Assets.buttonNerdLady);
+                                                Coordinates.PLAYER_STATE_NERD_LADY_BUTTON_X,
+                                                Coordinates.PLAYER_STATE_PLAYER_BUTTON_Y,
+                                                Assets.buttonNerdLady);
     
     public static StudentType studentType;
     public static boolean isSelected = false;
@@ -51,12 +51,12 @@ public class PlayerCustomizationState implements State {
         graphics.drawImage(Assets.playerCustomization, 0, 0, Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, null);
         
         graphics.drawImage(
-                Assets.selectPlayer,
-                Coordinates.PLAYER_STATE_TITLE_X,
-                Coordinates.PLAYER_STATE_TITLE_Y,
-                Coordinates.PLAYER_STATE_TITLE_WIDTH,
-                Coordinates.PLAYER_STATE_TITLE_HEIGHT,
-                null);
+                    Assets.selectPlayer,
+                    Coordinates.PLAYER_STATE_TITLE_X,
+                    Coordinates.PLAYER_STATE_TITLE_Y,
+                    Coordinates.PLAYER_STATE_TITLE_WIDTH,
+                    Coordinates.PLAYER_STATE_TITLE_HEIGHT,
+                    null);
 
         Font textFont = new Font(Fonts.COMIS_SANS_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(textFont);
@@ -75,17 +75,17 @@ public class PlayerCustomizationState implements State {
             graphics.setColor(Color.green);
     		
             graphics.fillRect(
-    		        Coordinates.PLAYER_STATE_USER_BOX_X,
-                    Coordinates.PLAYER_STATE_USER_BOX_Y,
-                    Coordinates.PLAYER_STATE_USER_BOX_WIDTH,
-                    Coordinates.PLAYER_STATE_USER_BOX_HEIGHT);
+                        Coordinates.PLAYER_STATE_USER_BOX_X,
+                        Coordinates.PLAYER_STATE_USER_BOX_Y,
+                        Coordinates.PLAYER_STATE_USER_BOX_WIDTH,
+                        Coordinates.PLAYER_STATE_USER_BOX_HEIGHT);
     		
     		graphics.setColor(Color.white);
     		
     		graphics.drawString(
-    		        AuthenticationProvider.currentUser.getUsername(),
-                    Coordinates.PLAYER_STATE_USERNAME_X,
-                    Coordinates.PLAYER_STATE_USERNAME_Y);
+                        AuthenticationProvider.currentUser.getUsername(),
+                        Coordinates.PLAYER_STATE_USERNAME_X,
+                        Coordinates.PLAYER_STATE_USERNAME_Y);
 		}
 
         playButton.draw(graphics);
@@ -104,31 +104,31 @@ public class PlayerCustomizationState implements State {
         switch (studentType) {
             case BAD_BOY:
                 coliderBox = new Rectangle(
-                        badBoyButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        badBoyButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
+                                    badBoyButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    badBoyButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case HOT_CHICK:
                 coliderBox = new Rectangle(
-                        hotChickButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        hotChickButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
+                                    hotChickButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    hotChickButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case NERD_BOY:
                 coliderBox = new Rectangle(
-                        nerdBoyButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        nerdBoyButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
+                                    nerdBoyButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    nerdBoyButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
                 break;
             case NERD_LADY:
                 coliderBox = new Rectangle(
-                        nerdLadyButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        nerdLadyButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
-                        Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
+                                    nerdLadyButton.getX() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    nerdLadyButton.getY() - Coordinates.PLAYER_STATE_COLIDER_BOX_MARGIN,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_WIDTH,
+                                    Coordinates.PLAYER_STATE_COLIDER_BOX_HEIGHT);
                 break;
         }
 
