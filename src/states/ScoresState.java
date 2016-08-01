@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 
 public class ScoresState implements State {
 
-    private static final int DEFAULT_COUNTER_VALUE = 1;
     private static final int DEFAULT_EXPOSED_USERS_COUNT = 10;
 
     public static Button backToMenuButton = new ButtonImpl(
@@ -72,7 +71,7 @@ public class ScoresState implements State {
     public void update() {}
 
     private void drawCountersSubjectsAndGrades(Graphics graphics, Map<String, List<Integer>> sorted) {
-        int counter = DEFAULT_COUNTER_VALUE;
+        int counter = 1;
         int startObjectCoordY = Coordinates.SCORE_STATE_DEFAULT_OBJECT_Y + Coordinates.SCORE_STATE_OBJECT_OFFSET_Y;
 
         for(Entry<String, List<Integer>> entry : sorted.entrySet()){
@@ -82,7 +81,8 @@ public class ScoresState implements State {
             double averageGrade = totalGrades / totalAmountOfGrades;
 
             String counterToString = String.format("%d.", counter);
-            String gradeToString = String.format("%.2f", averageGrade < Common.PASSABLE ? Common.FAILURE : averageGrade);
+            String gradeToString = String.format("%.2f", 
+            		averageGrade < Common.PASSABLE ? Common.FAILURE : averageGrade);
 
             graphics.drawString(counterToString, Coordinates.SCORE_STATE_COUNTER_X, startObjectCoordY);
             graphics.drawString(name, Coordinates.SCORE_STATE_SUBJECT_NAME_X, startObjectCoordY);

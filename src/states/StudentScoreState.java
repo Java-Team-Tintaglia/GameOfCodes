@@ -46,7 +46,7 @@ public class StudentScoreState implements State {
                         Coordinates.STUDENT_SCORE_STATE_FULL_NAME_X,
                         Coordinates.STUDENT_SCORE_STATE_FULL_NAME_Y);
 
-        Font gradesFont = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.GRADES_FONT_SIZE);
+        Font gradesFont = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(gradesFont);
 
         drawSubjectsAndGrades(graphics);
@@ -61,7 +61,11 @@ public class StudentScoreState implements State {
         int currentSubjectAndGradeY = Coordinates.STUDENT_SCORE_STATE_SUBJECT_AND_GRADE_Y;
 
         for (Map.Entry<String, List<Integer>> entry : this.student.getStudentGrades().entrySet()) {
-            double totalGrades = (double)entry.getValue().stream().mapToInt(Integer::intValue).sum();
+            double totalGrades = (double)entry.getValue()
+            		.stream()
+            		.mapToInt(Integer::intValue)
+            		.sum();
+            
             int totalAmountOfGrades = entry.getValue().size();
             double averageGrade = totalGrades / totalAmountOfGrades;
 
