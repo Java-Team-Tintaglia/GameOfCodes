@@ -18,7 +18,7 @@ public class ButtonImpl extends AbstractGameObject implements Button{
     }
     
     @Override
-    public Rectangle getColliderBox() {
+    public Rectangle getCollideBox() {
         return this.colliderBox;
     }
 

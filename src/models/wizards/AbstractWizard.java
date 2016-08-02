@@ -35,7 +35,7 @@ public abstract class AbstractWizard extends AbstractGameObject implements Wizar
         this.exist = exist;
     }
     @Override
-    public Rectangle getColliderBox() {
+    public Rectangle getCollideBox() {
         return this.colliderBox;
     }
     @Override

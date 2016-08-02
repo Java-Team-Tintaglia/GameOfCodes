@@ -2,7 +2,8 @@ package authentication;
 
 import constants.Messages;
 import interfaces.User;
-import repositories.UserRepository;
+import interfaces.UserRepository;
+
 import states.ErrorMessageState;
 import states.LoginFormState;
 import states.MainMenuState;

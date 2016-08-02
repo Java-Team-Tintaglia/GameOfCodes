@@ -5,8 +5,11 @@ import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
 import interfaces.State;
-import repositories.StudentScoresRepository;
-import repositories.UserRepository;
+import interfaces.StudentScoresRepository;
+import interfaces.User;
+import interfaces.UserRepository;
+import repositories.StudentScoresRepositoryImpl;
+import repositories.UserRepositoryImpl;
 import states.MainMenuState;
 import states.StateManager;
 
@@ -14,7 +17,6 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 import authentication.AuthenticationProvider;
-import constants.Common;
 import constants.Coordinates;
 
 public class GameEngine implements Runnable {
@@ -27,7 +29,7 @@ public class GameEngine implements Runnable {
     private KeyInput keyinput;
     private State mainMenuState;
     private MouseInput mouseInput;
-    private UserRepository userRepository;
+    private UserRepository<User> userRepository;
     private AuthenticationProvider authenticationProvider;
     private StudentScoresRepository studentScoresRepository;
 
@@ -121,9 +123,9 @@ public class GameEngine implements Runnable {
     private void init() {
         Assets.init();
         this.display = new Display(Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, this.title);      
-        this.userRepository = new UserRepository();
+        this.userRepository = new UserRepositoryImpl();
         this.userRepository.load();
-        this.studentScoresRepository = new StudentScoresRepository();
+        this.studentScoresRepository = new StudentScoresRepositoryImpl();
         
         this.authenticationProvider = new AuthenticationProvider(this.userRepository);
         this.keyinput = new KeyInput(this, this.display);

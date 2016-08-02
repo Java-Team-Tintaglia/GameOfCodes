@@ -6,8 +6,9 @@ import enums.Grades;
 import graphics.Assets;
 import interfaces.Button;
 import interfaces.State;
+import interfaces.StudentScoresRepository;
 import models.ButtonImpl;
-import repositories.StudentScoresRepository;
+import repositories.StudentScoresRepositoryImpl;
 
 import java.awt.*;
 import java.util.LinkedHashMap;
@@ -35,7 +36,7 @@ public class ScoresState implements State {
 	@Override
     public void draw(Graphics graphics) {
 
-        Map<String, List<Integer>> sorted = StudentScoresRepository.studentsScore.entrySet()
+        Map<String, List<Integer>> sorted = StudentScoresRepositoryImpl.studentsScore.entrySet()
 				.stream()
 				.sorted((a, b) ->
                         Double.compare((double)b.getValue().stream().mapToInt(Integer::intValue).sum() / b.getValue().size(),

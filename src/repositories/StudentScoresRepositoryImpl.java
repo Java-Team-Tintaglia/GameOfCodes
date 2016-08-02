@@ -2,6 +2,7 @@ package repositories;
 
 import constants.Common;
 import constants.Messages;
+import interfaces.StudentScoresRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
-public class StudentScoresRepository {
+public class StudentScoresRepositoryImpl implements StudentScoresRepository {
     public static Map<String, List<Integer>> studentsScore
             = new TreeMap<>();
 

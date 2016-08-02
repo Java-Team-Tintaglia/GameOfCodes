@@ -1,5 +1,6 @@
 package repositories;
 
+import interfaces.UserRepository;
 import models.UserImpl;
 import states.*;
 
@@ -13,7 +14,7 @@ import constants.Common;
 import constants.Messages;
 import interfaces.User;
 
-public class UserRepository {
+public class UserRepositoryImpl<T> implements UserRepository<User> {
 
     private Map<String, User> users = new HashMap<>();
 
@@ -34,8 +35,8 @@ public class UserRepository {
 
             StateManager.setCurrentState(errorMessageState);
         } else {
-            users.put(user.getUsername(), user);
-            save(user);
+            this.users.put(user.getUsername(), user);
+            this.save(user);
             SuccessMessageState successMessageState = new SuccessMessageState(
             		Messages.SUCCESSFUL_REGISTER,
                     new MainMenuState());

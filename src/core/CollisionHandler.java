@@ -12,13 +12,13 @@ public class CollisionHandler {
                                         Wizard wizard,
                                         List<ProgrammingLanguage> programmingLanguages) {
         if (wizard != null && wizard.isExist() 
-        		&& student.getColliderBox().intersects(wizard.getColliderBox())) {
+        		&& student.getCollideBox().intersects(wizard.getCollideBox())) {
             wizard.setExist(false);
             wizard.boost(student);
         }
 
         for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
-            if (student.getColliderBox().intersects(programmingLanguage.getColliderBox())) {
+            if (student.getCollideBox().intersects(programmingLanguage.getCollideBox())) {
                 if (programmingLanguage.isExist()) {
                 	programmingLanguage.setExist(false);
                     int score = student.calculateGrade(programmingLanguage);

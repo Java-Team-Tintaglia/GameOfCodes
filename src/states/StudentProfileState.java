@@ -6,9 +6,10 @@ import constants.Fonts;
 import constants.Messages;
 import graphics.Assets;
 import interfaces.State;
+import interfaces.StudentScoresRepository;
 import models.ButtonImpl;
 import interfaces.Button;
-import repositories.StudentScoresRepository;
+import repositories.StudentScoresRepositoryImpl;
 
 import java.awt.*;
 import java.util.ArrayList;

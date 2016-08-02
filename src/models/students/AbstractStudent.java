@@ -134,7 +134,7 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     }
 
     @Override
-    public Rectangle getColliderBox() {
+    public Rectangle getCollideBox() {
         return this.colliderBox;
     }
 
@@ -208,7 +208,7 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
         	this.col = SECOND_ROW;
         }
         
-        this.getColliderBox().setBounds(this.getX(), this.getY(),
+        this.getCollideBox().setBounds(this.getX(), this.getY(),
                 this.width, this.height);
         move();
     }

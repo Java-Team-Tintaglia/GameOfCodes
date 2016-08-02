@@ -59,7 +59,7 @@ public abstract class AbstractProgrammingLanguage extends AbstractGameObject imp
 	}
 	
 	@Override
- 	public Rectangle getColliderBox() {
+ 	public Rectangle getCollideBox() {
 	        return colliderBox;
 	    }
 	

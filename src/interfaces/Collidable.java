@@ -4,5 +4,5 @@ import java.awt.*;
 
 public interface Collidable {
 	
-    Rectangle getColliderBox();
+    Rectangle getCollideBox();
 }
