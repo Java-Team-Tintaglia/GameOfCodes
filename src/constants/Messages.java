@@ -15,4 +15,5 @@ public class Messages {
 	public static final String PROFILE_SUCCESSFUL_EDITING =  "You have successfully edited your profile!";
 	public static final String USER_DOES_NOT_EXIST = "User with %S does NOT exists!";
 	public static final String EMPTY_LIST =  "List is empty";
+	public static final String OBJECT_CREATION_FAILURE = "Cannot create object of type %s!";
 }

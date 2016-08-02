@@ -1,10 +1,10 @@
 package enums;
 
 public enum StudentType {
-    NERD_LADY("models.students.NerdLady"),
-    NERD_BOY("models.students.NerdBoy"),
-    HOT_CHICK("models.students.HotChick"),
-    BAD_BOY("models.students.BadBoy");
+    NERD_LADY("NerdLady"),
+    NERD_BOY("NerdBoy"),
+    HOT_CHICK("HotChick"),
+    BAD_BOY("BadBoy");
 
     private String className;
 

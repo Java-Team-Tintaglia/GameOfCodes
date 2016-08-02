@@ -1,9 +1,9 @@
 package enums;
 
 public enum WizardType {
-    VITALITY_WIZARD("models.wizards.VitalityWizard"),
-    KNOWLEDGE_WIZARD("models.wizards.KnowledgeWizard"),
-    INTELLIGENCE_WIZARD("models.wizards.IntelligenceWizard");
+    VITALITY_WIZARD("VitalityWizard"),
+    KNOWLEDGE_WIZARD("KnowledgeWizard"),
+    INTELLIGENCE_WIZARD("IntelligenceWizard");
 
     private String className;
 
