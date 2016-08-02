@@ -28,7 +28,7 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     private static final int SECOND_ROW = 1;
     private static final int THIRD_ROW = 2;
     private static final int FOURTH_ROW = 3;
-    private static final int INTELLIGENCE_DIVIDER = 3;
+    private static final int STATISTICS_COUNT = 3;
 
     private int row;
     private int col;
@@ -217,7 +217,7 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     public int calculateGrade(ProgrammingLanguage language) {
         int grade;
         Grades gradeAsEnum;
-        int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / INTELLIGENCE_DIVIDER;
+        int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / STATISTICS_COUNT;
 
         if (ratio >= FAILURE.getMinRate() && ratio <= FAILURE.getMaxRate()) {
             grade = FAILURE.getGrade();
