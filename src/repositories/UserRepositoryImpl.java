@@ -14,7 +14,7 @@ import constants.Common;
 import constants.Messages;
 import interfaces.User;
 
-public class UserRepositoryImpl<T> implements UserRepository<User> {
+public class UserRepositoryImpl implements UserRepository {
 
     private Map<String, User> users = new HashMap<>();
 

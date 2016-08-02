@@ -29,7 +29,7 @@ public class GameEngine implements Runnable {
     private KeyInput keyinput;
     private State mainMenuState;
     private MouseInput mouseInput;
-    private UserRepository<User> userRepository;
+    private UserRepository userRepository;
     private AuthenticationProvider authenticationProvider;
     private StudentScoresRepository studentScoresRepository;
 
