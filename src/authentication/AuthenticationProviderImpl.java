@@ -18,11 +18,15 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
     
     private UserRepository userRepository;
 
-    public AuthenticationProviderImpl(UserRepository userRepository) {
+    public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+    public void setUserRepository(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
-    
-    @Override
+
+	@Override
     public User getLoggedUser() {
 		return loggedUser;
 	}

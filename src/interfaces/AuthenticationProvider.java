@@ -28,4 +28,8 @@ public interface AuthenticationProvider {
 	* </returns>
 	* */
 	User getLoggedUser();
+	
+	void setUserRepository(UserRepository userRepository);
+	
+	UserRepository getUserRepository();
 }

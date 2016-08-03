@@ -33,7 +33,8 @@ public class AuthenticationProviderTest {
 	public void setUp() {
 		Assets.init();
 		MockitoAnnotations.initMocks(this);
-		this.authenticationProvider = new AuthenticationProviderImpl(this.mockedUserRepository);
+		this.authenticationProvider = new AuthenticationProviderImpl();
+		this.authenticationProvider.setUserRepository(this.mockedUserRepository);
 		this.testUser = new UserImpl(USERNAME, FIRST_NAME, LAST_NAME, Encoder.cryptingPassword(PASSWORD));
 		
 	}

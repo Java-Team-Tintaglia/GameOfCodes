@@ -1,6 +1,5 @@
 package states;
 
-import authentication.AuthenticationProviderImpl;
 import constants.Coordinates;
 import constants.Fonts;
 import graphics.Assets;
