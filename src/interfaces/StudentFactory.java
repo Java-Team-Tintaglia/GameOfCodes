@@ -2,25 +2,22 @@ package interfaces;
 
 
 import enums.StudentType;
-/*
-* <summary>
-*     This interface defines the behaviour for creating a new Student.
-* </summary>
-*/
+
+/**
+ * This interface defines the behaviour for creating a new Student.
+ */
 
 public interface StudentFactory {
-	/*
-	* <summary>
-	*     This method is used to create a new student.
-	* </summary>
-	* <parameters>
-	*    <param type='StudentType'>type</param> ???
-	* 	<param type='int'>x</param>
-	* 	<param type='int'>y</param>
-	* 	<param type='String'>username</param>
-	* 	<param type='String'>fullName</param>
-	* </parameters>
-	* */
+	/**
+	 * This method is used to create a new student.
+	 * @param type creating a student type.
+	 * @param x creating x coordinate.
+	 * @param y creating y coordinate.
+	 * @param username creating new username.
+	 * @param fullName creating new fullname.
+	 * @return new student.
+	 */
+
 	Student create(StudentType type, int x, int y, String username, String fullName);
 }
 

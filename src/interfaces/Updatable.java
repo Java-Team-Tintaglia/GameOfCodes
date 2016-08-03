@@ -1,16 +1,13 @@
 package interfaces;
-/*
-* <summary>
-* 	This interface defines the behaviour for the objects that will be update.
-* </summary>
-* */
+
+/**
+ * This interface defines the behaviour for the objects that will be update.
+ */
 
 public interface Updatable {
-    	/*
-	* <summary>
-	*     This method is used to update object.
-	* </summary>
-	* */
+    /**
+     * This method is used to update object.
+     */
 
     void update();
 }

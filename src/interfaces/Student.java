@@ -1,129 +1,105 @@
 package interfaces;
-/*
-* <summary>
-* 	This interface defines the behaviour for the student.
-* </summary>
-* */
+/**
+ * This interface defines the behaviour for the student.
+ */
 
 import java.util.List;
 import java.util.Map;
 
 public interface Student extends GameObject, Collidable, Moveable {
+    /**
+     * A method that is getting the intelligence of the object.
+     * @return the intelligence of the object.
+     */
 
     int getIntelligence();
-    /*
-	* <summary>
-	*     This method is used to set intelligence to the Student.
-	* </summary>
-	* <parameters>
-	* 	<param type='int'>intelligence</param>
-	* </parameters>
-	* */
+
+    /**
+     * This method is used to set intelligence to the object.
+     * @param intelligence set intelligence to the object.
+     */
 
     void setIntelligence(int intelligence);
-    /*
-	* <summary>
-	*     A method that indicates the knowledge of the object.
-	* </summary>
-	* <returns>
-	* 	Returns an Integer indicating the knowledge of the object.
-	* </returns>
-	* */
+
+    /**
+     * A method that indicates the knowledge of the object.
+     * @return an Integer indicating the knowledge of the object.
+     */
+
 
     int getKnowledge();
-    /*
-	* <summary>
-	*     This method is used to set knowledge to the object.
-	* </summary>
-	* <parameters>
-	* 	<param type='int'>knowledge</param>
-	* </parameters>
-	* */
+
+    /**
+     *  This method is used to set knowledge to the object.
+     * @param knowledge set knowledge to the object.
+     */
     void setKnowledge(int knowledge);
 
- /*
-	* <summary>
-	*     A method that indicates the vitality of the object.
-	* </summary>
-	* <returns>
-	* 	Returns an Integer indicating the vitality of the object.
-	* </returns>
-	* */
+    /**
+     * A method that indicates the vitality of the object.
+     * @return an Integer indicating the vitality of the object.
+     */
 
     int getVitality();
 
-      /*
-	* <summary>
-	*     This method is used to set vitality to the object.
-	* </summary>
-	* <parameters>
-	* 	<param type='int'>vitality</param>
-	* </parameters>
-	* */
+    /**
+     * This method is used to set vitality to the object.
+     * @param vitality set vitality to the object.
+     */
 
     void setVitality(int vitality);
- /*
-	* <summary>
-	*     A method that indicates the calculate grade of the object.
-	* </summary>
-	* <returns>
-	* 	Returns an Integer indicating the calculate grade of the object.
-	* </returns>
-	* */
+
+    /**
+     * A method that indicates the calculate grade of the object.
+     * @return an Integer indicating the calculate grade of the object.
+     */
+
 
     int calculateGrade();
 
-      /*
-	* <summary>
-	*     This method is used to add score to the object.
-	* </summary>
-	* <parameters>
-	* 	<param type='int'>grade</param>
-	* </parameters>
-	* */
+    /**
+     * This method is used to add score to the object.
+     * @param grade add grade.
+     * @param language add language.
+     */
 
-    void addScore(int grade, ProgrammingLanguage language); // ???
-      /*
-	* <summary>
-	*       This method is used to set stats values to the object.
-	* </summary>
-	* <parameters>
-	* 	<param type='int'>grade</param>
-	* </parameters>
-	* */
+    void addScore(int grade, ProgrammingLanguage language);
+
+    /**
+     * This method is used to set stats values to the object.
+     * @param grade sets grade.
+     * @param language sets language.
+     */
 
 
     void setStatsValues(int grade, ProgrammingLanguage language);
 
-    /*
-    * <summary>
-    *     A method that indicates when the object is exhausted.
-    * </summary>
-    * <returns>
-    * 	Indicates when the object is exhausted.
-    * </returns>
-    * */
+    /**
+     * A method that indicates when the object is exhausted.
+     */
+
     void getExhausted();
+
+    /**
+     * A method that gets grades of the student.
+     * @return the grades of the student.
+     */
 
     Map<String, List<Integer>> getStudentGrades();
 
-    /*
-  * <summary>
-  *     A method that gets the username of the object.
-  * </summary>
-  * <returns>
-  * 	Returns String that indicates the username of the object.
-  * </returns>
-  * */
+    /**
+     *  A method that gets the username of the object.
+     * @return String that indicates the username of the object.
+     */
+
+
     String getUsername();
-    /*
-  * <summary>
-  *     A method that gets the full name of the object.
-  * </summary>
-  * <returns>
-  * 	Returns String that indicates the full name of the object.
-  * </returns>
-  * */
+
+    /**
+     *  A method that gets the full name of the object.
+     * @return String that indicates the full name of the object.
+     */
+
     String getFullName();
 
 }

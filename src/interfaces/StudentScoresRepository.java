@@ -1,39 +1,31 @@
 package interfaces;
-/*
-* <summary>
-* 	This interface defines the behaviour for the score of each student.
-* </summary>
-* */
+/**
+ * This interface defines the behaviour for the score of each student.
+ */
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public interface StudentScoresRepository {
-    /*
-	* <summary>
-	*     This method is used to save the scores to files.
-	* </summary>
-	* <parameters>
-	* 	<param type='String'>studentName</param>
-	* 	<param type='Map<String, List<Integer>'>studentsGrades</param>
-	* </parameters>
-	* */
+    /**
+     * This method is used to save the scores to files.
+     * @param studentName the name of the current student.
+     * @param studentsGrades the grades of the current student.
+     */
     void saveToFile(String studentName, Map<String, List<Integer>> studentsGrades);
 
 
-
-
-
-    /*
-   * <summary>
-   *     This method is used to save the scores to files.
-   * </summary>
-   * <parameters>
-   * 	<param type='String'>username</param>
-   * </parameters>
-   * */
+    /**
+     * This method is used to save the scores to files.
+     */
     void readFromFile();
-    Map<String, ArrayList<Integer>> getAllGradesBySubject(String username); // ???
+
+    /**
+     * A method that is used to get all grades of one student.
+     * @param username the name of the user.
+     * @return all grades of one student.
+     */
+    Map<String, ArrayList<Integer>> getAllGradesBySubject(String username);
 }
 

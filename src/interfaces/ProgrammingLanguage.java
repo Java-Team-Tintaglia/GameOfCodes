@@ -3,34 +3,28 @@ package interfaces;
 
 import enums.ProgrammingLanguageType;
 
+/**
+ * This interface defines the behaviour for the programing language.
+ */
+
 public interface ProgrammingLanguage extends GameObject, Collidable, Existable {
 
+	/**
+	 * A method that indicates the programing language type.
+	 * @return  the programing language type.
+	 */
 
-	/*
-	* <summary>
-	*     A method that indicates the programing language type
-	* </summary>
-	* <returns>
-	* 	Returns the programing language type.
-	* </returns>
-	* */
 	ProgrammingLanguageType getProgrammingLanguageType();
 
-	/*
-* <summary>
-* </summary>
-* <returns>
-* 	Returns the vitality damage points.
-* </returns>
-* */
+	/**
+	 * A method that is used to get the vitality damage points.
+	 * @return  the vitality damage points.
+	 */
 	int getVitalityDamagePoints();
 
-	/*
-	* <summary>
-	* </summary>
-	* <returns>
-	* 	Returns the knowledge points.
-	* </returns>
-	* */
+	/**
+	 * A method that is used to get the knowledge points
+	 * @return the knowledge points.
+	 */
 	int getKnowledgePoints();
 }

@@ -1,22 +1,17 @@
 package interfaces;
 
 import java.awt.*;
-/*
-* <summary>
-*     This interface defines the behaviour of the objects that will be drawen on the graphical interface.
-* </summary>
-* */
+
+/**
+ * This interface defines the behaviour of the objects that will be drawen on the graphical interface.
+ */
 
 
 public interface Drawable {
-    	/*
-	* <summary>
-	*     This method is used to draw on the graphical interface.
-	* </summary>
-	* <parameters>
-	* 	<param type='Graphics'>graphics</param>
-	* </parameters>
-	* */
+    /**
+     * This method is used to draw on the graphical interface.
+     * @param graphics - the graphics that will be drawn.
+     */
 
     void draw(Graphics graphics);
 
