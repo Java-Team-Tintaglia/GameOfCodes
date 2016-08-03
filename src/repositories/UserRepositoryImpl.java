@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 import constants.Common;
 import constants.Messages;
 import interfaces.AuthenticationProvider;
+import interfaces.State;
 import interfaces.User;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -26,7 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 	public void addUser(User user) {
         if (users.containsKey(user.getUsername())) {
-            ErrorMessageState errorMessageState = new ErrorMessageState(
+        	State errorMessageState = new ErrorMessageState(
                     String.format(Messages.ALREADY_EXISTING_USER, user.getUsername()),
                     new RegistrationFormState());
 
@@ -35,7 +36,7 @@ public class UserRepositoryImpl implements UserRepository {
                 || user.getLastName().length() == 0
                 || user.getPassword().length() == 0
                 || user.getUsername().length() == 0) {
-            ErrorMessageState errorMessageState = new ErrorMessageState(
+        	State errorMessageState = new ErrorMessageState(
             		Messages.FILL_ALL_EMPTY_FIELDS,
                     new RegistrationFormState());
 
@@ -43,7 +44,7 @@ public class UserRepositoryImpl implements UserRepository {
         } else {
             this.users.put(user.getUsername(), user);
             this.save(user);
-            SuccessMessageState successMessageState = new SuccessMessageState(
+            State successMessageState = new SuccessMessageState(
             		Messages.SUCCESSFUL_REGISTER,
                     new MainMenuState(this.authenticationProvider));
 
@@ -90,7 +91,7 @@ public class UserRepositoryImpl implements UserRepository {
 			}
         }
 
-        SuccessMessageState successMessageState = new SuccessMessageState(
+        State successMessageState = new SuccessMessageState(
         		Messages.PROFILE_SUCCESSFUL_EDITING,
                 new MainMenuState(this.authenticationProvider));
 
@@ -101,7 +102,7 @@ public class UserRepositoryImpl implements UserRepository {
         User user = null;
 
         if (!users.containsKey(username)) {
-            ErrorMessageState errorMessageState = new ErrorMessageState(
+        	State errorMessageState = new ErrorMessageState(
                     String.format(Messages.USER_DOES_NOT_EXIST, username),
                     new LoginFormState());
 
