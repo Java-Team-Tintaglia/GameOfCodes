@@ -47,7 +47,8 @@ public class MapInitializer {
     private static <T> T createObject(int randomX, int randomY, String className) {
         T objectToBeCreated = null;
         try {
-            Class<T> classInfo = (Class<T>) Class.forName(className);
+            @SuppressWarnings("unchecked")
+			Class<T> classInfo = (Class<T>) Class.forName(className);
             Constructor<T> ctor = classInfo.getConstructor(int.class, int.class);
             objectToBeCreated = ctor.newInstance(randomX, randomY);
         } catch (ReflectiveOperationException roe) {

@@ -9,17 +9,25 @@ import org.junit.Test;
 
 public class StudentFactoryTest {
 
-    private static final int TEST_X_COORD = 100;
-    private static final int TEST_Y_COORD = 100;
-    private static final String TEST_NAME = "TEST";
-    private static final String TEST_FULL_NAME = "TEST";
+    private static final int X_COORD = 100;
+    private static final int Y_COORD = 100;
+    private static final String USERNAME = "TEST";
+    private static final String FULL_NAME = "TEST";
 
     @Test
     public void createStudentFromStudentFactoryShouldNotBeNull() {
-
         StudentFactory factory = new StudentFactoryImpl();
-        Student student = factory.create(StudentType.BAD_BOY, TEST_X_COORD, TEST_Y_COORD, TEST_NAME, TEST_FULL_NAME);
+        Student student = factory.create(StudentType.BAD_BOY, X_COORD, Y_COORD, USERNAME, FULL_NAME);
         Assert.assertNotNull(student);
 
     }
+    
+    @Test
+    public void createDefaultStudentWhenTypeIsNull() {
+        StudentFactory factory = new StudentFactoryImpl();
+        Student student = factory.create(null, X_COORD, Y_COORD, USERNAME, FULL_NAME);
+        Assert.assertNotNull(student);
+
+    }
+    
 }

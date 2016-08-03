@@ -80,8 +80,7 @@ public class StudentTest {
 
     @Test
     public void testAddScoreShouldIncreaseGradesSize() {
-        int grade = 4;
-        this.student.addScore(grade, this.language);
+        this.student.addScore(Grades.GOOD.getGrade(), this.language);
         List<Integer> languageGrades =
                 this.student.getStudentGrades().get(language.getProgrammingLanguageType().getName());
         int expectedSize = 1;
@@ -91,8 +90,7 @@ public class StudentTest {
 
     @Test
     public void testSetStatsShouldChangeValues() {
-        int grade = 6;
-        this.student.setStatsValues(grade, this.language);
+        this.student.setStatsValues(Grades.EXCELLENT.getGrade(), this.language);
         int knowledgePoints = 75;
         int vitalityPoints = 94;
         int expectedPoints = knowledgePoints + vitalityPoints;

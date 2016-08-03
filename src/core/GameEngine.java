@@ -7,7 +7,6 @@ import graphics.Display;
 import interfaces.AuthenticationProvider;
 import interfaces.State;
 import interfaces.StudentScoresRepository;
-import interfaces.User;
 import interfaces.UserRepository;
 import repositories.StudentScoresRepositoryImpl;
 import repositories.UserRepositoryImpl;
