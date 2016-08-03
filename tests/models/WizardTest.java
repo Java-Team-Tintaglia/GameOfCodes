@@ -36,11 +36,23 @@ public class WizardTest {
 
     }
 
+
     @Test
-    public void constructor_Check_Correctness() {
+    public void constructorIntelligenceWizard_Check_Correctness() {
         this.intelligenceWizard = new IntelligenceWizard(TEST_X_COORD, TEST_Y_COORD);
         Assert.assertNotNull(this.intelligenceWizard);
     }
+    @Test
+    public void constructorKnowledgeWizard_Check_Correctness() {
+        this.knowledgeWizard = new KnowledgeWizard(TEST_X_COORD, TEST_Y_COORD);
+        Assert.assertNotNull(this.knowledgeWizard);
+    }
+    @Test
+    public void constructorVitalityWizard_Check_Correctness() {
+        this.vitalityWizard = new VitalityWizard(TEST_X_COORD, TEST_Y_COORD);
+        Assert.assertNotNull(this.vitalityWizard);
+    }
+
 
     //
     @Test
