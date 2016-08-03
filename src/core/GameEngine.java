@@ -4,6 +4,7 @@ import eventhandler.KeyInput;
 import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
+import interfaces.AuthenticationProvider;
 import interfaces.State;
 import interfaces.StudentScoresRepository;
 import interfaces.User;
@@ -16,7 +17,7 @@ import states.StateManager;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
-import authentication.AuthenticationProvider;
+import authentication.AuthenticationProviderImpl;
 import constants.Coordinates;
 
 public class GameEngine implements Runnable {
@@ -123,16 +124,16 @@ public class GameEngine implements Runnable {
     private void init() {
         Assets.init();
         this.display = new Display(Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, this.title);      
-        this.userRepository = new UserRepositoryImpl();
+        this.userRepository = new UserRepositoryImpl(this.authenticationProvider);
         this.userRepository.load();
         this.studentScoresRepository = new StudentScoresRepositoryImpl();
         
-        this.authenticationProvider = new AuthenticationProvider(this.userRepository);
+        this.authenticationProvider = new AuthenticationProviderImpl(this.userRepository);
         this.keyinput = new KeyInput(this, this.display);
         this.mouseInput = new MouseInput(this.display, this.userRepository, this.authenticationProvider, this.studentScoresRepository);
         
         
-        mainMenuState = new MainMenuState();
-        StateManager.setCurrentState(mainMenuState);
+        mainMenuState = new MainMenuState(this.authenticationProvider);
+        StateManager.setCurrentState(this.mainMenuState);
     }
 }

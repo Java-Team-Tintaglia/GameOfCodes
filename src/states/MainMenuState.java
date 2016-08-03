@@ -1,17 +1,18 @@
 package states;
 
-import authentication.AuthenticationProvider;
+import authentication.AuthenticationProviderImpl;
 import constants.Coordinates;
 import constants.Fonts;
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.AuthenticationProvider;
 import interfaces.Button;
 import interfaces.State;
 
 import java.awt.*;
 
 public class MainMenuState implements State {
-
+	
 	public static Button buttonLogIn = new ButtonImpl(
 												Coordinates.MAIN_MENU_STATE_BUTTON_X, 
 												Coordinates.MAIN_MENU_STATE_LOGIN_BUTTON_Y, 
@@ -47,6 +48,12 @@ public class MainMenuState implements State {
     											Coordinates.MAIN_MENU_STATE_LOGOUT_BUTTON_LOGIN_Y, 
     											Assets.buttonLogOut);
 
+    private AuthenticationProvider authenticationProvider;
+	
+	public MainMenuState(AuthenticationProvider authenticationProvider) {
+		this.authenticationProvider = authenticationProvider;
+	}
+    
 	@Override
     public void draw(Graphics graphics) {
 
@@ -54,7 +61,7 @@ public class MainMenuState implements State {
     	Font title = new Font(Fonts.COMIS_SANS_FONT, Font.PLAIN, Fonts.TEXT_FONT_SIZE);
         graphics.setFont(title);
 
-    	if (AuthenticationProvider.currentUser != null) {
+    	if (this.authenticationProvider.getLoggedUser() != null) {
     		graphics.setColor(Color.green);
     		graphics.fillRect(
     				Coordinates.MAIN_MENU_STATE_USER_RECTANGLE_X, 
@@ -64,7 +71,7 @@ public class MainMenuState implements State {
     		
     		graphics.setColor(Color.white);
     		graphics.drawString(
-    				AuthenticationProvider.currentUser.getUsername(), 
+    				this.authenticationProvider.getLoggedUser().getUsername(), 
     				Coordinates.MAIN_MENU_STATE_USERNAME_X, 
     				Coordinates.MAIN_MENU_STATE_USERNAME_Y);
     		

@@ -10,8 +10,8 @@ public class NerdBoy extends AbstractStudent {
     private static final int NERD_BOY_KNOWLEDGE = 60;
     private static final int NERD_BOY_VITALITY = 100;
     
-    public NerdBoy(int x, int y, String username) {
+    public NerdBoy(int x, int y, String username, String fullName) {
         super(x, y, Assets.nerdBoyPlayer, NERD_BOY_WIDTH, NERD_BOY_HEIGHT, 
-        		NERD_BOY_INTELLIGENCE, NERD_BOY_KNOWLEDGE, NERD_BOY_VITALITY, username);
+        		NERD_BOY_INTELLIGENCE, NERD_BOY_KNOWLEDGE, NERD_BOY_VITALITY, username, fullName);
     }
 }

@@ -1,6 +1,5 @@
 package states;
 
-import authentication.AuthenticationProvider;
 import constants.Coordinates;
 import constants.Fonts;
 import core.CollisionHandler;
@@ -36,13 +35,14 @@ public class GameState implements State {
     
     private int step = STARTING_POSITION;
  
-    public GameState(StudentType studentType) {
+    public GameState(StudentType studentType, String username, String fullName) {
 		this.studentFactory = new StudentFactory();
 		
 		student = studentFactory.create(studentType, 
 				Coordinates.DEFAUL_PLAYER_X_COORD, 
 				Coordinates.DEFAUL_PLAYER_Y_COORD, 
-				AuthenticationProvider.currentUser.getUsername());
+				username,
+				fullName);
 		
 		this.programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
 		this.wizard = MapInitializor.generateWizard();

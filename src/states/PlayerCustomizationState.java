@@ -1,11 +1,12 @@
 package states;
 
-import authentication.AuthenticationProvider;
+import authentication.AuthenticationProviderImpl;
 import constants.Coordinates;
 import constants.Fonts;
 import enums.StudentType;
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.AuthenticationProvider;
 import interfaces.Button;
 import interfaces.State;
 
@@ -45,6 +46,13 @@ public class PlayerCustomizationState implements State {
     
     public static StudentType studentType;
     public static boolean isSelected = false;
+    
+    private AuthenticationProvider authenticationProvider;
+	
+	public PlayerCustomizationState(AuthenticationProvider authenticationProvider) {
+		this.authenticationProvider = authenticationProvider;
+	}
+
 
 	@Override
     public void draw(Graphics graphics) {
@@ -69,7 +77,7 @@ public class PlayerCustomizationState implements State {
 
         graphics.setColor(Color.black);
         
-        if (AuthenticationProvider.currentUser != null) {
+        if (this.authenticationProvider.getLoggedUser() != null) {
         	Font title = new Font(Fonts.COMIS_SANS_FONT, Font.PLAIN, Fonts.TEXT_FONT_SIZE);
             graphics.setFont(title);
             graphics.setColor(Color.green);
@@ -83,7 +91,7 @@ public class PlayerCustomizationState implements State {
     		graphics.setColor(Color.white);
     		
     		graphics.drawString(
-                        AuthenticationProvider.currentUser.getUsername(),
+    					this.authenticationProvider.getLoggedUser().getUsername(),
                         Coordinates.PLAYER_STATE_USERNAME_X,
                         Coordinates.PLAYER_STATE_USERNAME_Y);
 		}

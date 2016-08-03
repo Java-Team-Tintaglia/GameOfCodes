@@ -10,8 +10,8 @@ public class HotChick extends AbstractStudent {
     private static final int HOT_CHICK_KNOWLEDGE = 70;
     private static final int HOT_CHICK_VITALITY = 100;
     
-    public HotChick(int x, int y, String username) {
+    public HotChick(int x, int y, String username, String fullName) {
         super(x, y, Assets.hotChickPlayer, HOT_CHICK_WIDTH, HOT_CHICK_HEIGHT, 
-        		HOT_CHICK_INTELLIGENCE, HOT_CHICK_KNOWLEDGE, HOT_CHICK_VITALITY, username);
+        		HOT_CHICK_INTELLIGENCE, HOT_CHICK_KNOWLEDGE, HOT_CHICK_VITALITY, username, fullName);
     }
 }

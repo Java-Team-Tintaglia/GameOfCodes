@@ -10,7 +10,7 @@ public class StudentTest {
 
 	@Test
 	public void ConstructorStudentDifferentThanNull() {
-		Student student = new BadBoy(100, 100, "TEST");
+		Student student = new BadBoy(100, 100, "TEST", "TEST_TEST");
 		Assert.assertNotNull(student);
 	}
 

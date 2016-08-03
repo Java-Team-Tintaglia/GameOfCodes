@@ -1,11 +1,12 @@
 package states;
 
-import authentication.AuthenticationProvider;
+import authentication.AuthenticationProviderImpl;
 import authentication.Encoder;
 import constants.Coordinates;
 import constants.Fonts;
 import graphics.Assets;
 import models.ButtonImpl;
+import interfaces.AuthenticationProvider;
 import interfaces.Button;
 import interfaces.State;
 import utils.Utils;
@@ -14,17 +15,6 @@ import java.awt.*;
 
 public class EditProfileState implements State {
 
-    
-    
-    public static StringBuilder firstName = new StringBuilder(
-    										AuthenticationProvider.currentUser.getFirstName());
-    
-    public static StringBuilder lastName = new StringBuilder(
-    										AuthenticationProvider.currentUser.getLastName());
-    
-    public static StringBuilder password = new StringBuilder(
-    										Encoder.decryptPassword(AuthenticationProvider.currentUser.getPassword()));
-   
     public static Button backToMenuButton = new ButtonImpl(
 										    		Coordinates.EDIT_PROFILE_STATE_BACK_BUTTON_X,
 										    		Coordinates.EDIT_PROFILE_STATE_BACK_BUTTON_Y, 
@@ -35,11 +25,26 @@ public class EditProfileState implements State {
     											Coordinates.EDIT_PROFILE_STATE_EDIT_BUTTON_Y, 
     											Assets.buttonEdit);
 
+    public static StringBuilder firstName;
+    public static StringBuilder lastName;
+    public static StringBuilder password;
     public static Rectangle firstNameRectangle;
     public static Rectangle lastNameRectangle;
     public static Rectangle passwordRectangle;
-
     public static String fieldType = "first";
+    
+    private AuthenticationProvider authenticationProvider;
+    
+    public EditProfileState(AuthenticationProvider authenticationProvider) {
+		this.authenticationProvider = authenticationProvider;
+		firstName = new StringBuilder(
+				this.authenticationProvider.getLoggedUser().getFirstName());
+		lastName = new StringBuilder(
+				this.authenticationProvider.getLoggedUser().getLastName());
+		password = new StringBuilder(
+				Encoder.decryptPassword(this.authenticationProvider.getLoggedUser().getPassword()));
+	}
+
 
     @Override
     public void draw(Graphics graphics) {
@@ -55,7 +60,7 @@ public class EditProfileState implements State {
         graphics.setFont(title);
         graphics.setColor(Color.white);
         
-        String username = AuthenticationProvider.currentUser.getUsername();
+        String username = this.authenticationProvider.getLoggedUser().getUsername();
         graphics.drawString(
         		"User: " + username, 
         		Coordinates.EDIT_PROFILE_STATE_USER_INFO_X, 

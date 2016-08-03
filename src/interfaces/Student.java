@@ -26,5 +26,7 @@ public interface Student extends GameObject, Collidable, Moveable {
     Map<String, List<Integer>> getStudentGrades();
     
     String getUsername();
+    
+    String getFullName();
 
 }

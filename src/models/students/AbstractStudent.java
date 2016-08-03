@@ -43,6 +43,7 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     private Rectangle colliderBox;
     private Map<String, List<Integer>> studentGrades;
     private String username;
+    private String fullName;
 
     private boolean isMovingLeft;
     private boolean isMovingRight;
@@ -52,13 +53,14 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     public AbstractStudent(int x, int y, SpriteSheet spriteSheet,
                        int width, int height,
                        int intelligence, int knowledge, int vitality,
-                       String username) {
+                       String username, String fullName) {
         super(x, y);
         
         this.spriteSheet = spriteSheet;
         this.width = width;
         this.height = height;  
         this.username = username;
+        this.fullName = fullName;
         this.intelligence = intelligence;
         this.knowledge = knowledge;
         this.vitality = vitality;
@@ -68,6 +70,11 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
         this.studentGrades = new HashMap<>();
     }
 
+    @Override
+    public String getFullName() {
+    	return this.fullName;
+    }
+    
     @Override
 	public String getUsername() {
 		return this.username;

@@ -1,6 +1,7 @@
 package authentication;
 
 import constants.Messages;
+import interfaces.AuthenticationProvider;
 import interfaces.User;
 import interfaces.UserRepository;
 
@@ -10,17 +11,28 @@ import states.MainMenuState;
 import states.StateManager;
 import states.SuccessMessageState;
 
-public class AuthenticationProvider {
+public class AuthenticationProviderImpl implements AuthenticationProvider {
 
-    public static User currentUser;
+    private User loggedUser;
     
     private UserRepository userRepository;
 
-    public AuthenticationProvider(UserRepository userRepository) {
+    public AuthenticationProviderImpl(UserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
     
-    public void authenticate(String username, String password) {
+    @Override
+    public User getLoggedUser() {
+		return loggedUser;
+	}
+
+
+	private void setLoggedUser(User loggedUser) {
+		this.loggedUser = loggedUser;
+	}
+
+	@Override
+	public void authenticate(String username, String password) {
     	User user = this.userRepository.findUserByUsername(username);
 
     	if (user == null) {
@@ -43,28 +55,29 @@ public class AuthenticationProvider {
     		return;
 		} 
        
-    	currentUser = user;
+    	this.setLoggedUser(user);
     	
     	SuccessMessageState successMessageState = new SuccessMessageState(
     			Messages.SUCCESSFUL_LOG_IN,
-    			new MainMenuState());
+    			new MainMenuState(this));
 
     	StateManager.setCurrentState(successMessageState);
     }
     
+	@Override
     public void logout() {
-    	if (currentUser != null) {
-    		currentUser = null;
+    	if (this.loggedUser != null) {
+    		this.loggedUser = null;
 			SuccessMessageState successMessageState = new SuccessMessageState(
 					Messages.SUCCESSFUL_LOG_OUT,
-					new MainMenuState());			
+					new MainMenuState(this));			
 
 			StateManager.setCurrentState(successMessageState);
 			
 		} else {
 			ErrorMessageState errorMessageState = new ErrorMessageState(
 					Messages.NO_LOGGED_IN_USER,
-					new MainMenuState());
+					new MainMenuState(this));
 			
 			StateManager.setCurrentState(errorMessageState);
 		}

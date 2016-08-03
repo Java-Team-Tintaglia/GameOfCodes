@@ -1,6 +1,5 @@
 package states;
 
-import authentication.AuthenticationProvider;
 import constants.Coordinates;
 import constants.Fonts;
 import enums.Grades;
@@ -38,11 +37,8 @@ public class StudentScoreState implements State {
         graphics.setFont(fullNameFont);
         graphics.setColor(Color.green);
 
-        String fullName = AuthenticationProvider.currentUser.getFirstName() +  " "
-        		+ AuthenticationProvider.currentUser.getLastName();
-
     	graphics.drawString(
-                        fullName,
+                        this.student.getFullName(),
                         Coordinates.STUDENT_SCORE_STATE_FULL_NAME_X,
                         Coordinates.STUDENT_SCORE_STATE_FULL_NAME_Y);
 

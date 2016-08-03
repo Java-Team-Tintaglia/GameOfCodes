@@ -1,6 +1,6 @@
 package states;
 
-import authentication.AuthenticationProvider;
+import authentication.AuthenticationProviderImpl;
 import constants.Coordinates;
 import constants.Fonts;
 import constants.Messages;
@@ -8,6 +8,7 @@ import graphics.Assets;
 import interfaces.State;
 import interfaces.StudentScoresRepository;
 import models.ButtonImpl;
+import interfaces.AuthenticationProvider;
 import interfaces.Button;
 import repositories.StudentScoresRepositoryImpl;
 
@@ -17,10 +18,7 @@ import java.util.Map.Entry;
 import java.util.TreeMap;
 
 public class StudentProfileState implements State {
-	
-    public static StringBuilder firstName = new StringBuilder(AuthenticationProvider.currentUser.getFirstName());
-    public static StringBuilder lastName = new StringBuilder(AuthenticationProvider.currentUser.getLastName());
-
+    
     public static Button backToMenuButton = new ButtonImpl(
     												Coordinates.STUDENT_PROFILE_STATE_BACK_BUTTON_X,
     												Coordinates.STUDENT_PROFILE_STATE_BACK_BUTTON_Y, 
@@ -31,10 +29,17 @@ public class StudentProfileState implements State {
     											Coordinates.STUDENT_PROFILE_STATE_EDIT_BUTTON_Y, 
     											Assets.buttonEdit);
 
-    private StudentScoresRepository studentScoresRepository;
+    public static StringBuilder firstName;
+    public static StringBuilder lastName;
     
-    public StudentProfileState(StudentScoresRepository studentScoresRepository) {
+    private StudentScoresRepository studentScoresRepository;
+    private AuthenticationProvider authenticationProvider;
+
+    public StudentProfileState(StudentScoresRepository studentScoresRepository, AuthenticationProvider authenticationProvider) {
     	this.studentScoresRepository = studentScoresRepository;
+    	this.authenticationProvider = authenticationProvider;
+    	firstName = new StringBuilder(this.authenticationProvider.getLoggedUser().getFirstName());
+    	lastName = new StringBuilder(this.authenticationProvider.getLoggedUser().getLastName());
     }
     
     @Override
@@ -50,7 +55,7 @@ public class StudentProfileState implements State {
         Font title = new Font(Fonts.ARIAL_FONT, Font.BOLD, Fonts.TITLE_FONT_SIZE);
         graphics.setFont(title);
         graphics.setColor(Color.white);
-        String username = AuthenticationProvider.currentUser.getUsername();
+        String username = this.authenticationProvider.getLoggedUser().getUsername();
         
         graphics.drawString(
         		"User: " + username, 
@@ -83,7 +88,7 @@ public class StudentProfileState implements State {
         		+ Coordinates.STUDENT_PROFILE_STATE_OFFSET_NAME);
 
         TreeMap<String, ArrayList<Integer>> gradesBySubject = new TreeMap<>(
-        		studentScoresRepository.getAllGradesBySubject(AuthenticationProvider.currentUser.getFirstName()));
+        		studentScoresRepository.getAllGradesBySubject(this.authenticationProvider.getLoggedUser().getUsername()));
         
         graphics.drawString(
         		"GRADES:", 

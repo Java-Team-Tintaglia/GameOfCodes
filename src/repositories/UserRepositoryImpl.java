@@ -12,13 +12,19 @@ import java.util.stream.Collectors;
 
 import constants.Common;
 import constants.Messages;
+import interfaces.AuthenticationProvider;
 import interfaces.User;
 
 public class UserRepositoryImpl implements UserRepository {
 
     private Map<String, User> users = new HashMap<>();
+    private AuthenticationProvider authenticationProvider;
+    
+    public UserRepositoryImpl(AuthenticationProvider authenticationProvider) {
+		this.authenticationProvider = authenticationProvider;
+	}
 
-    public void addUser(User user) {
+	public void addUser(User user) {
         if (users.containsKey(user.getUsername())) {
             ErrorMessageState errorMessageState = new ErrorMessageState(
                     String.format(Messages.ALREADY_EXISTING_USER, user.getUsername()),
@@ -39,14 +45,12 @@ public class UserRepositoryImpl implements UserRepository {
             this.save(user);
             SuccessMessageState successMessageState = new SuccessMessageState(
             		Messages.SUCCESSFUL_REGISTER,
-                    new MainMenuState());
+                    new MainMenuState(this.authenticationProvider));
 
             StateManager.setCurrentState(successMessageState);
         }
     }
 
-
-   
     public void updateUser(User user) {
         String editedData = String.format("%s %s %s %s",
                 user.getUsername(),
@@ -88,7 +92,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         SuccessMessageState successMessageState = new SuccessMessageState(
         		Messages.PROFILE_SUCCESSFUL_EDITING,
-                new MainMenuState());
+                new MainMenuState(this.authenticationProvider));
 
         StateManager.setCurrentState(successMessageState);
     }

@@ -15,10 +15,10 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
     public static Map<String, List<Integer>> studentsScore
             = new TreeMap<>();
 
-    public void saveToFile(String studentName, Map<String, List<Integer>> studentsGrades) {
+    public void saveToFile(String studentUsername, Map<String, List<Integer>> studentsGrades) {
         try (PrintWriter writer = new PrintWriter(new FileWriter(Common.SCORES_FILE_PATH, true), true)) {
             StringBuilder save = new StringBuilder();
-            save.append(studentName + " ");
+            save.append(studentUsername + " ");
             for (Entry<String, List<Integer>> studentGrades : studentsGrades.entrySet()) {
                 String subject = studentGrades.getKey();
 
@@ -46,11 +46,11 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
 
             while (line != null) {
                 String[] token = line.split(" ");
-                String studentName = token[0];
+                String studentUsername = token[0];
                 String[] studentGrades = token[1].split(";");
 
-                if (!studentsScore.containsKey(studentName)) {
-                    studentsScore.put(studentName, new ArrayList<>());
+                if (!studentsScore.containsKey(studentUsername)) {
+                    studentsScore.put(studentUsername, new ArrayList<>());
                 }
 
                 for (int i = 0; i < studentGrades.length; i++) {
@@ -61,7 +61,7 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
 
                     for (int j = 0; j < grades.length; j++) {
                         Integer grade = Integer.parseInt(grades[j]);
-                        studentsScore.get(studentName).add(grade);
+                        studentsScore.get(studentUsername).add(grade);
                     }
                 }
 
@@ -80,9 +80,9 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
             String line = bufferedReader.readLine();
             while (line != null) {
                 String[] token = line.split(" ");
-                String studentName = token[0];
+                String studentUsername = token[0];
                 String[] studentGrades = token[1].split(";");
-                if (studentName.equals(username)) {
+                if (studentUsername.equals(username)) {
                     for (int i = 0; i < studentGrades.length; i++) {
                         String[] subjectGrades = studentGrades[i].split(":");
                         String subject = subjectGrades[0];
