@@ -11,13 +11,13 @@ public class MapInitializerTest {
 
 	@Test
 	public void testGenerateRandomProgrammingLanguageNotNull(){
-		ProgrammingLanguage programmingLanguage = MapInitializor.generateProgrammingLanguage();
+		ProgrammingLanguage programmingLanguage = MapInitializer.generateProgrammingLanguage();
 		Assert.assertNotNull(programmingLanguage);
 	}
 	
 	@Test
 	public void testGenerateRandomWizardNotNull(){
-		Wizard wizard = MapInitializor.generateWizard();
+		Wizard wizard = MapInitializer.generateWizard();
 		Assert.assertNotNull(wizard);
 	}
 	

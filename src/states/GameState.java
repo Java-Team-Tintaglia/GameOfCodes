@@ -3,7 +3,7 @@ package states;
 import constants.Coordinates;
 import constants.Fonts;
 import core.CollisionHandler;
-import core.MapInitializor;
+import core.MapInitializer;
 import enums.StudentType;
 import factories.StudentFactoryImpl;
 import graphics.Assets;
@@ -45,8 +45,8 @@ public class GameState implements State {
 				username,
 				fullName);
 		
-		this.programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
-		this.wizard = MapInitializor.generateWizard();
+		this.programmingLanguages.add(MapInitializer.generateProgrammingLanguage());
+		this.wizard = MapInitializer.generateWizard();
 		this.timerNewWizard = System.nanoTime();
 		this.timerNewProgrammingLanguage = System.nanoTime();
 		this.timerSeconds = System.nanoTime();
@@ -133,12 +133,12 @@ public class GameState implements State {
     	
         if (elapsedNewWizard > TIME_DELAY_NEW_WIZARD) {
         	this.wizard.setExist(false);
-			this.wizard = MapInitializor.generateWizard();
+			this.wizard = MapInitializer.generateWizard();
 			this.timerNewWizard = System.nanoTime();
 		}
     	
         if (elapsedNewProgrammingLanguage > timeDelayNewProgrammingLanguage) {
-        	this.programmingLanguages.add(MapInitializor.generateProgrammingLanguage());
+        	this.programmingLanguages.add(MapInitializer.generateProgrammingLanguage());
 			this.timerNewProgrammingLanguage = System.nanoTime();
 		}
     	

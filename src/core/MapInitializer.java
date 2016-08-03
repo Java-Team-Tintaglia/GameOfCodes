@@ -10,7 +10,7 @@ import utils.RandomGenerator;
 
 import java.lang.reflect.Constructor;
 
-public class MapInitializor {
+public class MapInitializer {
 
 	private static final int MAX_X_COORD = 950;
 	private static final int MIN_Y_COORD = 235;
