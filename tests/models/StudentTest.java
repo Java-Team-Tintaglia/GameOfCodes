@@ -34,7 +34,6 @@ public class StudentTest {
         this.language = new Java(X_COORD, Y_COORD);
     }
 
-    //region Constructor Tests
     @Test
     public void testBadBoyConstructorDifferentThanNull() {
         Student student = new BadBoy(X_COORD, Y_COORD, USERNAME, FULL_NAME);
@@ -58,9 +57,7 @@ public class StudentTest {
         Student student = new NerdLady(X_COORD, Y_COORD, USERNAME, FULL_NAME);
         Assert.assertNotNull(student);
     }
-    //endregion
 
-    //region CalculateGrade Method Tests
     @Test
     public void testCalculateGradeShouldFailure() {
         this.student.setIntelligence(1);
@@ -80,7 +77,6 @@ public class StudentTest {
         int expectedGrade = Grades.EXCELLENT.getGrade();
         Assert.assertEquals(expectedGrade, actualGrade);
     }
-    //endregion
 
     @Test
     public void testAddScoreShouldIncreaseGradesSize() {
@@ -102,5 +98,13 @@ public class StudentTest {
         int expectedPoints = knowledgePoints + vitalityPoints;
         int actualPoints = this.student.getKnowledge() + this.student.getVitality();
         Assert.assertEquals(expectedPoints, actualPoints);
+    }
+
+    @Test
+    public void testGetExhaustedShouldDecreaseVitalityByOne() {
+        int expectedVitality = 99;
+        this.student.getExhausted();
+        int actualVitality = this.student.getVitality();
+        Assert.assertEquals(expectedVitality, actualVitality);
     }
 }
