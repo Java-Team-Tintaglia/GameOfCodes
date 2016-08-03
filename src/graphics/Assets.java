@@ -54,51 +54,51 @@ public class Assets {
     public static BufferedImage wizardCoffee;
 
     public static void init() {
-        login=ImageLoader.loadingImage(ImageAlbum.Login.getPath());
-        error=ImageLoader.loadingImage(ImageAlbum.Error.getPath());
-        success=ImageLoader.loadingImage(ImageAlbum.Success.getPath());
-        wall = ImageLoader.loadingImage(ImageAlbum.Wall.getPath());
-        wallTwo = ImageLoader.loadingImage(ImageAlbum.Wall_Two.getPath());
-        background = ImageLoader.loadingImage(ImageAlbum.Background.getPath());
-        wallToolbar = ImageLoader.loadingImage(ImageAlbum.Wall_Toolbar.getPath());
-        floor = ImageLoader.loadingImage(ImageAlbum.FLoor.getPath());
-        mainMenu = ImageLoader.loadingImage(ImageAlbum.Main_Menu.getPath());
-        playerCustomization = ImageLoader.loadingImage(ImageAlbum.Player_Customization.getPath());
-        selectPlayer = ImageLoader.loadingImage(ImageAlbum.Select_Player.getPath());
-        highScoresBackground = ImageLoader.loadingImage(ImageAlbum.High_Scores_Background.getPath());
-        diploma = ImageLoader.loadingImage(ImageAlbum.Diploma.getPath());
+        login=ImageLoader.loadingImage(ImageAlbum.LOGIN.getPath());
+        error=ImageLoader.loadingImage(ImageAlbum.ERROR.getPath());
+        success=ImageLoader.loadingImage(ImageAlbum.SUCCESS.getPath());
+        wall = ImageLoader.loadingImage(ImageAlbum.WALL.getPath());
+        wallTwo = ImageLoader.loadingImage(ImageAlbum.WALL_TWO.getPath());
+        background = ImageLoader.loadingImage(ImageAlbum.BACKGROUND.getPath());
+        wallToolbar = ImageLoader.loadingImage(ImageAlbum.WALL_TOOLBAR.getPath());
+        floor = ImageLoader.loadingImage(ImageAlbum.FLOOR.getPath());
+        mainMenu = ImageLoader.loadingImage(ImageAlbum.MAIN_MENU.getPath());
+        playerCustomization = ImageLoader.loadingImage(ImageAlbum.PLAYER_CUSTOMIZATION.getPath());
+        selectPlayer = ImageLoader.loadingImage(ImageAlbum.SELECT_PLAYER.getPath());
+        highScoresBackground = ImageLoader.loadingImage(ImageAlbum.HIGH_SCORES_BACKGROUND.getPath());
+        diploma = ImageLoader.loadingImage(ImageAlbum.DIPLOMA.getPath());
 
-        nerdLadyPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.Nerd_Lady_Player.getPath()));
-        badBoyPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.Bad_Boy_Player.getPath()));
-        hotChickPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.Hot_Chick_Player.getPath()));
-        nerdBoyPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.Nerd_Boy_Player.getPath()));
+        nerdLadyPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NERD_LADY_PLAYER.getPath()));
+        badBoyPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.BAD_BOY_PLAYER.getPath()));
+        hotChickPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.HOT_CHICK_PLAYER.getPath()));
+        nerdBoyPlayer = new SpriteSheet(ImageLoader.loadingImage(ImageAlbum.NERD_BOY_PLAYER.getPath()));
         
-        buttonStart = ImageLoader.loadingImage(ImageAlbum.Button_Start.getPath());
-        buttonScore = ImageLoader.loadingImage(ImageAlbum.Button_Score.getPath());
-        buttonExit = ImageLoader.loadingImage(ImageAlbum.Button_Exit.getPath());
-        buttonPlay = ImageLoader.loadingImage(ImageAlbum.Button_Play.getPath());
-        buttonBackToMenu = ImageLoader.loadingImage(ImageAlbum.Button_BackToMenu.getPath());
+        buttonStart = ImageLoader.loadingImage(ImageAlbum.BUTTON_START.getPath());
+        buttonScore = ImageLoader.loadingImage(ImageAlbum.BUTTON_SCORE.getPath());
+        buttonExit = ImageLoader.loadingImage(ImageAlbum.BUTTON_EXIT.getPath());
+        buttonPlay = ImageLoader.loadingImage(ImageAlbum.BUTTON_PLAY.getPath());
+        buttonBackToMenu = ImageLoader.loadingImage(ImageAlbum.BUTTON_BACK_TO_MENU.getPath());
 
-        buttonEdit = ImageLoader.loadingImage(ImageAlbum.Button_Edit.getPath());
-        buttonLogOut = ImageLoader.loadingImage(ImageAlbum.Button_LogOut.getPath());
-        buttonLogIn = ImageLoader.loadingImage(ImageAlbum.Button_LogIn.getPath());
-        buttonOk = ImageLoader.loadingImage(ImageAlbum.Button_Ok.getPath());
-        buttonProfile = ImageLoader.loadingImage(ImageAlbum.Button_Profile.getPath());
-        buttonRegister = ImageLoader.loadingImage(ImageAlbum.Button_Register.getPath());
+        buttonEdit = ImageLoader.loadingImage(ImageAlbum.BUTTON_EDIT.getPath());
+        buttonLogOut = ImageLoader.loadingImage(ImageAlbum.BUTTON_LOG_OUT.getPath());
+        buttonLogIn = ImageLoader.loadingImage(ImageAlbum.BUTTON_LOG_IN.getPath());
+        buttonOk = ImageLoader.loadingImage(ImageAlbum.BUTTON_OK.getPath());
+        buttonProfile = ImageLoader.loadingImage(ImageAlbum.BUTTON_PROFILE.getPath());
+        buttonRegister = ImageLoader.loadingImage(ImageAlbum.BUTTON_REGISTER.getPath());
 
-        buttonBadBoy = ImageLoader.loadingImage(ImageAlbum.Bad_BoyButton.getPath());
-        buttonHotChick = ImageLoader.loadingImage(ImageAlbum.Hot_Chick_Button.getPath());
-        buttonNerdBoy = ImageLoader.loadingImage(ImageAlbum.Nerd_Boy_Button.getPath());
-        buttonNerdLady = ImageLoader.loadingImage(ImageAlbum.Nerd_Lady_Button.getPath());
+        buttonBadBoy = ImageLoader.loadingImage(ImageAlbum.BAD_BOY_BUTTON.getPath());
+        buttonHotChick = ImageLoader.loadingImage(ImageAlbum.HOT_CHICK_BUTTON.getPath());
+        buttonNerdBoy = ImageLoader.loadingImage(ImageAlbum.NERD_BOY_BUTTON.getPath());
+        buttonNerdLady = ImageLoader.loadingImage(ImageAlbum.NERD_LADY_BUTTON.getPath());
 
-        javaCharacter = ImageLoader.loadingImage(ImageAlbum.Java_Character.getPath());
-        cSharpCharacter = ImageLoader.loadingImage(ImageAlbum.Csharp_Character.getPath());
-        cPlusPlusCharacter = ImageLoader.loadingImage(ImageAlbum.Cplusplus_Character.getPath());
-        javaScriptCharacter = ImageLoader.loadingImage(ImageAlbum.Javascript_Character.getPath());
-        phpCharacter = ImageLoader.loadingImage(ImageAlbum.PHP_Character.getPath());
+        javaCharacter = ImageLoader.loadingImage(ImageAlbum.JAVA_CHARACTER.getPath());
+        cSharpCharacter = ImageLoader.loadingImage(ImageAlbum.CSHARP_CHARACTER.getPath());
+        cPlusPlusCharacter = ImageLoader.loadingImage(ImageAlbum.CPLUSPLUS_CHARACTER.getPath());
+        javaScriptCharacter = ImageLoader.loadingImage(ImageAlbum.JAVASCRIPT_CHARACTER.getPath());
+        phpCharacter = ImageLoader.loadingImage(ImageAlbum.PHP_CHARACTER.getPath());
 
-        wizard = ImageLoader.loadingImage(ImageAlbum.Wizard.getPath());
-        wizardBeer = ImageLoader.loadingImage(ImageAlbum.Wizard_Beer.getPath());
-        wizardCoffee = ImageLoader.loadingImage(ImageAlbum.Wizard_Coffee.getPath());
+        wizard = ImageLoader.loadingImage(ImageAlbum.WIZARD.getPath());
+        wizardBeer = ImageLoader.loadingImage(ImageAlbum.WIZARD_BEER.getPath());
+        wizardCoffee = ImageLoader.loadingImage(ImageAlbum.WIZARD_COFFEE.getPath());
     }
 }
