@@ -5,9 +5,13 @@ import eventhandler.MouseInput;
 import graphics.Assets;
 import graphics.Display;
 import interfaces.AuthenticationProvider;
+import interfaces.Readable;
 import interfaces.State;
 import interfaces.StudentScoresRepository;
 import interfaces.UserRepository;
+import interfaces.Writeable;
+import io.InputReader;
+import io.OutputWriter;
 import repositories.StudentScoresRepositoryImpl;
 import repositories.UserRepositoryImpl;
 import states.MainMenuState;
@@ -15,8 +19,10 @@ import states.StateManager;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.FileNotFoundException;
 
 import authentication.AuthenticationProviderImpl;
+import constants.Common;
 import constants.Coordinates;
 
 public class GameEngine implements Runnable {
@@ -122,12 +128,21 @@ public class GameEngine implements Runnable {
 
     private void init() {
         Assets.init();
+        
+        Readable scoresReader = null;
+		try {
+			scoresReader = new InputReader(Common.SCORES_FILE_PATH);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+        Writeable scoresWriter = new OutputWriter();
+        
         this.display = new Display(Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, this.title);      
         this.authenticationProvider = new AuthenticationProviderImpl();
         this.userRepository = new UserRepositoryImpl(this.authenticationProvider);
         this.authenticationProvider.setUserRepository(this.userRepository);
         this.userRepository.load();
-        this.studentScoresRepository = new StudentScoresRepositoryImpl();    
+        this.studentScoresRepository = new StudentScoresRepositoryImpl(scoresReader, scoresWriter);    
         this.keyinput = new KeyInput(this, this.display);
         this.mouseInput = new MouseInput(this.display, this.userRepository, this.authenticationProvider, this.studentScoresRepository);  
         mainMenuState = new MainMenuState(this.authenticationProvider);

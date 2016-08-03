@@ -2,7 +2,9 @@ package repositories;
 
 import constants.Common;
 import constants.Messages;
+import interfaces.Readable;
 import interfaces.StudentScoresRepository;
+import interfaces.Writeable;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,8 +17,15 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
     public static Map<String, List<Integer>> studentsScore
             = new TreeMap<>();
 
-    public void saveToFile(String studentUsername, Map<String, List<Integer>> studentsGrades) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(Common.SCORES_FILE_PATH, true), true)) {
+    private Readable reader;
+    private Writeable writer;
+    
+    public StudentScoresRepositoryImpl(Readable reader, Writeable writer) {
+		this.reader = reader;
+		this.writer = writer;
+	}
+
+	public void saveToFile(String studentUsername, Map<String, List<Integer>> studentsGrades) {
             StringBuilder save = new StringBuilder();
             save.append(studentUsername + " ");
             for (Entry<String, List<Integer>> studentGrades : studentsGrades.entrySet()) {
@@ -30,20 +39,19 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
 
                 save.append(";");
             }
-
-            writer.print(save.toString());
-            writer.println();
             
-        } catch (IOException exception) {
-            System.err.println(Messages.FILE_WRITING_FAILURE);
-            exception.printStackTrace();
-        }
+	        try {
+	        	this.writer.write(Common.SCORES_FILE_PATH, save.toString());
+	
+	        } catch (IOException exception) {
+	            System.err.println(Messages.FILE_WRITING_FAILURE);
+	            exception.printStackTrace();
+	        }
     }
 
     public void readFromFile() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Common.SCORES_FILE_PATH))) {
-            String line = bufferedReader.readLine();
-
+    	try {
+    		String line = this.reader.readLine();
             while (line != null) {
                 String[] token = line.split(" ");
                 String studentUsername = token[0];
@@ -65,19 +73,21 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
                     }
                 }
 
-                line = bufferedReader.readLine();
+                line = this.reader.readLine();
             }
-        } catch (IOException exception) {
-            System.err.println(Messages.FILE_READING_FAILURE);
+            
+            this.reader.close();
+		} catch (IOException exception) {
+           System.err.println(Messages.FILE_READING_FAILURE);
             exception.printStackTrace();
         }
-
     }
+
 
     public Map<String, ArrayList<Integer>> getAllGradesBySubject(String username) {
         TreeMap<String, ArrayList<Integer>> grades = new TreeMap<>();
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Common.SCORES_FILE_PATH))) {
-            String line = bufferedReader.readLine();
+        try {
+        String line = this.reader.readLine();
             while (line != null) {
                 String[] token = line.split(" ");
                 String studentUsername = token[0];
@@ -96,8 +106,10 @@ public class StudentScoresRepositoryImpl implements StudentScoresRepository {
                         }
                     }
                 }
-                line = bufferedReader.readLine();
+                line = this.reader.readLine();
             }
+            
+            this.reader.close();
         } catch (IOException exception) {
             System.err.println(Messages.FILE_READING_FAILURE);
             exception.printStackTrace();
