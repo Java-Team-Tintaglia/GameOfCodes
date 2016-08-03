@@ -46,32 +46,39 @@ public class WizardTest {
         Wizard vitalityWizard = new VitalityWizard(X_COORD, Y_COORD);
         Assert.assertNotNull(vitalityWizard);
     }
+
     @Test
     public void testBoostIntelligentWizard() {
-
         Wizard intelligenceWizard = new IntelligenceWizard(X_COORD, Y_COORD);
-        int expectedBedBoyIntelligence = this.student.getIntelligence() + 5;
+        int expectedIntelligence = 65;
         intelligenceWizard.boost(student);
-        int actual = student.getIntelligence() ;
-        Assert.assertEquals(expectedBedBoyIntelligence, actual);
-
+        int actualIntelligence = student.getIntelligence() ;
+        Assert.assertEquals(expectedIntelligence, actualIntelligence);
     }
     @Test
     public void testBoostKnowledgeWizards() {
         Wizard knowledgeWizard = new KnowledgeWizard(X_COORD, Y_COORD);
-        int expectedBadBoyKnowledge = this.student.getKnowledge() + 5;
+        int expectedKnowledge = 75;
         knowledgeWizard.boost(student);
-        int actual = student.getKnowledge() ;
-        Assert.assertEquals(expectedBadBoyKnowledge, actual);
+        int actualKnowledge = student.getKnowledge() ;
+        Assert.assertEquals(expectedKnowledge, actualKnowledge);
     }
     @Test
     public void testBoostVitalityWizards() {
-
         Wizard vitalityWizard = new VitalityWizard(X_COORD, Y_COORD);
-        int expectedBadBoyVitality = this.student.getVitality();
+        this.student.setVitality(50);
+        int expectedVitality = 80;
         vitalityWizard.boost(student);
-        int actual = student.getVitality();
-        Assert.assertEquals(expectedBadBoyVitality, actual);
+        int actualVitality = student.getVitality();
+        Assert.assertEquals(expectedVitality, actualVitality);
+    }
+    @Test
+    public void testMaxVitalityPointsShouldNotChanged(){
+        Wizard vitalityWizard = new VitalityWizard(X_COORD, Y_COORD);
+        int expectedVitality =100;
+        vitalityWizard.boost(student);
+        int actualVitality = student.getVitality();
+        Assert.assertEquals(expectedVitality, actualVitality);
     }
 
 

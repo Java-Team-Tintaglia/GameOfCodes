@@ -7,7 +7,7 @@ import interfaces.ProgrammingLanguage;
 import interfaces.Wizard;
 
 
-public class MapInitializorTest {
+public class MapInitializerTest {
 
 	@Test
 	public void testGenerateRandomProgrammingLanguageNotNull(){
