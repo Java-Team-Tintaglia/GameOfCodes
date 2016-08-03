@@ -17,9 +17,11 @@ public interface Student extends GameObject, Collidable, Moveable {
 
     void setVitality(int vitality);
 
-    int calculateGrade(ProgrammingLanguage language);
+    int calculateGrade();
 
     void addScore(int grade, ProgrammingLanguage language);
+
+    void setStatsValues(int grade, ProgrammingLanguage language);
 
     void getExhausted();
     

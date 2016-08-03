@@ -1,19 +1,15 @@
 
 package models.students;
 
+import static enums.Grades.*;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 import enums.Grades;
 import graphics.SpriteSheet;
 import interfaces.ProgrammingLanguage;
 import interfaces.Student;
 import models.AbstractGameObject;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import static enums.Grades.*;
 
 public abstract class AbstractStudent extends AbstractGameObject implements Student {
 
@@ -221,31 +217,21 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
     }
 
     @Override
-    public int calculateGrade(ProgrammingLanguage language) {
+    public int calculateGrade() {
         int grade;
-        Grades gradeAsEnum;
         int ratio = (this.getKnowledge() + this.getVitality() + this.getIntelligence()) / STATISTICS_COUNT;
 
         if (ratio >= FAILURE.getMinRate() && ratio <= FAILURE.getMaxRate()) {
             grade = FAILURE.getGrade();
-            gradeAsEnum = FAILURE;
         } else if (ratio > PASSABLE.getMinRate() && ratio <= PASSABLE.getMaxRate()) {
             grade = PASSABLE.getGrade();
-            gradeAsEnum = PASSABLE;
         } else if (ratio > GOOD.getMinRate() && ratio <= GOOD.getMaxRate()) {
             grade = GOOD.getGrade();
-            gradeAsEnum = GOOD;
         } else if (ratio > VERY_GOOD.getMinRate() && ratio <= VERY_GOOD.getMaxRate()) {
             grade = VERY_GOOD.getGrade();
-            gradeAsEnum = VERY_GOOD;
         } else {
             grade = EXCELLENT.getGrade();
-            gradeAsEnum = EXCELLENT;
         }
-
-        this.setKnowledge(this.getKnowledge() + (int) (language.getKnowledgePoints() * gradeAsEnum.getFactor()));
-        int vitality = this.getVitality() - language.getVitalityDamagePoints();
-        this.setVitality(vitality);
 
         return grade;
     }
@@ -259,7 +245,24 @@ public abstract class AbstractStudent extends AbstractGameObject implements Stud
 
         this.studentGrades.get(language.getProgrammingLanguageType().getName()).add(grade);
     }
-    
+
+    @Override
+    public void setStatsValues(int grade, ProgrammingLanguage language) {
+        Grades gradeAsEnum =
+                Arrays.stream(Grades.values())
+                        .filter(g -> g.getGrade() == grade)
+                        .findFirst()
+                        .get();
+
+        this.setKnowledge(
+                this.getKnowledge() +
+                (int) (language.getKnowledgePoints() *
+                gradeAsEnum.getFactor()));
+
+        int vitality = this.getVitality() - language.getVitalityDamagePoints();
+        this.setVitality(vitality);
+    }
+
     @Override
     public void getExhausted() {
         this.setVitality(this.getVitality() - 1);

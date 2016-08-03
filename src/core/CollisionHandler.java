@@ -1,10 +1,9 @@
 package core;
 
+import java.util.List;
 import interfaces.ProgrammingLanguage;
 import interfaces.Student;
 import interfaces.Wizard;
-
-import java.util.List;
 
 public class CollisionHandler {
 
@@ -21,8 +20,9 @@ public class CollisionHandler {
             if (student.getCollideBox().intersects(programmingLanguage.getCollideBox())) {
                 if (programmingLanguage.isExist()) {
                 	programmingLanguage.setExist(false);
-                    int score = student.calculateGrade(programmingLanguage);
+                    int score = student.calculateGrade();
                     student.addScore(score, programmingLanguage);
+                    student.setStatsValues(score, programmingLanguage);
                 }
             }
         }
