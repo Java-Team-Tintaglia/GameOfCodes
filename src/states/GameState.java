@@ -5,11 +5,12 @@ import constants.Fonts;
 import core.CollisionHandler;
 import core.MapInitializor;
 import enums.StudentType;
-import factories.StudentFactory;
+import factories.StudentFactoryImpl;
 import graphics.Assets;
 import interfaces.ProgrammingLanguage;
 import interfaces.State;
 import interfaces.Student;
+import interfaces.StudentFactory;
 import interfaces.Wizard;
 
 import java.awt.*;
@@ -36,9 +37,9 @@ public class GameState implements State {
     private int step = STARTING_POSITION;
  
     public GameState(StudentType studentType, String username, String fullName) {
-		this.studentFactory = new StudentFactory();
+		this.studentFactory = new StudentFactoryImpl();
 		
-		student = studentFactory.create(studentType, 
+		student = this.studentFactory.create(studentType, 
 				Coordinates.DEFAUL_PLAYER_X_COORD, 
 				Coordinates.DEFAUL_PLAYER_Y_COORD, 
 				username,

@@ -4,10 +4,11 @@ import constants.Common;
 import constants.Messages;
 import enums.StudentType;
 import interfaces.Student;
+import interfaces.StudentFactory;
 
 import java.lang.reflect.Constructor;
 
-public class StudentFactory {
+public class StudentFactoryImpl implements StudentFactory {
 	public Student create(StudentType type, int x, int y, String username, String fullName) {
 		Student student = null;
 
