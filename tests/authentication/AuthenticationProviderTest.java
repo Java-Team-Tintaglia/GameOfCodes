@@ -32,6 +32,8 @@ public class AuthenticationProviderTest {
 		MockitoAnnotations.initMocks(this);
 		this.authenticationProvider = new AuthenticationProviderImpl(this.userRepository);
 		this.testUser = new UserImpl(USERNAME, FIRST_NAME, LAST_NAME, Encoder.cryptingPassword(PASSWORD));
+		Mockito.when(this.userRepository.findUserByUsername(Mockito.anyString()))
+		.thenReturn(this.testUser);
 	}
 	
 	
@@ -43,10 +45,15 @@ public class AuthenticationProviderTest {
 	
 	@Test
 	public void testGetLoggedUserShouldNotBeNull() {
-		Mockito.when(this.userRepository.findUserByUsername(Mockito.anyString()))
-				.thenReturn(this.testUser);
 		this.authenticationProvider.authenticate(USERNAME, PASSWORD);
 		User actualUser = this.authenticationProvider.getLoggedUser();
 		Assert.assertEquals(this.testUser, actualUser);
+	}
+	
+	@Test
+	public void testLogoutLoggedUserShouldBeNull() {
+		this.authenticationProvider.authenticate(USERNAME, PASSWORD);
+		this.authenticationProvider.logout();
+		Assert.assertNull(this.authenticationProvider.getLoggedUser());
 	}
 }

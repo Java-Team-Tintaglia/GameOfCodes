@@ -16,15 +16,17 @@ public class CollisionHandler {
             wizard.boost(student);
         }
 
-        for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
-            if (student.getCollideBox().intersects(programmingLanguage.getCollideBox())) {
-                if (programmingLanguage.isExist()) {
-                	programmingLanguage.setExist(false);
-                    int score = student.calculateGrade();
-                    student.addScore(score, programmingLanguage);
-                    student.setStatsValues(score, programmingLanguage);
+        if (programmingLanguages != null) {
+        	for (ProgrammingLanguage programmingLanguage : programmingLanguages) {
+                if (student.getCollideBox().intersects(programmingLanguage.getCollideBox())) {
+                    if (programmingLanguage.isExist()) {
+                    	programmingLanguage.setExist(false);
+                        int score = student.calculateGrade();
+                        student.addScore(score, programmingLanguage);
+                        student.setStatsValues(score, programmingLanguage);
+                    }
                 }
             }
-        }
+		}
     }
 }
