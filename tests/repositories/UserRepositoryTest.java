@@ -37,7 +37,7 @@ public class UserRepositoryTest {
 	@Before
 	public void setUp() {
 		Assets.init();
-		this.userRepository = new UserRepositoryImpl(this.authenticationProvider);
+		this.userRepository = new UserRepositoryImpl(this.authenticationProvider, null, null);
 		String line = String.format("%s %s %s %s%n", USERNAME, FIRST_NAME, LAST_NAME, PASSWORD_HASH);
 		try {
 			Mockito.when(this.bufferedReader.readLine()).thenReturn(line);

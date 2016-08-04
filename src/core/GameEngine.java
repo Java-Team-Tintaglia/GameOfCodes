@@ -130,16 +130,19 @@ public class GameEngine implements Runnable {
         Assets.init();
         
         Readable scoresReader = null;
+        Readable usersReader = null;
 		try {
 			scoresReader = new InputReader(Common.SCORES_FILE_PATH);
+			usersReader = new InputReader(Common.USERS_FILE_PATH);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
         Writeable scoresWriter = new OutputWriter();
+        Writeable usersWriter = new OutputWriter();
         
         this.display = new Display(Coordinates.SCREEN_WIDTH, Coordinates.SCREEN_HEIGHT, this.title);      
         this.authenticationProvider = new AuthenticationProviderImpl();
-        this.userRepository = new UserRepositoryImpl(this.authenticationProvider);
+        this.userRepository = new UserRepositoryImpl(this.authenticationProvider, usersReader, usersWriter);
         this.authenticationProvider.setUserRepository(this.userRepository);
         this.userRepository.load();
         this.studentScoresRepository = new StudentScoresRepositoryImpl(scoresReader, scoresWriter);    

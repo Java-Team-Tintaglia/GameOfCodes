@@ -1,6 +1,7 @@
 package repositories;
 
 import interfaces.UserRepository;
+import interfaces.Writeable;
 import models.UserImpl;
 import states.*;
 
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 import constants.Common;
 import constants.Messages;
 import interfaces.AuthenticationProvider;
+import interfaces.Readable;
 import interfaces.State;
 import interfaces.User;
 
@@ -20,9 +22,13 @@ public class UserRepositoryImpl implements UserRepository {
 
     private Map<String, User> users = new HashMap<>();
     private AuthenticationProvider authenticationProvider;
+    private Readable reader;
+    private Writeable writer;
     
-    public UserRepositoryImpl(AuthenticationProvider authenticationProvider) {
+    public UserRepositoryImpl(AuthenticationProvider authenticationProvider, Readable reader, Writeable writer) {
 		this.authenticationProvider = authenticationProvider;
+		this.reader = reader;
+		this.writer = writer;
 	}
 
 	public void addUser(User user) {
@@ -62,10 +68,10 @@ public class UserRepositoryImpl implements UserRepository {
         this.users.put(user.getUsername(), user);
 
         FileOutputStream writer = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader(Common.USERS_FILE_PATH))) {
-            StringBuilder text = new StringBuilder();
+        try {
+        StringBuilder text = new StringBuilder();
             String line;
-            while ((line = reader.readLine()) != null) {
+            while ((line = this.reader.readLine()) != null) {
                 String[] lineTokens = line.split("\\s+");
                 if (lineTokens[0].equals(user.getUsername())) {
                     text.append(editedData);
@@ -75,8 +81,10 @@ public class UserRepositoryImpl implements UserRepository {
                 text.append("\n");
             }
 
+            this.reader.close();
             writer = new FileOutputStream(Common.USERS_FILE_PATH);
             writer.write(text.toString().getBytes());
+            
         } catch (FileNotFoundException e) {
             System.out.println(Messages.FILE_FOUNDING_UNSUCCESSFUL);
             e.printStackTrace();
@@ -121,8 +129,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     // load all users from .txt file
     public void load() {
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(Common.USERS_FILE_PATH))) {
-            String line = bufferedReader.readLine();
+    	try {
+    	String line = this.reader.readLine();
 
             while (line != null) {
                 String[] token = line.split(" ");
@@ -136,8 +144,9 @@ public class UserRepositoryImpl implements UserRepository {
                     users.put(username, user);
                 }
 
-                line = bufferedReader.readLine();
+                line = this.reader.readLine();
             }
+            this.reader.close();
         } catch (IOException exception) {
             System.err.println(Messages.FILE_READING_FAILURE);
             exception.printStackTrace();
@@ -146,11 +155,13 @@ public class UserRepositoryImpl implements UserRepository {
 
     // Save registered user into a .txt file
     private void save(User user) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(Common.USERS_FILE_PATH, true), true)) {
-            writer.println(user.getUsername() + " "
-                    + user.getFirstName() + " "
-                    + user.getLastName() + " "
-                    + user.getPassword());
+    	try {
+    	String output = user.getUsername() + " "
+                + user.getFirstName() + " "
+                + user.getLastName() + " "
+                + user.getPassword();
+                
+    	this.writer.write(Common.USERS_FILE_PATH, output);
 
         } catch (IOException exception) {
             System.err.println(Messages.FILE_WRITING_FAILURE);
