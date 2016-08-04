@@ -1,18 +1,15 @@
 package eventhandler;
 
-import core.GameEngine;
 import graphics.Display;
+import interfaces.GameEngine;
 import states.*;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class KeyInput implements KeyListener {
+public class KeyInputImpl implements KeyListener {
 
-    GameEngine gameEngine;
-
-    public KeyInput(GameEngine gameengine, Display display) {
-        this.gameEngine = gameengine;
+    public KeyInputImpl(Display display) {
         display.getCanvas().addKeyListener(this);
     }
 

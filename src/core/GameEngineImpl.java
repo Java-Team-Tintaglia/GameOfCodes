@@ -1,10 +1,11 @@
 package core;
 
-import eventhandler.KeyInput;
-import eventhandler.MouseInput;
+import eventhandler.KeyInputImpl;
+import eventhandler.MouseInputImpl;
 import graphics.Assets;
 import graphics.Display;
 import interfaces.AuthenticationProvider;
+import interfaces.GameEngine;
 import interfaces.Readable;
 import interfaces.State;
 import interfaces.StudentScoresRepository;
@@ -18,6 +19,8 @@ import states.MainMenuState;
 import states.StateManager;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
 import java.io.FileNotFoundException;
 
@@ -25,24 +28,25 @@ import authentication.AuthenticationProviderImpl;
 import constants.Common;
 import constants.Coordinates;
 
-public class GameEngine implements Runnable {
+public class GameEngineImpl implements GameEngine {
     private final String title;
     private boolean isRunning;
     private Display display;
     private Thread thread;
     private BufferStrategy bufferStrategy;
     private Graphics graphics;
-    private KeyInput keyinput;
+    private KeyListener keyinput;
     private State mainMenuState;
-    private MouseInput mouseInput;
+    private MouseListener mouseInput;
     private UserRepository userRepository;
     private AuthenticationProvider authenticationProvider;
     private StudentScoresRepository studentScoresRepository;
 
-    public GameEngine(String title) {
+    public GameEngineImpl(String title) {
         this.title = title;
     }
 
+    @Override
     public synchronized void start() {
         if (!this.isRunning) {
             this.isRunning = true;
@@ -51,6 +55,7 @@ public class GameEngine implements Runnable {
         }
     }
 
+    @Override
     public synchronized void stop() {
         if (this.isRunning) {
             try {
@@ -146,8 +151,8 @@ public class GameEngine implements Runnable {
         this.authenticationProvider.setUserRepository(this.userRepository);
         this.userRepository.load();
         this.studentScoresRepository = new StudentScoresRepositoryImpl(scoresReader, scoresWriter);    
-        this.keyinput = new KeyInput(this, this.display);
-        this.mouseInput = new MouseInput(this.display, this.userRepository, this.authenticationProvider, this.studentScoresRepository);  
+        this.keyinput = new KeyInputImpl(this.display);
+        this.mouseInput = new MouseInputImpl(this.display, this.userRepository, this.authenticationProvider, this.studentScoresRepository);  
         mainMenuState = new MainMenuState(this.authenticationProvider);
         StateManager.setCurrentState(this.mainMenuState);
     }

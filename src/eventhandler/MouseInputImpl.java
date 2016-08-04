@@ -14,14 +14,14 @@ import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.Map;
 
-public class MouseInput implements MouseListener {
+public class MouseInputImpl implements MouseListener {
 	
     private Display display;
     private UserRepository userRepository;
     private AuthenticationProvider authenticationProvider;
     private StudentScoresRepository studentScoresRepository;
 
-    public MouseInput(Display display, 
+    public MouseInputImpl(Display display, 
     		UserRepository userRepository,
     		AuthenticationProvider authenticationProvider,
     		StudentScoresRepository studentScoresRepository) {
