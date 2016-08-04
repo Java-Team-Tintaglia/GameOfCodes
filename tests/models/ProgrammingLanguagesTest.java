@@ -7,7 +7,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LanguagesTest {
+public class ProgrammingLanguagesTest {
     private static final int X_COORD = 100;
     private static final int Y_COORD = 100;
 

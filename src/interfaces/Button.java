@@ -1,9 +1,8 @@
 package interfaces;
 
 /**
- *  This interface defines the behaviour for the Buttons.
+ *  This interface defines the behavior for the Buttons.
  */
-
 public interface Button extends GameObject, Collidable {
 
 }

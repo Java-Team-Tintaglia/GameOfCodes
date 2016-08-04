@@ -1,19 +1,16 @@
 package interfaces;
 
-
 import enums.ProgrammingLanguageType;
 
 /**
- * This interface defines the behaviour for the programing language.
+ * This interface defines the behavior for the programming language.
  */
-
 public interface ProgrammingLanguage extends GameObject, Collidable, Existable {
 
 	/**
-	 * A method that indicates the programing language type.
-	 * @return  the programing language type.
+	 * A method that indicates the programming language type.
+	 * @return  the programming language type.
 	 */
-
 	ProgrammingLanguageType getProgrammingLanguageType();
 
 	/**

@@ -1,15 +1,14 @@
 package interfaces;
 
 /**
- * this method defines the coordinates for the object.
+ * This interface defines the basic functionality for every game object.
  */
-
 public interface GameObject extends Updatable, Drawable{
-    /**
-     * gets the x coordinate of the current object.
+    
+	/**
+     * This method gets the x coordinate of the current object.
      * @return  an Integer indicating the x coordinate of the current object.
      */
-
     public int getX();
 
     /**
@@ -20,9 +19,8 @@ public interface GameObject extends Updatable, Drawable{
 
     /**
      * gets the y coordinate of the current object.
-     * @return  an Integer indicating the y coordinate of the current object.
+     * @return an Integer indicating the y coordinate of the current object.
      */
-
     public int getY();
 
 

@@ -122,11 +122,6 @@ public class UserRepositoryImpl implements UserRepository {
         return user;
     }
 
-    public Iterable<User> getAllUsers() {
-        List<User> allUsers = users.values().stream().collect(Collectors.toList());
-        return allUsers;
-    }
-
     // load all users from .txt file
     public void load() {
     	try {

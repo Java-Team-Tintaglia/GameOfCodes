@@ -1,6 +1,5 @@
 package states;
 
-import authentication.AuthenticationProviderImpl;
 import constants.Coordinates;
 import constants.Fonts;
 import constants.Messages;
@@ -10,7 +9,6 @@ import interfaces.StudentScoresRepository;
 import models.ButtonImpl;
 import interfaces.AuthenticationProvider;
 import interfaces.Button;
-import repositories.StudentScoresRepositoryImpl;
 
 import java.awt.*;
 import java.util.ArrayList;
